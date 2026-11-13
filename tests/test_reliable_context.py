@@ -51,6 +51,8 @@ def test_atomic_idempotent_import_and_document_history(store):
     assert store.current_revision()==revision
     export=store.export()
     assert len([k for k in export['nodes'] if k.label=='Claim'])==47
+    changed={c['revision']:set(c['paths']) for c in history['commits']}
+    assert all(n['path'] in changed[n['commit_hash']] for k,n in export['nodes'].items() if k.label=='FileChange')
     assert any(n['status']=='superseded' for k,n in export['nodes'].items() if k.label=='Claim')
     for k,n in export['nodes'].items():
         if k.label=='Commit': assert n['approval_status']==n['outcome_status']=='unknown' and n.get('rationale') is None

@@ -191,3 +191,55 @@ def test_onnx_model_disables_runtime_telemetry_before_session_creation(tmp_path,
     from tokenizers.models import WordLevel
     Tokenizer(WordLevel({'[UNK]':0},unk_token='[UNK]')).save(str(tmp_path/'tokenizer.json'))
     with pytest.raises(RuntimeError,match='stop before actual fixture inference'): OnnxEmbeddingModel(tmp_path)
+
+
+def test_offline_runner_blocks_internet_but_supports_local_async_work():
+    code='''import asyncio,socket
+try:
+ socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+ raise AssertionError("Internet socket creation was allowed")
+except PermissionError:
+ pass
+async def work():
+ assert await asyncio.to_thread(lambda: 42)==42
+asyncio.run(work())
+print("network denied; local asynchronous work completed")
+'''
+    result=subprocess.check_output([sys.executable,'scripts/offline_run.py','-c',code],text=True)
+    assert 'network denied' in result
+
+
+def test_duplicate_outcome_cannot_add_observation_using_a_new_evidence_id(tmp_path,monkeypatch):
+    with ReliableStore(tmp_path/'graph',create=True,clock=lambda:AT) as store:
+        _,signals=setup_feedback(store);simulate_owner_confirmation(store,monkeypatch)
+        store.feedback_bound(project='app',batch_id='one',signals=signals)
+        store.add_evidence(evidence(store,'duplicate',ref('Outcome','O')))
+        changed=[{**signals[0],'evidence_ref':ref('Evidence','duplicate')}]
+        with pytest.raises(ValueError,match='immutable evidence binding'): store.feedback_bound(project='app',batch_id='second',signals=changed)
+        assert store.get(ref('Rule','SQL-001','writ'))['times_seen_positive']==1
+
+
+def test_explicit_owner_approval_preserves_evidence_but_later_retraction_changes_confidence(tmp_path,monkeypatch):
+    # Reuse the full threshold scenario; this separate fixture establishes no real human approval.
+    from writ_retrieval.reliable.review import prepare_review,apply_review
+    from tests.test_memory_workflow import outcome
+    with ReliableStore(tmp_path/'graph',create=True,clock=lambda:AT) as store:
+        rule,_=setup_feedback(store);records=[outcome('approved-'+str(i)) for i in range(50)]
+        for r in records: r['data']['ts']+='T00:00:00Z'
+        store.capture(records);refs=[]
+        for i in range(50):
+            ident='approved-'+str(i);store.add_evidence(evidence(store,ident,ref('Outcome',ident)));refs.append(ref('Evidence',ident))
+        monkeypatch.setattr(sys.stdin,'isatty',lambda:True);monkeypatch.setattr(sys.stdout,'isatty',lambda:True)
+        token=digest([store.bind(r) for r in refs]);monkeypatch.setattr('builtins.input',lambda _:'confirm '+token)
+        store.confirm_evidence(refs)
+        store.feedback_bound(project='app',batch_id='approval-fixture',signals=[{'rule':rule,'evidence_ref':r,'signal':'positive'} for r in refs])
+        artifact=prepare_review(store,ref('Rule','SQL-001','writ'))
+        monkeypatch.setattr('builtins.input',lambda _:'approve '+artifact['review_id'])
+        result=apply_review(store,artifact,action='approve');assert result['action']=='approve'
+        s=ReliableSession(store,ControlledEncoder(),encoder_id='fixture',cache_dir=tmp_path/'cache')
+        def delivered():
+            return next(i for i in json.loads(s.context('sql',project='app',required=[Key('writ','Rule','SQL-001').token])['payload'])['items'] if i['ref']['label']=='Rule')
+        approved=delivered();assert approved['ranking_metadata']['positive']==50 and approved['human_approval']=='local-owner-approved'
+        store.retract_evidence(ref=refs[0],expected_revision=1,request_id='post-approval-withdrawal',reason='synthetic correction')
+        later=delivered();assert later['ranking_metadata']['positive']==49 and later['ranking_metadata']['confidence_weight']==.3
+        assert later['human_approval']=='local-owner-approved' and later['ranking_metadata']['authority']=='ai-promoted'

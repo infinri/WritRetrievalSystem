@@ -17,12 +17,12 @@ From this checkout, after the README installation steps:
 python scripts/prepare_model.py --output data/model
 git clone https://github.com/infinri/Writ ../Writ-public
 git -C ../Writ-public fetch origin v2/architecture-rebuild
-python -m pytest -q
-python -m unittest discover -s tests -v
-python -m writ_retrieval.evaluation.reliable_history \
+python scripts/offline_run.py -m pytest -q
+python scripts/offline_run.py -m unittest discover -s tests -v
+python scripts/offline_run.py -m writ_retrieval.evaluation.reliable_history \
   --repo ../Writ-public --model-dir data/model \
   --work-dir data/new-history-eval --output data/new-history-results
-python -m writ_retrieval.evaluation.reliable_demo \
+python scripts/offline_run.py -m writ_retrieval.evaluation.reliable_demo \
   --repo ../Writ-public --model-dir data/model \
   --work-dir data/new-agent-demo --output data/new-agent-results
 ```
@@ -31,7 +31,10 @@ Use new work/output paths each time. Git ingestion reads exact object revisions;
 it does not check out files, fetch, run hooks or execute repository code. The
 clone/fetch above is an explicit preparation step, separate from ingestion.
 Model hashes and all frozen input hashes are checked. Runtime inference disables
-ONNX telemetry and uses the local pinned weights/tokenizer.
+ONNX telemetry and uses the local pinned weights/tokenizer. The offline runner
+also denies network sockets/connections in the kernel before importing any
+third-party package. It permits only anonymous local socketpairs needed by
+asyncio; it is a network boundary, not a general untrusted-code sandbox.
 
 The primary evaluation uses `examples/phase3/evaluation.json`: **13 prompts**, with
 8 source-target prompts (10 exact source-version targets), 4 expected abstentions
@@ -101,7 +104,9 @@ reasoning. No generative agent/model was run; MiniLM is the embedding model.
 
 ## Owner mutations and review
 
-The read-only agent module exposes only `context` and `inspect`. Owner mutation
+The read-only agent module exposes only `context` and `inspect`, and applies the
+packaged kernel network deny before importing third-party runtimes. It runs in
+a dedicated process; do not invoke its process-wide filter inside a host app. Owner mutation
 commands are in `writ_retrieval.reliable.cli`; same-account unrestricted shell
 access remains outside this tooling boundary. Capture Decision/FileChange/Commit/
 Memory/Outcome through `capture INPUT.json` (Phase 2 shapes, but actual UTC whole

@@ -69,11 +69,13 @@ def ingest_history(store,history,*,project="writ-history",verify_repo=None):
         for doc in docs:
             ck=Key(project,'Commit',doc['revision']);dk=claim_key(project,doc)
             store._bound_edge(dk,'OBSERVED_IN',ck,sources=[doc['uri']])
+            # Presence in the initial snapshot is not evidence of a change at that commit.
+            if doc['path'] not in commits[ck.id]['paths']: continue
             change=Key(project,'FileChange',digest([doc['revision'],doc['path']])[7:])
             if not store.get(change):
                 store._set(change,{'project':project,'change_id':change.id,'contract_version':'writ-git-change/1','path':doc['path'],'change_type':'unknown',
                                    'reason':None,'reason_status':'unknown','commit_hash':ck.id,'ts':commits[ck.id]['committed_at'],'recorded_at':history['recorded_at'],
-                                   'source_refs':[doc['uri']],'revision':1,'status':'live','provenance':'record'})
+                                   'source_refs':[f'{PUBLIC_REPOSITORY}/commit/{ck.id}'],'revision':1,'status':'live','provenance':'record'})
             store._bound_edge(ck,'INCLUDES',change,sources=[doc['uri']])
             store._bound_edge(change,'DERIVED_FROM',dk,sources=[doc['uri']])
         # Observing an immutable commit object verifies its identity, not assertions made in its message.

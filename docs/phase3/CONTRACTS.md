@@ -76,7 +76,7 @@ different scopes of implementation; only synthetic tests assert a true conflict.
 
 Phase 3's stricter path retains the upstream numerical function but has an explicit
 admission policy `active-bound-evidence/1`: count one observation per Rule meaning /
-Evidence identity only when Rule and Evidence bindings remain current, the rule
+Outcome identity, with an immutable Evidence binding, only when Rule and Evidence bindings remain current, the rule
 and linked Outcome/Decision remain live, evidence is within its validity interval,
 and the local owner confirmed that bound evidence. Imports alone contribute zero.
 Git object identity verification is never verification of an application's outcome.

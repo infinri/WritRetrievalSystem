@@ -257,8 +257,9 @@ class ReliableStore(LocalStore):
                 if not decision or not any(s.get("ref")==rk.as_dict() and s.get("claim_hash")==claim_hash(rule) for s in unpack(decision.get("rule_snapshots"),[])): raise ValueError("decision did not cite rule claim")
                 if outcome.get("result") not in {"pass","fail","mixed"}: raise ValueError("unknown outcome")
                 if (outcome["result"],signal["signal"]) in {("pass","negative"),("fail","positive")}: raise ValueError("contradictory outcome sign")
-                ident=digest([rk.token,binding.content_digest,ek.token])[7:];key=Key(project,"BoundObservation",ident);old=self.get(key)
+                ident=digest([rk.token,binding.content_digest,ok.token])[7:];key=Key(project,"BoundObservation",ident);old=self.get(key)
                 if old and old["signal"]!=signal["signal"]: raise ValueError("contradictory replay")
+                if old and unpack(old["evidence_ref"])!=ek.as_dict(): raise ValueError("Outcome already has an immutable evidence binding; duplicate evidence cannot add another observation")
                 self._set(key,{"project":project,"observation_id":ident,"rule":canonical(signal["rule"]),"evidence_ref":canonical(ek.as_dict()),
                                "signal":signal["signal"],"recorded_at":old["recorded_at"] if old else self.clock(),"kind":"correlated_feedback","provenance":"record",
                                "contract_version":"writ-feedback-observation/1","evidence_binding":old["evidence_binding"] if old else canonical(self.bind(ek.as_dict()))})

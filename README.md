@@ -7,6 +7,22 @@ bounded graph enrichment, weighted ranking, filtering, abstention and context
 budget selection. Decision and memory recall is a separate path. No Neo4j server,
 Bolt driver, agent host or Writ V2 kernel is required.
 
+## Reliable versioned context (Phase 3)
+
+A separate local path binds guidance, memory, evidence and rendering to one
+published snapshot generation. It adds revision-bound source contracts, explicit
+retraction/conflicts, replay-safe active evidence, and one complete UTF-8/character
+budget. A read-only agent CLI can inspect exact historical versions; owner approval
+remains a separate terminal action. Linux single-thread/single-writer support only.
+
+See [runnable Phase 3 commands](docs/PHASE3.md), the [V2 scope map](docs/phase3/V2-SCOPE-MAP.md),
+[contracts](docs/phase3/CONTRACTS.md) and [findings](docs/phase3/FINDINGS.md).
+The real-history experiment is deliberately reported without a graph-advantage
+claim: connected covers 3/10 target source versions versus flat hybrid's 4/10.
+Labels remain unreviewed; no generative-agent outcome experiment was run.
+The scripted restart/retraction demonstration passes nine checks. Original
+weighted retrieval and all Phase 1/2 fixtures/evidence remain available below.
+
 ## Connected memory and feedback
 
 Phase 2 adds transactional capture for decisions, changes, commits, memories and

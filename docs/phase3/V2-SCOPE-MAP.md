@@ -22,3 +22,23 @@ this Python/Relate application implements the V2 broker or its target schema.
 
 The map is published before retrieval changes. The implementation/test coverage
 and remaining gaps will be recorded in PHASE3.md and the findings report.
+
+## Delivered coverage
+
+The initial map above is preserved as the pre-implementation scope. The
+[contract](CONTRACTS.md) and [findings](FINDINGS.md) distinguish implemented
+behavior from deferred infrastructure.
+
+| Selected work | Implementation | Real-engine checks / evidence |
+| --- | --- | --- |
+| One exported read snapshot and atomic generations | `reliable/{store,session}.py` | Failed encode/render/publication, corrupted cache, restart, source revision drift and expiry during build in `test_reliable_context.py` / `test_reliable_history.py` |
+| Source/time/revision contracts, immutable evidence | `reliable/{contracts,ingest}.py`, `contracts/phase3/` | Invalid calendar/source/digest/bool revision, self-verification rejection, source object read-only comparison and unknown commit outcomes |
+| Retraction and replay | `reliable/store.py` | Retraction across restart, old import/feedback replay, obsolete wording, duplicate outcomes/evidence IDs and deletion |
+| Unresolved conflicts and one budget | `reliable/{session,budget}.py` | Indivisible paired claims, UTF-8 byte/character limits, required-content errors and deterministic ties |
+| Separate confidence/owner judgment/approval | `reliable/{store,review,agent}.py` | Exact 50-observation threshold and 49-observation withdrawal, stale review, explicit approval without automatic revocation, read-only agent command set |
+| Real-history fair comparison and inspectable workflow | `evaluation/reliable_{history,demo}.py` | Frozen full-query outputs, flat/connected same inputs, nine demo checks; labels unreviewed, one retrieval regression, no outcome or graph-advantage claim |
+
+Automatic semantic contradiction detection, generic section deletion/renaming
+resolution, attested source/runner identities, protected clocks/approvals,
+concurrent writers, cache compaction and real agent outcomes remain deferred.
+The completed functionality is the documented bounded local workflow.

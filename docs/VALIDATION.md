@@ -1,6 +1,16 @@
 # Validation
 
-## Current Phase 2 evidence
+## Phase 3 evidence
+
+The [Phase 3 findings](phase3/FINDINGS.md) publish the complete 13-prompt,
+time-separated real-history comparison, source/version checks, nine-check
+process-restart/retraction demo and regressions. Labels remain unreviewed;
+source coverage does not establish task outcomes or a graph advantage.
+[Commands](PHASE3.md) and [contracts](phase3/CONTRACTS.md) describe the supported
+Linux local-owner boundary, atomic generations, exact payload budget and
+network-denied validation. Phase 1/2 evidence below remains historical and intact.
+
+## Historical Phase 2 evidence
 
 2026-11-13: **94 pytest tests passed**, including the original 76 and 18 new
 workflow/metric checks. The separate unittest demo suite remains **5 passed**;
