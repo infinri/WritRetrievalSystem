@@ -1,0 +1,182 @@
+{
+  "contract_version": "writ-history-eval/1",
+  "train_end": "154be77cc28936a31236cb72b0e5b65d74b9f063",
+  "holdout_task_revisions": [
+    "6be251c89c7c52484b89f6dc14bb663c315d436c",
+    "82971fdbfd0a8650db247e832cf8df89948e2cd6"
+  ],
+  "split": "History ends 2026-11-13T01:47:57Z; task motivation from later 2026-11-13T16:42:18Z and 16:48:15Z commits. Later documents never enter the evaluation store.",
+  "frozen_before_retrieval_changes": true,
+  "queries": [
+    {
+      "id": "H1",
+      "query": "What does D-035 require for approver provenance and immutable grant binding?",
+      "project": "writ-history",
+      "target_sources": [
+        "https://github.com/infinri/Writ/blob/154be77cc28936a31236cb72b0e5b65d74b9f063/docs/implementation/DECISION-LOG.md#4a976fa8b9610903"
+      ],
+      "history_required": false,
+      "expected_abstention": false,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "exact source section/path proxy; not independent relevance judgment"
+    },
+    {
+      "id": "H2",
+      "query": "What questions did the transition service leave open about promotion permits?",
+      "project": "writ-history",
+      "target_sources": [
+        "https://github.com/infinri/Writ/blob/154be77cc28936a31236cb72b0e5b65d74b9f063/docs/implementation/M3-05-TRANSITION-SERVICE.md#cf13180b4e29b7f4"
+      ],
+      "history_required": false,
+      "expected_abstention": false,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "exact source section/path proxy; not independent relevance judgment"
+    },
+    {
+      "id": "H3",
+      "query": "Why do current policy, revocation, freshness and immutable snapshot checks still apply?",
+      "project": "writ-history",
+      "target_sources": [],
+      "history_required": false,
+      "expected_abstention": true,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "Authenticated AcceptanceRecord section first appears after the history cutoff; missing-evidence control."
+    },
+    {
+      "id": "H4",
+      "query": "Which earlier design separates retrieved memory from authorization permits?",
+      "project": "writ-history",
+      "target_sources": [
+        "https://github.com/infinri/Writ/blob/1f8275ff551328ccfeaee711d08c3a302dce12d5/docs/architecture/retrieval-and-memory.md#fe94a348f91f01d9"
+      ],
+      "history_required": false,
+      "expected_abstention": false,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "exact source section/path proxy; not independent relevance judgment"
+    },
+    {
+      "id": "H5",
+      "query": "What evidence can reconcile an uncertain effect, and can a client assertion release it?",
+      "project": "writ-history",
+      "target_sources": [
+        "https://github.com/infinri/Writ/blob/154be77cc28936a31236cb72b0e5b65d74b9f063/docs/implementation/DECISION-LOG.md#4a976fa8b9610903"
+      ],
+      "history_required": false,
+      "expected_abstention": false,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "exact source section/path proxy; not independent relevance judgment"
+    },
+    {
+      "id": "H6",
+      "query": "What was the D-035 status before implementation, and what changed afterwards?",
+      "project": "writ-history",
+      "target_sources": [
+        "https://github.com/infinri/Writ/blob/aff6ce33e2ec9543321be3224a2a92ee9e27db12/docs/implementation/DECISION-LOG.md#8fec7acc22096763",
+        "https://github.com/infinri/Writ/blob/5fdcd306acc814bcb713d784591d189aa6f01877/docs/implementation/DECISION-LOG.md#4a976fa8b9610903",
+        "https://github.com/infinri/Writ/blob/154be77cc28936a31236cb72b0e5b65d74b9f063/docs/implementation/DECISION-LOG.md#4a976fa8b9610903"
+      ],
+      "history_required": true,
+      "expected_abstention": false,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "exact source section/path proxy; not independent relevance judgment"
+    },
+    {
+      "id": "H7",
+      "query": "Do the commit messages establish successful verification or human approval?",
+      "project": "writ-history",
+      "target_sources": [],
+      "history_required": false,
+      "expected_abstention": false,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "Verification-status control; no relevance target is assigned, and commit messages cannot establish approval or test success.",
+      "expected_unknown_verification": true
+    },
+    {
+      "id": "H8",
+      "query": "What final D-036 approval was available in the frozen history?",
+      "project": "writ-history",
+      "target_sources": [],
+      "history_required": false,
+      "expected_abstention": true,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "exact source section/path proxy; not independent relevance judgment"
+    },
+    {
+      "id": "H9",
+      "query": "What does the graph data model say about conflicting claims and validity time?",
+      "project": "writ-history",
+      "target_sources": [
+        "https://github.com/infinri/Writ/blob/1f8275ff551328ccfeaee711d08c3a302dce12d5/docs/architecture/data-model.md#0f2705958dbc8d95"
+      ],
+      "history_required": false,
+      "expected_abstention": false,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "exact source section/path proxy; not independent relevance judgment"
+    },
+    {
+      "id": "H10",
+      "query": "How should a replacement index generation and rollback work?",
+      "project": "writ-history",
+      "target_sources": [
+        "https://github.com/infinri/Writ/blob/1f8275ff551328ccfeaee711d08c3a302dce12d5/docs/architecture/retrieval-and-memory.md#cd6234a846d510db"
+      ],
+      "history_required": false,
+      "expected_abstention": false,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "exact source section/path proxy; not independent relevance judgment"
+    },
+    {
+      "id": "H11",
+      "query": "What do the transition service draft and decision log say about whether the work is implemented?",
+      "project": "writ-history",
+      "target_sources": [
+        "https://github.com/infinri/Writ/blob/154be77cc28936a31236cb72b0e5b65d74b9f063/docs/implementation/M3-05-TRANSITION-SERVICE.md#2d034ff0dac12498"
+      ],
+      "history_required": false,
+      "expected_abstention": false,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "exact source section/path proxy; not independent relevance judgment"
+    },
+    {
+      "id": "H12",
+      "query": "Which menu should we use for a banana cake dinner?",
+      "project": "writ-history",
+      "target_sources": [],
+      "history_required": false,
+      "expected_abstention": true,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "exact source section/path proxy; not independent relevance judgment"
+    },
+    {
+      "id": "H13",
+      "query": "What does D-035 require for approver provenance and immutable grant binding?",
+      "project": "foreign",
+      "target_sources": [],
+      "history_required": false,
+      "expected_abstention": true,
+      "label_status": "model_authored_unreviewed",
+      "label_basis": "exact source section/path proxy; not independent relevance judgment"
+    }
+  ],
+  "budget": {
+    "max_bytes": 8000,
+    "max_chars": 6000
+  },
+  "policy": {
+    "candidate_k": 6,
+    "graph_hops": 2,
+    "max_graph_nodes": 64,
+    "cosine_gate": 0.3,
+    "lexical_gate": 0.0,
+    "text_head_chars": 1600
+  },
+  "contradiction_control": {
+    "kind": "unreviewed_benchmark_annotation",
+    "description": "Potential status tension between the transition-service draft introduction and later D-035 implementation assertions. No semantic contradiction is asserted as established fact; inspect both source contexts."
+  },
+  "limitations": [
+    "13 authored prompts with source-section proxy labels, not human-reviewed",
+    "Missing-evidence prompts test unknown approval/outcome, not permission checks",
+    "D-035 version replacement is document history, not authenticated policy supersession"
+  ]
+}
