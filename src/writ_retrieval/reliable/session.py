@@ -27,7 +27,7 @@ from .budget import Budget, BudgetError, pack
 
 POLICY = {'contract_version':'writ-context-policy/1', 'candidate_k':6, 'graph_hops':2,
           'max_graph_nodes':64, 'cosine_gate':.30, 'rrf_k':60, 'text_head_chars':1600,
-          'embedding_batch_limit':16,
+          'embedding_batch_limit':16,'lexical_ties':'descending score then qualified identity',
           'ranking':'flat RRF; connected adds typed neighbors after identical seeds; confidence reported separately'}
 LABELS = {'Rule','Skill','Playbook','Technique','AntiPattern','ForbiddenResponse',
           'Decision','Memory','Commit','FileChange','Outcome','Claim','Evidence'}
@@ -209,7 +209,9 @@ class ReliableSession:
         keyword=KeywordIndex()
         keyword.build([{'rule_id':k.token,'trigger':'','statement':texts(n)[:POLICY['text_head_chars']],'tags':''} for k,n in eligible.items()])
         by_token={k.token:k for k in eligible}
-        lex=[by_token[h['rule_id']] for h in keyword.search(text[:2000],limit=len(eligible))] if eligible else []
+        hits=keyword.search(text[:2000],limit=len(eligible)) if eligible else []
+        hits.sort(key=lambda hit:(-hit['score'],hit['rule_id']))
+        lex=[by_token[h['rule_id']] for h in hits]
         vec=[]
         if arm!='lexical' and eligible:
             query=self._encode([text[:2000]])[0]
@@ -280,6 +282,8 @@ class ReliableSession:
                     stage=self._build(export,at)
                     result=self._render(stage,text,project=project,arm=arm,budget=budget,required=required)
                     if self.store.current_revision()!=export['revision']: raise RuntimeError('source revision changed during generation build')
+                    publication_time=self.store.clock()
+                    if any(lifecycle(n,at)!=lifecycle(n,publication_time) for n in export['nodes'].values()): raise RuntimeError('validity changed during context build; retry')
                     self._publish(stage)
                 return result
             except Exception as exc:

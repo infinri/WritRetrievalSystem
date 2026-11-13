@@ -116,6 +116,9 @@ class OnnxEmbeddingModel:
 
     def __init__(self, model_dir: Path = DEFAULT_ONNX_DIR) -> None:
         import onnxruntime as ort
+
+        # Inference uses pinned local artifacts; runtime telemetry is unnecessary.
+        ort.disable_telemetry_events()
         from tokenizers import Tokenizer
 
         model_path = model_dir / "model.onnx"

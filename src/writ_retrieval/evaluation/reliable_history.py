@@ -75,11 +75,14 @@ def main():
         expected_source_refs={d['uri'] for d in history['documents']}|{f"{history['repository']}/commit/{c['revision']}" for c in history['commits']}
         for query in plan['queries']:
             for arm in ARMS:
-                runs=[];context=None
+                runs=[];context=None;selection=None
                 for _ in range(args.repeats):
                     start=time.perf_counter();context=session.context(query['query'],project=query['project'],arm=arm,budget=Budget(**plan['budget']))
                     runs.append((time.perf_counter()-start)*1000)
                     if context.get('error'): raise RuntimeError(context['error'])
+                    signature=[context['diagnostics']['candidate_ids'],context['diagnostics']['selected_ids']]
+                    if selection is not None and signature!=selection: raise RuntimeError('non-deterministic selection in repeated query')
+                    selection=signature
                 delivered=json.loads(context['payload'])
                 for item in delivered['items']:
                     if not set(item['source_refs'])<=expected_source_refs: raise AssertionError('unbound or holdout source leak')

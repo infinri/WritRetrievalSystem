@@ -150,7 +150,7 @@ class ReliableStore(LocalStore):
         claim=Claim(**payload);claim.check_at(self.clock())
         key=Key(claim.project,"Claim",claim.claim_id)
         with self.transaction():
-            node=self.get(key);data=claim.model_dump();request_digest=digest(data)
+            node=self.get(key);data=claim.model_dump();request_digest=digest({"claim":data,"supersedes":supersedes})
             if node:
                 if node.get("request_digest")!=request_digest: raise ValueError("claim identity reused for different immutable meaning")
                 return node
@@ -205,7 +205,7 @@ class ReliableStore(LocalStore):
 
     def retract_evidence(self,*,ref,expected_revision,request_id,reason):
         key=Key.parse(ref);revision(expected_revision)
-        if key.label!="Evidence" or not reason or not request_id: raise ValueError("invalid retraction")
+        if key.label!="Evidence" or not isinstance(reason,str) or not reason.strip() or not isinstance(request_id,str) or not 1<=len(request_id)<=256: raise ValueError("invalid retraction")
         receipt=Key(key.project,"ReliableReceipt","retract:"+request_id)
         request=digest([ref,expected_revision,reason])
         with self.transaction():

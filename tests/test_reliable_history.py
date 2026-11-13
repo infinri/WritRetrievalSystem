@@ -151,3 +151,43 @@ def test_threshold_retraction_invalidates_pending_owner_review_without_erasing_a
         store.feedback_bound(project='app',batch_id='fifty',signals=signals)
         assert store.get(ref('Rule','SQL-001','writ'))['times_seen_positive']==39
         assert len([k for k in store.export()['nodes'] if k.label=='BoundObservation'])==50
+
+
+def test_lexical_equal_text_ties_are_deterministic_across_fresh_indexes(tmp_path):
+    with ReliableStore(tmp_path/'graph',create=True,clock=lambda:AT) as store:
+        for i in range(20): store.add_claim(claim(str(i),'sql identical duplicate text'))
+        signatures=[]
+        for _ in range(5):
+            session=ReliableSession(store,ControlledEncoder(),encoder_id='test',cache_dir=tmp_path/'cache')
+            signatures.append(session.context('sql identical',project='app',arm='lexical')['diagnostics']['selected_ids'])
+        assert all(s==signatures[0] for s in signatures)
+
+
+def test_evidence_expiring_during_build_is_not_published_as_current(tmp_path):
+    with ReliableStore(tmp_path/'graph',create=True,clock=lambda:AT) as store:
+        store.add_claim(claim(valid_to='2026-11-13T18:30:00Z'))
+        class AdvancingEncoder(ControlledEncoder):
+            def encode_batch(self,texts):
+                store.clock=lambda:'2026-11-13T19:00:00Z'
+                return super().encode_batch(texts)
+        s=ReliableSession(store,AdvancingEncoder(),encoder_id='test',cache_dir=tmp_path/'cache')
+        result=s.context('sql',project='app')
+        assert result['payload'] is None and 'validity changed' in result['error']['message']
+        assert not list((tmp_path/'cache').rglob('CURRENT.json'))
+        assert json.loads(s.context('sql',project='app')['payload'])['abstained']
+
+
+def test_onnx_model_disables_runtime_telemetry_before_session_creation(tmp_path,monkeypatch):
+    import onnxruntime as ort
+    from writ_retrieval.retrieval.embeddings import OnnxEmbeddingModel
+    calls=[]
+    monkeypatch.setattr(ort,'disable_telemetry_events',lambda:calls.append('disabled'))
+    def session(*args,**kwargs):
+        assert calls==['disabled']
+        raise RuntimeError('stop before actual fixture inference')
+    monkeypatch.setattr(ort,'InferenceSession',session)
+    (tmp_path/'model.onnx').write_bytes(b'fixture placeholder')
+    from tokenizers import Tokenizer
+    from tokenizers.models import WordLevel
+    Tokenizer(WordLevel({'[UNK]':0},unk_token='[UNK]')).save(str(tmp_path/'tokenizer.json'))
+    with pytest.raises(RuntimeError,match='stop before actual fixture inference'): OnnxEmbeddingModel(tmp_path)
