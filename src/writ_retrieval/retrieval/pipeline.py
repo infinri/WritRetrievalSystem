@@ -1009,7 +1009,7 @@ async def _collect_rules(db: RelateGraph) -> list[dict]:
     # restarts. Sorted by the canonical id, which is unique, so the order is total.
     query = f"""
         MATCH (r:Rule)
-        WHERE {RANKED_INCLUDE_WHERE}
+        WHERE {RANKED_INCLUDE_WHERE} AND coalesce(r.status, 'live') = 'live'
         RETURN r
         ORDER BY r.rule_id
     """
@@ -1073,7 +1073,9 @@ async def _collect_chunks(db: RelateGraph) -> list[dict]:
         OPTIONAL MATCH (c)-[:PRECEDES]->(nx:Chunk)
         OPTIONAL MATCH (pv:Chunk)-[:PRECEDES]->(c)
         RETURN c, d.title AS title, d.path AS path, d.kind AS kind,
-               nx.chunk_id AS next_id, pv.chunk_id AS prev_id
+               nx.chunk_id AS next_id, pv.chunk_id AS prev_id,
+               nx.project AS next_project, nx.doc_id AS next_doc,
+               pv.project AS prev_project, pv.doc_id AS prev_doc
         ORDER BY c.chunk_id
     """
     chunks: list[dict] = []
@@ -1081,12 +1083,25 @@ async def _collect_chunks(db: RelateGraph) -> list[dict]:
         chunk = dict(record["c"])
         chunk.update(
             title=record["title"], path=record["path"], kind=record["kind"],
-            next_id=record["next_id"], prev_id=record["prev_id"],
+            next_id=record["next_id"] if (record["next_project"], record["next_doc"]) == (chunk.get("project"), chunk.get("doc_id")) else None,
+            prev_id=record["prev_id"] if (record["prev_project"], record["prev_doc"]) == (chunk.get("project"), chunk.get("doc_id")) else None,
             rule_id=chunk["chunk_id"], trigger=chunk.get("breadcrumb", ""),
             statement=chunk.get("text", ""), tags=re.sub(r"[/._-]+", " ", record["path"] or ""),
             body="", mandatory=False, node_type="Chunk",
         )
         chunks.append(chunk)
+    from collections import Counter
+    from writ_retrieval.graph.identity import Key
+    counts = Counter(c["chunk_id"] for c in chunks)
+    def index_id(project, ident):
+        return Key(project or "", "Chunk", ident).token if counts[ident] > 1 else ident
+    for chunk in chunks:
+        raw = chunk["chunk_id"]
+        chunk["source_chunk_id"] = raw
+        chunk["identity"] = Key(chunk.get("project") or "", "Chunk", raw).as_dict()
+        chunk["chunk_id"] = chunk["rule_id"] = index_id(chunk.get("project"), raw)
+        for link in ("next_id", "prev_id"):
+            if chunk[link]: chunk[link] = index_id(chunk.get("project"), chunk[link])
     return chunks
 
 
@@ -1101,6 +1116,16 @@ async def _load_candidates(db: RelateGraph) -> tuple[list[dict], dict]:
     all_candidates: list[dict] = []
     for collector in RANKED_COLLECTORS:
         all_candidates += (await collector.run(db)).units
+
+    # Qualified index keys only when bare IDs collide across graph labels/projects.
+    from writ_retrieval.graph.snapshot import GraphSnapshot
+    from writ_retrieval.graph.identity import Key
+    aliases = (await GraphSnapshot.load(db)).index_keys()
+    for candidate in all_candidates:
+        key = Key.of(candidate["node_type"], candidate)
+        candidate["source_id"] = key.id
+        candidate["identity"] = key.as_dict()
+        candidate["rule_id"] = aliases[key]
 
     # Build metadata lookup (keyed by rule_id which now doubles as node_id).
     rule_metadata: dict[str, dict] = {r["rule_id"]: r for r in all_candidates}

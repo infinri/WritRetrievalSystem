@@ -1,4 +1,4 @@
-"""Neo4j Cypher 1-2 hop traversal from candidate rule_ids.
+"""Doctrine 1-2 hop traversal from candidate rule_ids.
 
 Two backends:
 1. Live Neo4j queries (used during ingest/validate, offline operations)
@@ -23,7 +23,7 @@ if TYPE_CHECKING:
 class AdjacencyCache:
     """In-memory adjacency list for hot-path traversal.
 
-    Built from Neo4j at startup. Lookup is O(1) per rule_id.
+    Built from Relate at startup. Lookup is O(1) per rule_id.
     """
 
     def __init__(self) -> None:
@@ -31,7 +31,7 @@ class AdjacencyCache:
         self._build_time_ms: float = 0.0
 
     async def build_from_db(self, db: RelateGraph) -> int:
-        """Load all edges from Neo4j into memory.
+        """Load doctrine edges from Relate into memory.
 
         Phase 1 expansion: matches any labeled node (Rule, Skill, Playbook,
         AntiPattern, etc.) so methodology edges surface during Stage 4
@@ -52,31 +52,9 @@ class AdjacencyCache:
         Returns the number of nodes with at least one neighbor.
         """
         start = time.perf_counter()
-        # Accept any label; project the primary id via the canonical coalesce
-        # (db._GRAPH_ID_COALESCE, derived from NODE_ID_FIELDS) so a new node type
-        # tracks automatically. Replaces a hand-maintained list that had drifted
-        # to 11 of 13 fields (was missing category_id, abstraction_id). Deferred
-        # import matches the retrieval package's pattern of not pulling the heavy
-        # db module at import time.
-        from writ_retrieval.graph.adapter import GRAPH_ID_COALESCE as _GRAPH_ID_COALESCE
-        src_id = _GRAPH_ID_COALESCE.format(v="a")
-        tgt_id = _GRAPH_ID_COALESCE.format(v="b")
-        # labels(x)[0] matches the convention every other cross-label read here uses
-        # (get_all_edges_cross_type, get_all_nodes_for_dump): every node this graph
-        # writes carries exactly one label, so [0] is total rather than a choice.
-        query = f"""
-            MATCH (a)-[r]->(b)
-            WITH a, r, b,
-                 {src_id} AS src_id,
-                 {tgt_id} AS tgt_id
-            WHERE src_id IS NOT NULL AND tgt_id IS NOT NULL
-              AND type(r) <> 'BELONGS_TO'
-            RETURN src_id AS source, type(r) AS edge_type, tgt_id AS target,
-                   labels(a)[0] AS source_type, a.project AS source_project,
-                   labels(b)[0] AS target_type, b.project AS target_project
-            ORDER BY source, target, edge_type
-        """
-        records = await db.read(query)
+        # Qualified doctrine adjacency preserves V1 ranking semantics. Record-aware
+        # enrichment is handled separately by GraphSnapshot.connected.
+        records = await db.adjacency_rows()
 
         self._neighbors.clear()
         for rec in records:

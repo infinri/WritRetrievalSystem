@@ -56,9 +56,11 @@ class EmptyVector:
 
 
 async def evaluate(args):
+    if args.repeats < 1: raise ValueError("repeats must be positive")
     args.output.mkdir(parents=True, exist_ok=True)
-    if not args.store.exists():
-        import_corpus(args.fixtures / "writ-corpus.cypher", args.store)
+    if args.store.exists():
+        raise FileExistsError("use a fresh evaluation store to guarantee pinned corpus contents")
+    import_corpus(args.fixtures / "writ-corpus.cypher", args.store)
     if digest(args.fixtures / "writ-corpus.cypher") != CORPUS_SHA256:
         raise ValueError("wrong corpus")
     # Verify actual model bytes, not just a caller-supplied manifest.

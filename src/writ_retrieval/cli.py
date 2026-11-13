@@ -125,6 +125,38 @@ async def _retrieval_command(args):
                               retrieval_mode=args.mode)
 
 
+async def _memory_command(args):
+    from .memory.store import LocalStore
+    with LocalStore(args.store, create=getattr(args, "create", False)) as db:
+        if args.command == "audit":
+            from .graph.snapshot import GraphSnapshot
+            return (await GraphSnapshot.load(db)).audit()
+        if args.command == "inspect":
+            return db.rows("MATCH (n {project:$project}) RETURN labels(n) AS labels, properties(n) AS record", project=args.project)
+        if args.command == "connected":
+            import os
+            import hashlib
+            from .retrieval.embeddings import OnnxEmbeddingModel
+            from .memory.service import ConnectedSession
+            identity = hashlib.sha256()
+            for name in ("model.onnx", "tokenizer.json"):
+                with (args.model_dir / name).open("rb") as f:
+                    while chunk := f.read(1024 * 1024): identity.update(chunk)
+            os.environ["WRIT_RETRIEVAL_CACHE"] = str(args.cache / identity.hexdigest())
+            session = ConnectedSession(db, OnnxEmbeddingModel(args.model_dir))
+            return await session.context(args.text, project=args.project, project_root=args.project_root, budget=args.budget)
+        payload = json.loads(args.input.read_text())
+        if args.command == "capture": return db.capture(payload)
+        if args.command == "propose": return db.propose(payload)
+        if args.command == "feedback": return db.feedback(**payload)
+        if args.command == "record-lifecycle": return db.lifecycle(**payload)
+        if args.command == "revise-proposal": return db.revise_proposal(**payload)
+        from .memory.review import prepare_review, apply_review
+        if args.command == "review-prepare": return prepare_review(db, payload)
+        if args.command == "review-apply": return apply_review(db, payload, action=args.action)
+        raise ValueError("unknown memory command")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -154,9 +186,26 @@ def main() -> None:
     recall.add_argument("--budget", type=int, default=500)
     recall.add_argument("--full", action="store_true")
     recall.add_argument("--matched-only", action="store_true")
+    memory_commands = ("capture", "propose", "feedback", "record-lifecycle", "revise-proposal", "review-prepare", "review-apply", "audit", "inspect", "connected")
+    for name in memory_commands:
+        cmd = subparsers.add_parser(name, help="Local persistent memory/feedback operation")
+        cmd.add_argument("--store", type=Path, required=True)
+        if name in {"capture", "propose"}: cmd.add_argument("--create", action="store_true")
+        if name in {"inspect", "connected"}: cmd.add_argument("--project", required=True)
+        if name == "connected":
+            cmd.add_argument("text")
+            cmd.add_argument("--model-dir", type=Path, required=True)
+            cmd.add_argument("--cache", type=Path, default=Path("data/connected-indexes"))
+            cmd.add_argument("--project-root", default="")
+            cmd.add_argument("--budget", type=int, default=2000)
+        elif name not in {"audit", "inspect"}: cmd.add_argument("input", type=Path)
+        if name == "review-apply": cmd.add_argument("--action", choices=("approve", "reject"), required=True)
     args = parser.parse_args()
     try:
-        if args.command == "init-demo":
+        if args.command in memory_commands:
+            import asyncio
+            result = asyncio.run(_memory_command(args))
+        elif args.command == "init-demo":
             result = seed_demo(args.store)
         elif args.command == "context":
             result = context_for_path(args.store, args.path, args.project)

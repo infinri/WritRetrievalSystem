@@ -1,0 +1,228 @@
+[
+  {
+    "label": "Decision",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T10:00:00Z",
+      "source_refs": [
+        "synthetic:phase2/Decision"
+      ],
+      "decision_id": "D-CURRENT",
+      "title": "Parameterize payment lookup",
+      "rationale": "Use bound SQL parameters for src/payments.py to keep input separate from query syntax.",
+      "rule_refs": [
+        {
+          "project": "writ",
+          "label": "Rule",
+          "id": "MEM-SQL-PARAM-001"
+        }
+      ],
+      "planned_files": [
+        {
+          "path": "src/payments.py",
+          "reason": "Use bound SQL parameters"
+        }
+      ]
+    }
+  },
+  {
+    "label": "Decision",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T10:00:00Z",
+      "source_refs": [
+        "synthetic:phase2/Decision"
+      ],
+      "decision_id": "D-OLD",
+      "title": "Superseded shortcut",
+      "rationale": "SUPERSEDED_MARKER concatenate SQL input in src/payments.py",
+      "rule_refs": [
+        {
+          "project": "writ",
+          "label": "Rule",
+          "id": "MEM-SQL-PARAM-001"
+        }
+      ]
+    }
+  },
+  {
+    "label": "Decision",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T10:00:00Z",
+      "source_refs": [
+        "synthetic:phase2/Decision"
+      ],
+      "decision_id": "D-CONTRA",
+      "title": "Contradictory experiment",
+      "rationale": "Contradictory SQL experiment: inline input in src/payments.py, against the parameter rule.",
+      "rule_refs": [
+        {
+          "project": "writ",
+          "label": "Rule",
+          "id": "MEM-SQL-PARAM-001"
+        }
+      ]
+    }
+  },
+  {
+    "label": "FileChange",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T10:00:00Z",
+      "source_refs": [
+        "synthetic:phase2/FileChange"
+      ],
+      "change_id": "F-CURRENT",
+      "path": "src/payments.py",
+      "reason": "Use bound SQL parameters",
+      "commit_hash": "abc123",
+      "decision_refs": [
+        {
+          "project": "payments",
+          "label": "Decision",
+          "id": "D-CURRENT"
+        }
+      ]
+    }
+  },
+  {
+    "label": "Commit",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T10:00:00Z",
+      "source_refs": [
+        "synthetic:phase2/Commit"
+      ],
+      "commit_hash": "abc123",
+      "subject": "Parameterize payment lookup",
+      "change_refs": [
+        {
+          "project": "payments",
+          "label": "FileChange",
+          "id": "F-CURRENT"
+        }
+      ],
+      "decision_refs": [
+        {
+          "project": "payments",
+          "label": "Decision",
+          "id": "D-CURRENT"
+        }
+      ]
+    }
+  },
+  {
+    "label": "Memory",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T10:00:00Z",
+      "source_refs": [
+        "synthetic:phase2/Memory"
+      ],
+      "name": "payment-history",
+      "description": "Payment SQL parameters separate user input from query syntax.",
+      "about_refs": [
+        {
+          "project": "writ",
+          "label": "Rule",
+          "id": "MEM-SQL-PARAM-001"
+        }
+      ]
+    }
+  },
+  {
+    "label": "Memory",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T10:00:00Z",
+      "source_refs": [
+        "synthetic:phase2/Memory"
+      ],
+      "name": "irrelevant",
+      "description": "IRRELEVANT_MARKER banana cake decoration",
+      "about_refs": [
+        {
+          "project": "writ",
+          "label": "Rule",
+          "id": "MEM-ASYNC-001"
+        }
+      ]
+    }
+  },
+  {
+    "label": "Memory",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T10:00:00Z",
+      "source_refs": [
+        "synthetic:phase2/Memory"
+      ],
+      "name": "deleted",
+      "description": "DELETED_MARKER retired SQL advice",
+      "about_refs": [
+        {
+          "project": "writ",
+          "label": "Rule",
+          "id": "MEM-SQL-PARAM-001"
+        }
+      ]
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T10:00:00Z",
+      "source_refs": [
+        "synthetic:phase2/Outcome"
+      ],
+      "outcome_id": "PASS",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic parameter binding test passed; no causal attribution."
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T10:00:00Z",
+      "source_refs": [
+        "synthetic:phase2/Outcome"
+      ],
+      "outcome_id": "FAIL",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CONTRA"
+      },
+      "result": "fail",
+      "summary": "Synthetic inline SQL experiment failed; contradictory history is retained."
+    }
+  },
+  {
+    "label": "Decision",
+    "data": {
+      "project": "foreign",
+      "ts": "2026-11-13T10:00:00Z",
+      "source_refs": [
+        "synthetic:phase2/Decision"
+      ],
+      "decision_id": "D-CURRENT",
+      "title": "Private foreign project",
+      "rationale": "FOREIGN_MARKER private payment query notes",
+      "rule_refs": [
+        {
+          "project": "writ",
+          "label": "Rule",
+          "id": "MEM-SQL-PARAM-001"
+        }
+      ]
+    }
+  }
+]

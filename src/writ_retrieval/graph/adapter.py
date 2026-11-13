@@ -37,22 +37,29 @@ class RelateGraph:
         return [dict(row) for row in self._db.execute(query, parameters)]
 
     async def get_all_abstractions(self) -> list[dict]:
-        rows = await self.read("""
-            MATCH (a:Abstraction)
-            OPTIONAL MATCH (a)-[:ABSTRACTS]->(r:Rule)
-            RETURN a, collect(r.rule_id) AS member_ids
-            ORDER BY a.abstraction_id
-        """)
-        return [{**dict(row["a"]), "member_ids": row["member_ids"]} for row in rows]
+        from .snapshot import GraphSnapshot
+        snapshot = await GraphSnapshot.load(self)
+        aliases = snapshot.index_keys()
+        result = []
+        for key in sorted(snapshot.nodes):
+            if key.label != "Abstraction": continue
+            data = dict(snapshot.nodes[key])
+            data["abstraction_id"] = aliases[key]
+            data["member_ids"] = [aliases[b] for a, kind, b in snapshot.edges if a == key and kind == "ABSTRACTS" and b.label == "Rule"]
+            result.append(data)
+        return result
 
     async def get_category_routes_by_node(self) -> dict[str, list[str]]:
-        nid = GRAPH_ID_COALESCE.format(v="n")
-        rows = await self.read(f"MATCH (n)-[:BELONGS_TO]->(c:Category) RETURN {nid} AS id, c.routes AS routes")
-        return {row["id"]: row["routes"] for row in rows if row.get("id") is not None and row.get("routes")}
+        from .snapshot import GraphSnapshot
+        return (await GraphSnapshot.load(self)).routes()
+
+    async def adjacency_rows(self):
+        from .snapshot import GraphSnapshot
+        return (await GraphSnapshot.load(self)).doctrine_rows()
 
     async def get_recent_decisions(self, project: str, limit: int = 20) -> list[dict]:
         rows = await self.read(
-            "MATCH (d:Decision {project: $project}) RETURN d ORDER BY d.ts DESC LIMIT $limit",
+            "MATCH (d:Decision {project: $project}) WHERE coalesce(d.status, 'live') = 'live' RETURN d ORDER BY d.ts DESC LIMIT $limit",
             project=project, limit=limit,
         )
         return [self._decision(dict(row["d"])) for row in rows]
@@ -60,7 +67,7 @@ class RelateGraph:
     async def list_memories(self, project: str, include_deleted: bool = False) -> list[dict]:
         rows = await self.read("""
             MATCH (m:Memory {project: $project})
-            WHERE $include_deleted OR coalesce(m.status, 'live') <> 'deleted'
+            WHERE $include_deleted OR coalesce(m.status, 'live') = 'live'
             RETURN m ORDER BY m.updated_at DESC
         """, project=project, include_deleted=include_deleted)
         memories = [dict(row["m"]) for row in rows]
@@ -103,6 +110,7 @@ class RelateGraph:
         rows = await self.read("""
             MATCH (n:FileChange)-[:MOTIVATED_BY]->(d:Decision)
             WHERE n.project = $project AND n.path IN $paths AND d.project = $project
+              AND coalesce(n.status, 'live') = 'live' AND coalesce(d.status, 'live') = 'live'
             OPTIONAL MATCH (c:Commit {project: $project, commit_hash: n.commit_hash})
             RETURN n, d, c.subject AS commit_subject
             ORDER BY n.ts DESC, n.change_id DESC
@@ -128,4 +136,16 @@ class RelateGraph:
         if not rule_ids:
             return {}
         rows = await self.read("MATCH (r:Rule) WHERE r.rule_id IN $ids RETURN r.rule_id AS id, r.statement AS statement", ids=rule_ids)
-        return {r["id"]: r["statement"] or "" for r in rows}
+        from collections import Counter
+        counts = Counter(r["id"] for r in rows)
+        return {r["id"]: r["statement"] or "" for r in rows if counts[r["id"]] == 1}
+
+    async def get_rule_statements_by_ref(self, refs):
+        from .identity import Key
+        result = {}
+        for ref in refs:
+            key = Key.parse(ref)
+            if key.label != "Rule": raise ValueError("not a rule reference")
+            rows = await self.read("MATCH (r:Rule) WHERE coalesce(r.project,'writ')=$project AND r.rule_id=$id RETURN r.statement AS statement", project=key.project, id=key.id)
+            if len(rows) == 1: result[key.token] = rows[0]["statement"] or ""
+        return result

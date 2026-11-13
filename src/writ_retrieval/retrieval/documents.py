@@ -28,7 +28,7 @@ DOCUMENT_ABSTENTION_THRESHOLD = 0.40
 # The tokenizer truncates at MAX_LENGTH tokens; slicing first ties the HNSW hash to what is embedded.
 CHUNK_EMBED_HEAD_CHARS = OnnxEmbeddingModel.MAX_LENGTH * CHARS_PER_TOKEN
 
-_CHUNK_FIELDS = ("project", "doc_id", "ordinal", "breadcrumb", "title", "path", "kind", "text")
+_CHUNK_FIELDS = ("source_chunk_id", "project", "doc_id", "ordinal", "breadcrumb", "title", "path", "kind", "text")
 
 
 def document_vector_text(chunk: dict) -> str:

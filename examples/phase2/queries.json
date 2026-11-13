@@ -1,0 +1,79 @@
+[
+  {
+    "id": "S1",
+    "query": "Use bound SQL parameters for payment lookup src/payments.py",
+    "project": "payments",
+    "expected_rule": "MEM-SQL-PARAM-001",
+    "expected_history": "D-CURRENT",
+    "forbidden": [
+      "FOREIGN_MARKER",
+      "SUPERSEDED_MARKER",
+      "DELETED_MARKER",
+      "IRRELEVANT_MARKER"
+    ]
+  },
+  {
+    "id": "S2",
+    "query": "What was the previous reason for changing src/payments.py?",
+    "project": "payments",
+    "expected_rule": null,
+    "expected_history": "D-CURRENT",
+    "forbidden": [
+      "FOREIGN_MARKER",
+      "SUPERSEDED_MARKER",
+      "DELETED_MARKER",
+      "IRRELEVANT_MARKER"
+    ]
+  },
+  {
+    "id": "S3",
+    "query": "Use bound SQL parameters for payment lookup src/payments.py",
+    "project": "unknown",
+    "expected_rule": "MEM-SQL-PARAM-001",
+    "expected_history": null,
+    "forbidden": [
+      "FOREIGN_MARKER",
+      "SUPERSEDED_MARKER",
+      "DELETED_MARKER",
+      "IRRELEVANT_MARKER"
+    ]
+  },
+  {
+    "id": "S4",
+    "query": "Use bound SQL parameters for payment lookup src/payments.py",
+    "project": "foreign",
+    "expected_rule": "MEM-SQL-PARAM-001",
+    "expected_history": "D-CURRENT",
+    "forbidden": [
+      "Parameterize payment lookup",
+      "SUPERSEDED_MARKER",
+      "DELETED_MARKER",
+      "IRRELEVANT_MARKER"
+    ]
+  },
+  {
+    "id": "S5",
+    "query": "async event loop worker blocking",
+    "project": "payments",
+    "expected_rule": "MEM-ASYNC-001",
+    "expected_history": null,
+    "forbidden": [
+      "FOREIGN_MARKER",
+      "SUPERSEDED_MARKER",
+      "DELETED_MARKER"
+    ]
+  },
+  {
+    "id": "S6",
+    "query": "orbital weather on Neptune",
+    "project": "unknown",
+    "expected_rule": null,
+    "expected_history": null,
+    "forbidden": [
+      "FOREIGN_MARKER",
+      "SUPERSEDED_MARKER",
+      "DELETED_MARKER",
+      "IRRELEVANT_MARKER"
+    ]
+  }
+]

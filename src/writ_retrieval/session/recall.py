@@ -26,6 +26,7 @@ It contains NO model call; cards are built mechanically by string formatting.
 from __future__ import annotations
 
 import asyncio
+import json
 import math
 import os
 import re
@@ -156,6 +157,8 @@ def _render_card(item: dict[str, Any]) -> str:
         if matched.get("reason"):
             reason = clip(sanitize_retrieved(matched["reason"]), _REASON_CHARS)
             lines.append(f"  {sanitize_retrieved(matched['path'])}: {reason}")
+    if item.get("source_refs"):
+        lines.append("  sources: " + clip(sanitize_retrieved(", ".join(item["source_refs"])), 160))
     return "\n".join(lines)
 
 
@@ -206,6 +209,9 @@ def _decision_item(src: dict[str, Any], match: str) -> dict[str, Any]:
         "ts": src.get("ts"),
         "match": match,
         "matched_files": [],
+        "source_refs": list(src.get("source_refs") or []),
+        "provenance": src.get("provenance", "record"),
+        "rule_snapshots": json.loads(src.get("rule_snapshots") or "[]") if isinstance(src.get("rule_snapshots"), str) else (src.get("rule_snapshots") or []),
     }
 
 
@@ -215,6 +221,8 @@ def _memory_item(src: dict[str, Any]) -> dict[str, Any]:
         "description": src.get("description") or "",
         "type": src.get("type"),
         "updated_at": src.get("updated_at"),
+        "source_refs": list(src.get("source_refs") or []),
+        "provenance": src.get("provenance", "record"),
     }
 
 
@@ -373,6 +381,18 @@ async def compile_recall(
         d["rule_statements"] = (
             {rid: statements.get(rid, "") for rid in d["governing_rule_ids"]} if full else {}
         )
+
+    if full:
+        from collections import Counter
+        from writ_retrieval.graph.identity import Key
+        for d in kept_decisions:
+            snapshots = d.get("rule_snapshots") or []
+            if not snapshots: continue
+            current = await db.get_rule_statements_by_ref([s["ref"] for s in snapshots])
+            d["current_rule_statements_by_ref"] = current
+            d["captured_rule_statements_by_ref"] = {Key.parse(s["ref"]).token: s.get("statement", "") for s in snapshots}
+            counts = Counter(s["ref"]["id"] for s in snapshots)
+            d["rule_statements"] = {s["ref"]["id"]: s.get("statement", "") for s in snapshots if counts[s["ref"]["id"]] == 1}
 
     briefing, cards = _build_briefing(kept)
     return {
