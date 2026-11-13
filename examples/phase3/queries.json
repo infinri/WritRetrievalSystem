@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "label_status": "PENDING HUMAN REVIEW; AI-authored source-recovery labels, not outcome judgments",
+  "budget_bytes": 8000,
+  "rrf_k": 60,
+  "queries": [
+    {"id":"H01","query":"hnswlib portable build cached wheel SIGILL","expected_path":".github/workflows/tests.yml","expected_commit":"26694a3a1c665eb0e97135d7a9a59ec598fb4fb3"},
+    {"id":"H02","query":"immutable stale record Memory expected_revision capture","expected_path":"src/writ_retrieval/memory/store.py","expected_commit":"2e3216487abdc92b77690e81f6b9fb8475160789"},
+    {"id":"H03","query":"feedback old claim wording revision resets observations","expected_path":"src/writ_retrieval/memory/store.py","expected_commit":"2e3216487abdc92b77690e81f6b9fb8475160789"},
+    {"id":"H04","query":"interactive owner terminal review approval trust boundary","expected_path":"src/writ_retrieval/memory/review.py","expected_commit":"2e3216487abdc92b77690e81f6b9fb8475160789"},
+    {"id":"H05","query":"source attribution JolliAI ContextCompiler upstream MIT","expected_path":"NOTICE.md","expected_commit":"d972e65e0bcc17348a1c92db58cea150c014a256"},
+    {"id":"H06","query":"controlled upstream parity synthetic vectors","expected_path":"scripts/capture_v1_reference.py","expected_commit":"d972e65e0bcc17348a1c92db58cea150c014a256"},
+    {"id":"H07","query":"D-035 reservation retention no grant refund expired retries","expected_decision":"D-035"},
+    {"id":"H08","query":"D-036 client asserted reconciliation trusted workflow inputs","expected_decision":"D-036"},
+    {"id":"H09","query":"D-034 trusted time CLOCK_BOOTTIME host clock integrity","expected_decision":"D-034"},
+    {"id":"H10","query":"D-030 Rust trusted kernel broker selected runtime","expected_decision":"D-030"},
+    {"id":"N01","query":"Who independently approved these history labels?","unknown":"independent approval unknown"},
+    {"id":"N02","query":"What measured customer revenue increase did retrieval cause?","unknown":"customer outcome unknown"},
+    {"id":"N03","query":"quasar marmalade underwater trombone","unknown":"absent topic"}
+  ]
+}

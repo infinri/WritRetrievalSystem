@@ -1,0 +1,198 @@
+{
+  "$defs": {
+    "Binding": {
+      "additionalProperties": false,
+      "properties": {
+        "ref": {
+          "additionalProperties": true,
+          "title": "Ref",
+          "type": "object"
+        },
+        "revision": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        },
+        "content_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Content Digest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ref",
+        "revision",
+        "content_digest"
+      ],
+      "title": "Binding",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": "writ-source/1",
+          "default": "writ-source/1",
+          "title": "Contract Version",
+          "type": "string"
+        },
+        "uri": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Uri",
+          "type": "string"
+        },
+        "revision": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision",
+          "type": "string"
+        },
+        "path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Path"
+        },
+        "committed_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Committed At"
+        },
+        "start_line": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Line"
+        },
+        "end_line": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Line"
+        }
+      },
+      "required": [
+        "uri",
+        "revision"
+      ],
+      "title": "Source",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "recorded_at": {
+      "title": "Recorded At",
+      "type": "string"
+    },
+    "valid_from": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Valid From"
+    },
+    "valid_to": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Valid To"
+    },
+    "contract_version": {
+      "const": "writ-evidence/1",
+      "default": "writ-evidence/1",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "project": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Project",
+      "type": "string"
+    },
+    "evidence_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Evidence Id",
+      "type": "string"
+    },
+    "subject": {
+      "$ref": "#/$defs/Binding"
+    },
+    "source": {
+      "$ref": "#/$defs/Source"
+    },
+    "material": {
+      "maxLength": 64000,
+      "title": "Material",
+      "type": "string"
+    },
+    "content_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Content Digest",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "model_assertion",
+        "repository_assertion"
+      ],
+      "title": "Kind",
+      "type": "string"
+    }
+  },
+  "required": [
+    "recorded_at",
+    "project",
+    "evidence_id",
+    "subject",
+    "source",
+    "material",
+    "content_digest",
+    "kind"
+  ],
+  "title": "Evidence",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Runtime additionally validates UTC calendar instants, digests, identity and current revision semantics; JSON shape alone is insufficient."
+}

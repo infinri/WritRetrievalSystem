@@ -35,3 +35,13 @@ The retrieval folder is not self-contained. For example, `pipeline.py` imports `
 Retrieved text and graph facts are context, not authorization. A recorded rule ID is attribution, not evidence that an agent complied. No performance, safety, or quality improvement is claimed by the initial persistence demo.
 
 Preserve upstream credits when the decision-memory code is imported; its Writ documentation attributes parts of the design to JolliAI. Pin model/data artifacts and record licenses before publishing them as submission assets. The private organizer conversation is not a repository asset.
+
+## Phase 3 adaptation
+
+Selected V2 principles are implemented in the separate `reliable` path; see the
+[scope map](phase3/V2-SCOPE-MAP.md), [contracts](phase3/CONTRACTS.md) and
+[commands](PHASE3.md). Public time-separated source recovery, coherent generations,
+explicit evidence retraction and one total payload budget now have measured
+results. The [findings](phase3/FINDINGS.md) retain the relevance regression and
+abstention failures; no graph superiority, human label review or live-agent task
+success is claimed. This does not expand the extraction into Writ V2's broker.

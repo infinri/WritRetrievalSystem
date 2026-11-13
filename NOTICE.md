@@ -51,3 +51,13 @@ review boundary are this adaptation's implementation. The original hook/token
 authorization service, auto-feedback heuristics and source-export/structural gate
 are not imported. See [PHASE2.md](docs/PHASE2.md) for the narrower trust boundary. New experiment
 harnesses and synthetic fixtures are project work, not upstream quality claims.
+
+## Phase 3 design and public-history reuse
+
+Selected design principles and redistributable MIT Writ history come from
+`v2/architecture-rebuild` at `82971fdbfd0a8650db247e832cf8df89948e2cd6`, including
+`retrieval-and-memory.md`, `data-model.md` and D-035/D-036. Frozen exports retain
+the upstream license, source revisions and attribution. New Python contracts,
+local generations and evaluation tooling implement this adaptation's narrower
+scope; no Rust kernel, broker or enterprise infrastructure is ported. Existing
+Writ and JolliAI credits above remain applicable.

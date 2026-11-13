@@ -1,0 +1,12 @@
+{
+  "phase2_head": "26694a3a1c665eb0e97135d7a9a59ec598fb4fb3",
+  "v2_design_pin": "82971fdbfd0a8650db247e832cf8df89948e2cd6",
+  "freeze_recorded_at": "2026-11-13T17:32:20Z",
+  "sha256": {
+    "evaluation.json": "84595a72050dd0f5a3c2cccd41be444186a90c37158c2930bddb5cec8577097b",
+    "demo-history.json": "87af3888af2991498d6952634bdeb9a59620be7f722a1b2379d3ce481d400213",
+    "train-history.json": "db6675e2f0903368f8e0978af8866505ad7384f356a2c875ff274bb663cc34e2",
+    "queries.json": "a689d987576bc9756b66225174cbe9b5e935a4748deb3b8b3b852c3a32ba4c31"
+  },
+  "review_status": "unreviewed; no actual human label review has occurred"
+}

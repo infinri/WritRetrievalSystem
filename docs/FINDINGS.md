@@ -1,3 +1,7 @@
+> Phase 3: see [reliable-context findings](phase3/FINDINGS.md) for the public-history
+> evaluation, complete generation/retraction demonstration and published regressions.
+> The Phase 2 measurements below remain unchanged historical evidence.
+
 # Phase 2 findings
 
 The connected workflow now preserves cited reasoning across restart and changes served confidence from durable observations. Its demonstrated benefit is **recovering project history with inspectable provenance**. It has not established better real-world outcomes or higher corpus relevance.
