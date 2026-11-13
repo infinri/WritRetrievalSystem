@@ -1,0 +1,34 @@
+{
+  "ground_truth_queries.json": {
+    "queries": 193,
+    "missing_primary_targets": [],
+    "primary_targets_excluded_from_ranked_pool": [
+      "Q1",
+      "Q10",
+      "Q26",
+      "Q52",
+      "Q86",
+      "Q87",
+      "Q88",
+      "Q90",
+      "Q91",
+      "Q94",
+      "Q95",
+      "Q98",
+      "Q99",
+      "Q100",
+      "Q102",
+      "Q103",
+      "Q105",
+      "Q107",
+      "Q116",
+      "Q148",
+      "Q154"
+    ]
+  },
+  "ground_truth_proc.json": {
+    "queries": 40,
+    "missing_primary_targets": [],
+    "primary_targets_excluded_from_ranked_pool": []
+  }
+}

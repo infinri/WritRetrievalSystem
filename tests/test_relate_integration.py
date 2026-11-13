@@ -50,3 +50,19 @@ class RelateIntegrationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ExtractedRecallDemoTests(unittest.TestCase):
+    def test_demo_can_be_recalled_in_a_separate_process(self):
+        with tempfile.TemporaryDirectory() as temp:
+            store = Path(temp) / "demo"
+            seed_demo(store)
+            output = subprocess.run(
+                [sys.executable, "-m", "writ_retrieval.cli", "recall", DEMO_PATH,
+                 "--store", str(store), "--project", "writ-demo", "--project-root", temp, "--full"],
+                check=True, capture_output=True, text=True,
+            )
+            result = json.loads(output.stdout)
+            self.assertEqual(result["decisions"][0]["decision_id"], "DEC-001")
+            self.assertEqual(result["decisions"][0]["match"], "path")
+            self.assertEqual(result["decisions"][0]["rule_statements"], {"PARAM-001": "Use parameterized SQL queries."})

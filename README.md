@@ -1,62 +1,109 @@
 # Writ Retrieval System
 
-Connected context for AI agents, built on Writ's retrieval and decision-memory foundation and adapted to Relate.
+Connected context for AI agents, extracted from Writ V1 and adapted to embedded Relate.
 
-## Current milestone
+The standalone baseline runs BM25 (Tantivy), vector search (HNSW + MiniLM ONNX),
+bounded graph enrichment, weighted ranking, filtering, abstention and context
+budget selection. Decision and memory recall is a separate path. No Neo4j server,
+Bolt driver, agent host or Writ V2 kernel is required.
 
-A working embedded Relate integration that persists a small synthetic graph and retrieves a file change's motivating decision, governing rule, and commit. No Neo4j server or model download is needed for this milestone.
+## Install and verify
 
-The full Writ hybrid retrieval pipeline has not been extracted yet. This demo does not perform semantic search, execute agent actions, enforce policy, or prove that a rule was followed.
-
-## Run
-
-Python 3.11 or later is required. Verified on Python 3.12.14, Linux x86_64, with `relate-db==1.0.1`.
+Python 3.11 or later; verified on Python 3.12, Linux x86_64. Building `hnswlib`
+requires a C++ compiler and Python development headers. On Linux, install the
+platform's build tools first; if Python names an unavailable compiler, use
+`CC=gcc CXX=g++` for the install command.
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-python -m pip install -e .
-writ-retrieval init-demo
-writ-retrieval context src/payments.py
+python -m pip install -c requirements-validated.txt -e '.[dev]'
+python -m pytest -q
 ```
 
-On Windows, activate the environment with `.venv\Scripts\Activate.ps1` in PowerShell.
+On Windows, activate with `.venv\Scripts\Activate.ps1`. Windows is not validated
+by this milestone; the C++ build toolchain may require separate setup.
 
-`init-demo` creates a persistent directory at `data/demo`; the next command opens that directory in a new process. Pass `--store PATH` to either command to choose another directory. Rerunning the seed merges the same fixture instead of duplicating it. The sample is fictional and contains no user records.
+Tests use actual Relate, Tantivy and HNSW with controlled vectors, and do not
+download a model. `requirements-validated.txt` records the tested dependency set.
+The original demo can still be checked with `python -m unittest discover -s tests -v`.
 
-The result includes:
+## Run hybrid rule retrieval
 
-```json
-{
-  "path": "src/payments.py",
-  "change_id": "CHANGE-001",
-  "decision_id": "DEC-001",
-  "rationale": "Parameterize the payment lookup to keep user input out of SQL syntax.",
-  "rule_id": "PARAM-001",
-  "rule": "Use parameterized SQL queries.",
-  "commit_id": "COMMIT-001",
-  "commit_subject": "Parameterize payment lookup"
-}
-```
-
-The graph connects `FileChange -MOTIVATED_BY-> Decision -GOVERNED_BY-> Rule`, with `Commit -INCLUDES-> FileChange`. Queries explicitly filter each matched node by project. This is a local demo, not authenticated multi-tenant isolation.
-
-## Verify
+From the repository root:
 
 ```bash
-python -m unittest discover -s tests -v
+writ-retrieval import-corpus tests/fixtures/writ-corpus.cypher --store data/corpus
+python scripts/prepare_model.py --output data/model
+writ-retrieval query 'controller contains SQL query' --store data/corpus --model-dir data/model --project example
 ```
 
-Four real-engine integration checks cover separate-process persistence, repeated seeding, unknown paths/other projects, and missing-store handling. See [validation](docs/VALIDATION.md).
+The importer accepts only the SHA-256-verified baseline dump and a new destination.
+It stages the import and publishes the persistent directory after success. It
+imports 468 nodes and 1,268 relationships without changing corpus content.
+Subsequent CLI invocations reopen the graph and reuse persisted indexes.
 
-## Next
+Model setup downloads a pinned public MiniLM export and tokenizer, checks hashes,
+and retains the model README and manifest. It requires network access. Runtime
+queries need no network. Weights are not bundled. The CLI separates index caches
+by model/tokenizer bytes; pass `--cache PATH` to choose the parent directory.
 
-Extract the scoped hybrid retrieval baseline, adapt its graph reads to Relate, and compare lexical/vector retrieval with and without graph expansion on the same queries. See [the extraction plan](docs/EXTRACTION-PLAN.md).
+`query` uses the original rule-injection abstention threshold **0.30**. Its factory
+API remains ungated by default, as upstream intended for authoring/diagnostics;
+CLI `--ungated` explicitly opts into that behavior. Other options include
+`--mode literal` and `--budget 600`. JSON includes selected rule IDs, scores,
+mode, raw similarity signal and scoped relationships. There is no generative
+answer or authorization decision.
+
+Python callers can use `RelateGraph`, `load_pipeline_inputs`, `assemble_pipeline`
+and `build_pipeline`, injecting an encoder through `embedding_model`. Set
+`WRIT_RETRIEVAL_CACHE` and, for default model discovery,
+`WRIT_RETRIEVAL_MODEL_DIR`. Library callers must isolate caches when switching
+encoders. Embedded graph reads are synchronous startup operations behind an
+async API, not a ready-to-deploy concurrent web service.
+
+## Run the persistent decision demo and recall
+
+```bash
+writ-retrieval init-demo
+writ-retrieval context src/payments.py
+writ-retrieval recall src/payments.py --project writ-demo --project-root . --full
+```
+
+`init-demo` creates or updates `data/demo`. Rerun it to add canonical V1 identity
+properties to a store made by the initial milestone; the original `context`
+output remains the same. `--store PATH` chooses another persistent directory.
+The fictional graph connects `FileChange -MOTIVATED_BY-> Decision -GOVERNED_BY-> Rule`
+and `Commit -INCLUDES-> FileChange`.
+
+Recall ranks project decisions by named path, BM25 terms and then recency. Its
+budgeted cards preserve decision IDs and governing rule IDs; `--full` also reads
+rule statements. Use `--matched-only` to disable recency fill. A cited rule is
+attribution, not proof that an action complied with it.
+
+## Scope and evidence
+
+Writ's existing policy is preserved: Rule plus five methodology types are shared
+doctrine; other node types are records, visible to their project or `_shared` in
+retrieval. Decision recall uses exact project reads. An absent caller project
+does not disable the retrieval visibility filter. These are local data-selection
+rules, not authenticated multi-tenant isolation.
+
+[Validation](docs/VALIDATION.md) records controlled upstream parity, real-engine
+checks, a full-corpus ONNX query and remaining gaps. [The extraction plan](docs/EXTRACTION-PLAN.md)
+tracks later connectivity and evaluation work. No ranking, speed or relevance
+improvement is claimed. Fixture eligibility can be inspected without quality claims:
+
+```bash
+python scripts/audit_fixture_targets.py --store data/corpus
+```
 
 ## Origin and contest work
 
-This project builds on [infinri/Writ](https://github.com/infinri/Writ), baseline commit `ebdafe5450b201339f81e717ed104e6bcfd3fe3e`. Writ's retrieval and decision-memory concepts predate this entry. The Relate demo, packaging, and integration checks here are new work; no Writ source modules have been copied into this initial milestone. Copied modules and their existing credits will be recorded as extraction proceeds.
+Reuses [Writ V1](https://github.com/infinri/Writ), commit
+`ebdafe5450b201339f81e717ed104e6bcfd3fe3e`, by Lucio Saldivar, under [MIT](LICENSE).
+The Relate adaptation and extraction validation are this entry's work. See
+[attribution](NOTICE.md) for reused modules, JolliAI credit and AI assistance.
 
-Development assistance: OpenAI Codex assisted with repository inspection, implementation, documentation, and test execution. Human review and the final contest submission are pending.
-
-Contest: [Relate by Neo4j Hackathon](https://relate.devpost.com/). This repository is an early implementation, not a completed submission. Licensed under [MIT](LICENSE).
+[Relate by Neo4j Hackathon](https://relate.devpost.com/). Human review and final
+submission requirements remain pending.
