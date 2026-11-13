@@ -1,0 +1,27 @@
+{
+  "baseline_requested": "892e13916eee5046feef5be8e1d22f63b8529df4",
+  "baseline_actual": "892e13916eee5046feef5be8e1d22f63b8529df4",
+  "v2_requested": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+  "v2_actual": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+  "accepted_m3": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+  "acceptance_docs": "6cdb7dbd3e486255ab34213c6734d422bb85dcb7",
+  "original_worktree": "clean at bb68a48; untouched",
+  "isolated_branch": "codex/bakeoff-protocol",
+  "remote_prs": "1/2/3 merged, no open PR at recovery; stale phase3-reliability-and-demo branch left untouched",
+  "hardware": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu_count": 9,
+    "affinity": 9,
+    "java": "OpenJDK 21.0.13"
+  },
+  "runtime": {
+    "relate-db": "1.0.1",
+    "neo4j": "5.28.2",
+    "numpy": "2.5.4",
+    "onnxruntime": "1.32.0",
+    "tantivy": "0.27.0",
+    "hnswlib": "0.8.0",
+    "psutil": "7.1.3"
+  },
+  "agent_access": "No configured OPENAI_API_KEY / ANTHROPIC_API_KEY or authorized generative model endpoint; embedding model is not a chat model. Trials need supplied endpoint/model identity, not implicit access to this chat."
+}

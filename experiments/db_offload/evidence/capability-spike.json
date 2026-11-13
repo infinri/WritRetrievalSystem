@@ -1,0 +1,552 @@
+{
+  "relate": {
+    "kind": "relate",
+    "client_version": "1.0.1",
+    "checks": [
+      {
+        "name": "version",
+        "query": "CALL dbms.components()",
+        "parameters": {},
+        "rows": [
+          {
+            "name": "Neo4j Kernel",
+            "versions": [
+              "2026.10-relate"
+            ],
+            "edition": "community"
+          },
+          {
+            "name": "Cypher",
+            "versions": [
+              "5",
+              "25"
+            ],
+            "edition": "community"
+          },
+          {
+            "name": "Relate",
+            "versions": [
+              "1.0.1"
+            ],
+            "edition": "community"
+          }
+        ],
+        "error": null,
+        "elapsed_ms": 2.7312679999340617
+      },
+      {
+        "name": "score_scale",
+        "query": "RETURN vector.similarity.cosine([1.0,0.0],[0.0,1.0]) AS score",
+        "parameters": {},
+        "rows": [
+          {
+            "score": 0.5
+          }
+        ],
+        "error": null,
+        "elapsed_ms": 1.9253139998909319,
+        "assertion": true
+      },
+      {
+        "name": "seed",
+        "query": "UNWIND range(1,30) AS i CREATE (:Capability {uid:'foreign-'+toString(i),scope:'foreign',text:'needle',embedding:[1.0,0.0]})",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 1.6981629996735137
+      },
+      {
+        "name": "permitted",
+        "query": "CREATE (:Capability {uid:'allowed',scope:'app',text:'needle safe',embedding:[0.6,0.8]})",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 0.29639900003530784
+      },
+      {
+        "name": "vector_index",
+        "query": "CREATE VECTOR INDEX capability_v FOR (n:Capability) ON n.embedding WITH [n.scope]",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 0.743540999792458
+      },
+      {
+        "name": "fulltext_index",
+        "query": "CREATE FULLTEXT INDEX capability_f FOR (n:Capability) ON EACH [n.text]",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 0.16606700000920682
+      },
+      {
+        "name": "global_then_filter_starves",
+        "query": "CALL db.index.vector.queryNodes('capability_v',5,[1.0,0.0]) YIELD node,score WHERE node.scope='app' RETURN node.uid AS uid",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 0.4268010002306255,
+        "assertion": true
+      },
+      {
+        "name": "vector_prefilter",
+        "query": "MATCH (n:Capability) SEARCH n IN (VECTOR INDEX capability_v FOR [1.0,0.0] WHERE n.scope='app' LIMIT 5) SCORE AS s RETURN n.uid AS uid,s",
+        "parameters": {},
+        "rows": [
+          {
+            "uid": "allowed",
+            "s": 0.800000011920929
+          }
+        ],
+        "error": null,
+        "elapsed_ms": 1.2230980000822456,
+        "assertion": true
+      },
+      {
+        "name": "fulltext_prefilter",
+        "query": "MATCH (n:Capability) SEARCH n IN (FULLTEXT INDEX capability_f FOR 'needle' WHERE n.scope='app' LIMIT 5) SCORE AS s RETURN n.uid AS uid,s",
+        "parameters": {},
+        "rows": null,
+        "error": {
+          "type": "ProgrammingError",
+          "message": "syntax error: InvalidUseOfCommand: WHERE cannot be used together with 'FULLTEXT INDEX'"
+        },
+        "elapsed_ms": 0.19425900018177344,
+        "assertion": true
+      },
+      {
+        "name": "fulltext",
+        "query": "CALL db.index.fulltext.queryNodes(\"capability_f\",\"needle\") YIELD node,score RETURN node.uid AS uid,score ORDER BY score DESC,uid ASC",
+        "parameters": {},
+        "rows": [
+          {
+            "uid": "foreign-1",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-10",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-11",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-12",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-13",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-14",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-15",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-16",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-17",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-18",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-19",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-2",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-20",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-21",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-22",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-23",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-24",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-25",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-26",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-27",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-28",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-29",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-3",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-30",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-4",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-5",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-6",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-7",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-8",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "foreign-9",
+            "score": 0.007251042057272685
+          },
+          {
+            "uid": "allowed",
+            "score": 0.005173998182550838
+          }
+        ],
+        "error": null,
+        "elapsed_ms": 1.3228780003373686
+      },
+      {
+        "name": "atomic_rollback_seed",
+        "query": "CREATE (:RollbackProbe {uid:\"not-committed\"})",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 0.5209519999880285
+      },
+      {
+        "name": "cypher_fusion",
+        "query": "CALL { MATCH (n:Capability) WHERE n.scope='app' RETURN n.uid AS uid,1.0/61 AS r UNION ALL MATCH (n:Capability) WHERE n.scope='app' RETURN n.uid AS uid,1.0/62 AS r } RETURN uid,sum(r) AS fused ORDER BY fused DESC,uid ASC",
+        "parameters": {},
+        "rows": [
+          {
+            "uid": "allowed",
+            "fused": 0.03252247488101534
+          }
+        ],
+        "error": null,
+        "elapsed_ms": 2.0866989998467034,
+        "assertion": true
+      },
+      {
+        "name": "graph_seed",
+        "query": "MATCH (a:Capability {uid:'allowed'}),(b:Capability {uid:'foreign-1'}) CREATE (a)-[:REFERENCES]->(b)",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 1.035926999975345
+      },
+      {
+        "name": "graph_per_hop",
+        "query": "MATCH p=(a:Capability {uid:'allowed'})-[:REFERENCES*1..2]-(b:Capability) WHERE all(x IN nodes(p) WHERE x.scope='app') RETURN b.uid AS uid LIMIT 64",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 1.5051559998937591,
+        "assertion": true
+      }
+    ],
+    "gates_pass": true,
+    "note": "Unsupported fulltext prefilter is expected; partitions or application curation are necessary. This is not a complete adoption gate."
+  },
+  "neo4j": {
+    "kind": "neo4j",
+    "client_version": "5.28.2",
+    "checks": [
+      {
+        "name": "version",
+        "query": "CALL dbms.components()",
+        "parameters": {},
+        "rows": [
+          {
+            "name": "Neo4j Kernel",
+            "versions": [
+              "5.26.0"
+            ],
+            "edition": "community"
+          }
+        ],
+        "error": null,
+        "elapsed_ms": 200.9414009999091
+      },
+      {
+        "name": "score_scale",
+        "query": "RETURN vector.similarity.cosine([1.0,0.0],[0.0,1.0]) AS score",
+        "parameters": {},
+        "rows": [
+          {
+            "score": 0.5
+          }
+        ],
+        "error": null,
+        "elapsed_ms": 214.60795800021515,
+        "assertion": true
+      },
+      {
+        "name": "seed",
+        "query": "UNWIND range(1,30) AS i CREATE (:Capability {uid:'foreign-'+toString(i),scope:'foreign',text:'needle',embedding:[1.0,0.0]})",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 598.2443220000278
+      },
+      {
+        "name": "permitted",
+        "query": "CREATE (:Capability {uid:'allowed',scope:'app',text:'needle safe',embedding:[0.6,0.8]})",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 106.08290399977705
+      },
+      {
+        "name": "vector_index",
+        "query": "CREATE VECTOR INDEX capability_v FOR (n:Capability) ON (n.embedding) OPTIONS {indexConfig: {`vector.dimensions`:2,`vector.similarity_function`:'cosine'}}",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 338.88656399994943
+      },
+      {
+        "name": "fulltext_index",
+        "query": "CREATE FULLTEXT INDEX capability_f FOR (n:Capability) ON EACH [n.text]",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 79.41291899987846
+      },
+      {
+        "name": "await_indexes",
+        "query": "CALL db.awaitIndexes(60)",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 771.175403000143
+      },
+      {
+        "name": "global_then_filter_starves",
+        "query": "CALL db.index.vector.queryNodes('capability_v',5,[1.0,0.0]) YIELD node,score WHERE node.scope='app' RETURN node.uid AS uid",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 259.95163999959914,
+        "assertion": true
+      },
+      {
+        "name": "fulltext",
+        "query": "CALL db.index.fulltext.queryNodes(\"capability_f\",\"needle\") YIELD node,score RETURN node.uid AS uid,score ORDER BY score DESC,uid ASC",
+        "parameters": {},
+        "rows": [
+          {
+            "uid": "foreign-1",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-10",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-11",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-12",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-13",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-14",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-15",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-16",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-17",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-18",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-19",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-2",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-20",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-21",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-22",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-23",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-24",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-25",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-26",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-27",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-28",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-29",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-3",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-30",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-4",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-5",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-6",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-7",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-8",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "foreign-9",
+            "score": 0.007251041941344738
+          },
+          {
+            "uid": "allowed",
+            "score": 0.005173998884856701
+          }
+        ],
+        "error": null,
+        "elapsed_ms": 372.07468599990534
+      },
+      {
+        "name": "atomic_rollback_seed",
+        "query": "CREATE (:RollbackProbe {uid:\"not-committed\"})",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 70.60681800021484
+      },
+      {
+        "name": "cypher_fusion",
+        "query": "CALL { MATCH (n:Capability) WHERE n.scope='app' RETURN n.uid AS uid,1.0/61 AS r UNION ALL MATCH (n:Capability) WHERE n.scope='app' RETURN n.uid AS uid,1.0/62 AS r } RETURN uid,sum(r) AS fused ORDER BY fused DESC,uid ASC",
+        "parameters": {},
+        "rows": [
+          {
+            "uid": "allowed",
+            "fused": 0.03252247488101534
+          }
+        ],
+        "error": null,
+        "elapsed_ms": 594.6283289999883,
+        "assertion": true
+      },
+      {
+        "name": "graph_seed",
+        "query": "MATCH (a:Capability {uid:'allowed'}),(b:Capability {uid:'foreign-1'}) CREATE (a)-[:REFERENCES]->(b)",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 227.25223800034655
+      },
+      {
+        "name": "graph_per_hop",
+        "query": "MATCH p=(a:Capability {uid:'allowed'})-[:REFERENCES*1..2]-(b:Capability) WHERE all(x IN nodes(p) WHERE x.scope='app') RETURN b.uid AS uid LIMIT 64",
+        "parameters": {},
+        "rows": [],
+        "error": null,
+        "elapsed_ms": 431.11589099999037,
+        "assertion": true
+      }
+    ],
+    "gates_pass": true,
+    "note": "Unsupported fulltext prefilter is expected; partitions or application curation are necessary. This is not a complete adoption gate.",
+    "startup_ms": 15589.270951999879
+  }
+}

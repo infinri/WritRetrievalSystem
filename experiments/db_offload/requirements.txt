@@ -1,0 +1,3 @@
+# Optional experiment dependencies; production requirements stay untouched.
+neo4j==5.28.2
+psutil==7.1.3

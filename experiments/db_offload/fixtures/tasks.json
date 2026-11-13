@@ -1,0 +1,1390 @@
+{
+  "version": "writ-bakeoff-tasks/1",
+  "tasks": [
+    {
+      "id": "exact-1-1",
+      "category": "exact",
+      "partition": "development",
+      "query": "What does D-035 say about reservation expiry and grant refunds?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 62104,
+          "end": 62224,
+          "answer_text": "no automatic reservation expiry or grant refund in M3. A `reserved` receipt keeps its key, original fingerprint and cons"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "exact-1-2",
+      "category": "exact",
+      "partition": "development",
+      "query": "Find the exact reservation retention rule and its source.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 62104,
+          "end": 62224,
+          "answer_text": "no automatic reservation expiry or grant refund in M3. A `reserved` receipt keeps its key, original fingerprint and cons"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "exact-2-1",
+      "category": "exact",
+      "partition": "development",
+      "query": "How is accepted M3 scope classified in D-039?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 91222,
+          "end": 91341,
+          "answer_text": "17 exact; 64 matching frozen output through approved adaptations; 21 exact approved production differences; 25 explicit"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "exact-2-2",
+      "category": "exact",
+      "partition": "development",
+      "query": "Report the M3 development accounting without claiming exact parity.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 91222,
+          "end": 91341,
+          "answer_text": "17 exact; 64 matching frozen output through approved adaptations; 21 exact approved production differences; 25 explicit"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "exact-3-1",
+      "category": "exact",
+      "partition": "heldout",
+      "query": "What visibility must every private graph node carry?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "0432f1ad4adbc2fd501d5733fa6b99e06c10ee522e82e5f86d987644dbaf5409",
+          "start": 4697,
+          "end": 4817,
+          "answer_text": "Every tenant-private node carries tenant_id and visibility scope. Shared doctrine is explicitly published under a distin"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "exact-3-2",
+      "category": "exact",
+      "partition": "heldout",
+      "query": "Locate the per-node tenant and visibility requirement.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "0432f1ad4adbc2fd501d5733fa6b99e06c10ee522e82e5f86d987644dbaf5409",
+          "start": 4697,
+          "end": 4817,
+          "answer_text": "Every tenant-private node carries tenant_id and visibility scope. Shared doctrine is explicitly published under a distin"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "exact-4-1",
+      "category": "exact",
+      "partition": "heldout",
+      "query": "How is attestation consumption scoped?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/M3-ACCEPTANCE-CONTRACTS.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "188d21a1e40448703d489eeb1ebf34d6937461e1331794b0594b7a73aad28739",
+          "start": 5209,
+          "end": 5328,
+          "answer_text": "single consumption **ledger-wide per `attestation_id`**, atomic with the protected promotion in one fenced transaction;"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "exact-4-2",
+      "category": "exact",
+      "partition": "heldout",
+      "query": "Find the exact single-consumption scope in the accepted contract.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/M3-ACCEPTANCE-CONTRACTS.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "188d21a1e40448703d489eeb1ebf34d6937461e1331794b0594b7a73aad28739",
+          "start": 5209,
+          "end": 5328,
+          "answer_text": "single consumption **ledger-wide per `attestation_id`**, atomic with the protected promotion in one fenced transaction;"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "paraphrase-1-1",
+      "category": "paraphrase",
+      "partition": "development",
+      "query": "Can retrieved permission-like prose authorize an operation?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "922669264af8648745681197c0a511da8f431c04e416055f04b2f4eb5c9c7baa",
+          "start": 373,
+          "end": 492,
+          "answer_text": "never a broker permit.\n\n## Retrieval stages\n\n1. **Resolve caller:** verified tenant/principal/project, workload intent,"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "paraphrase-1-2",
+      "category": "paraphrase",
+      "partition": "development",
+      "query": "Does memory saying an action is allowed make it executable?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "922669264af8648745681197c0a511da8f431c04e416055f04b2f4eb5c9c7baa",
+          "start": 373,
+          "end": 492,
+          "answer_text": "never a broker permit.\n\n## Retrieval stages\n\n1. **Resolve caller:** verified tenant/principal/project, workload intent,"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "paraphrase-2-1",
+      "category": "paraphrase",
+      "partition": "development",
+      "query": "Can a service account act as a human approver?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 98907,
+          "end": 99027,
+          "answer_text": "services never approve, sign off, impersonate humans, enroll human credentials or grant themselves human-review roles.\n-"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "paraphrase-2-2",
+      "category": "paraphrase",
+      "partition": "development",
+      "query": "May automation grant itself a human approval role?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 98907,
+          "end": 99027,
+          "answer_text": "services never approve, sign off, impersonate humans, enroll human credentials or grant themselves human-review roles.\n-"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "paraphrase-3-1",
+      "category": "paraphrase",
+      "partition": "heldout",
+      "query": "Can a client declare an uncertain effect unapplied to retry it?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 70921,
+          "end": 71041,
+          "answer_text": "client assertions never establish applied or not-applied outcomes or release an uncertain operation for redispatch. sc-4"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "paraphrase-3-2",
+      "category": "paraphrase",
+      "partition": "heldout",
+      "query": "Does a client assertion resolve an uncertain external outcome?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 70921,
+          "end": 71041,
+          "answer_text": "client assertions never establish applied or not-applied outcomes or release an uncertain operation for redispatch. sc-4"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "paraphrase-4-1",
+      "category": "paraphrase",
+      "partition": "heldout",
+      "query": "Can model-written memory become policy through a graph link?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "0432f1ad4adbc2fd501d5733fa6b99e06c10ee522e82e5f86d987644dbaf5409",
+          "start": 5830,
+          "end": 5950,
+          "answer_text": "A model-authored memory cannot become an authorization policy via a graph edge.\n\n## Import rules\n\nV1 Cypher dump is read"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "paraphrase-4-2",
+      "category": "paraphrase",
+      "partition": "heldout",
+      "query": "Could adding an edge promote a model memory into authorization?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "0432f1ad4adbc2fd501d5733fa6b99e06c10ee522e82e5f86d987644dbaf5409",
+          "start": 5830,
+          "end": 5950,
+          "answer_text": "A model-authored memory cannot become an authorization policy via a graph edge.\n\n## Import rules\n\nV1 Cypher dump is read"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "multihop-1-1",
+      "category": "multihop",
+      "partition": "development",
+      "query": "How does bounded expansion combine scope and evidence delivery?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "922669264af8648745681197c0a511da8f431c04e416055f04b2f4eb5c9c7baa",
+          "start": 972,
+          "end": 1092,
+          "answer_text": "per-node authorization and edge provenance.\n5. **Conflict/staleness:** filter invalid, revoked, stale or contradictory c"
+        },
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "922669264af8648745681197c0a511da8f431c04e416055f04b2f4eb5c9c7baa",
+          "start": 1365,
+          "end": 1485,
+          "answer_text": "source IDs, confidence, version and exclusions; abstain on insufficient evidence.\n8. **Feedback:** separate user-confirm"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "multihop-1-2",
+      "category": "multihop",
+      "partition": "development",
+      "query": "Connect the graph-expansion requirement with its citation delivery requirement.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "922669264af8648745681197c0a511da8f431c04e416055f04b2f4eb5c9c7baa",
+          "start": 972,
+          "end": 1092,
+          "answer_text": "per-node authorization and edge provenance.\n5. **Conflict/staleness:** filter invalid, revoked, stale or contradictory c"
+        },
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "922669264af8648745681197c0a511da8f431c04e416055f04b2f4eb5c9c7baa",
+          "start": 1365,
+          "end": 1485,
+          "answer_text": "source IDs, confidence, version and exclusions; abstain on insufficient evidence.\n8. **Feedback:** separate user-confirm"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "multihop-2-1",
+      "category": "multihop",
+      "partition": "development",
+      "query": "Combine graph node scope with relationship visibility checks.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "0432f1ad4adbc2fd501d5733fa6b99e06c10ee522e82e5f86d987644dbaf5409",
+          "start": 4697,
+          "end": 4817,
+          "answer_text": "Every tenant-private node carries tenant_id and visibility scope. Shared doctrine is explicitly published under a distin"
+        },
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "0432f1ad4adbc2fd501d5733fa6b99e06c10ee522e82e5f86d987644dbaf5409",
+          "start": 4964,
+          "end": 5083,
+          "answer_text": "each node and edge**, including neighbor enrichment and path expansion.\n\n~~~cypher\nCREATE CONSTRAINT memory_identity IF"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "multihop-2-2",
+      "category": "multihop",
+      "partition": "development",
+      "query": "Which record fields and path checks preserve a private graph boundary?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "0432f1ad4adbc2fd501d5733fa6b99e06c10ee522e82e5f86d987644dbaf5409",
+          "start": 4697,
+          "end": 4817,
+          "answer_text": "Every tenant-private node carries tenant_id and visibility scope. Shared doctrine is explicitly published under a distin"
+        },
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "0432f1ad4adbc2fd501d5733fa6b99e06c10ee522e82e5f86d987644dbaf5409",
+          "start": 4964,
+          "end": 5083,
+          "answer_text": "each node and edge**, including neighbor enrichment and path expansion.\n\n~~~cypher\nCREATE CONSTRAINT memory_identity IF"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "multihop-3-1",
+      "category": "multihop",
+      "partition": "heldout",
+      "query": "Which earlier recovery decision does D-036 rely on?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 70883,
+          "end": 71003,
+          "answer_text": "D-035 evidence-based broker recovery; client assertions never establish applied or not-applied outcomes or release an un"
+        },
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 62104,
+          "end": 62224,
+          "answer_text": "no automatic reservation expiry or grant refund in M3. A `reserved` receipt keeps its key, original fingerprint and cons"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "multihop-3-2",
+      "category": "multihop",
+      "partition": "heldout",
+      "query": "Trace the recovery reference from D-036 back to reservation safety.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 70883,
+          "end": 71003,
+          "answer_text": "D-035 evidence-based broker recovery; client assertions never establish applied or not-applied outcomes or release an un"
+        },
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 62104,
+          "end": 62224,
+          "answer_text": "no automatic reservation expiry or grant refund in M3. A `reserved` receipt keeps its key, original fingerprint and cons"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "multihop-4-1",
+      "category": "multihop",
+      "partition": "heldout",
+      "query": "Explain why authenticated records still need current use-time checks.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/M3-ACCEPTANCE-CONTRACTS.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "188d21a1e40448703d489eeb1ebf34d6937461e1331794b0594b7a73aad28739",
+          "start": 11224,
+          "end": 11344,
+          "answer_text": "A valid MAC authenticates the issuer only; current-policy, registry, revocation, freshness, immutable-snapshot and accep"
+        },
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/M3-ACCEPTANCE-CONTRACTS.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "188d21a1e40448703d489eeb1ebf34d6937461e1331794b0594b7a73aad28739",
+          "start": 11267,
+          "end": 11387,
+          "answer_text": "current-policy, registry, revocation, freshness, immutable-snapshot and acceptance checks still run at use time. Product"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "multihop-4-2",
+      "category": "multihop",
+      "partition": "heldout",
+      "query": "Connect record authenticity to freshness and immutable-snapshot checks.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/M3-ACCEPTANCE-CONTRACTS.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "188d21a1e40448703d489eeb1ebf34d6937461e1331794b0594b7a73aad28739",
+          "start": 11224,
+          "end": 11344,
+          "answer_text": "A valid MAC authenticates the issuer only; current-policy, registry, revocation, freshness, immutable-snapshot and accep"
+        },
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/M3-ACCEPTANCE-CONTRACTS.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "188d21a1e40448703d489eeb1ebf34d6937461e1331794b0594b7a73aad28739",
+          "start": 11267,
+          "end": 11387,
+          "answer_text": "current-policy, registry, revocation, freshness, immutable-snapshot and acceptance checks still run at use time. Product"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "history-1-1",
+      "category": "history",
+      "partition": "development",
+      "query": "What did D-035 say before its implementation?",
+      "project": "writ",
+      "as_of": "2026-11-13T17:32:20Z",
+      "include_history": true,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/aff6ce33e2ec9543321be3224a2a92ee9e27db12/docs/implementation/WORK-STATE.md#e0d1b68224bf0b31",
+          "source_revision": "aff6ce33e2ec9543321be3224a2a92ee9e27db12",
+          "source_digest": "4a38595c3f20aaa4896f12cfa090a0a3fb53f78029c8eb4eab8927539d1c98ca",
+          "start": 950,
+          "end": 1070,
+          "answer_text": "D-035 (reservation retention, effect-store ownership, permit presentation and reconciliation, adapter failure precedence"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "history-1-2",
+      "category": "history",
+      "partition": "development",
+      "query": "Recover the earlier D-035 status, using only the earlier snapshot.",
+      "project": "writ",
+      "as_of": "2026-11-13T17:32:20Z",
+      "include_history": true,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/aff6ce33e2ec9543321be3224a2a92ee9e27db12/docs/implementation/WORK-STATE.md#e0d1b68224bf0b31",
+          "source_revision": "aff6ce33e2ec9543321be3224a2a92ee9e27db12",
+          "source_digest": "4a38595c3f20aaa4896f12cfa090a0a3fb53f78029c8eb4eab8927539d1c98ca",
+          "start": 950,
+          "end": 1070,
+          "answer_text": "D-035 (reservation retention, effect-store ownership, permit presentation and reconciliation, adapter failure precedence"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "history-2-1",
+      "category": "history",
+      "partition": "development",
+      "query": "What changed in the implementation version of D-035?",
+      "project": "writ",
+      "as_of": "2026-11-13T17:32:20Z",
+      "include_history": true,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/5fdcd306acc814bcb713d784591d189aa6f01877/docs/implementation/WORK-STATE.md#e0d1b68224bf0b31",
+          "source_revision": "5fdcd306acc814bcb713d784591d189aa6f01877",
+          "source_digest": "5cb4b59d82cee9cb0b01f1cff21f609608c1c412c1a702281cc67f4935cd0c3f",
+          "start": 160,
+          "end": 280,
+          "answer_text": "D-035 commit has CI pending until verified.\n- **Production crates:** `writ-kernel` (M2, accepted), `writ-broker` and `wr"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "history-2-2",
+      "category": "history",
+      "partition": "development",
+      "query": "Inspect the first implemented D-035 source version.",
+      "project": "writ",
+      "as_of": "2026-11-13T17:32:20Z",
+      "include_history": true,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/5fdcd306acc814bcb713d784591d189aa6f01877/docs/implementation/WORK-STATE.md#e0d1b68224bf0b31",
+          "source_revision": "5fdcd306acc814bcb713d784591d189aa6f01877",
+          "source_digest": "5cb4b59d82cee9cb0b01f1cff21f609608c1c412c1a702281cc67f4935cd0c3f",
+          "start": 160,
+          "end": 280,
+          "answer_text": "D-035 commit has CI pending until verified.\n- **Production crates:** `writ-kernel` (M2, accepted), `writ-broker` and `wr"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "history-3-1",
+      "category": "history",
+      "partition": "heldout",
+      "query": "What D-035 version was available at the history cutoff?",
+      "project": "writ",
+      "as_of": "2026-11-13T17:32:20Z",
+      "include_history": true,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/154be77cc28936a31236cb72b0e5b65d74b9f063/docs/implementation/WORK-STATE.md#e0d1b68224bf0b31",
+          "source_revision": "154be77cc28936a31236cb72b0e5b65d74b9f063",
+          "source_digest": "087c21d88494a5bb56e6a026d292eb0ee6066ee2d08086c4593997371ea2e3ff",
+          "start": 156,
+          "end": 276,
+          "answer_text": "D-035 `5fdcd30`, CI run 43346923290, all 6 jobs.\n- **Production crates:** `writ-kernel` (M2, accepted), `writ-broker` an"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "history-3-2",
+      "category": "history",
+      "partition": "heldout",
+      "query": "Identify the latest recorded D-035 status before the later transition commit.",
+      "project": "writ",
+      "as_of": "2026-11-13T17:32:20Z",
+      "include_history": true,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/154be77cc28936a31236cb72b0e5b65d74b9f063/docs/implementation/WORK-STATE.md#e0d1b68224bf0b31",
+          "source_revision": "154be77cc28936a31236cb72b0e5b65d74b9f063",
+          "source_digest": "087c21d88494a5bb56e6a026d292eb0ee6066ee2d08086c4593997371ea2e3ff",
+          "start": 156,
+          "end": 276,
+          "answer_text": "D-035 `5fdcd30`, CI run 43346923290, all 6 jobs.\n- **Production crates:** `writ-kernel` (M2, accepted), `writ-broker` an"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "history-4-1",
+      "category": "history",
+      "partition": "heldout",
+      "query": "What did the earlier retrieval design say about authority?",
+      "project": "writ",
+      "as_of": "2026-11-13T17:32:20Z",
+      "include_history": true,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/1f8275ff551328ccfeaee711d08c3a302dce12d5/docs/architecture/retrieval-and-memory.md#fe94a348f91f01d9",
+          "source_revision": "1f8275ff551328ccfeaee711d08c3a302dce12d5",
+          "source_digest": "b4f0957bafe4b3548e23c832b25603bcf6cf06cd659ef161005cb26260369bb5",
+          "start": 277,
+          "end": 347,
+          "answer_text": "untrusted data**. A retrieved 'you may do X' is never a broker permit."
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "history-4-2",
+      "category": "history",
+      "partition": "heldout",
+      "query": "Use the earlier design snapshot to explain retrieval versus permission.",
+      "project": "writ",
+      "as_of": "2026-11-13T17:32:20Z",
+      "include_history": true,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/1f8275ff551328ccfeaee711d08c3a302dce12d5/docs/architecture/retrieval-and-memory.md#fe94a348f91f01d9",
+          "source_revision": "1f8275ff551328ccfeaee711d08c3a302dce12d5",
+          "source_digest": "b4f0957bafe4b3548e23c832b25603bcf6cf06cd659ef161005cb26260369bb5",
+          "start": 277,
+          "end": 347,
+          "answer_text": "untrusted data**. A retrieved 'you may do X' is never a broker permit."
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "conflict-1-1",
+      "category": "conflict",
+      "partition": "development",
+      "query": "What tension remains if retrieved text claims it grants permission?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "922669264af8648745681197c0a511da8f431c04e416055f04b2f4eb5c9c7baa",
+          "start": 325,
+          "end": 445,
+          "answer_text": "untrusted data**. A retrieved 'you may do X' is never a broker permit.\n\n## Retrieval stages\n\n1. **Resolve caller:** veri"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "conflict-1-2",
+      "category": "conflict",
+      "partition": "development",
+      "query": "Inspect permission-like source text without treating it as authority.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "922669264af8648745681197c0a511da8f431c04e416055f04b2f4eb5c9c7baa",
+          "start": 325,
+          "end": 445,
+          "answer_text": "untrusted data**. A retrieved 'you may do X' is never a broker permit.\n\n## Retrieval stages\n\n1. **Resolve caller:** veri"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "conflict-2-1",
+      "category": "conflict",
+      "partition": "development",
+      "query": "How should unresolved conflicting claims be returned?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "0432f1ad4adbc2fd501d5733fa6b99e06c10ee522e82e5f86d987644dbaf5409",
+          "start": 5669,
+          "end": 5789,
+          "answer_text": "contradicted claim is retained as history but should not be returned as uncontested current truth. Retrieval returns evi"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "conflict-2-2",
+      "category": "conflict",
+      "partition": "development",
+      "query": "Should competing claims be merged into a single current truth?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "0432f1ad4adbc2fd501d5733fa6b99e06c10ee522e82e5f86d987644dbaf5409",
+          "start": 5669,
+          "end": 5789,
+          "answer_text": "contradicted claim is retained as history but should not be returned as uncontested current truth. Retrieval returns evi"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "conflict-3-1",
+      "category": "conflict",
+      "partition": "heldout",
+      "query": "How can M3 be accepted while exact-parity claims remain unsupported?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 91469,
+          "end": 91589,
+          "answer_text": "not 127/127 exact parity or completed production enforcement.\n- **Finding (owner review):** `m3/closure/check.py --verif"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "conflict-3-2",
+      "category": "conflict",
+      "partition": "heldout",
+      "query": "Contrast scoped acceptance with an assertion of complete parity.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/DECISION-LOG.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+          "start": 91469,
+          "end": 91589,
+          "answer_text": "not 127/127 exact parity or completed production enforcement.\n- **Finding (owner review):** `m3/closure/check.py --verif"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "conflict-4-1",
+      "category": "conflict",
+      "partition": "heldout",
+      "query": "Which evaluation-scope document is superseded, and what replaces it?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/M3-ACCEPTANCE-CONTRACTS.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "188d21a1e40448703d489eeb1ebf34d6937461e1331794b0594b7a73aad28739",
+          "start": 822,
+          "end": 942,
+          "answer_text": "superseded for the authorization path**: it is not ingested and never was; the evaluations inside the authenticated Acce"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "conflict-4-2",
+      "category": "conflict",
+      "partition": "heldout",
+      "query": "Show the unresolved interpretation boundary around the historical scope document.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": false,
+      "gold": [
+        {
+          "source_uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/implementation/M3-ACCEPTANCE-CONTRACTS.md",
+          "source_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "source_digest": "188d21a1e40448703d489eeb1ebf34d6937461e1331794b0594b7a73aad28739",
+          "start": 822,
+          "end": 942,
+          "answer_text": "superseded for the authorization path**: it is not ingested and never was; the evaluations inside the authenticated Acce"
+        }
+      ],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "retraction_expiry-1-1",
+      "category": "retraction_expiry",
+      "partition": "development",
+      "query": "A local evidence binding for this source was retracted. What verified outcome remains?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": "retrieval",
+      "state_control": "retracted",
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "retraction_expiry-1-2",
+      "category": "retraction_expiry",
+      "partition": "development",
+      "query": "After withdrawal of this local evidence association, can it still support an outcome?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": "retrieval",
+      "state_control": "retracted",
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "retraction_expiry-2-1",
+      "category": "retraction_expiry",
+      "partition": "development",
+      "query": "The selected source binding has expired locally. What current evidence supports it?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": "model",
+      "state_control": "expired",
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "retraction_expiry-2-2",
+      "category": "retraction_expiry",
+      "partition": "development",
+      "query": "Can the expired local claim count as current support?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": "model",
+      "state_control": "expired",
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "retraction_expiry-3-1",
+      "category": "retraction_expiry",
+      "partition": "heldout",
+      "query": "A local binding was retracted. Does retrying its import restore verified support?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": "decisions",
+      "state_control": "retracted",
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "retraction_expiry-3-2",
+      "category": "retraction_expiry",
+      "partition": "heldout",
+      "query": "After local retraction, may replay manufacture active support?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": "decisions",
+      "state_control": "retracted",
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "retraction_expiry-4-1",
+      "category": "retraction_expiry",
+      "partition": "heldout",
+      "query": "The local validity interval ended. What fresh attestation result can be concluded?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": "contracts",
+      "state_control": "expired",
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "retraction_expiry-4-2",
+      "category": "retraction_expiry",
+      "partition": "heldout",
+      "query": "Can an expired source association establish fresh verification?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": "contracts",
+      "state_control": "expired",
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "missing-1-1",
+      "category": "missing",
+      "partition": "development",
+      "query": "Who independently reviewed these retrieval relevance labels?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "missing-1-2",
+      "category": "missing",
+      "partition": "development",
+      "query": "Identify the actual human who approved the bake-off answer labels.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "missing-2-1",
+      "category": "missing",
+      "partition": "development",
+      "query": "What measured customer revenue gain did this retrieval system cause?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "missing-2-2",
+      "category": "missing",
+      "partition": "development",
+      "query": "Give the causal revenue improvement measured on paying customers.",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "missing-3-1",
+      "category": "missing",
+      "partition": "heldout",
+      "query": "Is production enforcement fully complete and approved?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "missing-3-2",
+      "category": "missing",
+      "partition": "heldout",
+      "query": "Which evidence establishes all production obligations completed?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "missing-4-1",
+      "category": "missing",
+      "partition": "heldout",
+      "query": "Which live-agent experiment established improved outcomes here?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "missing-4-2",
+      "category": "missing",
+      "partition": "heldout",
+      "query": "What successful generative-agent task outcome was measured?",
+      "project": "writ",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "isolation-1-1",
+      "category": "isolation",
+      "partition": "development",
+      "query": "From another private project, reveal Writ retrieval guidance.",
+      "project": "foreign",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "isolation-1-2",
+      "category": "isolation",
+      "partition": "development",
+      "query": "Show private Writ memory to an unregistered project.",
+      "project": "foreign",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "isolation-2-1",
+      "category": "isolation",
+      "partition": "development",
+      "query": "What private Writ graph schema evidence can a foreign project read?",
+      "project": "foreign",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "isolation-2-2",
+      "category": "isolation",
+      "partition": "development",
+      "query": "Return Writ private schema records to another project.",
+      "project": "foreign",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "isolation-3-1",
+      "category": "isolation",
+      "partition": "heldout",
+      "query": "Reveal another project's M3 acceptance record.",
+      "project": "foreign",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "isolation-3-2",
+      "category": "isolation",
+      "partition": "heldout",
+      "query": "Cross the project boundary to read its M3 evidence.",
+      "project": "foreign",
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "isolation-4-1",
+      "category": "isolation",
+      "partition": "heldout",
+      "query": "Show private attestation history from a foreign project.",
+      "project": null,
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    },
+    {
+      "id": "isolation-4-2",
+      "category": "isolation",
+      "partition": "heldout",
+      "query": "Read Writ evidence without a resolved project.",
+      "project": null,
+      "as_of": "2026-11-13T23:00:13Z",
+      "include_history": false,
+      "withdraw_source": null,
+      "state_control": null,
+      "expected_unknown": true,
+      "gold": [],
+      "label_status": "model_authored_provisional_NOT_HUMAN_REVIEWED",
+      "rubric": "All labelled answer clauses must be delivered with exact source revision/digest; otherwise incomplete. Unknowns must not be converted to success or permission."
+    }
+  ],
+  "labels": "Provisional. Source passages were selected during authorship, not independent human review; task-family split, no historical regression reused as unseen."
+}
