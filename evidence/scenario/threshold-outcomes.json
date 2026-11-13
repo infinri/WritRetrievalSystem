@@ -1,0 +1,902 @@
+[
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:00:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/0"
+      ],
+      "outcome_id": "E-00",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:01:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/1"
+      ],
+      "outcome_id": "E-01",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:02:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/2"
+      ],
+      "outcome_id": "E-02",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:03:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/3"
+      ],
+      "outcome_id": "E-03",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:04:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/4"
+      ],
+      "outcome_id": "E-04",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:05:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/5"
+      ],
+      "outcome_id": "E-05",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:06:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/6"
+      ],
+      "outcome_id": "E-06",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:07:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/7"
+      ],
+      "outcome_id": "E-07",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:08:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/8"
+      ],
+      "outcome_id": "E-08",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:09:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/9"
+      ],
+      "outcome_id": "E-09",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:10:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/10"
+      ],
+      "outcome_id": "E-10",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:11:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/11"
+      ],
+      "outcome_id": "E-11",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:12:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/12"
+      ],
+      "outcome_id": "E-12",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:13:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/13"
+      ],
+      "outcome_id": "E-13",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:14:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/14"
+      ],
+      "outcome_id": "E-14",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:15:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/15"
+      ],
+      "outcome_id": "E-15",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:16:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/16"
+      ],
+      "outcome_id": "E-16",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:17:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/17"
+      ],
+      "outcome_id": "E-17",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:18:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/18"
+      ],
+      "outcome_id": "E-18",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:19:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/19"
+      ],
+      "outcome_id": "E-19",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:20:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/20"
+      ],
+      "outcome_id": "E-20",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:21:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/21"
+      ],
+      "outcome_id": "E-21",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:22:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/22"
+      ],
+      "outcome_id": "E-22",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:23:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/23"
+      ],
+      "outcome_id": "E-23",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:24:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/24"
+      ],
+      "outcome_id": "E-24",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:25:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/25"
+      ],
+      "outcome_id": "E-25",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:26:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/26"
+      ],
+      "outcome_id": "E-26",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:27:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/27"
+      ],
+      "outcome_id": "E-27",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:28:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/28"
+      ],
+      "outcome_id": "E-28",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:29:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/29"
+      ],
+      "outcome_id": "E-29",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:30:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/30"
+      ],
+      "outcome_id": "E-30",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:31:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/31"
+      ],
+      "outcome_id": "E-31",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:32:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/32"
+      ],
+      "outcome_id": "E-32",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:33:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/33"
+      ],
+      "outcome_id": "E-33",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:34:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/34"
+      ],
+      "outcome_id": "E-34",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:35:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/35"
+      ],
+      "outcome_id": "E-35",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:36:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/36"
+      ],
+      "outcome_id": "E-36",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:37:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/37"
+      ],
+      "outcome_id": "E-37",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:38:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/38"
+      ],
+      "outcome_id": "E-38",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:39:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/39"
+      ],
+      "outcome_id": "E-39",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "pass",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:40:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/40"
+      ],
+      "outcome_id": "E-40",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "fail",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:41:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/41"
+      ],
+      "outcome_id": "E-41",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "fail",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:42:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/42"
+      ],
+      "outcome_id": "E-42",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "fail",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:43:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/43"
+      ],
+      "outcome_id": "E-43",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "fail",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:44:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/44"
+      ],
+      "outcome_id": "E-44",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "fail",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:45:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/45"
+      ],
+      "outcome_id": "E-45",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "fail",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:46:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/46"
+      ],
+      "outcome_id": "E-46",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "fail",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:47:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/47"
+      ],
+      "outcome_id": "E-47",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "fail",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:48:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/48"
+      ],
+      "outcome_id": "E-48",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "fail",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  },
+  {
+    "label": "Outcome",
+    "data": {
+      "project": "payments",
+      "ts": "2026-11-13T11:49:00Z",
+      "source_refs": [
+        "synthetic:parameter-case/49"
+      ],
+      "outcome_id": "E-49",
+      "decision_ref": {
+        "project": "payments",
+        "label": "Decision",
+        "id": "D-CURRENT"
+      },
+      "result": "fail",
+      "summary": "Synthetic threshold exercise; not real user evidence"
+    }
+  }
+]

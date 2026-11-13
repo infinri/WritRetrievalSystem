@@ -35,6 +35,10 @@
     "tests/fixtures/ground_truth_negatives.json": "02e8606577ab9b49e77c46a658f62c4c9e508144eec66d0295d5591451a02bba",
     "tests/fixtures/retrieval_scoring.py": "317e4d22a41b56fd804d6fedce01cbcc6c7c8c2bcc184cf41fec9ef8036c8799",
     "writ-corpus.cypher": "cc34b71a9c7c1eddc06b8ba296b78a3b2c3fec151847eee088399095134d9e96",
-    "LICENSE": "51b4f74d6f2144573951ea15f2cf8ff05ea6abca85249e119c672f59eca8b997"
+    "LICENSE": "51b4f74d6f2144573951ea15f2cf8ff05ea6abca85249e119c672f59eca8b997",
+    "writ/session/decision_capture.py": "7222e97edbb658cc1886fd06c7d232668f648511dfef95891aad447aa77cdbd1",
+    "writ/session/commit_capture.py": "cf91fea65a32fefbbbe9c59c132ccb5d6698c1005af896c50f67e97d2f0280bd",
+    "writ/session/feedback.py": "3a14e5cc3f161f504b672fb01156a1124d97f38d564058ce42e3794accf866ef",
+    "writ/promotion.py": "d5c849b2667bf171edc968937f003fe762abced53d5b06bb4c677112a0bb944e"
   }
 }

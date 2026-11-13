@@ -7,6 +7,26 @@ bounded graph enrichment, weighted ranking, filtering, abstention and context
 budget selection. Decision and memory recall is a separate path. No Neo4j server,
 Bolt driver, agent host or Writ V2 kernel is required.
 
+## Connected memory and feedback
+
+Phase 2 adds transactional capture for decisions, changes, commits, memories and
+outcomes; qualified graph identity; bounded cited-history context; durable
+positive/negative feedback; and an explicit local-owner proposal review workflow.
+Decision/memory recall remains separate from rule candidates.
+
+```bash
+python -m writ_retrieval.evaluation.scenario --store data/my-phase2-run --output data/my-phase2-evidence
+writ-retrieval connected 'SQL parameters src/payments.py' --store data/my-phase2-run --model-dir data/model --project payments --project-root .
+```
+
+Install dependencies and prepare the model below first. The scenario needs a new
+store and writes synthetic records, evidence and a review artifact. See
+[Phase 2 commands and contracts](docs/PHASE2.md) and the concise
+[findings report](docs/FINDINGS.md). **94 tests pass.** Full-corpus outputs are
+unchanged across 1,012 paired query runs; the synthetic scenario demonstrates
+persistent history retrieval and the documented confidence update, not improved
+real-world outcomes.
+
 ## Install and verify
 
 Python 3.11 or later; verified on Python 3.12, Linux x86_64. Building `hnswlib`

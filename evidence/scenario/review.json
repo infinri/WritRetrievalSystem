@@ -1,0 +1,1464 @@
+{
+  "ref": {
+    "project": "writ",
+    "label": "Rule",
+    "id": "MEM-SQL-PARAM-001"
+  },
+  "rule": {
+    "authority": "ai-provisional",
+    "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+    "confidence": "speculative",
+    "domain": "database",
+    "mandatory": false,
+    "pass_example": "execute(\"SELECT * FROM payments WHERE id=?\", [user_input])",
+    "project": "writ",
+    "proposal_hash": "0b2520cbe448cc95313cbb02a82f45d2b2054e618c8742cc5b2a18996a2bb445",
+    "provenance": "graduation_pending",
+    "revision": 1,
+    "rule_id": "MEM-SQL-PARAM-001",
+    "severity": "high",
+    "source_origin": "graph-authored",
+    "source_refs": [
+      "synthetic:payments-guidance"
+    ],
+    "statement": "Use bound SQL parameters for user input in payment lookups.",
+    "status": "live",
+    "times_seen_negative": 10,
+    "times_seen_positive": 40,
+    "trigger": "When changing src/payments.py or constructing payment lookup SQL queries.",
+    "violation": "query = f\"SELECT * FROM payments WHERE id={user_input}\""
+  },
+  "confidence": {
+    "ref": {
+      "project": "writ",
+      "label": "Rule",
+      "id": "MEM-SQL-PARAM-001"
+    },
+    "rule_id": "MEM-SQL-PARAM-001",
+    "project": "writ",
+    "times_seen_positive": 40,
+    "times_seen_negative": 10,
+    "provenance": "graduation_pending",
+    "authority": "ai-provisional",
+    "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+    "confidence_weight": 0.8,
+    "review_candidate": true,
+    "flagged": false
+  },
+  "observations": [
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "00b563a6abba145e35fa6aaa760dfc73478154a641a7b8acedc490efe0cb1932",
+      "outcome_ref": "{\"id\":\"E-23\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/23",
+      "source_outcome": {
+        "content_hash": "5e1c93e261e02edf5ea8d853abb2542dee97d6fe66cd78ea93cf3d0aee63ba0a",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-23",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/23"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:23:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "03fdd66b4c76caae6709a334f70f761f7c5461df5427d85c5e67ea5aabae3963",
+      "outcome_ref": "{\"id\":\"E-07\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/7",
+      "source_outcome": {
+        "content_hash": "a053cf58c9bb756e8d8b32080d242d9638a20b3d8e0c1d25180bf2b1074c75ec",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-07",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/7"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:07:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "10f868675acd4724e929ea7c37ba899e0f99d5eabdd5347460d01710384d2357",
+      "outcome_ref": "{\"id\":\"E-48\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/48",
+      "source_outcome": {
+        "content_hash": "15eea29c2ddeb8be4544f8e7aba8349db81195dc161242d7caf7c6bbca3b53a7",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-48",
+        "project": "payments",
+        "provenance": "record",
+        "result": "fail",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/48"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:48:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "159f90b86f2ab710b4b9f6c9187e4c3ba53f7eb5fa0e21bb6098b72c5b55a504",
+      "outcome_ref": "{\"id\":\"E-03\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/3",
+      "source_outcome": {
+        "content_hash": "5de9ac2dbe5b2e02dc03f65ddc31e3298495018b524041cc7dd031488240b390",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-03",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/3"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:03:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "17b6b29c23d0245d87fc40e7631af4170838c80965889dfede495a486e5392a5",
+      "outcome_ref": "{\"id\":\"E-09\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/9",
+      "source_outcome": {
+        "content_hash": "3a908c12f5162b6c61088cc065e15565c3ed3c838fb208a640c7f38c2db7efb2",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-09",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/9"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:09:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "1be379b7f743aa84ac7869e18a02358796f7084e581de70db152d2fc0dd14765",
+      "outcome_ref": "{\"id\":\"E-44\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/44",
+      "source_outcome": {
+        "content_hash": "0c775e6e20f3afbfba433c9ae9db1d2fddcdff4455508c7c32203b7d98b23613",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-44",
+        "project": "payments",
+        "provenance": "record",
+        "result": "fail",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/44"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:44:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "2786fd20e21682d3801066da6bf6d8e40183ce7b3e582a8abeb8dbc51c48ee1f",
+      "outcome_ref": "{\"id\":\"E-16\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/16",
+      "source_outcome": {
+        "content_hash": "7876b9dfa9479b6a3f317a1301361c19c291d0becb4d015e86345e1cbae00f50",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-16",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/16"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:16:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "2c4bb51a52246db377b56de3f051e696cfb7f96cde6586614eafd9b921bb529e",
+      "outcome_ref": "{\"id\":\"E-28\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/28",
+      "source_outcome": {
+        "content_hash": "6634fb50cac8f7aa1188cdc0fc5d90ab4fcf3b1b979f9e290504af77af9e849d",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-28",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/28"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:28:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "312cc009e76dbeb24b291de8eea83e4fd523c0f6f0f39b7ebdf8635840aa2b20",
+      "outcome_ref": "{\"id\":\"E-19\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/19",
+      "source_outcome": {
+        "content_hash": "c5f7fe700ae017c03df79b74e098eaf987338126332164ecaa4e3943762ddb22",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-19",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/19"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:19:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "33ed7152dd775f3a5f0a5ddae832bd51867c9af808f9a281aad7886197ab2eea",
+      "outcome_ref": "{\"id\":\"E-31\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/31",
+      "source_outcome": {
+        "content_hash": "370be9a26583c7069965a31af82a6399f587bef7392d0fd750c81ce50e2ea468",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-31",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/31"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:31:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "3b7766b57a7bde2e79c353a2f32dde4fc459242fa2643f70ac13ce837ecc0830",
+      "outcome_ref": "{\"id\":\"E-02\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/2",
+      "source_outcome": {
+        "content_hash": "99984ddb05a1e7ea23d15d8f00ee435e85b023f884cd18ff60f31f91c2521a98",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-02",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/2"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:02:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "472d28eaa6dd134c32a78010358ff59f685e64b405f31b9d3aa9d5fd82973d34",
+      "outcome_ref": "{\"id\":\"E-06\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/6",
+      "source_outcome": {
+        "content_hash": "767aa687c4e9b13e9fb110034c22d7f01ab8b4c5e56602302d6d38e3b67b04e1",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-06",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/6"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:06:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "5661bdcfb83724b8ab4f278f3ec88169ee55219b5d52c14a1c3f853ffee06819",
+      "outcome_ref": "{\"id\":\"E-08\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/8",
+      "source_outcome": {
+        "content_hash": "6e87d62c9fcc57c6d7f43f667eea890365595a41199704d6f26dde91b265d0fc",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-08",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/8"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:08:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "59763804cd143b54268da4458f2c7ffdf73f5a7700da1c6ed6063469443b57bb",
+      "outcome_ref": "{\"id\":\"E-35\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/35",
+      "source_outcome": {
+        "content_hash": "5dc5bbbbd0a57a17bec2261c0154f8db046423e7688cd34531f7e32ef95cabfd",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-35",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/35"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:35:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "5e7fefa9e6c8f5456978f1584678af480c3e46cac66660b6fcf616c62e8f6e55",
+      "outcome_ref": "{\"id\":\"E-42\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/42",
+      "source_outcome": {
+        "content_hash": "d4d8def595c5afbed3f3e362abd7bdf39bbc9519be81fcb6b26ba0b99030dfb1",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-42",
+        "project": "payments",
+        "provenance": "record",
+        "result": "fail",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/42"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:42:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "5fca6fa3cebf85ee326f8cb7e0b7b37d67903773f367f66989148d4f5efc23c0",
+      "outcome_ref": "{\"id\":\"E-33\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/33",
+      "source_outcome": {
+        "content_hash": "c98e259e5fb1ebaf30d73a8059ffae5ea77957f5672412b8f0e4c2947cfb9759",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-33",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/33"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:33:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "62277f9000d1275c620dc4b24a61c3a668c7f1353c3bc51e6cece5c88651820b",
+      "outcome_ref": "{\"id\":\"E-29\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/29",
+      "source_outcome": {
+        "content_hash": "6ca2029d5cd5aeed02014ff08c3b1f16c337db9f7995ae8591ff6fed2cdba85a",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-29",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/29"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:29:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "64f2cb1a49de6c5751b799b4354f41ec3edca92259cff663d2a7024cf0c2dfb8",
+      "outcome_ref": "{\"id\":\"E-20\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/20",
+      "source_outcome": {
+        "content_hash": "412bac41e4dd5deef6d91b65076c3b4008d242102caf5c931927f7a7216dad93",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-20",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/20"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:20:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "6c98ddc7f974dc83ff161b6d4d5d2cb2e24564574e0316ffbbe6adb0ff76eac3",
+      "outcome_ref": "{\"id\":\"E-01\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/1",
+      "source_outcome": {
+        "content_hash": "b24415d5ea28b91294a9462958dc3c01a515574c0dd5ffbdae981e32e13378d7",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-01",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/1"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:01:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "6f9d907b7836edfd3c9abc34d4342ab9a6c313cf1bae9bf0adf383b70548a197",
+      "outcome_ref": "{\"id\":\"E-32\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/32",
+      "source_outcome": {
+        "content_hash": "0b993f8afcbb54c592b45170164e1033a94b20d732e573ab92f815514b52187a",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-32",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/32"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:32:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "76247b2db30f89dcf37ea1b00eae25e464091017d23cf47a4c42bf0e066ba7ef",
+      "outcome_ref": "{\"id\":\"E-21\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/21",
+      "source_outcome": {
+        "content_hash": "752f76119d36b44ed953e6581054bedadedeaf4f6d4c812bca82be88613fed2e",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-21",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/21"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:21:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "790fc35c38ea833a7f8ad2a4621ca2e1911976729a896c05fa76b80bb0f3c534",
+      "outcome_ref": "{\"id\":\"E-05\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/5",
+      "source_outcome": {
+        "content_hash": "acbdc943352987fab0f8d7910262db33e0139bb1de0e21feb62ab6b897dccf0a",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-05",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/5"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:05:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "7ed9b0c291877e4226096e886f0a170cb76ae709820109e98eea668c4e685e79",
+      "outcome_ref": "{\"id\":\"E-43\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/43",
+      "source_outcome": {
+        "content_hash": "f9549233c1f41e17381b08aaf8e148a29422a5bc704e5fdd990b3b5dae99209c",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-43",
+        "project": "payments",
+        "provenance": "record",
+        "result": "fail",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/43"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:43:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "7f3a5297a586ada6bc44ee3b088041fc9e57ec6b2edcaf8bb6db82abec08bb0d",
+      "outcome_ref": "{\"id\":\"E-34\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/34",
+      "source_outcome": {
+        "content_hash": "8b4e1af2aad055520d7e2f2005456d3360166abac0d776d6ae1fdafaef8644b8",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-34",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/34"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:34:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "89067ce359788bb816c155540ebf35a1cde34bf61206a937bb351ee28f964c6d",
+      "outcome_ref": "{\"id\":\"E-27\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/27",
+      "source_outcome": {
+        "content_hash": "85350ffa7ce031149fe88e35ae424e4208ac843a9eedb27236c2dde2869a9a68",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-27",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/27"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:27:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "8de57b005675b60a2302db61814c431b49e922cf24f58f9e35bfbed6cd823a16",
+      "outcome_ref": "{\"id\":\"E-12\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/12",
+      "source_outcome": {
+        "content_hash": "c18753968a9890dff6644e4b2790d57b20303beebd505396f90463f7b31be41c",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-12",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/12"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:12:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "943d187f4595ce03f9cfdcfe53dcf5029626b0a0b4507ff816ababd834ca16b2",
+      "outcome_ref": "{\"id\":\"E-49\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/49",
+      "source_outcome": {
+        "content_hash": "40838738f34bfbef9d754c1a8a12554d30d1c1c87d1df35f3a7ab4f6975e9027",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-49",
+        "project": "payments",
+        "provenance": "record",
+        "result": "fail",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/49"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:49:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "9badbe8465337a8033dd40bd415cada25ffa082a6b5e120165ed699443df07ea",
+      "outcome_ref": "{\"id\":\"E-45\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/45",
+      "source_outcome": {
+        "content_hash": "742af55472d81f9eac07585f8f5b792711cac35c87b8ea984a4805102cc7c6a8",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-45",
+        "project": "payments",
+        "provenance": "record",
+        "result": "fail",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/45"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:45:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "a03bdb0a679da311c0013506dbd8ab117c559f967eedb70cd5bb5a539e697226",
+      "outcome_ref": "{\"id\":\"E-24\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/24",
+      "source_outcome": {
+        "content_hash": "afdfc33485d29f3685c24cceef61f40cf61b2c1b9dce3b54b17683340feeb6c3",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-24",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/24"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:24:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "a44c6adaad610f2319a3d6191c397a32c8538050cba3a9525f5a8bca4eea8942",
+      "outcome_ref": "{\"id\":\"E-41\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/41",
+      "source_outcome": {
+        "content_hash": "3a9fe948c0f298063c6b42c4ee6764b72ef58721901a4c24524c32d90140ea4f",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-41",
+        "project": "payments",
+        "provenance": "record",
+        "result": "fail",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/41"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:41:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "a5457183be74834ae7312f93fb6f498d7ac9d53a6dd93d1529417655a4b2a073",
+      "outcome_ref": "{\"id\":\"E-04\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/4",
+      "source_outcome": {
+        "content_hash": "864a5a0400bfad99607bf3ad9d7cfb078c341e9a09b3cb0a361d420307135af0",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-04",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/4"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:04:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "a6095334f4d473482f6ec414de28f16e52091a30d92989975bcdc2724dae26b1",
+      "outcome_ref": "{\"id\":\"E-25\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/25",
+      "source_outcome": {
+        "content_hash": "c3ee104e20df75e3a53aff16b819f7a888eb88a85b6c149be801af30a8dfb1d1",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-25",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/25"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:25:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "abe7c2105db96fdbc73ceeab2c676029df9e95752462efa07017e9a840463764",
+      "outcome_ref": "{\"id\":\"E-22\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/22",
+      "source_outcome": {
+        "content_hash": "a8cd64640dc75be4b1777dd14bd4f659af4073bd843096cbaa61d3a0d2ca36c2",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-22",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/22"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:22:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "ae6990521c2241776eb3a458cdf7c6cd02c82ee67149bcd949d946fc7b0e8d0d",
+      "outcome_ref": "{\"id\":\"E-10\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/10",
+      "source_outcome": {
+        "content_hash": "723c2b4efbebbcb0c8152999fdb9fdd1d103721dcc0f631aac8780f6598f3c73",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-10",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/10"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:10:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "b24e1e2d13355cf0ce7c3526e9d220318b6940d2e580af79e24f7273f6de2a9e",
+      "outcome_ref": "{\"id\":\"E-38\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/38",
+      "source_outcome": {
+        "content_hash": "9dcc5a7403173a90866483041166dcfbd6e0f05d65c48df9b4b58b4b96d7ffc1",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-38",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/38"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:38:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "b7769a9f00ad9ab20bc05880715f1a6bbd64cb385a42c012d69f001c5254facd",
+      "outcome_ref": "{\"id\":\"E-47\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/47",
+      "source_outcome": {
+        "content_hash": "b8b6ff5642da2b923771fd10eeef989dfa3f4c73c745ba7d3c1446457fa68cad",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-47",
+        "project": "payments",
+        "provenance": "record",
+        "result": "fail",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/47"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:47:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "c943f9df677895cfe9ee87ab087a502b2fd6657d2b26e73545167470b8beb61b",
+      "outcome_ref": "{\"id\":\"E-18\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/18",
+      "source_outcome": {
+        "content_hash": "89c75c95aac9b8ef06e10251301571facef7099b0147abcfda18d637623223a1",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-18",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/18"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:18:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "cc640cbc01d3b809df9668503eccf93de12a53c46379562d6259954e39afe8f1",
+      "outcome_ref": "{\"id\":\"E-36\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/36",
+      "source_outcome": {
+        "content_hash": "75fa54090f5382fd3d0952af332c278783d1df95bfe00af28bc2f9bb611f9933",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-36",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/36"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:36:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "d17bb396b381c7e6411a4b98a72f9edbbbd726496343e29d961ca2b90c99e059",
+      "outcome_ref": "{\"id\":\"E-14\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/14",
+      "source_outcome": {
+        "content_hash": "b0529e56a0a2813d224320a5a8f789c40f0d321475b408807602b13247eed262",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-14",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/14"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:14:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "d4244863a5781eb43e30b1010266f38499d1339c181cc1fb0f46bc432764629e",
+      "outcome_ref": "{\"id\":\"E-46\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/46",
+      "source_outcome": {
+        "content_hash": "c6f58405e07a4fc38cf4ec60d7c748e4a8635dd87ff4c9a8aaf9943e60e2da46",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-46",
+        "project": "payments",
+        "provenance": "record",
+        "result": "fail",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/46"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:46:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "d4355cd2076240baf64c686077eb911fd5169937b1b57455e9065b89cdd4f23f",
+      "outcome_ref": "{\"id\":\"E-40\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/40",
+      "source_outcome": {
+        "content_hash": "25afc0c67592ee42d507040c543db0146a38c6024df7954e61fb83960ac38796",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-40",
+        "project": "payments",
+        "provenance": "record",
+        "result": "fail",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/40"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:40:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "d78eb6fb8c938fdf62cb68c5a02433b05bebe2348d097597edff812ca9f316c6",
+      "outcome_ref": "{\"id\":\"E-13\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/13",
+      "source_outcome": {
+        "content_hash": "11a7bd427b4af27e7c746983054a7ac0c5d9e5cac74bd92cd7c98078a3390295",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-13",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/13"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:13:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "dbf6a1ce708672b39f9053e79771b1eef0f75563ac675f7a1102e478f9e044a0",
+      "outcome_ref": "{\"id\":\"E-39\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/39",
+      "source_outcome": {
+        "content_hash": "61a18eba95ad7b672995b5f9e1a6019d10760a488a903f9eb778d6663fd8e777",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-39",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/39"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:39:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "e3fc5beddebb4e95fbb76ecac63af4b1b12634a2798ff2bdf56670bd80223a7c",
+      "outcome_ref": "{\"id\":\"E-26\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/26",
+      "source_outcome": {
+        "content_hash": "c4718aedcc16724bb747bddb75bdd45a8a0254bf1d9678924af88f775128d9e9",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-26",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/26"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:26:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "e6aefb0c38eb975b3583ae77c1801691fa8b369cd1d764b4bc2f4edf347d243f",
+      "outcome_ref": "{\"id\":\"E-17\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/17",
+      "source_outcome": {
+        "content_hash": "26134a0791bc0b69f458fa23eb8fc7575922f1e35635367cb63f5396e2f874ab",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-17",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/17"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:17:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "e6dc0019fa39e46fdfb46a8b9f33d3d420bfcededa33d8dc2e9efc320b5d019e",
+      "outcome_ref": "{\"id\":\"E-11\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/11",
+      "source_outcome": {
+        "content_hash": "094bae8aa630c332f0b048a3abacf715543e8d5d24c5f52a045250bc86419163",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-11",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/11"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:11:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "eeefb6977938df0d30ca49587904b31185554948e4fe2c3b84a784bbdf987bba",
+      "outcome_ref": "{\"id\":\"E-00\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/0",
+      "source_outcome": {
+        "content_hash": "b946db437081f03cc1d5223ee71292b02226c4f7ccd812cf89dea8833e8ff115",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-00",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/0"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:00:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "f862d076b4ab9a3ec8d88cedd73cb2b457209e37d1facdd928c67878153ce290",
+      "outcome_ref": "{\"id\":\"E-37\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/37",
+      "source_outcome": {
+        "content_hash": "f6bcd5b8588f4d9a263a2acf200ab2f1ba5ce7c36412239f121912e991023e43",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-37",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/37"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:37:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "fcfbd42ca270e0a50aaedf358e9f206dbd6f618f6f003be6b3fb085e0ddd47db",
+      "outcome_ref": "{\"id\":\"E-30\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/30",
+      "source_outcome": {
+        "content_hash": "29054a946446b21ffeca38de4001d91173fc13d5779347df87ae36e74cf660bb",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-30",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/30"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:30:00Z"
+      }
+    },
+    {
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "kind": "correlated-outcome",
+      "observation_id": "ff0ec8d8158c3d06f6147828a8366cd19eb3c7d8fb430b0b9d55d44a476ee151",
+      "outcome_ref": "{\"id\":\"E-15\",\"label\":\"Outcome\",\"project\":\"payments\"}",
+      "project": "payments",
+      "provenance": "record",
+      "rule_ref": "{\"id\":\"MEM-SQL-PARAM-001\",\"label\":\"Rule\",\"project\":\"writ\"}",
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/15",
+      "source_outcome": {
+        "content_hash": "5fce1a6884b5dee52c2d3bc51e09014af47cb7b1da3ca13e9810a5ff371cc6b9",
+        "decision_ref": "{\"id\":\"D-CURRENT\",\"label\":\"Decision\",\"project\":\"payments\"}",
+        "outcome_id": "E-15",
+        "project": "payments",
+        "provenance": "record",
+        "result": "pass",
+        "revision": 1,
+        "session_id": "",
+        "source_origin": "graph-authored",
+        "source_refs": [
+          "synthetic:parameter-case/15"
+        ],
+        "status": "live",
+        "summary": "Synthetic threshold exercise; not real user evidence",
+        "ts": "2026-11-13T11:15:00Z"
+      }
+    }
+  ],
+  "nearest_lexical": [
+    {
+      "ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-ASYNC-001"
+      },
+      "statement": "Run blocking work in a worker rather than blocking the async event loop.",
+      "bm25": 0.28768211603164673
+    }
+  ],
+  "explicit_conflicts": [],
+  "boundary": "Correlation is not proof. Review text, source references, both signal signs, similar rules and explicit conflicts. Local owner assertion; no external identity attestation.",
+  "review_id": "8833ba362f0f2af099dc8b8ce735f7c5b03150ffc6ead5f19b088f3dde7ce0d6"
+}

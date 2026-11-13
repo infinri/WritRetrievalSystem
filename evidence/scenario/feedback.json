@@ -1,0 +1,756 @@
+{
+  "project": "payments",
+  "batch_id": "synthetic-threshold-50",
+  "signals": [
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-00"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/0"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-01"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/1"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-02"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/2"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-03"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/3"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-04"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/4"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-05"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/5"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-06"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/6"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-07"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/7"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-08"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/8"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-09"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/9"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-10"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/10"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-11"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/11"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-12"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/12"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-13"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/13"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-14"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/14"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-15"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/15"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-16"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/16"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-17"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/17"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-18"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/18"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-19"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/19"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-20"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/20"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-21"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/21"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-22"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/22"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-23"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/23"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-24"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/24"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-25"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/25"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-26"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/26"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-27"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/27"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-28"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/28"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-29"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/29"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-30"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/30"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-31"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/31"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-32"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/32"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-33"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/33"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-34"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/34"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-35"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/35"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-36"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/36"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-37"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/37"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-38"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/38"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-39"
+      },
+      "signal": "positive",
+      "source_ref": "synthetic:parameter-case/39"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-40"
+      },
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/40"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-41"
+      },
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/41"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-42"
+      },
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/42"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-43"
+      },
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/43"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-44"
+      },
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/44"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-45"
+      },
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/45"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-46"
+      },
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/46"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-47"
+      },
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/47"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-48"
+      },
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/48"
+    },
+    {
+      "rule_ref": {
+        "project": "writ",
+        "label": "Rule",
+        "id": "MEM-SQL-PARAM-001"
+      },
+      "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+      "outcome_ref": {
+        "project": "payments",
+        "label": "Outcome",
+        "id": "E-49"
+      },
+      "signal": "negative",
+      "source_ref": "synthetic:parameter-case/49"
+    }
+  ]
+}
