@@ -1,0 +1,81 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "writ-source/1",
+      "default": "writ-source/1",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "uri": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Uri",
+      "type": "string"
+    },
+    "revision": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Revision",
+      "type": "string"
+    },
+    "path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Path"
+    },
+    "committed_at": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Committed At"
+    },
+    "start_line": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Start Line"
+    },
+    "end_line": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "End Line"
+    }
+  },
+  "required": [
+    "uri",
+    "revision"
+  ],
+  "title": "Source",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Runtime additionally validates UTC calendar instants, digests, identity and current revision semantics; JSON shape alone is insufficient."
+}

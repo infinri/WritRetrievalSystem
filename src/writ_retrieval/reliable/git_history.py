@@ -17,8 +17,18 @@ PATHS = (
 
 
 def git(repo, *args):
-    env = {**os.environ, "GIT_OPTIONAL_LOCKS": "0", "GIT_CONFIG_NOSYSTEM": "1", "GIT_NO_REPLACE_OBJECTS": "1"}
-    return subprocess.check_output(["git", "--no-replace-objects", "-c", "core.hooksPath=/dev/null", "-C", str(repo), *args], env=env)
+    env = {**os.environ, "GIT_OPTIONAL_LOCKS": "0", "GIT_CONFIG_NOSYSTEM": "1", "GIT_CONFIG_GLOBAL": os.devnull, "GIT_NO_REPLACE_OBJECTS": "1", "GIT_TERMINAL_PROMPT":"0"}
+    # Bound both output and execution; none of these object reads invokes hooks or a shell.
+    import threading
+    command=["git", "--no-pager", "--no-replace-objects", "-c", "core.hooksPath=/dev/null", "-C", str(repo), *args]
+    with subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,env=env) as process:
+        timer=threading.Timer(15,process.kill);timer.start()
+        try:
+            raw=process.stdout.read(2_000_001)
+            if len(raw)>2_000_000: process.kill();raise ValueError("Git output exceeds 2 MB object-read limit")
+            if process.wait(timeout=2): raise ValueError("Git object read failed or timed out")
+            return raw
+        finally: timer.cancel()
 
 
 def utc(value):
@@ -45,12 +55,14 @@ def sections(path, text):
 
 def export_history(repo, end, *, limit=12, recorded_at=None):
     if not re.fullmatch(r"[0-9a-f]{40}", end): raise ValueError("end must be a full Git object revision")
-    if not 1 <= limit <= 64: raise ValueError("history limit must be 1..64")
+    if type(limit) is not int or not 1 <= limit <= 64: raise ValueError("history limit must be 1..64")
     resolved = git(repo, "rev-parse", "--verify", end+"^{commit}").decode().strip()
     if resolved != end: raise ValueError("revision binding mismatch")
     license_text = git(repo, "show", end+":LICENSE").decode()
     if "MIT License" not in license_text: raise ValueError("expected redistributable MIT source")
     recorded_at = recorded_at or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    from .contracts import instant
+    instant(recorded_at)
     revisions = git(repo, "rev-list", "--first-parent", f"--max-count={limit}", end).decode().splitlines()[::-1]
     documents = []; commits = []; previous = {}
     for revision in revisions:
@@ -62,8 +74,8 @@ def export_history(repo, end, *, limit=12, recorded_at=None):
         for path in PATHS:
             if revision != revisions[0] and path not in paths: continue
             spec = revision+":"+path
-            exists = subprocess.run(["git", "--no-replace-objects", "-C", str(repo), "cat-file", "-e", spec], capture_output=True).returncode == 0
-            if not exists: continue
+            try: git(repo,"cat-file","-e",spec)
+            except ValueError: continue
             material = git(repo, "show", spec).decode()
             blob = git(repo, "rev-parse", spec).decode().strip()
             for section in sections(path, material):

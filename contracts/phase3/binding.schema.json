@@ -1,0 +1,30 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "ref": {
+      "additionalProperties": true,
+      "title": "Ref",
+      "type": "object"
+    },
+    "revision": {
+      "maximum": 9007199254740991,
+      "minimum": 1,
+      "title": "Revision",
+      "type": "integer"
+    },
+    "content_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Content Digest",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ref",
+    "revision",
+    "content_digest"
+  ],
+  "title": "Binding",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Runtime additionally validates UTC calendar instants, digests, identity and current revision semantics; JSON shape alone is insufficient."
+}
