@@ -1,5 +1,34 @@
 # Validation
 
+## Current Phase 2 evidence
+
+2026-11-13: **94 pytest tests passed**, including the original 76 and 18 new
+workflow/metric checks. The separate unittest demo suite remains **5 passed**;
+`pip check` passed. A built wheel was reinstalled into a separate venv and its
+connected-context command ran outside the checkout using real ONNX inference.
+
+A full-corpus baseline was committed before behavior changes. Four retrieval
+arms × 253 original prompts were rerun after implementation; all 1,012 projected
+outputs match after excluding timings. A supported-interface synthetic scenario
+ran capture → close/reopen → recall → feedback → subsequent context, with all
+provenance, lifecycle, replay, contradiction and project controls passing.
+
+See [FINDINGS.md](FINDINGS.md) for metrics, regressions and limits,
+[PHASE2.md](PHASE2.md) for runnable commands, and
+[RUN-PROVENANCE.json](../evidence/RUN-PROVENANCE.json) for source-tree mappings.
+An initial hosted CI attempt crashed with SIGILL while importing a reused
+`hnswlib` wheel. hnswlib 0.8.0 defaults to `-march=native`, which can make a
+cached wheel incompatible with another runner CPU. CI now forces an uncached
+source build with `HNSWLIB_NO_NATIVE=1`; no test is skipped to hide the crash.
+The original export equivalence remains unverified. History/outcome usefulness
+is demonstrated only on synthetic inputs; authenticated service/host delivery,
+concurrent writers, automatic harvesting and causal outcome evidence remain open.
+
+## Historical extraction record
+
+The following records the state at PR #1, before Phase 2. Its then-open gaps are
+historical; qualified record enrichment and durable capture/feedback now exist.
+
 Baseline extraction, 2026-11-13. Source Writ V1 `main` at
 `ebdafe5450b201339f81e717ed104e6bcfd3fe3e`; starting repository commit `d9829fd`.
 

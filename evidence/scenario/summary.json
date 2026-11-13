@@ -1,0 +1,626 @@
+{
+  "synthetic": true,
+  "source_commit": "a694f1e838bdc0a5358de4f68e834b79e6c323ae",
+  "model_sha256": {
+    "model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+    "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+  },
+  "fixture_sha256": {
+    "records.json": "856cc03ce7b3270a9c26d859e511ea78a1f221cd5164f2725b6f33bbd749bfb6",
+    "async-proposal.json": "8f41ca0604f16268c105e42693090c849091bcba278d968687df65479adfa7df",
+    "proposal.json": "0c44747f931d1fefccad98d220e5943b2194261cb3e3bd77682bdff0737d668b",
+    "rule-ref.json": "d97f39ba483a0e532ae7c8231f0e435188fe1b8def56a342db423f6e146aff9d",
+    "delete.json": "1d3a0334ca93bb40ec8329a1877bdde28d19da01ba751e7f5cf2ceba7b7483c6",
+    "queries.json": "f14962cc42997bf0f884d31d92fb93c2fbbe5870f2e92b1dc3fa255ee4363eed",
+    "supersede.json": "a5866df2a7cbac1a0510e888b39c87e69b8c0155fb4dcd14a50d5d1f1c305442"
+  },
+  "checks": {
+    "capture_replay_idempotent": true,
+    "feedback_replay_idempotent": true,
+    "no_forbidden_context": true,
+    "provenance_correct": true,
+    "candidate_not_approved": true,
+    "contradictory_history_retained": true
+  },
+  "threshold_state": {
+    "batch_id": "synthetic-threshold-50",
+    "project": "payments",
+    "applied": 50,
+    "duplicate_observations": 0,
+    "states": [
+      {
+        "ref": {
+          "project": "writ",
+          "label": "Rule",
+          "id": "MEM-SQL-PARAM-001"
+        },
+        "rule_id": "MEM-SQL-PARAM-001",
+        "project": "writ",
+        "times_seen_positive": 40,
+        "times_seen_negative": 10,
+        "provenance": "graduation_pending",
+        "authority": "ai-provisional",
+        "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+        "confidence_weight": 0.8,
+        "review_candidate": true,
+        "flagged": false
+      }
+    ],
+    "replayed": false
+  },
+  "running_refresh": {
+    "receipt": {
+      "batch_id": "synthetic-threshold-50",
+      "project": "payments",
+      "applied": 50,
+      "duplicate_observations": 0,
+      "states": [
+        {
+          "ref": {
+            "project": "writ",
+            "label": "Rule",
+            "id": "MEM-SQL-PARAM-001"
+          },
+          "rule_id": "MEM-SQL-PARAM-001",
+          "project": "writ",
+          "times_seen_positive": 40,
+          "times_seen_negative": 10,
+          "provenance": "graduation_pending",
+          "authority": "ai-provisional",
+          "claim_hash": "c09f79509a7bf719417e6323e2aa5a39a312e2d92b3236b97164975dc7153eec",
+          "confidence_weight": 0.8,
+          "review_candidate": true,
+          "flagged": false
+        }
+      ],
+      "replayed": false
+    },
+    "before": {
+      "rules": [
+        {
+          "rule_id": "MEM-SQL-PARAM-001",
+          "node_type": "Rule",
+          "score": 0.8598,
+          "severity": "high",
+          "authority": "ai-provisional",
+          "stale": false,
+          "deliberate": false,
+          "similarity": 0.6098,
+          "statement": "Use bound SQL parameters for user input in payment lookups.",
+          "trigger": "When changing src/payments.py or constructing payment lookup SQL queries.",
+          "violation": "query = f\"SELECT * FROM payments WHERE id={user_input}\"",
+          "pass_example": "execute(\"SELECT * FROM payments WHERE id=?\", [user_input])",
+          "rationale": "",
+          "relationships": []
+        },
+        {
+          "rule_id": "MEM-ASYNC-001",
+          "node_type": "Rule",
+          "score": 0.4798,
+          "severity": "high",
+          "authority": "ai-provisional",
+          "stale": false,
+          "deliberate": false,
+          "similarity": -0.0916,
+          "statement": "Run blocking work in a worker rather than blocking the async event loop.",
+          "trigger": "When implementing async event loop workers.",
+          "violation": "query = f\"SELECT * FROM payments WHERE id={user_input}\"",
+          "pass_example": "execute(\"SELECT * FROM payments WHERE id=?\", [user_input])",
+          "rationale": "",
+          "relationships": []
+        }
+      ],
+      "mode": "full",
+      "total_candidates": 2,
+      "latency_ms": 23.1,
+      "abstain_signal": 0.609841
+    },
+    "after": {
+      "rules": [
+        {
+          "rule_id": "MEM-SQL-PARAM-001",
+          "node_type": "Rule",
+          "score": 0.9073,
+          "severity": "high",
+          "authority": "ai-provisional",
+          "stale": false,
+          "deliberate": false,
+          "similarity": 0.6098,
+          "statement": "Use bound SQL parameters for user input in payment lookups.",
+          "trigger": "When changing src/payments.py or constructing payment lookup SQL queries.",
+          "violation": "query = f\"SELECT * FROM payments WHERE id={user_input}\"",
+          "pass_example": "execute(\"SELECT * FROM payments WHERE id=?\", [user_input])",
+          "rationale": "",
+          "relationships": []
+        },
+        {
+          "rule_id": "MEM-ASYNC-001",
+          "node_type": "Rule",
+          "score": 0.4798,
+          "severity": "high",
+          "authority": "ai-provisional",
+          "stale": false,
+          "deliberate": false,
+          "similarity": -0.0916,
+          "statement": "Run blocking work in a worker rather than blocking the async event loop.",
+          "trigger": "When implementing async event loop workers.",
+          "violation": "query = f\"SELECT * FROM payments WHERE id={user_input}\"",
+          "pass_example": "execute(\"SELECT * FROM payments WHERE id=?\", [user_input])",
+          "rationale": "",
+          "relationships": []
+        }
+      ],
+      "mode": "full",
+      "total_candidates": 2,
+      "latency_ms": 0.313,
+      "abstain_signal": 0.609841
+    }
+  },
+  "audit": {
+    "nodes": 178,
+    "edges": 113,
+    "omitted_nodes": 0,
+    "unresolved_edges": 0,
+    "colliding_bare_ids": {
+      "D-CURRENT": [
+        {
+          "project": "foreign",
+          "label": "Decision",
+          "id": "D-CURRENT"
+        },
+        {
+          "project": "payments",
+          "label": "Decision",
+          "id": "D-CURRENT"
+        }
+      ]
+    },
+    "edge_types": {
+      "GOVERNED_BY": 4,
+      "INCLUDES": 1,
+      "REALIZES": 1,
+      "SUPERSEDES": 1,
+      "ABOUT": 53,
+      "MOTIVATED_BY": 1,
+      "EVALUATES": 52
+    },
+    "doctrine_adjacency_edges": 0,
+    "record_edges": 113,
+    "context_eligible_record_edges": 62,
+    "intentionally_unrendered_record_edges": 51,
+    "isolated": [
+      {
+        "project": "foreign",
+        "label": "RecordRevision",
+        "id": "7470dd1e202033a8b95d8df8ad4c787e5a4ade06494cd943194a284eee0d585c"
+      },
+      {
+        "project": "payments",
+        "label": "FeedbackBatch",
+        "id": "synthetic-threshold-50"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "009db2ee549cb896cd7712fa23e490d973a7cda3949639cd5a4c9f545c3fd626"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "02d6b1072021718c93e28b2adedba9bea24b656112ee048e5fe9205fed2063d5"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "054053aa26b68ee679d1a75932c23672d42860a9cba9c610ab7759ddb585da31"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "0a587d416bcc827e0563ba1f5232df5cd491edf9142c63b13f69be46414de83e"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "0c507234154619f3a5f3177f7c2982836a637d4da48f3ce4ef484868e45698b2"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "0d353594c5451157098b855c37703d25c2f9ff76d5454b72a09abda4070d8066"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "103fae7db4c1b246cc34d390e6b6261a20251248803e4cb4af54bfb17294a082"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "163282b0ad507285d0740e61a61f37fcd871f9198a142be8a5dc06a23384471a"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "296fc5909fd250ce670f67e23a8c2f81deef4e6c1efde35b49bcc2021f66f765"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "34bb44998fadc9cd86ac5250cb2104f279f9f13a8d92830289cef91e88f5524f"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "491dd290c8634c3bf03ff54ecf75857a25c68ceb4c21d0404d5671dfc3be068b"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "499d327ac2e9208b208e86913d8bf3a5cfc387b78e8e0f66a2b5999e74a0b0de"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "4a5e1d2dd72a5db29bea0fac734ca4d242f97e656967a232138c9d7d2d774e4e"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "4be53feb8cc093fe21e998da02b6aeb9835bd878693a7dac12dfc487bcc6eb57"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "4c7f6636a50c04142f37e18ead954f2d6d3fff930e31e08b2f5d30eae17cdc31"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "52c5fa906104ac908a818adf333f7d9e6883eaf439eebe06d1a7d9a58523a362"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "54d743479705c3eebda0487843f80af3e20c9cc0c4be41d72e2658bb7405b8af"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "577ce756704116b9022e2dfce9ac72d6ed45f691c02a62e93999fd39560dcff0"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "5a983924a8fb7036229dafd3e1ba142d01a8760dc221926c26542d5b25bbfea3"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "62759ab28a8a455bf9b95202754ec6f099d25def4f2967097564afd8e857723e"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "67e1d2a554636f77824260874f2f8351d1bb4d94018cdcbeef16481617a4706f"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "6810422157c6af6f4f78d2cf7defaf98140baec808610fe0a2d4f454ee80f83e"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "6b400178cba183994630828dbbda2f8770f5d2080dc2a5e4dee98ebb07bd1acd"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "6b51b0ac1e66b543a7c134f58f88f16eda31ca16602396d354e62bf265f40895"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "6dc8fee4d03d1427352f5439bfa6e2cfa251e83547fedc8b63a70f4ec45022d7"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "71d27c0384381a215d82ae3d253f94d1ae1314ae0461f343a99bac6b1a5064e2"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "722154f217553fb92ddfb31055da9bd2d737ed96f33f37a701f2331e7705d79e"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "7e27a9157589163df937c2b93783b0cca95b5ca74f7363d26fa13854491bfdad"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "80312a958c8401ba8932dbb0fbba057445e8a00a2d11c3dee8060caca69a0d9b"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "8679e0709437ec75b14ea9f6346ba2170a1b27e63ae9e9717b10587822a53520"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "883cf43ffed13c2dfee217c2e98e5ea421ed03d8162e7fc4493ec6a7843acba9"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "8a1763f2401d54c3180723fe39ea34483d5840fbd0db3068475dc2fa56c1efeb"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "8d192594e0bcd15ef5adbe4e53629de42d99ebe362430ef1623ab606547925d5"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "8d6443887f6deb57c76b96cc518a1ac29bef5ebdd968877fdaaed27daef6ae65"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "91e956bac940537436b3ed5830e10729786ba62309186ff7385342e4003835c2"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "93daf20750266227bc2869fa7e0ecb4a2d24d3a3361656d0384c8351d132030f"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "93fc4e57186c247645dc24d6ecc5bdd3ab7efc375f29586db300a71b988a85a3"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "95db0e2831e400ac9bbe9b953a99393d20c730c7fadacd3ecdc64b53d6492497"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "b51ca984b1b4feda38babc974dae6f270f0607e37c6afd4e9160efdee0130d01"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "b69474fb867662fef4f93e654ead1cbcfd2887583107c0e1d58532a74844c51e"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "b77500317c2fbdf51b65a7c5e301290a75a7c6e0d3831f1e4915c6d70a717474"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "bdba52a4f6a404acde6b316cb506a2941f4003ead8d60ea97c420f39ecaed926"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "c26a531c3e20f245d0ca91c3cc33528d015c1bd092bfdaf37950d060e1c4cea9"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "c8f4b90aa98e3888e7194a2980ce0ae53ca28c8f0b689d736fe1eefb0635da55"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "d3ba0e2388b29d3f0bf789acaa18ac6e74a9185a1665c5dcc27abfa9bbe70290"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "d67b910edc8354b28f87a3dd533cdb2082572f1cde90873629d472b4c76c7f6d"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "d7ba7d8c07a169ef6caa4f10e9797468a7fb5a1dbb6bff7c8c9178e110c27e1d"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "d961b765e6ef7cdbb261a26b433819e71fae8457cf7c3c7c38cd631c6b24aa9f"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "dad038c2e72a838791e244cdf12e366284a925cfb2633d09844446d24e61869a"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "db4596c66e935bfe74fb6ee4f622028166ed5eb63aefeef5c18e6deb86c3ce11"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "dde76cbd5fbe92f0402800fdc6644f9f07b4ea34e966530b78bd15b8a8572658"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "e58bb12de7062a067cc21548addd2d009552edf631f9bbb3619ba8517e9bb8c2"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "e67e7358dd9faea6a85ac5a3346b6dcfa5115f3d3c4eee9cfb42adf39210068b"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "e70d67b178984d547062f3ecfc6f88de72d6af51bd332dad668b8a520ccece7d"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "eace3a5317377cd4d4e4f51ce2ed64b641343332b480c0420ba615761188b162"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "eef36f167d93f5ee6708c69429899a5975df282371ff2c22b08d6790988cbaf6"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "ef4a0ecf78d8c361dd4890f113091723c97749f4c829061e06fa390c7779348a"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "f003e7c7eb8250a047685dcc341032c52da9307a5a9ddbe15a344ac5377f1643"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "f03c8aa1985d8148d990218f43538ef83728d901f8caa206659ba70d4b26ea99"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "f1449ef2ff27eb5a9f6a13d0b42141bb1943da4e99087d2680284513d0bbbd2a"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "fc34171fdef91e54b7a554fc0943923e52ff9d147486097e8ae8ec3017a8bab3"
+      },
+      {
+        "project": "payments",
+        "label": "RecordRevision",
+        "id": "fcd5088061024bcec039dcc2985cb72940ba0826bda655a587b8791e5fc2b079"
+      },
+      {
+        "project": "writ",
+        "label": "ReviewSnapshot",
+        "id": "8833ba362f0f2af099dc8b8ce735f7c5b03150ffc6ead5f19b088f3dde7ce0d6"
+      }
+    ],
+    "note": "Isolated or unrendered does not imply defective; revisions, receipts and supersession edges are audit-only."
+  },
+  "peak_process_rss_mib": 591.16015625,
+  "summary": {
+    "guidance_only": {
+      "lexical": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "vector": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "hybrid_no_graph": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "hybrid_graph": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "connected": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      }
+    },
+    "captured_restart": {
+      "lexical": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "vector": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "hybrid_no_graph": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "hybrid_graph": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "connected": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 3,
+        "history_judged": 3
+      }
+    },
+    "feedback_restart": {
+      "lexical": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "vector": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "hybrid_no_graph": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "hybrid_graph": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 0,
+        "history_judged": 3
+      },
+      "connected": {
+        "primary_hit5": 4,
+        "primary_judged": 4,
+        "history_hit": 3,
+        "history_judged": 3
+      }
+    }
+  },
+  "limitations": [
+    "Six authored synthetic queries, not a general benchmark",
+    "Guidance-only arms have no history channel by design",
+    "50 synthetic correlated outcomes only exercise the confidence algorithm",
+    "Connected request latency includes graph refresh, recall and rendering; ranked-only latency does not",
+    "No causal outcome or general reliability claim"
+  ]
+}

@@ -1,0 +1,6594 @@
+{
+  "same_artifacts_and_settings": true,
+  "phase2_vs_baseline": {
+    "lexical": {
+      "improved_rr5": [],
+      "regressed_rr5": [],
+      "unchanged_rr5": [
+        {
+          "id": "Q1",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q2",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q3",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q4",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q5",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q6",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q7",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q8",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q9",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q10",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q11",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q12",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q13",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q14",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q15",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q16",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q17",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q18",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q19",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q20",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q21",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q22",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q23",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q24",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q25",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q26",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q27",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q28",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q29",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q30",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q31",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q32",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q33",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q34",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q35",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q36",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q37",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q38",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q39",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q40",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q41",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q42",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q43",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q44",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q45",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q46",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q47",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q48",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q49",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q50",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q51",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q52",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q54",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q55",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q56",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q57",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q58",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q59",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q60",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q61",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q62",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q63",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q64",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q65",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q66",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q67",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q68",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q69",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q71",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q72",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q73",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q74",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q75",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q76",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q77",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q78",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q79",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q80",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q81",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q82",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q83",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q84",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q85",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q86",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q87",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q88",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q89",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q90",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q91",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q92",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q93",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q94",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q95",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q96",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q97",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q98",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q99",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q100",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q101",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q102",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q103",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q104",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q105",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q106",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q107",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q108",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q109",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q110",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q111",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q112",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q113",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q114",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q115",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q116",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q117",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q118",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q119",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q120",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q121",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q122",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q123",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q124",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q125",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q126",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q127",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q128",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q129",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q130",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q131",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q132",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q133",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q134",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q135",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q136",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q137",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q138",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q139",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q140",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q141",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q142",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q143",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q144",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q145",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q146",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q147",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q148",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q149",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q150",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q151",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q152",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q153",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q154",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q155",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q156",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q157",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q158",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q159",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q160",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q161",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q162",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q163",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q164",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q165",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q166",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q167",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q168",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q169",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q170",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q171",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q172",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q173",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q174",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q175",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q176",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q177",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q178",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q179",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q180",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q181",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q182",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q183",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q184",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q185",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q186",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q187",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q188",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q189",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q190",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q191",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q192",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q193",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q194",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q195",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "P1",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P2",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P3",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P4",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P5",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P6",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P7",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P8",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P9",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P10",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P11",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P12",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P13",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P14",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P15",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P16",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P17",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P18",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P19",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P20",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P21",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P22",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P23",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P24",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P25",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P26",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P27",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P28",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P29",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P30",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P31",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P32",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P33",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P34",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P35",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P36",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P37",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P38",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P39",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P40",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "N1",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N2",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N3",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N4",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N5",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N6",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N7",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N8",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N9",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N10",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N11",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N12",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N13",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N14",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N15",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N16",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N17",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N18",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N19",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N20",
+          "cohort": "negative",
+          "delta": 0
+        }
+      ],
+      "changed_outputs": []
+    },
+    "vector": {
+      "improved_rr5": [],
+      "regressed_rr5": [],
+      "unchanged_rr5": [
+        {
+          "id": "Q1",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q2",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q3",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q4",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q5",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q6",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q7",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q8",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q9",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q10",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q11",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q12",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q13",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q14",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q15",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q16",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q17",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q18",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q19",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q20",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q21",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q22",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q23",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q24",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q25",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q26",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q27",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q28",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q29",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q30",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q31",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q32",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q33",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q34",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q35",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q36",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q37",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q38",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q39",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q40",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q41",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q42",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q43",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q44",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q45",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q46",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q47",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q48",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q49",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q50",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q51",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q52",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q54",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q55",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q56",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q57",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q58",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q59",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q60",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q61",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q62",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q63",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q64",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q65",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q66",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q67",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q68",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q69",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q71",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q72",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q73",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q74",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q75",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q76",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q77",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q78",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q79",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q80",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q81",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q82",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q83",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q84",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q85",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q86",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q87",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q88",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q89",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q90",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q91",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q92",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q93",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q94",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q95",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q96",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q97",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q98",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q99",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q100",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q101",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q102",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q103",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q104",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q105",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q106",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q107",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q108",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q109",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q110",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q111",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q112",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q113",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q114",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q115",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q116",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q117",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q118",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q119",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q120",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q121",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q122",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q123",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q124",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q125",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q126",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q127",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q128",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q129",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q130",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q131",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q132",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q133",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q134",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q135",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q136",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q137",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q138",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q139",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q140",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q141",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q142",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q143",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q144",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q145",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q146",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q147",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q148",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q149",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q150",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q151",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q152",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q153",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q154",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q155",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q156",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q157",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q158",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q159",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q160",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q161",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q162",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q163",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q164",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q165",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q166",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q167",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q168",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q169",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q170",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q171",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q172",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q173",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q174",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q175",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q176",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q177",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q178",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q179",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q180",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q181",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q182",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q183",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q184",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q185",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q186",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q187",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q188",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q189",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q190",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q191",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q192",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q193",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q194",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q195",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "P1",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P2",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P3",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P4",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P5",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P6",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P7",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P8",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P9",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P10",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P11",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P12",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P13",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P14",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P15",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P16",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P17",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P18",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P19",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P20",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P21",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P22",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P23",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P24",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P25",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P26",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P27",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P28",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P29",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P30",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P31",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P32",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P33",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P34",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P35",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P36",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P37",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P38",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P39",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P40",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "N1",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N2",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N3",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N4",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N5",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N6",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N7",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N8",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N9",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N10",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N11",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N12",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N13",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N14",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N15",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N16",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N17",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N18",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N19",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N20",
+          "cohort": "negative",
+          "delta": 0
+        }
+      ],
+      "changed_outputs": []
+    },
+    "hybrid_no_graph": {
+      "improved_rr5": [],
+      "regressed_rr5": [],
+      "unchanged_rr5": [
+        {
+          "id": "Q1",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q2",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q3",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q4",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q5",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q6",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q7",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q8",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q9",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q10",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q11",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q12",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q13",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q14",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q15",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q16",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q17",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q18",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q19",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q20",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q21",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q22",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q23",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q24",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q25",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q26",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q27",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q28",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q29",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q30",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q31",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q32",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q33",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q34",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q35",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q36",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q37",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q38",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q39",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q40",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q41",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q42",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q43",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q44",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q45",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q46",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q47",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q48",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q49",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q50",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q51",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q52",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q54",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q55",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q56",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q57",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q58",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q59",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q60",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q61",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q62",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q63",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q64",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q65",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q66",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q67",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q68",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q69",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q71",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q72",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q73",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q74",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q75",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q76",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q77",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q78",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q79",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q80",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q81",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q82",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q83",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q84",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q85",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q86",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q87",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q88",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q89",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q90",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q91",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q92",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q93",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q94",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q95",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q96",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q97",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q98",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q99",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q100",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q101",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q102",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q103",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q104",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q105",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q106",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q107",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q108",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q109",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q110",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q111",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q112",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q113",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q114",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q115",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q116",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q117",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q118",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q119",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q120",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q121",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q122",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q123",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q124",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q125",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q126",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q127",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q128",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q129",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q130",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q131",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q132",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q133",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q134",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q135",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q136",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q137",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q138",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q139",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q140",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q141",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q142",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q143",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q144",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q145",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q146",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q147",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q148",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q149",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q150",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q151",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q152",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q153",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q154",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q155",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q156",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q157",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q158",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q159",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q160",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q161",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q162",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q163",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q164",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q165",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q166",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q167",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q168",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q169",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q170",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q171",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q172",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q173",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q174",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q175",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q176",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q177",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q178",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q179",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q180",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q181",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q182",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q183",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q184",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q185",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q186",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q187",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q188",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q189",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q190",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q191",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q192",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q193",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q194",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q195",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "P1",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P2",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P3",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P4",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P5",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P6",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P7",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P8",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P9",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P10",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P11",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P12",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P13",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P14",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P15",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P16",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P17",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P18",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P19",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P20",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P21",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P22",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P23",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P24",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P25",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P26",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P27",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P28",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P29",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P30",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P31",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P32",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P33",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P34",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P35",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P36",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P37",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P38",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P39",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P40",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "N1",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N2",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N3",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N4",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N5",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N6",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N7",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N8",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N9",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N10",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N11",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N12",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N13",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N14",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N15",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N16",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N17",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N18",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N19",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N20",
+          "cohort": "negative",
+          "delta": 0
+        }
+      ],
+      "changed_outputs": []
+    },
+    "hybrid_graph": {
+      "improved_rr5": [],
+      "regressed_rr5": [],
+      "unchanged_rr5": [
+        {
+          "id": "Q1",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q2",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q3",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q4",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q5",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q6",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q7",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q8",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q9",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q10",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q11",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q12",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q13",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q14",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q15",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q16",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q17",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q18",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q19",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q20",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q21",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q22",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q23",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q24",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q25",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q26",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q27",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q28",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q29",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q30",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q31",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q32",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q33",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q34",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q35",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q36",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q37",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q38",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q39",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q40",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q41",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q42",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q43",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q44",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q45",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q46",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q47",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q48",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q49",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q50",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q51",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q52",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q54",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q55",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q56",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q57",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q58",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q59",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q60",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q61",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q62",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q63",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q64",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q65",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q66",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q67",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q68",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q69",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q71",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q72",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q73",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q74",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q75",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q76",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q77",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q78",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q79",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q80",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q81",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q82",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q83",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q84",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q85",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q86",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q87",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q88",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q89",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q90",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q91",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q92",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q93",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q94",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q95",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q96",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q97",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q98",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q99",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q100",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q101",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q102",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q103",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q104",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q105",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q106",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q107",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q108",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q109",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q110",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q111",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q112",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q113",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q114",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q115",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q116",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q117",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q118",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q119",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q120",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q121",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q122",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q123",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q124",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q125",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q126",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q127",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q128",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q129",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q130",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q131",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q132",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q133",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q134",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q135",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q136",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q137",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q138",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q139",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q140",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q141",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q142",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q143",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q144",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q145",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q146",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q147",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q148",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q149",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q150",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q151",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q152",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q153",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q154",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q155",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q156",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q157",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q158",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q159",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q160",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q161",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q162",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q163",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q164",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q165",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q166",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q167",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q168",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q169",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q170",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q171",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q172",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q173",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q174",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q175",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q176",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q177",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q178",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q179",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q180",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q181",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q182",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q183",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q184",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q185",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q186",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q187",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q188",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q189",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q190",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q191",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q192",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q193",
+          "cohort": "coding",
+          "delta": 0.0
+        },
+        {
+          "id": "Q194",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "Q195",
+          "cohort": "coding",
+          "delta": 0
+        },
+        {
+          "id": "P1",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P2",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P3",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P4",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P5",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P6",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P7",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P8",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P9",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P10",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P11",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P12",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P13",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P14",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P15",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P16",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P17",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P18",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P19",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P20",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P21",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P22",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P23",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P24",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P25",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P26",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P27",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P28",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P29",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P30",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P31",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P32",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P33",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P34",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P35",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P36",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P37",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P38",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "P39",
+          "cohort": "methodology",
+          "delta": 0
+        },
+        {
+          "id": "P40",
+          "cohort": "methodology",
+          "delta": 0.0
+        },
+        {
+          "id": "N1",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N2",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N3",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N4",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N5",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N6",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N7",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N8",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N9",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N10",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N11",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N12",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N13",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N14",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N15",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N16",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N17",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N18",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N19",
+          "cohort": "negative",
+          "delta": 0
+        },
+        {
+          "id": "N20",
+          "cohort": "negative",
+          "delta": 0
+        }
+      ],
+      "changed_outputs": []
+    }
+  },
+  "graph_vs_no_graph": {
+    "improved_rr5": [
+      {
+        "id": "Q3",
+        "cohort": "coding",
+        "delta": 0.08333333333333331
+      },
+      {
+        "id": "Q18",
+        "cohort": "coding",
+        "delta": 0.04999999999999999
+      },
+      {
+        "id": "Q27",
+        "cohort": "coding",
+        "delta": 0.08333333333333331
+      },
+      {
+        "id": "Q57",
+        "cohort": "coding",
+        "delta": 0.04999999999999999
+      },
+      {
+        "id": "Q62",
+        "cohort": "coding",
+        "delta": 0.04999999999999999
+      },
+      {
+        "id": "P2",
+        "cohort": "methodology",
+        "delta": 0.1333333333333333
+      },
+      {
+        "id": "P11",
+        "cohort": "methodology",
+        "delta": 0.08333333333333331
+      },
+      {
+        "id": "P28",
+        "cohort": "methodology",
+        "delta": 0.08333333333333331
+      }
+    ],
+    "regressed_rr5": [
+      {
+        "id": "Q84",
+        "cohort": "coding",
+        "delta": -0.2
+      },
+      {
+        "id": "P38",
+        "cohort": "methodology",
+        "delta": -0.08333333333333331
+      }
+    ],
+    "unchanged_rr5": [
+      {
+        "id": "Q1",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q2",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q4",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q5",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q6",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q7",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q8",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q9",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q10",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q11",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q12",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q13",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q14",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q15",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q16",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q17",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q19",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q20",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q21",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q22",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q23",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q24",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q25",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q26",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q28",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q29",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q30",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q31",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q32",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q33",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q34",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q35",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q36",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q37",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q38",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q39",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q40",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q41",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q42",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q43",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q44",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q45",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q46",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q47",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q48",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q49",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q50",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q51",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q52",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q54",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q55",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q56",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q58",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q59",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q60",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q61",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q63",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q64",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q65",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q66",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q67",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q68",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q69",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q71",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q72",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q73",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q74",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q75",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q76",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q77",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q78",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q79",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q80",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q81",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q82",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q83",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q85",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q86",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q87",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q88",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q89",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q90",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q91",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q92",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q93",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q94",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q95",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q96",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q97",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q98",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q99",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q100",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q101",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q102",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q103",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q104",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q105",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q106",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q107",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q108",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q109",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q110",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q111",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q112",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q113",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q114",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q115",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q116",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q117",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q118",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q119",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q120",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q121",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q122",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q123",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q124",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q125",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q126",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q127",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q128",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q129",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q130",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q131",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q132",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q133",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q134",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q135",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q136",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q137",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q138",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q139",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q140",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q141",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q142",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q143",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q144",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q145",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q146",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q147",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q148",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q149",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q150",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q151",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q152",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q153",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q154",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q155",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q156",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q157",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q158",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q159",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q160",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q161",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q162",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q163",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q164",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q165",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q166",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q167",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q168",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q169",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q170",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q171",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q172",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q173",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q174",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q175",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q176",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q177",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q178",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q179",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q180",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q181",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q182",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q183",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q184",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q185",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q186",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q187",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q188",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q189",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q190",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q191",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q192",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q193",
+        "cohort": "coding",
+        "delta": 0.0
+      },
+      {
+        "id": "Q194",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "Q195",
+        "cohort": "coding",
+        "delta": 0
+      },
+      {
+        "id": "P1",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P3",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P4",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P5",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P6",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P7",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P8",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P9",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P10",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P12",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P13",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P14",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P15",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P16",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P17",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P18",
+        "cohort": "methodology",
+        "delta": 0
+      },
+      {
+        "id": "P19",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P20",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P21",
+        "cohort": "methodology",
+        "delta": 0
+      },
+      {
+        "id": "P22",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P23",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P24",
+        "cohort": "methodology",
+        "delta": 0
+      },
+      {
+        "id": "P25",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P26",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P27",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P29",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P30",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P31",
+        "cohort": "methodology",
+        "delta": 0
+      },
+      {
+        "id": "P32",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P33",
+        "cohort": "methodology",
+        "delta": 0
+      },
+      {
+        "id": "P34",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P35",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P36",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P37",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "P39",
+        "cohort": "methodology",
+        "delta": 0
+      },
+      {
+        "id": "P40",
+        "cohort": "methodology",
+        "delta": 0.0
+      },
+      {
+        "id": "N1",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N2",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N3",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N4",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N5",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N6",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N7",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N8",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N9",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N10",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N11",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N12",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N13",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N14",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N15",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N16",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N17",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N18",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N19",
+        "cohort": "negative",
+        "delta": 0
+      },
+      {
+        "id": "N20",
+        "cohort": "negative",
+        "delta": 0
+      }
+    ],
+    "changed_outputs": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7",
+      "Q8",
+      "Q9",
+      "Q10",
+      "Q11",
+      "Q12",
+      "Q13",
+      "Q14",
+      "Q15",
+      "Q16",
+      "Q17",
+      "Q18",
+      "Q19",
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q24",
+      "Q25",
+      "Q26",
+      "Q27",
+      "Q28",
+      "Q29",
+      "Q30",
+      "Q31",
+      "Q32",
+      "Q33",
+      "Q34",
+      "Q35",
+      "Q36",
+      "Q37",
+      "Q38",
+      "Q39",
+      "Q40",
+      "Q41",
+      "Q42",
+      "Q43",
+      "Q44",
+      "Q45",
+      "Q46",
+      "Q47",
+      "Q48",
+      "Q49",
+      "Q50",
+      "Q51",
+      "Q54",
+      "Q55",
+      "Q56",
+      "Q57",
+      "Q58",
+      "Q59",
+      "Q60",
+      "Q61",
+      "Q62",
+      "Q63",
+      "Q64",
+      "Q65",
+      "Q67",
+      "Q68",
+      "Q69",
+      "Q71",
+      "Q72",
+      "Q73",
+      "Q74",
+      "Q75",
+      "Q76",
+      "Q78",
+      "Q79",
+      "Q80",
+      "Q81",
+      "Q82",
+      "Q83",
+      "Q84",
+      "Q85",
+      "Q86",
+      "Q88",
+      "Q89",
+      "Q90",
+      "Q91",
+      "Q92",
+      "Q93",
+      "Q94",
+      "Q95",
+      "Q96",
+      "Q97",
+      "Q98",
+      "Q99",
+      "Q100",
+      "Q101",
+      "Q102",
+      "Q103",
+      "Q104",
+      "Q105",
+      "Q106",
+      "Q107",
+      "Q108",
+      "Q109",
+      "Q110",
+      "Q111",
+      "Q112",
+      "Q113",
+      "Q114",
+      "Q115",
+      "Q117",
+      "Q118",
+      "Q119",
+      "Q120",
+      "Q121",
+      "Q122",
+      "Q123",
+      "Q124",
+      "Q125",
+      "Q126",
+      "Q127",
+      "Q128",
+      "Q129",
+      "Q130",
+      "Q131",
+      "Q132",
+      "Q133",
+      "Q134",
+      "Q135",
+      "Q136",
+      "Q137",
+      "Q138",
+      "Q139",
+      "Q140",
+      "Q141",
+      "Q142",
+      "Q143",
+      "Q144",
+      "Q145",
+      "Q146",
+      "Q147",
+      "Q148",
+      "Q149",
+      "Q150",
+      "Q151",
+      "Q152",
+      "Q153",
+      "Q154",
+      "Q155",
+      "Q156",
+      "Q157",
+      "Q158",
+      "Q159",
+      "Q160",
+      "Q161",
+      "Q162",
+      "Q163",
+      "Q164",
+      "Q165",
+      "Q166",
+      "Q167",
+      "Q168",
+      "Q169",
+      "Q170",
+      "Q171",
+      "Q172",
+      "Q173",
+      "Q174",
+      "Q176",
+      "Q177",
+      "Q178",
+      "Q179",
+      "Q180",
+      "Q181",
+      "Q183",
+      "Q184",
+      "Q185",
+      "Q186",
+      "Q187",
+      "Q188",
+      "Q189",
+      "Q190",
+      "Q191",
+      "Q192",
+      "Q193",
+      "Q194",
+      "Q195",
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6",
+      "P7",
+      "P8",
+      "P9",
+      "P10",
+      "P11",
+      "P12",
+      "P13",
+      "P14",
+      "P15",
+      "P16",
+      "P17",
+      "P19",
+      "P20",
+      "P22",
+      "P23",
+      "P25",
+      "P26",
+      "P27",
+      "P28",
+      "P29",
+      "P30",
+      "P32",
+      "P34",
+      "P35",
+      "P36",
+      "P37",
+      "P38",
+      "P39",
+      "P40",
+      "N12",
+      "N14",
+      "N15",
+      "N17"
+    ]
+  },
+  "limits": "Paired descriptive differences on fixed judgments, not statistical or causal evidence. Changed outputs include scores and relationships."
+}

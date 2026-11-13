@@ -33,3 +33,21 @@ revision `1110a243fdf4706b3f48f1d95db1a4f5529b4d41` (Apache-2.0). The setup scri
 retains its model README and writes artifact hashes. Model weights are not
 included in this repository; this export is not claimed numerically equivalent
 to the original Writ maintainer's local export.
+
+## Phase 2 reuse
+
+Local capture models, record MERGE/provenance and edge semantics adapt
+`writ/graph/schema.py`, `graph/db/record_store.py`, `session/decision_capture.py`
+and `session/commit_capture.py`. Durable feedback and served absolute-count
+refresh adapt `graph/db/rule_store.py`, `session/feedback.py` and the retained
+`frequency.py` algorithm. The local proposal/review policy follows
+`writ/promotion.py`'s distinction between statistical crossing, human approval
+and invalidated observations after wording changes. Existing JolliAI credit for
+decision memory/recall remains applicable.
+
+The local manifest interfaces, qualified identity, transactions, permanent replay
+receipts, per-claim/outcome deduplication, separate record context and terminal
+review boundary are this adaptation's implementation. The original hook/token
+authorization service, auto-feedback heuristics and source-export/structural gate
+are not imported. See [PHASE2.md](docs/PHASE2.md) for the narrower trust boundary. New experiment
+harnesses and synthetic fixtures are project work, not upstream quality claims.

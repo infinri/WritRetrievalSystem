@@ -1,0 +1,14 @@
+{
+  "baseline": {
+    "retrieval_commit": "d972e65e0bcc17348a1c92db58cea150c014a256",
+    "harness_and_results_local_commit": "41f1ee0",
+    "published_checkpoint": "a3826aea43e8d75b59d462f0f82d4edeaa6c7e6d",
+    "checkpoint_tree": "1cb0ce270b9675661db51b14e274bc759284e840"
+  },
+  "phase2": {
+    "local_source_commit": "a694f1e838bdc0a5358de4f68e834b79e6c323ae",
+    "published_source_commit": "2e3216487abdc92b77690e81f6b9fb8475160789",
+    "source_tree": "1ecd0d079282e1d906e839ab5cd726df003e8460"
+  },
+  "note": "Git publication used the connected GitHub API because shell push lacked credentials. Commit identities differ; tree hashes were verified identical before creating the branch. Evaluation source_commit fields identify local capture commits. Published source commits reproduce those source trees."
+}

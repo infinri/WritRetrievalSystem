@@ -1,0 +1,14 @@
+{
+  "project": "writ",
+  "rule_id": "MEM-ASYNC-001",
+  "statement": "Run blocking work in a worker rather than blocking the async event loop.",
+  "trigger": "When implementing async event loop workers.",
+  "domain": "python",
+  "confidence": "speculative",
+  "severity": "high",
+  "violation": "query = f\"SELECT * FROM payments WHERE id={user_input}\"",
+  "pass_example": "execute(\"SELECT * FROM payments WHERE id=?\", [user_input])",
+  "source_refs": [
+    "synthetic:payments-guidance"
+  ]
+}

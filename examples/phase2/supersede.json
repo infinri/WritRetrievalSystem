@@ -1,0 +1,14 @@
+{
+  "ref": {
+    "project": "payments",
+    "label": "Decision",
+    "id": "D-OLD"
+  },
+  "expected_revision": 1,
+  "action": "supersede",
+  "replacement": {
+    "project": "payments",
+    "label": "Decision",
+    "id": "D-CURRENT"
+  }
+}

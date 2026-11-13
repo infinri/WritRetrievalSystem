@@ -1,0 +1,374 @@
+{
+  "schema": 1,
+  "source_commit": "d972e65e0bcc17348a1c92db58cea150c014a256",
+  "label": "baseline-before-phase2",
+  "corpus_sha256": "cc34b71a9c7c1eddc06b8ba296b78a3b2c3fec151847eee088399095134d9e96",
+  "model": {
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "sha256": {
+      "model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+      "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+    }
+  },
+  "fixture_sha256": {
+    "ground_truth_negatives.json": "02e8606577ab9b49e77c46a658f62c4c9e508144eec66d0295d5591451a02bba",
+    "ground_truth_queries.json": "bbe7d61d692d5014412c2112f79ae5cbc8d9aac06f670506fe398ed6d3972017",
+    "ground_truth_proc.json": "8a24f694cda95a715f9fec0205322aa8ec9afd3139bcadc939f7e2c6fe757b72"
+  },
+  "settings": {
+    "budget_tokens": 2000,
+    "repeats": 3,
+    "candidate_limits": [
+      50,
+      50
+    ],
+    "project": "evaluation",
+    "coding": "default semantic routes",
+    "methodology": "explicit doctrine types, semantic weights",
+    "ndcg": "primary gain 2, other listed targets gain 1; unlisted=0 for this incomplete judgment set",
+    "hnsw": {
+      "M": 16,
+      "ef_construction": 200,
+      "ef_search": 50,
+      "insert_threads": 1
+    },
+    "query_order": "fixture order",
+    "onnx_threads": {
+      "intra": 0,
+      "inter": 0
+    }
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu_count": 9,
+    "affinity_count": 9,
+    "packages": {
+      "relate-db": "1.0.1",
+      "tantivy": "0.27.0",
+      "hnswlib": "0.8.0",
+      "numpy": "2.5.4",
+      "onnxruntime": "1.32.0",
+      "tokenizers": "0.23.3"
+    }
+  },
+  "build_seconds": 3.2301720609993936,
+  "arms": {
+    "lexical": {
+      "weights": {
+        "w_bm25": 1,
+        "w_vector": 0,
+        "w_severity": 0,
+        "w_confidence": 0,
+        "w_graph": 0
+      },
+      "abstention_threshold": 0,
+      "cohorts": {
+        "coding": {
+          "full": {
+            "n": 193,
+            "hit5": 0.7098445595854922,
+            "rr5": 0.5780656303972366,
+            "rr10": 0.5780656303972366,
+            "ndcg10": 0.6111387427220759,
+            "abstentions": 0
+          },
+          "ranked_eligible": {
+            "n": 172,
+            "hit5": 0.7965116279069767,
+            "rr5": 0.6486434108527132,
+            "rr10": 0.6486434108527132,
+            "ndcg10": 0.6857545194497712,
+            "abstentions": 0
+          },
+          "route_eligible": {
+            "n": 169,
+            "hit5": 0.8106508875739645,
+            "rr5": 0.6601577909270216,
+            "rr10": 0.6601577909270216,
+            "ndcg10": 0.6979276765997672,
+            "abstentions": 0
+          }
+        },
+        "methodology": {
+          "full": {
+            "n": 40,
+            "hit5": 0.925,
+            "rr5": 0.6466666666666667,
+            "rr10": 0.6466666666666667,
+            "ndcg10": 0.6267510016638099,
+            "abstentions": 0
+          },
+          "ranked_eligible": {
+            "n": 40,
+            "hit5": 0.925,
+            "rr5": 0.6466666666666667,
+            "rr10": 0.6466666666666667,
+            "ndcg10": 0.6267510016638099,
+            "abstentions": 0
+          },
+          "route_eligible": {
+            "n": 40,
+            "hit5": 0.925,
+            "rr5": 0.6466666666666667,
+            "rr10": 0.6466666666666667,
+            "ndcg10": 0.6267510016638099,
+            "abstentions": 0
+          }
+        }
+      },
+      "negative": {
+        "n": 20,
+        "false_injections": 20
+      },
+      "uncached_latency_ms": {
+        "median": 12.098463000256743,
+        "p95": 45.068999999784864
+      },
+      "cached_latency_ms": {
+        "median": 0.6976659997235402,
+        "p95": 1.9553150004867348
+      },
+      "process_peak_rss_mib": 753.81640625
+    },
+    "vector": {
+      "weights": {
+        "w_bm25": 0,
+        "w_vector": 1,
+        "w_severity": 0,
+        "w_confidence": 0,
+        "w_graph": 0
+      },
+      "abstention_threshold": 0.3,
+      "cohorts": {
+        "coding": {
+          "full": {
+            "n": 193,
+            "hit5": 0.8082901554404145,
+            "rr5": 0.6867875647668394,
+            "rr10": 0.6867875647668394,
+            "ndcg10": 0.717236268549326,
+            "abstentions": 7
+          },
+          "ranked_eligible": {
+            "n": 172,
+            "hit5": 0.9069767441860465,
+            "rr5": 0.770639534883721,
+            "rr10": 0.770639534883721,
+            "ndcg10": 0.804805812965232,
+            "abstentions": 4
+          },
+          "route_eligible": {
+            "n": 169,
+            "hit5": 0.9230769230769231,
+            "rr5": 0.784319526627219,
+            "rr10": 0.784319526627219,
+            "ndcg10": 0.8190923066865083,
+            "abstentions": 4
+          }
+        },
+        "methodology": {
+          "full": {
+            "n": 40,
+            "hit5": 0.775,
+            "rr5": 0.57125,
+            "rr10": 0.57125,
+            "ndcg10": 0.5687693552841672,
+            "abstentions": 5
+          },
+          "ranked_eligible": {
+            "n": 40,
+            "hit5": 0.775,
+            "rr5": 0.57125,
+            "rr10": 0.57125,
+            "ndcg10": 0.5687693552841672,
+            "abstentions": 5
+          },
+          "route_eligible": {
+            "n": 40,
+            "hit5": 0.775,
+            "rr5": 0.57125,
+            "rr10": 0.57125,
+            "ndcg10": 0.5687693552841672,
+            "abstentions": 5
+          }
+        }
+      },
+      "negative": {
+        "n": 20,
+        "false_injections": 4
+      },
+      "uncached_latency_ms": {
+        "median": 24.754385000051116,
+        "p95": 55.511081000076956
+      },
+      "cached_latency_ms": {
+        "median": 0.34355699972365983,
+        "p95": 0.6754040005034767
+      },
+      "process_peak_rss_mib": 753.81640625
+    },
+    "hybrid_no_graph": {
+      "weights": {
+        "w_bm25": 0.2,
+        "w_vector": 0.6,
+        "w_severity": 0.1,
+        "w_confidence": 0.1,
+        "w_graph": 0
+      },
+      "abstention_threshold": 0.3,
+      "cohorts": {
+        "coding": {
+          "full": {
+            "n": 193,
+            "hit5": 0.8186528497409327,
+            "rr5": 0.6917098445595855,
+            "rr10": 0.6917098445595855,
+            "ndcg10": 0.7235473346441657,
+            "abstentions": 7
+          },
+          "ranked_eligible": {
+            "n": 172,
+            "hit5": 0.9186046511627907,
+            "rr5": 0.7761627906976745,
+            "rr10": 0.7761627906976745,
+            "ndcg10": 0.811887416199558,
+            "abstentions": 4
+          },
+          "route_eligible": {
+            "n": 169,
+            "hit5": 0.9349112426035503,
+            "rr5": 0.7899408284023669,
+            "rr10": 0.7899408284023669,
+            "ndcg10": 0.826299618853988,
+            "abstentions": 4
+          }
+        },
+        "methodology": {
+          "full": {
+            "n": 40,
+            "hit5": 0.85,
+            "rr5": 0.6154166666666667,
+            "rr10": 0.6154166666666667,
+            "ndcg10": 0.6116117998083725,
+            "abstentions": 5
+          },
+          "ranked_eligible": {
+            "n": 40,
+            "hit5": 0.85,
+            "rr5": 0.6154166666666667,
+            "rr10": 0.6154166666666667,
+            "ndcg10": 0.6116117998083725,
+            "abstentions": 5
+          },
+          "route_eligible": {
+            "n": 40,
+            "hit5": 0.85,
+            "rr5": 0.6154166666666667,
+            "rr10": 0.6154166666666667,
+            "ndcg10": 0.6116117998083725,
+            "abstentions": 5
+          }
+        }
+      },
+      "negative": {
+        "n": 20,
+        "false_injections": 4
+      },
+      "uncached_latency_ms": {
+        "median": 12.27481100067962,
+        "p95": 35.17125300004409
+      },
+      "cached_latency_ms": {
+        "median": 0.9920789998432156,
+        "p95": 2.1672389993909746
+      },
+      "process_peak_rss_mib": 753.81640625
+    },
+    "hybrid_graph": {
+      "weights": {
+        "w_bm25": 0.19,
+        "w_vector": 0.57,
+        "w_severity": 0.095,
+        "w_confidence": 0.095,
+        "w_graph": 0.05
+      },
+      "abstention_threshold": 0.3,
+      "cohorts": {
+        "coding": {
+          "full": {
+            "n": 193,
+            "hit5": 0.8134715025906736,
+            "rr5": 0.692314335060449,
+            "rr10": 0.692314335060449,
+            "ndcg10": 0.722942491789944,
+            "abstentions": 7
+          },
+          "ranked_eligible": {
+            "n": 172,
+            "hit5": 0.9127906976744186,
+            "rr5": 0.7768410852713179,
+            "rr10": 0.7768410852713179,
+            "ndcg10": 0.8112087262526697,
+            "abstentions": 4
+          },
+          "route_eligible": {
+            "n": 169,
+            "hit5": 0.9289940828402367,
+            "rr5": 0.7906311637080868,
+            "rr10": 0.7906311637080868,
+            "ndcg10": 0.8256088811565632,
+            "abstentions": 4
+          }
+        },
+        "methodology": {
+          "full": {
+            "n": 40,
+            "hit5": 0.85,
+            "rr5": 0.6208333333333333,
+            "rr10": 0.6208333333333333,
+            "ndcg10": 0.6171928287404947,
+            "abstentions": 5
+          },
+          "ranked_eligible": {
+            "n": 40,
+            "hit5": 0.85,
+            "rr5": 0.6208333333333333,
+            "rr10": 0.6208333333333333,
+            "ndcg10": 0.6171928287404947,
+            "abstentions": 5
+          },
+          "route_eligible": {
+            "n": 40,
+            "hit5": 0.85,
+            "rr5": 0.6208333333333333,
+            "rr10": 0.6208333333333333,
+            "ndcg10": 0.6171928287404947,
+            "abstentions": 5
+          }
+        }
+      },
+      "negative": {
+        "n": 20,
+        "false_injections": 4
+      },
+      "uncached_latency_ms": {
+        "median": 12.2534430001906,
+        "p95": 28.929279000294628
+      },
+      "cached_latency_ms": {
+        "median": 1.1048819997085957,
+        "p95": 2.4113780000334373
+      },
+      "process_peak_rss_mib": 753.81640625
+    }
+  },
+  "limitations": [
+    "Local export equivalence unverified",
+    "Incomplete relevance judgments; unlisted context is unjudged",
+    "Lexical still pays unused encoder call for common harness; do not interpret as optimized lexical latency",
+    "ru_maxrss is process lifetime high-water RSS, Linux KiB, cumulative across arms",
+    "Corpus-only feedback/record effects require the separate scenario",
+    "Single host, not a controlled performance claim"
+  ]
+}

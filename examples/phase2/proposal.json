@@ -1,0 +1,14 @@
+{
+  "project": "writ",
+  "rule_id": "MEM-SQL-PARAM-001",
+  "statement": "Use bound SQL parameters for user input in payment lookups.",
+  "trigger": "When changing src/payments.py or constructing payment lookup SQL queries.",
+  "domain": "database",
+  "confidence": "speculative",
+  "severity": "high",
+  "violation": "query = f\"SELECT * FROM payments WHERE id={user_input}\"",
+  "pass_example": "execute(\"SELECT * FROM payments WHERE id=?\", [user_input])",
+  "source_refs": [
+    "synthetic:payments-guidance"
+  ]
+}
