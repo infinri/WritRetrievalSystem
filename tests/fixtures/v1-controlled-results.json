@@ -1,0 +1,209 @@
+{
+  "baseline": "ebdafe5450b201339f81e717ed104e6bcfd3fe3e",
+  "source_sha256": {
+    "pipeline": "56066690ff62a74743e6f43149a9e80b24aa7397a5ef566d8fc9b5809ab1881c",
+    "ranking": "b87235d58df55584d2034363131871fc4888f130581ff76d751c8f97638c30fd",
+    "keyword": "30544cae7793a908412eb9315d24a04e42cc185a9e775f3a6d5fc4e2c2fd803b",
+    "embeddings": "03f8fc5693298b511eb36a87df9bc4b167edaef0e2c4f760112792cd3ce6b7ce"
+  },
+  "encoder": "controlled synthetic vectors (384d)",
+  "results": [
+    {
+      "rules": [
+        {
+          "rule_id": "SQL-001",
+          "node_type": "Rule",
+          "score": 0.931,
+          "severity": "critical",
+          "authority": "human",
+          "stale": true,
+          "deliberate": true,
+          "similarity": 0.866,
+          "statement": "Use parameterized sql",
+          "trigger": "sql database",
+          "violation": "",
+          "pass_example": "",
+          "relationships": [
+            {
+              "rule_id": "ASYNC-001",
+              "edge_type": "RELATED_TO",
+              "direction": "outgoing",
+              "node_type": "Rule",
+              "project": "writ"
+            }
+          ]
+        },
+        {
+          "rule_id": "ASYNC-001",
+          "node_type": "Rule",
+          "score": 0.5773,
+          "severity": "high",
+          "authority": "ai-provisional",
+          "stale": false,
+          "deliberate": false,
+          "similarity": 0.0,
+          "statement": "Avoid blocking async",
+          "trigger": "async python",
+          "violation": "",
+          "pass_example": "",
+          "relationships": [
+            {
+              "rule_id": "SQL-001",
+              "edge_type": "RELATED_TO",
+              "direction": "incoming",
+              "node_type": "Rule",
+              "project": "writ"
+            }
+          ]
+        }
+      ],
+      "mode": "standard",
+      "total_candidates": 2,
+      "abstain_signal": 0.866026
+    },
+    {
+      "rules": [
+        {
+          "rule_id": "ASYNC-001",
+          "score": 0.9573,
+          "severity": "high",
+          "authority": "ai-provisional",
+          "stale": false,
+          "deliberate": false,
+          "similarity": 0.866,
+          "statement": "Avoid blocking async",
+          "trigger": "async python"
+        },
+        {
+          "abstraction_id": "ABS-001",
+          "summary": "database sql",
+          "rule_ids": [
+            "SQL-001"
+          ],
+          "compression_ratio": 1.0,
+          "domain": ""
+        }
+      ],
+      "mode": "summary",
+      "total_candidates": 2,
+      "abstain_signal": 0.866026
+    },
+    {
+      "rules": [
+        {
+          "rule_id": "PLAN-001",
+          "score": 0.9207,
+          "severity": "medium",
+          "authority": "human",
+          "stale": false,
+          "deliberate": false,
+          "similarity": 1.0,
+          "statement": "Require approval plan",
+          "trigger": "plan approval"
+        },
+        {
+          "rule_id": "SKL-001",
+          "score": 0.5247,
+          "severity": "medium",
+          "authority": "human",
+          "stale": false,
+          "deliberate": false,
+          "similarity": 1.0,
+          "statement": "approval",
+          "trigger": "plan"
+        },
+        {
+          "rule_id": "FRB-001",
+          "score": 0.3927,
+          "severity": "medium",
+          "authority": "human",
+          "stale": false,
+          "deliberate": false,
+          "similarity": 0.0,
+          "statement": "cat",
+          "trigger": "cat"
+        },
+        {
+          "rule_id": "ASYNC-001",
+          "score": 0.3514,
+          "severity": "high",
+          "authority": "ai-provisional",
+          "stale": false,
+          "deliberate": false,
+          "similarity": 0.0,
+          "statement": "Avoid blocking async",
+          "trigger": "async python"
+        },
+        {
+          "abstraction_id": "ABS-001",
+          "summary": "database sql",
+          "rule_ids": [
+            "SQL-001"
+          ],
+          "compression_ratio": 1.0,
+          "domain": ""
+        }
+      ],
+      "mode": "summary",
+      "total_candidates": 5,
+      "abstain_signal": 1.0
+    },
+    {
+      "rules": [
+        {
+          "rule_id": "FRB-001",
+          "score": 0.8835,
+          "severity": "medium",
+          "authority": "human",
+          "stale": false,
+          "deliberate": false,
+          "similarity": 1.0,
+          "statement": "cat",
+          "trigger": "cat"
+        }
+      ],
+      "mode": "summary",
+      "total_candidates": 1,
+      "abstain_signal": 1.0
+    },
+    {
+      "rules": [],
+      "mode": "abstained",
+      "total_candidates": 0,
+      "abstain_signal": 0.0
+    },
+    {
+      "rules": [],
+      "mode": "abstained",
+      "total_candidates": 0,
+      "abstain_signal": 0.0
+    },
+    {
+      "rules": [
+        {
+          "abstraction_id": "ABS-001",
+          "summary": "database sql",
+          "rule_ids": [
+            "SQL-001"
+          ],
+          "compression_ratio": 1.0,
+          "domain": ""
+        },
+        {
+          "rule_id": "ASYNC-001",
+          "score": 0.5773,
+          "severity": "high",
+          "authority": "ai-provisional",
+          "stale": false,
+          "deliberate": false,
+          "similarity": 0.0,
+          "statement": "Avoid blocking async",
+          "trigger": "async python"
+        }
+      ],
+      "mode": "summary",
+      "total_candidates": 2,
+      "abstain_signal": 0.816497
+    }
+  ]
+}

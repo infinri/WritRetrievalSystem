@@ -24,8 +24,8 @@ The retrieval folder is not self-contained. For example, `pipeline.py` imports `
 ## Milestones
 
 1. **Relate foundation — implemented:** package, CLI, synthetic decision graph, persistent directory, separate-process reopen, and four integration checks.
-2. **Baseline extraction — pending:** import the relevant source/dependencies with existing license and attribution; reproduce candidate selection and ranking on controlled inputs.
-3. **Relate graph adapter — pending:** test corpus import, node IDs, relationship types/directions, query compatibility, and project scope using the actual engine.
+2. **Baseline extraction — implemented:** standalone source/dependencies, license and attribution carried over; controlled query outputs match the unmodified pinned upstream code. See VALIDATION.md for the exact evidence and limitations.
+3. **Relate graph adapter — baseline reads implemented:** full pinned corpus import, candidate/adjacency/category/abstraction reads and record recall run on the actual engine. Production migration and broader compatibility remain pending.
 4. **Connectivity audit — pending:** find orphaned nodes, invalid edges, unreachable evidence, stale claims, and relationships lost between traversal and rendered context. A disconnected node is not automatically a defect; record intended semantics before adding edges.
 5. **Evaluation — pending:** compare lexical/vector baseline with graph-enabled retrieval on identical queries and corpus; report hit rate, MRR, irrelevant context, latency, memory, and failures. Use synthetic smoke data only for correctness, never as proof of general retrieval quality.
 6. **Submission — pending:** reproducible install, inspectable persistent sample store, concise reuse/tool disclosures, demo recording/edit, and Devpost entry. Keep the public topic `relate-hackathon` set on GitHub.

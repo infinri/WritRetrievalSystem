@@ -1,0 +1,1167 @@
+{
+  "_instructions": "Ground-truth evaluation queries for automated MRR@5 and regression testing. Each entry has a query, expected primary rule_id, and set membership. MRR@5 assertion runs against the 'ambiguous' set (47 queries); hit-rate regression runs against all 193. Built from PHASE5_RESULTS.md human evaluation; ambiguous set expanded 2026-07-17 (KG R2) with 28 validated hard/symptom queries (adversarially label-verified 28/29).",
+  "queries": [
+    {
+      "id": "Q1",
+      "set": "keyword",
+      "query": "controller contains SQL query",
+      "expected_rule_id": "SEC-INJ-SQL-001"
+    },
+    {
+      "id": "Q2",
+      "set": "keyword",
+      "query": "dependency injection constructor",
+      "expected_rule_id": "SOLID-DIP-002"
+    },
+    {
+      "id": "Q3",
+      "set": "keyword",
+      "query": "async blocking event loop",
+      "expected_rule_id": "PY-ASYNC-001"
+    },
+    {
+      "id": "Q4",
+      "set": "keyword",
+      "query": "circular import between modules",
+      "expected_rule_id": "PY-IMPORT-001"
+    },
+    {
+      "id": "Q5",
+      "set": "keyword",
+      "query": "magic number in conditional",
+      "expected_rule_id": "CLEAN-MAGIC-001"
+    },
+    {
+      "id": "Q6",
+      "set": "keyword",
+      "query": "function too long needs refactor",
+      "expected_rule_id": "CLEAN-FUNC-002"
+    },
+    {
+      "id": "Q7",
+      "set": "keyword",
+      "query": "catch exception without context",
+      "expected_rule_id": "PHP-TRY-001"
+    },
+    {
+      "id": "Q8",
+      "set": "keyword",
+      "query": "protocol vs abstract base class",
+      "expected_rule_id": "PY-PROTO-001"
+    },
+    {
+      "id": "Q9",
+      "set": "keyword",
+      "query": "pydantic validation external data",
+      "expected_rule_id": "PY-PYDANTIC-001"
+    },
+    {
+      "id": "Q10",
+      "set": "keyword",
+      "query": "SQL positional placeholder",
+      "expected_rule_id": "SEC-INJ-SQL-001"
+    },
+    {
+      "id": "Q11",
+      "set": "keyword",
+      "query": "deep inheritance hierarchy",
+      "expected_rule_id": "ARCH-COMP-001"
+    },
+    {
+      "id": "Q12",
+      "set": "keyword",
+      "query": "duplicate logic across modules",
+      "expected_rule_id": "DRY-DUP-001"
+    },
+    {
+      "id": "Q13",
+      "set": "keyword",
+      "query": "public method missing type annotation",
+      "expected_rule_id": "PHP-TYPE-001"
+    },
+    {
+      "id": "Q14",
+      "set": "keyword",
+      "query": "single source of truth REST GraphQL",
+      "expected_rule_id": "FW-M2-RT-004"
+    },
+    {
+      "id": "Q15",
+      "set": "keyword",
+      "query": "plugin targeting interface vs concrete",
+      "expected_rule_id": "FW-M2-004"
+    },
+    {
+      "id": "Q16",
+      "set": "keyword",
+      "query": "repository pattern entity retrieval",
+      "expected_rule_id": "FW-M2-002"
+    },
+    {
+      "id": "Q17",
+      "set": "keyword",
+      "query": "test isolation shared state",
+      "expected_rule_id": "TEST-ISOLATE-001"
+    },
+    {
+      "id": "Q18",
+      "set": "keyword",
+      "query": "test first before implementation",
+      "expected_rule_id": "TEST-EXIST-001"
+    },
+    {
+      "id": "Q19",
+      "set": "keyword",
+      "query": "integration test real database",
+      "expected_rule_id": "TEST-INT-001"
+    },
+    {
+      "id": "Q20",
+      "set": "keyword",
+      "query": "SQL string concatenation fragmented",
+      "expected_rule_id": "DB-SQL-002"
+    },
+    {
+      "id": "Q21",
+      "set": "keyword",
+      "query": "performance optimization without measurement",
+      "expected_rule_id": "PERF-OPT-001"
+    },
+    {
+      "id": "Q22",
+      "set": "keyword",
+      "query": "lazy loading deferred resource",
+      "expected_rule_id": "PERF-LAZY-001"
+    },
+    {
+      "id": "Q23",
+      "set": "keyword",
+      "query": "nested loop O(n^2)",
+      "expected_rule_id": "PERF-BIGO-001"
+    },
+    {
+      "id": "Q24",
+      "set": "keyword",
+      "query": "synchronous IO in request handler",
+      "expected_rule_id": "PY-ASYNC-001"
+    },
+    {
+      "id": "Q25",
+      "set": "keyword",
+      "query": "query budget database calls",
+      "expected_rule_id": "PERF-QBUDGET-001"
+    },
+    {
+      "id": "Q26",
+      "set": "keyword",
+      "query": "authentication vs authorization check",
+      "expected_rule_id": "SEC-AUTHZ-ENFORCE-001"
+    },
+    {
+      "id": "Q27",
+      "set": "keyword",
+      "query": "API endpoint data exposure",
+      "expected_rule_id": "SEC-DATA-PII-002"
+    },
+    {
+      "id": "Q28",
+      "set": "keyword",
+      "query": "extend vendor class without modifying",
+      "expected_rule_id": "SOLID-OCP-001"
+    },
+    {
+      "id": "Q29",
+      "set": "keyword",
+      "query": "order state machine transitions",
+      "expected_rule_id": "FW-M2-RT-002"
+    },
+    {
+      "id": "Q30",
+      "set": "keyword",
+      "query": "MSI inventory salability",
+      "expected_rule_id": "FW-M2-RT-001"
+    },
+    {
+      "id": "Q31",
+      "set": "keyword",
+      "query": "admin config system value",
+      "expected_rule_id": "FW-M2-RT-003"
+    },
+    {
+      "id": "Q32",
+      "set": "keyword",
+      "query": "REST endpoint authorization ACL",
+      "expected_rule_id": "FW-M2-RT-004"
+    },
+    {
+      "id": "Q33",
+      "set": "keyword",
+      "query": "message queue consumer setup",
+      "expected_rule_id": "FW-M2-RT-005"
+    },
+    {
+      "id": "Q34",
+      "set": "keyword",
+      "query": "multi-website stock scope",
+      "expected_rule_id": "FW-M2-RT-006"
+    },
+    {
+      "id": "Q35",
+      "set": "keyword",
+      "query": "totals collector execution order",
+      "expected_rule_id": "FW-M2-005"
+    },
+    {
+      "id": "Q36",
+      "set": "keyword",
+      "query": "quote state before collect totals",
+      "expected_rule_id": "FW-M2-003"
+    },
+    {
+      "id": "Q37",
+      "set": "keyword",
+      "query": "CartTotalRepository stale read",
+      "expected_rule_id": "FW-M2-006"
+    },
+    {
+      "id": "Q38",
+      "set": "keyword",
+      "query": "PHP docblock type annotation",
+      "expected_rule_id": "PHP-TYPE-001"
+    },
+    {
+      "id": "Q39",
+      "set": "keyword",
+      "query": "PHP try catch throwable",
+      "expected_rule_id": "PHP-TRY-001"
+    },
+    {
+      "id": "Q40",
+      "set": "keyword",
+      "query": "fail fast guard clause",
+      "expected_rule_id": "CLEAN-ERR-001"
+    },
+    {
+      "id": "Q41",
+      "set": "keyword",
+      "query": "graceful degradation error recovery",
+      "expected_rule_id": "CLEAN-ERR-001"
+    },
+    {
+      "id": "Q42",
+      "set": "keyword",
+      "query": "race condition concurrent writers",
+      "expected_rule_id": "ENF-SYS-003"
+    },
+    {
+      "id": "Q43",
+      "set": "keyword",
+      "query": "idempotent message processing",
+      "expected_rule_id": "SCALE-QUEUE-002"
+    },
+    {
+      "id": "Q44",
+      "set": "keyword",
+      "query": "persistence backed validation",
+      "expected_rule_id": "FW-M2-001"
+    },
+    {
+      "id": "Q45",
+      "set": "keyword",
+      "query": "input sanitization trust boundary",
+      "expected_rule_id": "PY-PYDANTIC-001"
+    },
+    {
+      "id": "Q46",
+      "set": "keyword",
+      "query": "SQL formatting readable vertical",
+      "expected_rule_id": "DB-SQL-003"
+    },
+    {
+      "id": "Q47",
+      "set": "keyword",
+      "query": "composer update vendor override",
+      "expected_rule_id": "SOLID-OCP-001"
+    },
+    {
+      "id": "Q48",
+      "set": "keyword",
+      "query": "response field minimization API",
+      "expected_rule_id": "SEC-DATA-PII-002"
+    },
+    {
+      "id": "Q49",
+      "set": "keyword",
+      "query": "multiple plugins same method sort order",
+      "expected_rule_id": "FW-M2-004"
+    },
+    {
+      "id": "Q50",
+      "set": "keyword",
+      "query": "constructor loads database eagerly",
+      "expected_rule_id": "PERF-LAZY-001"
+    },
+    {
+      "id": "Q51",
+      "set": "symptom",
+      "query": "my totals are wrong after adding item to cart",
+      "expected_rule_id": "FW-M2-003"
+    },
+    {
+      "id": "Q52",
+      "set": "symptom",
+      "query": "customer can see another's order by changing the ID",
+      "expected_rule_id": "SEC-AUTHZ-IDOR-001"
+    },
+    {
+      "id": "Q54",
+      "set": "symptom",
+      "query": "my before plugin runs but the data is not there yet",
+      "expected_rule_id": "FW-M2-003"
+    },
+    {
+      "id": "Q55",
+      "set": "symptom",
+      "query": "server hangs calling Neo4j in async endpoint",
+      "expected_rule_id": "PY-ASYNC-001"
+    },
+    {
+      "id": "Q56",
+      "set": "symptom",
+      "query": "same discount different in REST vs GraphQL",
+      "expected_rule_id": "DRY-CONFIG-001"
+    },
+    {
+      "id": "Q57",
+      "set": "symptom",
+      "query": "test passes alone but fails with other tests",
+      "expected_rule_id": "TEST-ISOLATE-001"
+    },
+    {
+      "id": "Q58",
+      "set": "symptom",
+      "query": "I keep getting ImportError at startup",
+      "expected_rule_id": "PY-IMPORT-001"
+    },
+    {
+      "id": "Q59",
+      "set": "symptom",
+      "query": "two queue consumers processing the same message",
+      "expected_rule_id": "FW-M2-RT-005"
+    },
+    {
+      "id": "Q60",
+      "set": "symptom",
+      "query": "my class has 50 lines and does too many things",
+      "expected_rule_id": "CLEAN-FUNC-002"
+    },
+    {
+      "id": "Q61",
+      "set": "symptom",
+      "query": "stock available but order fails at checkout",
+      "expected_rule_id": "FW-M2-RT-001"
+    },
+    {
+      "id": "Q62",
+      "set": "symptom",
+      "query": "I mocked the repository but prod still fails",
+      "expected_rule_id": "TEST-INT-001"
+    },
+    {
+      "id": "Q63",
+      "set": "symptom",
+      "query": "admin config not loading in different store view",
+      "expected_rule_id": "FW-M2-RT-003"
+    },
+    {
+      "id": "Q64",
+      "set": "symptom",
+      "query": "hard coded 5 in the if statement what does it mean",
+      "expected_rule_id": "CLEAN-MAGIC-001"
+    },
+    {
+      "id": "Q65",
+      "set": "symptom",
+      "query": "process crashes halfway through leaves partial state",
+      "expected_rule_id": "ERR-GRACEFUL-002"
+    },
+    {
+      "id": "Q66",
+      "set": "ambiguous",
+      "query": "my code works in dev but breaks in production",
+      "expected_rule_id": "ARCH-ENV-001",
+      "_relabel_note_2026-05-15": "Relabeled from TEST-INT-001 during Item 1a label-quality audit. The symptom 'works in dev, breaks in prod' is a textbook environment-configuration / env-parity problem (ARCH-ENV-001), not primarily an integration-test gap (TEST-INT-001). Both rules are defensible answers; the relabel chooses the more direct semantic match. The corpus ranks ARCH-ENV-001 at top-1 with score 0.921, well above the next candidate at 0.431."
+    },
+    {
+      "id": "Q67",
+      "set": "ambiguous",
+      "query": "I have the same logic in three different places",
+      "expected_rule_id": "DRY-DUP-001"
+    },
+    {
+      "id": "Q68",
+      "set": "ambiguous",
+      "query": "the API returns too much data to the frontend",
+      "expected_rule_id": "SEC-DATA-PII-002"
+    },
+    {
+      "id": "Q69",
+      "set": "ambiguous",
+      "query": "my plugin fires but nothing happens",
+      "expected_rule_id": "FW-M2-003"
+    },
+    {
+      "id": "Q71",
+      "set": "ambiguous",
+      "query": "the page loads slowly with lots of products",
+      "expected_rule_id": "PERF-LAZY-001"
+    },
+    {
+      "id": "Q72",
+      "set": "ambiguous",
+      "query": "I wrote a class that handles validation and saves to DB",
+      "expected_rule_id": "SOLID-SRP-001",
+      "_relabel_note_2026-05-15": "Relabeled from ARCH-LAYER-001 during Item 1a label-quality audit. A class doing validation AND DB persistence is the textbook single-responsibility violation (SOLID-SRP-001). Layered-architecture (ARCH-LAYER-001) is a defensible alternate framing but less direct; SRP is the canonical fit. Corpus ranks SOLID-SRP-001 at rank 3 with score 0.45."
+    },
+    {
+      "id": "Q73",
+      "set": "ambiguous",
+      "query": "discount applies in checkout but not in cart summary",
+      "expected_rule_id": "FW-M2-003"
+    },
+    {
+      "id": "Q74",
+      "set": "ambiguous",
+      "query": "CI passes but the feature is broken on staging",
+      "expected_rule_id": "TEST-INT-001"
+    },
+    {
+      "id": "Q75",
+      "set": "ambiguous",
+      "query": "I need to change how orders are cancelled, afraid of side effects",
+      "expected_rule_id": "FW-M2-RT-002"
+    },
+    {
+      "id": "Q76",
+      "set": "ambiguous",
+      "query": "my async function takes forever even though the query is fast",
+      "expected_rule_id": "PY-ASYNC-001"
+    },
+    {
+      "id": "Q77",
+      "set": "ambiguous",
+      "query": "two cron jobs updating the same table at midnight",
+      "expected_rule_id": "ENF-SYS-003",
+      "_relabel_note_2026-05-15": "Relabeled from FW-M2-RT-002 during Item 1c label-quality audit. The original label was Magento-specific (FW-M2-RT-002: Magento order-state changes via sales_order_save_after observers) for a framework-agnostic query. ENF-SYS-003 is the principled answer: its trigger is 'When writing code that changes a status/state column in a database where more than one actor could attempt the same transition' -- two cron jobs ARE 'more than one actor' updating shared state. The corpus already ranked ENF-SYS-003 at rank 5 (score 0.286) for this query; the relabel is a label-quality fix, not a corpus or retrieval change. ARCH-IDEMPOTENT-001 was considered but is web-API focused (write endpoints, charges, emails) rather than concurrent-writer focused. SCALE-QUEUE-002 was considered but is queue-consumer focused. ENF-SYS-003's state-transition framing covers the cron-job-race symptom most directly."
+    },
+    {
+      "id": "Q78",
+      "set": "ambiguous",
+      "query": "I inherited this class three levels deep and cannot figure it out",
+      "expected_rule_id": "ARCH-COMP-001"
+    },
+    {
+      "id": "Q79",
+      "set": "ambiguous",
+      "query": "customer data is leaking through the GraphQL API",
+      "expected_rule_id": "SEC-DATA-PII-002"
+    },
+    {
+      "id": "Q80",
+      "set": "ambiguous",
+      "query": "the test only works if you run it after the other test",
+      "expected_rule_id": "TEST-ISOLATE-001"
+    },
+    {
+      "id": "Q81",
+      "set": "ambiguous",
+      "query": "I am newing up services inside my controller",
+      "expected_rule_id": "SOLID-DIP-002"
+    },
+    {
+      "id": "Q82",
+      "set": "ambiguous",
+      "query": "product shows in stock on one website but out of stock on another",
+      "expected_rule_id": "FW-M2-RT-006"
+    },
+    {
+      "id": "Q83",
+      "set": "ambiguous",
+      "query": "error message says nothing useful just something went wrong",
+      "expected_rule_id": "API-ERROR-002",
+      "_relabel_note_2026-05-15": "Relabeled from CLEAN-ERR-001 during Item 1a label-quality audit. The original label CLEAN-ERR-001 is about empty catch blocks; the query is about non-actionable error message content. API-ERROR-002 ('error messages are actionable: tell the caller what to fix, not just what failed; Invalid input is a violation; Field email must be a valid email is the structure') is literally the rule this query asks about. Original label was incorrect, not ambiguous. Corpus ranks API-ERROR-002 at rank 2 with score 0.525."
+    },
+    {
+      "id": "Q84",
+      "set": "ambiguous",
+      "query": "I added a column but forgot what the number 30 means in where clause",
+      "expected_rule_id": "CLEAN-MAGIC-001"
+    },
+    {
+      "id": "Q85",
+      "set": "ambiguous",
+      "query": "the queue keeps reprocessing the same order",
+      "expected_rule_id": "FW-M2-RT-005"
+    },
+    {
+      "id": "Q86",
+      "set": "keyword",
+      "query": "user input rendered as raw HTML in template",
+      "expected_rule_id": "SEC-INJ-XSS-001"
+    },
+    {
+      "id": "Q87",
+      "set": "keyword",
+      "query": "subprocess shell true command injection",
+      "expected_rule_id": "SEC-INJ-CMD-001"
+    },
+    {
+      "id": "Q88",
+      "set": "keyword",
+      "query": "deserialize untrusted pickle yaml",
+      "expected_rule_id": "SEC-INJ-DESER-001"
+    },
+    {
+      "id": "Q89",
+      "set": "keyword",
+      "query": "open redirect from request parameter",
+      "expected_rule_id": "SEC-INJ-REDIR-001"
+    },
+    {
+      "id": "Q90",
+      "set": "keyword",
+      "query": "CSRF token missing on POST",
+      "expected_rule_id": "SEC-INJ-CSRF-001"
+    },
+    {
+      "id": "Q91",
+      "set": "keyword",
+      "query": "SSRF allowlist outbound URLs",
+      "expected_rule_id": "SEC-INJ-SSRF-001"
+    },
+    {
+      "id": "Q92",
+      "set": "keyword",
+      "query": "path traversal directory escape",
+      "expected_rule_id": "SEC-INJ-PATH-001"
+    },
+    {
+      "id": "Q93",
+      "set": "keyword",
+      "query": "regex denial of service ReDoS",
+      "expected_rule_id": "SEC-VAL-REGEX-001"
+    },
+    {
+      "id": "Q94",
+      "set": "keyword",
+      "query": "password hash MD5 SHA256 bcrypt",
+      "expected_rule_id": "SEC-AUTH-HASH-001"
+    },
+    {
+      "id": "Q95",
+      "set": "keyword",
+      "query": "session token CSPRNG random secure",
+      "expected_rule_id": "SEC-AUTH-TOKEN-001"
+    },
+    {
+      "id": "Q96",
+      "set": "keyword",
+      "query": "rate limit login brute force",
+      "expected_rule_id": "SEC-AUTH-BRUTE-001"
+    },
+    {
+      "id": "Q97",
+      "set": "keyword",
+      "query": "constant time comparison timing attack",
+      "expected_rule_id": "SEC-AUTH-TIMING-001"
+    },
+    {
+      "id": "Q98",
+      "set": "keyword",
+      "query": "object access ownership check IDOR",
+      "expected_rule_id": "SEC-AUTHZ-IDOR-001"
+    },
+    {
+      "id": "Q99",
+      "set": "keyword",
+      "query": "endpoint missing authorization decorator",
+      "expected_rule_id": "SEC-AUTHZ-ENFORCE-001"
+    },
+    {
+      "id": "Q100",
+      "set": "keyword",
+      "query": "mass assignment from request body",
+      "expected_rule_id": "SEC-AUTHZ-MASS-001"
+    },
+    {
+      "id": "Q101",
+      "set": "keyword",
+      "query": "multi-tenant data filter at data layer",
+      "expected_rule_id": "SEC-AUTHZ-TENANT-001"
+    },
+    {
+      "id": "Q102",
+      "set": "keyword",
+      "query": "deny by default new endpoint",
+      "expected_rule_id": "SEC-AUTHZ-DEFAULT-001"
+    },
+    {
+      "id": "Q103",
+      "set": "keyword",
+      "query": "server-side input validation client-side UX only",
+      "expected_rule_id": "SEC-VAL-SERVER-001"
+    },
+    {
+      "id": "Q104",
+      "set": "keyword",
+      "query": "pydantic schema typed payload",
+      "expected_rule_id": "SEC-VAL-TYPE-001"
+    },
+    {
+      "id": "Q105",
+      "set": "keyword",
+      "query": "file upload magic bytes content type",
+      "expected_rule_id": "SEC-VAL-FILE-001"
+    },
+    {
+      "id": "Q106",
+      "set": "keyword",
+      "query": "allowlist over blocklist validation",
+      "expected_rule_id": "SEC-VAL-ALLOW-001"
+    },
+    {
+      "id": "Q107",
+      "set": "keyword",
+      "query": "hardcoded API key secret in source",
+      "expected_rule_id": "SEC-CRYPTO-KEY-001"
+    },
+    {
+      "id": "Q108",
+      "set": "keyword",
+      "query": "AES ECB mode weak cipher",
+      "expected_rule_id": "SEC-CRYPTO-ALGO-001"
+    },
+    {
+      "id": "Q109",
+      "set": "keyword",
+      "query": "nonce IV reuse GCM encryption",
+      "expected_rule_id": "SEC-CRYPTO-IV-001"
+    },
+    {
+      "id": "Q110",
+      "set": "keyword",
+      "query": "verify false TLS certificate disabled",
+      "expected_rule_id": "SEC-CRYPTO-CERT-001"
+    },
+    {
+      "id": "Q111",
+      "set": "keyword",
+      "query": "TLS 1.2 minimum cipher suite",
+      "expected_rule_id": "SEC-CRYPTO-TLS-001"
+    },
+    {
+      "id": "Q112",
+      "set": "keyword",
+      "query": "CORS wildcard credentials origin",
+      "expected_rule_id": "SEC-HDR-CORS-001"
+    },
+    {
+      "id": "Q113",
+      "set": "keyword",
+      "query": "Content Security Policy header CSP",
+      "expected_rule_id": "SEC-HDR-CSP-001"
+    },
+    {
+      "id": "Q114",
+      "set": "keyword",
+      "query": "HSTS strict transport security max-age",
+      "expected_rule_id": "SEC-HDR-HSTS-001"
+    },
+    {
+      "id": "Q115",
+      "set": "keyword",
+      "query": "API rate limiting per identity",
+      "expected_rule_id": "SEC-RATE-API-001"
+    },
+    {
+      "id": "Q116",
+      "set": "keyword",
+      "query": "PII email phone logged plaintext",
+      "expected_rule_id": "SEC-DATA-PII-001"
+    },
+    {
+      "id": "Q117",
+      "set": "keyword",
+      "query": "API response field allowlist over-fetching",
+      "expected_rule_id": "SEC-DATA-PII-002"
+    },
+    {
+      "id": "Q118",
+      "set": "keyword",
+      "query": "dependency CVE audit lockfile",
+      "expected_rule_id": "SEC-DEP-AUDIT-001"
+    },
+    {
+      "id": "Q119",
+      "set": "keyword",
+      "query": "function 50 lines too long",
+      "expected_rule_id": "CLEAN-FUNC-002"
+    },
+    {
+      "id": "Q120",
+      "set": "keyword",
+      "query": "magic number named constant",
+      "expected_rule_id": "CLEAN-MAGIC-001"
+    },
+    {
+      "id": "Q121",
+      "set": "keyword",
+      "query": "empty except catch swallow exception",
+      "expected_rule_id": "CLEAN-ERR-001"
+    },
+    {
+      "id": "Q122",
+      "set": "keyword",
+      "query": "specific exception type bare except",
+      "expected_rule_id": "CLEAN-ERR-002"
+    },
+    {
+      "id": "Q123",
+      "set": "keyword",
+      "query": "structured logging JSON levels",
+      "expected_rule_id": "CLEAN-LOG-001"
+    },
+    {
+      "id": "Q124",
+      "set": "keyword",
+      "query": "correlation id request trace",
+      "expected_rule_id": "CLEAN-LOG-002"
+    },
+    {
+      "id": "Q125",
+      "set": "keyword",
+      "query": "deeply nested code early return",
+      "expected_rule_id": "CLEAN-NEST-001"
+    },
+    {
+      "id": "Q126",
+      "set": "keyword",
+      "query": "duplicate logic extract shared function",
+      "expected_rule_id": "DRY-DUP-001"
+    },
+    {
+      "id": "Q127",
+      "set": "keyword",
+      "query": "single source of truth config",
+      "expected_rule_id": "DRY-CONFIG-001"
+    },
+    {
+      "id": "Q128",
+      "set": "keyword",
+      "query": "single responsibility class layer",
+      "expected_rule_id": "SOLID-SRP-001"
+    },
+    {
+      "id": "Q129",
+      "set": "keyword",
+      "query": "controller delegates service layer",
+      "expected_rule_id": "SOLID-SRP-002"
+    },
+    {
+      "id": "Q130",
+      "set": "keyword",
+      "query": "polymorphism switch type extensibility",
+      "expected_rule_id": "SOLID-OCP-002"
+    },
+    {
+      "id": "Q131",
+      "set": "keyword",
+      "query": "constructor inject abstraction protocol",
+      "expected_rule_id": "SOLID-DIP-002"
+    },
+    {
+      "id": "Q132",
+      "set": "keyword",
+      "query": "domain model framework imports",
+      "expected_rule_id": "ARCH-LAYER-002"
+    },
+    {
+      "id": "Q133",
+      "set": "keyword",
+      "query": "adapter external service HTTP client",
+      "expected_rule_id": "ARCH-BOUNDARY-001"
+    },
+    {
+      "id": "Q134",
+      "set": "keyword",
+      "query": "idempotency key write endpoint retry",
+      "expected_rule_id": "ARCH-IDEMPOTENT-001"
+    },
+    {
+      "id": "Q135",
+      "set": "keyword",
+      "query": "DTO dataclass typed transfer",
+      "expected_rule_id": "ARCH-DTO-001"
+    },
+    {
+      "id": "Q136",
+      "set": "keyword",
+      "query": "versioned migration backwards compatible",
+      "expected_rule_id": "ARCH-MIGRATION-001"
+    },
+    {
+      "id": "Q137",
+      "set": "keyword",
+      "query": "feature flag expiration sunset date",
+      "expected_rule_id": "ARCH-FEATURE-001"
+    },
+    {
+      "id": "Q138",
+      "set": "keyword",
+      "query": "test every public function happy path",
+      "expected_rule_id": "TEST-EXIST-001"
+    },
+    {
+      "id": "Q139",
+      "set": "keyword",
+      "query": "test names describe scenario outcome",
+      "expected_rule_id": "TEST-NAME-001"
+    },
+    {
+      "id": "Q140",
+      "set": "keyword",
+      "query": "test error path edge invalid input",
+      "expected_rule_id": "TEST-EDGE-001"
+    },
+    {
+      "id": "Q141",
+      "set": "keyword",
+      "query": "regression test bug fix accompanies",
+      "expected_rule_id": "TEST-REGRESSION-001"
+    },
+    {
+      "id": "Q142",
+      "set": "keyword",
+      "query": "mock verify behavior call arguments",
+      "expected_rule_id": "TEST-MOCK-001"
+    },
+    {
+      "id": "Q143",
+      "set": "keyword",
+      "query": "exponential backoff jitter retry",
+      "expected_rule_id": "ERR-RETRY-001"
+    },
+    {
+      "id": "Q144",
+      "set": "keyword",
+      "query": "circuit breaker repeated failure",
+      "expected_rule_id": "ERR-CIRCUIT-001"
+    },
+    {
+      "id": "Q145",
+      "set": "keyword",
+      "query": "timeout external call unbounded wait",
+      "expected_rule_id": "ERR-TIMEOUT-001"
+    },
+    {
+      "id": "Q146",
+      "set": "keyword",
+      "query": "graceful shutdown SIGTERM drain",
+      "expected_rule_id": "ERR-GRACEFUL-001"
+    },
+    {
+      "id": "Q147",
+      "set": "keyword",
+      "query": "structured validation error field code",
+      "expected_rule_id": "ERR-VALIDATION-001"
+    },
+    {
+      "id": "Q148",
+      "set": "keyword",
+      "query": "N+1 query eager loading join",
+      "expected_rule_id": "PERF-QUERY-001"
+    },
+    {
+      "id": "Q149",
+      "set": "keyword",
+      "query": "WHERE join column index",
+      "expected_rule_id": "PERF-QUERY-002"
+    },
+    {
+      "id": "Q150",
+      "set": "keyword",
+      "query": "cache key user tenant parameter",
+      "expected_rule_id": "PERF-CACHE-001"
+    },
+    {
+      "id": "Q151",
+      "set": "keyword",
+      "query": "cache TTL explicit invalidation",
+      "expected_rule_id": "PERF-CACHE-002"
+    },
+    {
+      "id": "Q152",
+      "set": "keyword",
+      "query": "streaming chunked read large dataset",
+      "expected_rule_id": "PERF-MEM-001"
+    },
+    {
+      "id": "Q153",
+      "set": "keyword",
+      "query": "parallel async gather Promise all",
+      "expected_rule_id": "PERF-BATCH-001"
+    },
+    {
+      "id": "Q154",
+      "set": "keyword",
+      "query": "stateless process Redis session",
+      "expected_rule_id": "SCALE-STATELESS-001"
+    },
+    {
+      "id": "Q155",
+      "set": "keyword",
+      "query": "background queue long running operation",
+      "expected_rule_id": "SCALE-QUEUE-001"
+    },
+    {
+      "id": "Q156",
+      "set": "keyword",
+      "query": "connection pool database size limit",
+      "expected_rule_id": "SCALE-DB-001"
+    },
+    {
+      "id": "Q157",
+      "set": "keyword",
+      "query": "health check readiness DB dependency",
+      "expected_rule_id": "SCALE-HEALTH-001"
+    },
+    {
+      "id": "Q158",
+      "set": "keyword",
+      "query": "rolling deploy backwards compatible schema",
+      "expected_rule_id": "SCALE-MIGRATE-001"
+    },
+    {
+      "id": "Q159",
+      "set": "keyword",
+      "query": "HTTP method GET POST PUT DELETE semantics",
+      "expected_rule_id": "API-REST-001"
+    },
+    {
+      "id": "Q160",
+      "set": "keyword",
+      "query": "status code 422 validation 5xx server",
+      "expected_rule_id": "API-STATUS-001"
+    },
+    {
+      "id": "Q161",
+      "set": "keyword",
+      "query": "OpenAPI spec generated documentation",
+      "expected_rule_id": "API-CONTRACT-001"
+    },
+    {
+      "id": "Q162",
+      "set": "keyword",
+      "query": "type annotations public function return",
+      "expected_rule_id": "DOC-TYPE-001"
+    },
+    {
+      "id": "Q163",
+      "set": "keyword",
+      "query": "README setup clean machine prerequisites",
+      "expected_rule_id": "DOC-README-001"
+    },
+    {
+      "id": "Q164",
+      "set": "keyword",
+      "query": "ADR architecture decision record",
+      "expected_rule_id": "DOC-ARCH-001"
+    },
+    {
+      "id": "Q165",
+      "set": "keyword",
+      "query": "rollback canary blue-green deploy",
+      "expected_rule_id": "PROC-ROLLBACK-001"
+    },
+    {
+      "id": "Q166",
+      "set": "keyword",
+      "query": "post-incident review action items owners",
+      "expected_rule_id": "PROC-INCIDENT-001"
+    },
+    {
+      "id": "Q167",
+      "set": "keyword",
+      "query": "credential never share chat ticket",
+      "expected_rule_id": "PROC-ENV-001"
+    },
+    {
+      "id": "Q168",
+      "set": "ambiguous",
+      "query": "When I type a real customer's email into the 'forgot password' box the site says 'check your inbox', but a made-up email says 'no account exists with that email' -- someone could use this to build a list of every email address we have on file.",
+      "expected_rule_id": "SEC-AUTH-ENUM-001"
+    },
+    {
+      "id": "Q169",
+      "set": "ambiguous",
+      "query": "Our checkout worker got OOM-killed right after it charged the customer's card but before it acknowledged the message, so the broker redelivered the same order to a fresh worker a minute later -- and the customer was charged twice for one order.",
+      "expected_rule_id": "SCALE-QUEUE-002"
+    },
+    {
+      "id": "Q170",
+      "set": "ambiguous",
+      "query": "When a user clicks 'log out,' the app just clears the cookie in their browser. If someone had already grabbed that session value earlier (shared computer, intercepted traffic, whatever), it still gets them into the account for hours afterward -- the log-out button doesn't seem to actually do anything on our end.",
+      "expected_rule_id": "SEC-AUTH-LOGOUT-001"
+    },
+    {
+      "id": "Q171",
+      "set": "ambiguous",
+      "query": "One of our support reps has had the same browser tab logged in for four days straight, and this morning they were able to grant a coworker's account the 'billing admin' role without being asked for a password or MFA code again.",
+      "expected_rule_id": "SEC-AUTHZ-PRIV-001"
+    },
+    {
+      "id": "Q172",
+      "set": "ambiguous",
+      "query": "We added a 'custom email signature' feature where users can type their own formatting markup for the footer of outgoing emails. Someone figured out that pasting a particular syntax into their signature makes the sent email include values from our server's internal configuration.",
+      "expected_rule_id": "SEC-INJ-SSTI-001"
+    },
+    {
+      "id": "Q173",
+      "set": "ambiguous",
+      "query": "Our two-factor code entry is pretty forgiving -- it still accepts a six-digit code someone generated up to five minutes ago, so a code caught in an old screenshot or glimpsed over someone's shoulder a while back can still get an attacker in.",
+      "expected_rule_id": "SEC-AUTH-MFA-001"
+    },
+    {
+      "id": "Q174",
+      "set": "ambiguous",
+      "query": "Our Kubernetes pods keep getting killed and restarted every time the database has a brief few-second blip, even though the application process itself is completely fine and would have recovered on its own if it hadn't been restarted.",
+      "expected_rule_id": "SCALE-HEALTH-002"
+    },
+    {
+      "id": "Q175",
+      "set": "ambiguous",
+      "query": "During the payment-outage postmortem, all the error tracker shows is 'PaymentFailed: order 4471' -- we know the payment provider threw something first, but that detail is completely gone by the time it reaches us.",
+      "expected_rule_id": "ERR-HANDLE-002"
+    },
+    {
+      "id": "Q176",
+      "set": "ambiguous",
+      "query": "Right around midnight when the homepage's cached data expires, we get a two-second spike where database CPU maxes out, as if hundreds of requests all try to rebuild that same homepage data at the exact same instant.",
+      "expected_rule_id": "PERF-CACHE-004"
+    },
+    {
+      "id": "Q177",
+      "set": "ambiguous",
+      "query": "Every user's password gets hashed with bcrypt, which is correct, but to keep things simple the whole application appends one fixed secret string (stored in a single config value) to every password before hashing it, instead of letting the hashing library generate a fresh random value per account.",
+      "expected_rule_id": "SEC-AUTH-HASH-002"
+    },
+    {
+      "id": "Q178",
+      "set": "ambiguous",
+      "query": "We just discovered the script that generates signing keys for a payment-partner integration hasn't been touched in years and still asks the crypto library for whatever its default key size was back then. A security scanner flagged those keys as crackable with modern hardware in a realistic amount of time.",
+      "expected_rule_id": "SEC-CRYPTO-ALGO-002"
+    },
+    {
+      "id": "Q179",
+      "set": "ambiguous",
+      "query": "We don't use any front-end framework on this page -- just plain JavaScript that builds the comment list by gluing each commenter's text into one big string and dropping it straight into the page's container element. Someone posted a comment that now pops an alert box for every other visitor who opens that page.",
+      "expected_rule_id": "SEC-INJ-XSS-003"
+    },
+    {
+      "id": "Q180",
+      "set": "ambiguous",
+      "query": "We keep a plain in-memory dictionary that tracks how many requests are currently in flight for each user, and under heavy concurrent traffic the counts drift and sometimes go negative even though nothing in the code ever deletes an entry.",
+      "expected_rule_id": "ARCH-STATE-001"
+    },
+    {
+      "id": "Q181",
+      "set": "ambiguous",
+      "query": "The nightly analytics dashboard pulls from the same database as checkout, and lately regular customers have started complaining that checkout itself feels sluggish during business hours whenever that dashboard job runs.",
+      "expected_rule_id": "SCALE-DB-002"
+    },
+    {
+      "id": "Q182",
+      "set": "ambiguous",
+      "query": "Our checkout page shows cross-sell suggestions pulled from a separate recommendation service. Nobody ever actually decided what the page should do if that service is slow or unreachable -- right now it's whatever the code happens to do that day.",
+      "expected_rule_id": "ERR-FALLBACK-001"
+    },
+    {
+      "id": "Q183",
+      "set": "ambiguous",
+      "query": "Our checkout tests run instantly on my laptop, but three teammates are now seeing random 30-second hangs and connection-refused failures in CI on the exact same commit, and it always traces back to the same test file.",
+      "expected_rule_id": "TEST-ISOLATE-002"
+    },
+    {
+      "id": "Q184",
+      "set": "ambiguous",
+      "query": "All our payment tests mock the gateway to just return `True`, and they've been green for months -- but the first real transaction in staging blew up because the actual gateway response is a nested object with a status field and a separate charge id, not a plain boolean.",
+      "expected_rule_id": "TEST-MOCK-002"
+    },
+    {
+      "id": "Q185",
+      "set": "ambiguous",
+      "query": "Our email-notification worker looks fine right after a deploy, but three or four days into continuous uptime it's using 8GB of RAM and needs a restart before it eventually falls over.",
+      "expected_rule_id": "PERF-MEM-002"
+    },
+    {
+      "id": "Q186",
+      "set": "ambiguous",
+      "query": "Every time product adds one new required field to the customer record, someone has to go update the same hand-written object-construction code that's been copy-pasted across 40 different test files.",
+      "expected_rule_id": "TEST-FIXTURE-001"
+    },
+    {
+      "id": "Q187",
+      "set": "ambiguous",
+      "query": "One customer used the product-search page's 'match pattern' advanced filter, typing something like 'a+a+a+b', and that single request has been pegged at 100% CPU for the last ten minutes while every other request queues up behind it.",
+      "expected_rule_id": "SEC-VAL-REGEX-001"
+    },
+    {
+      "id": "Q188",
+      "set": "ambiguous",
+      "query": "Our mobile app times out on a delete-item call and automatically retries it, and the retry comes back as a 404 which the app shows the user as a scary error, even though the item was actually removed successfully on the first attempt.",
+      "expected_rule_id": "API-IDEMPOTENT-001"
+    },
+    {
+      "id": "Q189",
+      "set": "ambiguous",
+      "query": "This lookup helper returns the actual record when it finds one, but returns the literal value False when it doesn't -- so every caller downstream has to remember to check `is False` specifically instead of just checking for None or an empty result.",
+      "expected_rule_id": "CLEAN-RETURN-001"
+    },
+    {
+      "id": "Q190",
+      "set": "ambiguous",
+      "query": "Three separate services each hand-roll their own version of what a Customer record looks like, and last sprint two of them silently drifted out of sync after someone added a new field to only one of the three copies.",
+      "expected_rule_id": "DRY-TYPE-001"
+    },
+    {
+      "id": "Q191",
+      "set": "ambiguous",
+      "query": "If I run tests/test_users.py by itself every test passes. Run the whole suite in one go and the third test in that same file blows up with a duplicate-email database error that nobody can reproduce by running the file alone.",
+      "expected_rule_id": "TEST-ISOLATE-003"
+    },
+    {
+      "id": "Q192",
+      "set": "ambiguous",
+      "query": "Our nightly PHP inventory-import job hits a parse error on a bad row, and instead of logging it and retrying, it just echoes the exact same HTML error page our storefront shows customers -- straight into a log file nobody is watching, so failed imports go unnoticed for a week.",
+      "expected_rule_id": "PHP-ERR-002"
+    },
+    {
+      "id": "Q193",
+      "set": "ambiguous",
+      "query": "There's a chunk of code sitting right after a return statement in this function that can never actually execute, plus a couple of imports at the top nobody's referenced in months, but everyone's too nervous to delete them in case something secretly depends on it.",
+      "expected_rule_id": "CLEAN-DEAD-001"
+    },
+    {
+      "id": "Q194",
+      "set": "ambiguous",
+      "query": "The validate_order() function builds a brand-new RegexEmailValidator instance right inside its own body instead of accepting a validator as an argument, so I can't run this function in a test without dragging in the real regex validator, and swapping in a stricter one later means editing this function's internals all over again.",
+      "expected_rule_id": "CLEAN-COUPLING-001"
+    },
+    {
+      "id": "Q195",
+      "set": "ambiguous",
+      "query": "Everyone treats get_account_summary() as safe to call from anywhere for a quick peek at the numbers, but it actually writes a row to the audit log and bumps a last_viewed timestamp on the account object every single time it runs.",
+      "expected_rule_id": "CLEAN-SIDE-001"
+    }
+  ]
+}

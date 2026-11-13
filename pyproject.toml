@@ -1,14 +1,35 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "writ-retrieval-system"
 version = "0.1.0"
 description = "Connected context for agents, extracted from Writ and adapted to Relate"
+readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
-dependencies = ["relate-db==1.0.1"]
+license-files = ["LICENSE", "NOTICE.md"]
+dependencies = [
+    "relate-db==1.0.1",
+    "tantivy>=0.22,<1",
+    "hnswlib>=0.8,<1",
+    "numpy>=1.26,<3",
+    "pydantic>=2.9,<3",
+    "onnxruntime>=1.20,<2",
+    "tokenizers>=0.20,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "pytest-asyncio>=0.23,<2"]
+fallback = ["sentence-transformers>=3.3,<4"]
+
+[tool.setuptools.package-data]
+"writ_retrieval.shared" = ["budget.json"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
 
 [project.scripts]
 writ-retrieval = "writ_retrieval.cli:main"
