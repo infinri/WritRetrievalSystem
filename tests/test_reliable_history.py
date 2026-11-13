@@ -243,3 +243,35 @@ def test_explicit_owner_approval_preserves_evidence_but_later_retraction_changes
         store.retract_evidence(ref=refs[0],expected_revision=1,request_id='post-approval-withdrawal',reason='synthetic correction')
         later=delivered();assert later['ranking_metadata']['positive']==49 and later['ranking_metadata']['confidence_weight']==.3
         assert later['human_approval']=='local-owner-approved' and later['ranking_metadata']['authority']=='ai-promoted'
+
+
+def test_restored_wording_never_rebinds_old_decision_or_observation(tmp_path,monkeypatch):
+    with ReliableStore(tmp_path/'graph',create=True,clock=lambda:AT) as store:
+        original,signals=setup_feedback(store);simulate_owner_confirmation(store,monkeypatch)
+        store.feedback_bound(project='app',batch_id='original',signals=signals)
+        from writ_retrieval.memory.store import claim_hash
+        for statement in ('Different sql wording','Use parameterized sql'):
+            node=store.get(ref('Rule','SQL-001','writ'))
+            store.revise_proposal(ref('Rule','SQL-001','writ'),{'statement':statement},expected_claim_hash=claim_hash(node))
+        current=store.bind(ref('Rule','SQL-001','writ'))
+        assert current['revision']!=original['revision']
+        assert store.feedback_bound(project='app',batch_id='original',signals=signals)['states'][0]['positive']==0
+        with pytest.raises(ValueError,match='exact rule revision'):
+            store.feedback_bound(project='app',batch_id='fresh-id',signals=[{**signals[0],'rule':current}])
+        observation=next(n for k,n in store.export()['nodes'].items() if k.label=='BoundObservation')
+        assert json.loads(observation['rule'])==original
+        assert store.get(ref('Rule','SQL-001','writ'))['times_seen_positive']==0
+
+
+def test_legacy_decision_cannot_infer_an_exact_rule_revision_for_bound_feedback(tmp_path,monkeypatch):
+    from writ_retrieval.memory.store import LocalStore
+    from tests.test_memory_workflow import proposal,history
+    with LocalStore(tmp_path/'graph',create=True) as legacy:
+        legacy.propose(proposal());records=history()
+        for record in records:record['data']['ts']+='T00:00:00Z'
+        legacy.capture(records)
+    with ReliableStore(tmp_path/'graph',clock=lambda:AT) as store:
+        store.add_evidence(evidence(store,'outcome',ref('Outcome','O')));simulate_owner_confirmation(store,monkeypatch)
+        rule=store.bind(ref('Rule','SQL-001','writ'))
+        with pytest.raises(ValueError,match='versioned decision'):
+            store.feedback_bound(project='app',batch_id='cannot-infer',signals=[{'rule':rule,'evidence_ref':ref('Evidence','outcome'),'signal':'positive'}])

@@ -167,7 +167,10 @@ class ReliableSession:
             binding=unpack(node.get('subject'))
             card['subject_binding']=binding;card['binding_current']=binding_matches(binding,stage['nodes']) if binding else False
             card['active_support']=bool(state=='current' and card['binding_current'])
-        if key.label=='Decision': card['cited_claim_versions']=unpack(node.get('rule_snapshots'),[])
+        if key.label=='Decision':
+            card['cited_claim_versions']=unpack(node.get('rule_snapshots'),[])
+            card['rule_version_bindings']=unpack(node.get('rule_version_bindings'),[])
+            card['capture_contract']=node.get('capture_contract','legacy wording/hash; exact revision unknown')
         if key.label=='Rule':
             pos,neg=stage['counts'].get(key,(node.get('times_seen_positive',0),node.get('times_seen_negative',0)))
             card['ranking_metadata']={'positive':pos,'negative':neg,'confidence_weight':compute_confidence_weight(node.get('confidence','production-validated'),pos,neg),

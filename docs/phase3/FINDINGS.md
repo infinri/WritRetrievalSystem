@@ -109,6 +109,8 @@ cache corruption, tombstones, duplicate IDs/types, foreign bridges, cycles,
 irrelevant edges, required conflict bundles and UTF-8 budget failures. Controlled
 feedback tests establish exactly 40+/10- -> 0.80 confidence and a positive
 withdrawal -> 49 observations -> static 0.30; old receipts cannot reactivate it.
+Restoring previous wording under a later Rule revision also cannot rebind an old
+Decision/Outcome; legacy wording-only Decisions cannot infer exact versions.
 Owner approval remains a separate terminal judgment, and a later evidence
 withdrawal changes confidence without erasing that historical approval. Simulated
 terminal tests are not actual human review of this evaluation's labels.

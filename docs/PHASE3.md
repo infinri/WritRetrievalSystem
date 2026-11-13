@@ -108,7 +108,10 @@ The read-only agent module exposes only `context` and `inspect`, and applies the
 packaged kernel network deny before importing third-party runtimes. It runs in
 a dedicated process; do not invoke its process-wide filter inside a host app. Owner mutation
 commands are in `writ_retrieval.reliable.cli`; same-account unrestricted shell
-access remains outside this tooling boundary. Capture Decision/FileChange/Commit/
+access remains outside this tooling boundary. New Decisions freeze exact governing Rule revisions/digests in the capture
+transaction. Legacy Decisions with only wording/hash citations are not silently
+upgraded for bound feedback; record a new versioned Decision for new evidence.
+Capture Decision/FileChange/Commit/
 Memory/Outcome through `capture INPUT.json` (Phase 2 shapes, but actual UTC whole
 second timestamps). Use `propose` and `revise` for local rule proposals, and
 `lifecycle` for optimistic record/Claim tombstones. All reliable writers share

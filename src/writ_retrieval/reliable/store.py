@@ -33,7 +33,7 @@ def unpack(value, default=None):
 
 class ReliableStore(LocalStore):
     def __init__(self,path,*,create=False,clock=now_utc,initialize=True):
-        self.clock=clock; self._dirty=False;self._storage_fault=False
+        self.clock=clock; self._dirty=False;self._storage_fault=False;self._capture_new_decisions=None
         path=Path(path).resolve()
         if create: path.parent.mkdir(parents=True,exist_ok=True)
         if not create and not path.exists(): raise FileNotFoundError(path)
@@ -78,6 +78,11 @@ class ReliableStore(LocalStore):
             self._in_transaction=True;self._dirty=False;self._db.autocommit=False
             try:
                 yield
+                if self._capture_new_decisions is not None:
+                    for key in self._capture_new_decisions:
+                        node=self.get(key)
+                        bindings=[self.bind(unpack(snapshot["ref"])) for snapshot in unpack(node.get("rule_snapshots"),[])]
+                        self._set(key,{"rule_version_bindings":canonical(bindings),"capture_contract":"writ-record-capture/1"})
                 if self._dirty:
                     state=self.get(STATE)
                     new_revision=revision(state["revision"])+1
@@ -99,7 +104,10 @@ class ReliableStore(LocalStore):
             if instant(data["ts"])>instant(self.clock()): raise ValueError("future captured timestamp")
             if data.get("updated_at"): instant(data["updated_at"])
             if item.get("expected_revision") is not None: revision(item["expected_revision"])
-        return super().capture(records)
+        with self._lock:
+            self._capture_new_decisions=[Key.of("Decision",r["data"]) for r in records if r.get("label")=="Decision" and self.get(Key.of("Decision",r["data"])) is None]
+            try: return super().capture(records)
+            finally: self._capture_new_decisions=None
 
     def lifecycle(self,ref,*,expected_revision,action,replacement=None):
         revision(expected_revision);key=Key.parse(ref)
@@ -252,10 +260,12 @@ class ReliableStore(LocalStore):
                 if ok.label!="Outcome" or ok.project!=project or not outcome or not binding_matches(subject,{ok:outcome}): raise ValueError("feedback needs a current bound outcome")
                 dk=Key.parse(unpack(outcome["decision_ref"]));decision=self.get(dk,active=True)
                 if not decision or not any(s.get("ref")==rk.as_dict() and s.get("claim_hash")==claim_hash(rule) for s in unpack(decision.get("rule_snapshots"),[])): raise ValueError("decision did not cite rule claim")
+                if signal["rule"] not in unpack(decision.get("rule_version_bindings"),[]): raise ValueError("versioned decision did not cite this exact rule revision/digest")
                 if outcome.get("result") not in {"pass","fail","mixed"}: raise ValueError("unknown outcome")
                 if (outcome["result"],signal["signal"]) in {("pass","negative"),("fail","positive")}: raise ValueError("contradictory outcome sign")
                 ident=digest([rk.token,binding.content_digest,ok.token])[7:];key=Key(project,"BoundObservation",ident);old=self.get(key)
                 if old and old["signal"]!=signal["signal"]: raise ValueError("contradictory replay")
+                if old and unpack(old["rule"])!=signal["rule"]: raise ValueError("observation binding is immutable across rule revisions")
                 if old and unpack(old["evidence_ref"])!=ek.as_dict(): raise ValueError("Outcome already has an immutable evidence binding; duplicate evidence cannot add another observation")
                 self._set(key,{"project":project,"observation_id":ident,"rule":canonical(signal["rule"]),"evidence_ref":canonical(ek.as_dict()),
                                "signal":signal["signal"],"recorded_at":old["recorded_at"] if old else self.clock(),"kind":"correlated_feedback","provenance":"record",
@@ -297,6 +307,7 @@ def active_counts(nodes,at):
         if outcome.get("status","live")!="live": continue
         decision_key=Key.parse(unpack(outcome.get("decision_ref")));decision=nodes.get(decision_key)
         if not decision or decision.get("status","live")!="live": continue
+        if binding not in unpack(decision.get("rule_version_bindings"),[]): continue
         if not any(s.get("ref")==rk.as_dict() and s.get("claim_hash")==claim_hash(nodes[rk]) for s in unpack(decision.get("rule_snapshots"),[])): continue
         if nodes[rk].get("status","live")!="live" or nodes[rk].get("superseded"): continue
         result[rk][0 if node["signal"]=="positive" else 1]+=1

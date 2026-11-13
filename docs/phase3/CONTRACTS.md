@@ -22,6 +22,7 @@ JSON ingestion rejects duplicate keys, nonfinite numbers and extra managed field
 | `writ-claim/1` | Immutable ID, project/topic/title/text, exact UTF-8 text digest, source, assertion kind, recorded time, optional validity interval/rationale. Only `model_assertion` and `repository_assertion` may be imported. |
 | `writ-evidence/1` | Immutable material/digest/source and exact subject binding, recorded time and optional validity. Imported text cannot supply verification, owner judgment or tool-observed status. |
 | `writ-relation/1` | Stored source/target bindings, recorded time, source references and unverified status. Traversal checks both endpoints and visibility at every hop. Invalid/obsolete bindings cannot become graph bridges. |
+| `writ-record-capture/1` | New captured Decisions freeze exact Rule revision/digest bindings in the same transaction, alongside legacy wording snapshots. These managed fields cannot be supplied by imports. |
 | `writ-feedback-observation/1` | Correlated positive/negative observation, exact Rule binding, exact Evidence binding, recorded time and provenance. The Evidence binds an immutable captured Outcome; its Decision must cite this rule wording. |
 | `writ-context/1` | Complete model-facing JSON, snapshot revision/generation/source digest/as-of, separate item channels, citations, claim versions, lifecycle, verification, approval, omission count and budget policy. |
 | `writ-generation-pointer/1` | Atomically published current/previous generation and source revision; complete immutable snapshot/vector files have checked manifests. |
@@ -78,12 +79,19 @@ Phase 3's stricter path retains the upstream numerical function but has an expli
 admission policy `active-bound-evidence/1`: count one observation per Rule meaning /
 Outcome identity, with an immutable Evidence binding, only when Rule and Evidence bindings remain current, the rule
 and linked Outcome/Decision remain live, evidence is within its validity interval,
-and the local owner confirmed that bound evidence. Imports alone contribute zero.
+and the local owner confirmed that bound evidence. The Decision must have captured
+that exact Rule revision/digest; matching wording alone is insufficient. Restoring
+old wording under a later revision cannot rebind an old Outcome/observation.
+Imports alone contribute zero.
 Git object identity verification is never verification of an application's outcome.
 Duplicate batches and new batch IDs for the same fact do not increase counts.
 Retraction, claim revision, expiry, deleted Decision/Outcome or supersession makes
 the contribution inactive. Old observations/receipts survive. Reads recompute
 active counts as well as writes; expiry needs no new write to change context.
+Legacy Decisions without exact rule bindings and revision-zero doctrine are
+readable as snapshot-bound history, but cannot enter this stricter feedback path.
+They require an explicit versioned proposal/new Decision; no retrospective rule
+revision is inferred from old text or silently assigned during replay.
 Legacy static/Phase 2 counters are retained separately when a Rule first enters
 this policy and are not silently treated as verified evidence for this policy.
 

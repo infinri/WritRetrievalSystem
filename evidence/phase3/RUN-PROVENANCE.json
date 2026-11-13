@@ -39,7 +39,8 @@
     "The final agent and runner deny network sockets/connections before runtime imports; anonymous local socketpairs support asyncio.",
     "Two attempted reruns were stopped by automatic approval review for an incidental Microsoft endpoint with unknown payload, even after telemetry opt-out. Neither is counted as completed.",
     "Later release-only changes fix standalone graph identity registration and wrapper import paths; evaluated ranking/ingestion policy is unchanged.",
-    "No Phase 1/2 evidence or original gold fixture was edited. Telemetry is disabled in the original ONNX loader; original weighted ranking remains available."
+    "No Phase 1/2 evidence or original gold fixture was edited. Telemetry is disabled in the original ONNX loader; original weighted ranking remains available.",
+    "Final hardening adds exact captured Decision-to-Rule bindings and rejects restored-wording/legacy-version inference. The published public-history corpus has no captured Decision/Rule/Outcome nodes, so that branch does not change the measured source-recovery inputs or policy. Separate real-Relate tests cover it."
   ],
   "result_sha256": {
     "demo/after-restart.json": "c17b8702a0cf30e44783c4891a0f6a399fb52db1127747c749b8422036bed687",
@@ -82,6 +83,6 @@
     "evaluation-release/summary.json": "4899d3586de1de1abe26ebbfe54b6b6bf2ba84fa03b98810002b914b2cfd3af8",
     "evaluation-unbatched/queries.jsonl": "5b2e88ee1c6f24892186a6d2ed947c919d333a741ea0f3cf11e0103153715dad",
     "evaluation-unbatched/summary.json": "4bc191395b9e87ea32975e44fa8d0f9153e79fefd3a47cf36896179a1b4af35a",
-    "validation.json": "ce93dff4f290e031dd5e05e41958f64267d0a197e449a6596085bc4651419eaa"
+    "validation.json": "feb26b54dadb7bea5dd7643042f3c198625c22a916ace484d6b58aa1d7bfb80a"
   }
 }

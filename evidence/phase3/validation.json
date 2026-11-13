@@ -1,8 +1,8 @@
 {
   "pytest": {
     "command": "python scripts/offline_run.py -m pytest -q",
-    "result": "115 passed",
-    "log": "........................................................................ [ 62%]\n...........................................                              [100%]\n115 passed in 15.57s\n"
+    "result": "117 passed",
+    "log": "........................................................................ [ 61%]\n.............................................                            [100%]\n117 passed in 15.38s\n"
   },
   "unittest": {
     "command": "python scripts/offline_run.py -m unittest discover -s tests -v",
@@ -31,5 +31,12 @@
     "import_replay_did_not_restore": true,
     "source_bytes_retained": true,
     "no_approval_claimed": true
+  },
+  "prior_ci": {
+    "head": "0e7a98e808caf9c2af515b017b503ac2c00c5a6b",
+    "pytest_count": 115,
+    "pull_request_run": 43483800700,
+    "push_run": 43483703820,
+    "conclusion": "success; precedes the exact Decision binding hardening"
   }
 }
