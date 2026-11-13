@@ -17,6 +17,7 @@ MODEL_HASHES={'model.onnx':'6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682
 
 
 def load_json(path):
+    if Path(path).stat().st_size>16_000_000: raise ValueError("JSON input exceeds 16 MB limit")
     def unique(pairs):
         value={}
         for key,item in pairs:

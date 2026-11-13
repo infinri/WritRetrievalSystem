@@ -27,6 +27,7 @@ from .budget import Budget, BudgetError, pack
 
 POLICY = {'contract_version':'writ-context-policy/1', 'candidate_k':6, 'graph_hops':2,
           'max_graph_nodes':64, 'cosine_gate':.30, 'rrf_k':60, 'text_head_chars':1600,
+          'embedding_batch_limit':16,
           'ranking':'flat RRF; connected adds typed neighbors after identical seeds; confidence reported separately'}
 LABELS = {'Rule','Skill','Playbook','Technique','AntiPattern','ForbiddenResponse',
           'Decision','Memory','Commit','FileChange','Outcome','Claim','Evidence'}
@@ -82,7 +83,7 @@ class ReliableSession:
 
     def _encode(self,items):
         fn=self.encoder.encode_batch if hasattr(self.encoder,'encode_batch') else self.encoder.encode
-        return normalize(fn(items))
+        return np.concatenate([normalize(fn(items[start:start+POLICY['embedding_batch_limit']])) for start in range(0,len(items),POLICY['embedding_batch_limit'])],axis=0)
 
     def _build(self,export,at):
         nodes=export['nodes'];source=snapshot_document(export);source_digest=digest(source)

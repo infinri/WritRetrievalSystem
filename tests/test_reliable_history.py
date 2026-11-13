@@ -1,5 +1,6 @@
 """Reproducible Git object observation, temporal views and publication races."""
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -17,7 +18,7 @@ from tests.test_reliable_context import claim, evidence, AT, ref, setup_feedback
 
 def test_read_only_git_object_export_is_exact_and_never_infers_result(tmp_path):
     repo=tmp_path/'source';repo.mkdir()
-    def git(*args): return subprocess.check_output(['git','-C',str(repo),*args],text=True).strip()
+    def git(*args): return subprocess.check_output(['git','-C',str(repo),*args],text=True,env={**os.environ,'GIT_AUTHOR_DATE':'2026-01-01T00:00:00Z','GIT_COMMITTER_DATE':'2026-01-01T00:00:00Z'}).strip()
     git('init','-q');git('config','user.email','fixture@example.invalid');git('config','user.name','fixture')
     (repo/'LICENSE').write_text('MIT License\nSynthetic source fixture, not public history evidence.')
     path=repo/'docs/architecture';path.mkdir(parents=True)

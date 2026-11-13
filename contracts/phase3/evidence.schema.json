@@ -163,6 +163,7 @@
       "$ref": "#/$defs/Source"
     },
     "material": {
+      "maxLength": 64000,
       "title": "Material",
       "type": "string"
     },

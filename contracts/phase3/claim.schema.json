@@ -135,11 +135,13 @@
       "type": "string"
     },
     "title": {
+      "maxLength": 1024,
       "minLength": 1,
       "title": "Title",
       "type": "string"
     },
     "text": {
+      "maxLength": 64000,
       "minLength": 1,
       "title": "Text",
       "type": "string"

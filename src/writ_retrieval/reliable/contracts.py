@@ -93,8 +93,8 @@ class Claim(Temporal):
     project: str = Field(min_length=1, max_length=256)
     claim_id: str = Field(min_length=1, max_length=256)
     topic: str = Field(min_length=1, max_length=500)
-    title: str = Field(min_length=1)
-    text: str = Field(min_length=1)
+    title: str = Field(min_length=1,max_length=1024)
+    text: str = Field(min_length=1,max_length=64000)
     content_digest: str = Field(pattern=DIGEST)
     source: Source
     kind: Literal["model_assertion", "repository_assertion"]
@@ -113,7 +113,7 @@ class Evidence(Temporal):
     evidence_id: str = Field(min_length=1, max_length=256)
     subject: Binding
     source: Source
-    material: str
+    material: str = Field(max_length=64000)
     content_digest: str = Field(pattern=DIGEST)
     kind: Literal["model_assertion", "repository_assertion"]
 

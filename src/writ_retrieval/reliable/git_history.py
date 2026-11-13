@@ -64,7 +64,7 @@ def export_history(repo, end, *, limit=12, recorded_at=None):
     from .contracts import instant
     instant(recorded_at)
     revisions = git(repo, "rev-list", "--first-parent", f"--max-count={limit}", end).decode().splitlines()[::-1]
-    documents = []; commits = []; previous = {}
+    documents = []; commits = []; previous = {};total_bytes=0
     for revision in revisions:
         fields = git(repo, "show", "-s", "--format=%H%x00%cI%x00%s%x00%b", revision).decode().rstrip("\n").split("\x00",3)
         paths = git(repo, "diff-tree", "--root", "--no-commit-id", "--name-only", "-r", revision, "--", *PATHS).decode().splitlines()
@@ -77,6 +77,8 @@ def export_history(repo, end, *, limit=12, recorded_at=None):
             try: git(repo,"cat-file","-e",spec)
             except ValueError: continue
             material = git(repo, "show", spec).decode()
+            total_bytes+=len(material.encode())
+            if total_bytes>8_000_000: raise ValueError("Git history exceeds 8 MB source-read limit")
             blob = git(repo, "rev-parse", spec).decode().strip()
             for section in sections(path, material):
                 key = (path,section["anchor"])
@@ -84,6 +86,7 @@ def export_history(repo, end, *, limit=12, recorded_at=None):
                 previous[key] = section["digest"]
                 documents.append({**section, "path": path, "revision": revision, "blob_id": blob, "committed_at": utc(fields[1]),
                                   "uri": source_id(revision,path,section["anchor"]), "source_kind": "repository_assertion", "verification_status": "unverified"})
+    if len(documents)>1000: raise ValueError("Git history exceeds 1000 source-version limit")
     return {"contract_version": "writ-git-history/1", "repository": PUBLIC_REPOSITORY, "end": end, "recorded_at": recorded_at,
             "commits": commits, "documents": documents, "license": license_text,
             "limits": {"first_parent_commits": limit, "paths": list(PATHS)},
