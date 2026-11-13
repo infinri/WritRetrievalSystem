@@ -2,6 +2,11 @@
 
 ## Phase 3 evidence
 
+**115 pytest checks pass**, including real Relate regressions; the original five
+unittest demo checks and all nine scripted public-history demo checks pass.
+`pip check` and a separately installed wheel's real-ONNX agent command from outside
+the checkout pass. Exact logs/hashes are in [phase3/validation.json](../evidence/phase3/validation.json).
+
 The [Phase 3 findings](phase3/FINDINGS.md) publish the complete 13-prompt,
 time-separated real-history comparison, source/version checks, nine-check
 process-restart/retraction demo and regressions. Labels remain unreviewed;

@@ -8,10 +8,10 @@ Source provenance checks pass; source relevance and abstention are much weaker.
 ## Evaluation and denominators
 
 The primary, network-denied run is in
-[evaluation-network-denied](../../evidence/phase3/evaluation-network-denied).
+[evaluation-release](../../evidence/phase3/evaluation-release).
 It uses the same pinned public MiniLM ONNX/tokenizer as Phase 2. Twelve public
 first-parent commits produce 47 document-section versions plus commit/change/
-evidence records. All four arms see the same 133 eligible units before project
+evidence records. All four arms see the same 128 eligible units before project
 filtering, lifecycle semantics, 8,000-byte / 6,000-character output budget and
 common conflict renderer. Connected adds typed adjacency; flat arms do not.
 
@@ -25,16 +25,16 @@ not ingested. No prompt/label or relevance weight was tuned after seeing results
 
 | Arm | Any target hit / 8 | All targets / 8 | Source versions / 10 | Mean reciprocal source rank / 8 | Expected abstentions / 4 | Median query ms | Mean context bytes |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| BM25 | 3 | 3 | 3 | 0.3750 | 1 | 94.9 | 4,562 |
-| Vector | 2 | 1 | 3 | 0.2500 | 2 | 112.2 | 4,272 |
-| Hybrid RRF | 3 | 2 | 4 | 0.2917 | 1 | 93.6 | 4,628 |
-| Connected RRF | 2 | 1 | 3 | 0.1875 | 1 | 135.6 | 5,035 |
+| BM25 | 4 | 4 | 4 | 0.4375 | 1 | 92.1 | 4,553 |
+| Vector | 2 | 1 | 3 | 0.1875 | 2 | 119.2 | 4,356 |
+| Hybrid RRF | 3 | 2 | 4 | 0.2917 | 1 | 126.6 | 4,616 |
+| Connected RRF | 2 | 1 | 3 | 0.1875 | 1 | 151.3 | 4,951 |
 
 Timings are medians of three warm repetitions, then median across the 13 queries,
-in one shared process/host. Initial model load was 1.21 s and generation build
-1.51 s. Peak process RSS was **607,976 KiB (~594 MiB)**, including runtime/model/
+in one shared process/host. Initial model load was 1.06 s and generation build
+1.59 s. Peak process RSS was **601,656 KiB (~588 MiB)**, including runtime/model/
 indexes; it is not per-query allocation, an isolated per-arm comparison or a
-server capacity claim. The maximum delivered payload was 5,925 bytes/characters.
+server capacity claim. The maximum delivered payload was 5,990 bytes/characters.
 Exact generative-model token counts were not measured.
 
 Every delivered citation resolves to a stored exact source revision and matching
@@ -51,8 +51,8 @@ Compared with flat hybrid, connected has **zero improved**, **one regressed** an
 **seven unchanged** source-target prompts. H4 loses the retrieval/authorization
 separation source after neighbor delivery consumes budget. H6 returns two of
 three D-035 versions under vector/hybrid/connected; no arm returns all three.
-H11 returns the labeled draft section under all arms. H1/H5/H9/H10 miss all their
-exact targets. BM25 additionally hits H2. All five controls are published alongside
+H11 returns the labeled draft section under all arms. H1/H5/H9 miss all their
+exact targets. BM25 additionally hits H2 and H10. All five controls are published alongside
 these positives, not removed from the full denominator.
 
 The poor results are useful diagnostics: duplicate claim/evidence text, truncated
@@ -86,12 +86,15 @@ complete. CI/tests use the same deny with anonymous local socketpairs for asynci
 
 A later provenance correction removes fabricated FileChange records for files
 merely present in the initial snapshot: a change now requires an actual path in
-that commit's Git diff. The final release evaluation is reported separately in
-`evidence/phase3/evaluation-release`; earlier runs remain historical diagnostics.
+that commit's Git diff, removing five spurious records. This also changes BM25
+H10 from a miss to a hit (4/8 versus 3/8 any-source hits); vector/hybrid/connected
+coverage and abstention counts stay unchanged. The table reports the corrected
+release run; earlier runs remain diagnostics, not equivalent provenance. The old
+citation-digest check alone did not detect that semantic relationship error.
 
 ## Demonstrated reliability, separate from relevance
 
-The [agent-facing scripted demo](../../evidence/phase3/demo-network-denied) uses public
+The [agent-facing scripted demo](../../evidence/phase3/demo-release) uses public
 history through `82971fd`, separate from the evaluation store. It retrieves D-035,
 inspects exact source/evidence versions, withdraws one local evidence association,
 restarts in separate processes, replays the old import, and retrieves the changed

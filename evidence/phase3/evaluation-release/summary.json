@@ -1,0 +1,209 @@
+{
+  "contract_version": "writ-history-evaluation-result/1",
+  "label_status": "model_authored_unreviewed; no human review or live-agent outcome evidence",
+  "frozen_commit": "87ed6d2",
+  "input_sha256": {
+    "evaluation.json": "84595a72050dd0f5a3c2cccd41be444186a90c37158c2930bddb5cec8577097b",
+    "demo-history.json": "87af3888af2991498d6952634bdeb9a59620be7f722a1b2379d3ce481d400213",
+    "train-history.json": "db6675e2f0903368f8e0978af8866505ad7384f356a2c875ff274bb663cc34e2",
+    "queries.json": "a689d987576bc9756b66225174cbe9b5e935a4748deb3b8b3b852c3a32ba4c31"
+  },
+  "source_code_tree": "d8a5fc02ae0ed5824304b1ee300a52436cdc9eba",
+  "settings": {
+    "policy": {
+      "contract_version": "writ-context-policy/1",
+      "candidate_k": 6,
+      "graph_hops": 2,
+      "max_graph_nodes": 64,
+      "cosine_gate": 0.3,
+      "rrf_k": 60,
+      "text_head_chars": 1600,
+      "embedding_batch_limit": 16,
+      "lexical_ties": "descending score then qualified identity",
+      "ranking": "flat RRF; connected adds typed neighbors after identical seeds; confidence reported separately"
+    },
+    "budget": {
+      "max_bytes": 8000,
+      "max_chars": 6000
+    },
+    "repeats": 3,
+    "arm_order": [
+      "lexical",
+      "vector",
+      "hybrid",
+      "connected"
+    ]
+  },
+  "split": "History ends 2026-11-13T01:47:57Z; task motivation from later 2026-11-13T16:42:18Z and 16:48:15Z commits. Later documents never enter the evaluation store.",
+  "history_commits": 12,
+  "history_document_versions": 47,
+  "ingestion": {
+    "replayed": false,
+    "receipt": {
+      "project": "writ-history",
+      "label": "ReliableReceipt",
+      "id": "git:154be77cc28936a31236cb72b0e5b65d74b9f063"
+    },
+    "commits": 12,
+    "document_versions": 47,
+    "git_objects_checked": true
+  },
+  "potential_tension_annotation": {
+    "project": "writ-history",
+    "label": "Conflict",
+    "id": "255e01bcaee3ed2eee5ee7c475e4fb2e304fcea53d405fb175a9749ba5c893ee"
+  },
+  "snapshot_digest": "sha256:c3fee74cd5b088b5a903af9355745e379afe8efb55fb359d74ffc7fd31f6f777",
+  "store_revision": 3,
+  "model_sha256": {
+    "model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+    "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+  },
+  "model_load_ms": 1062.0953559991904,
+  "initial_generation_build_ms": 1590.9286369987967,
+  "memory": {
+    "peak_process_rss_kib": 601656,
+    "note": "Linux ru_maxrss high-water, shared process including ONNX/indexes; not per-query allocation or an isolated arm comparison"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41"
+  },
+  "arms": {
+    "lexical": {
+      "full_queries": 13,
+      "source_target_queries": 8,
+      "source_targets": 10,
+      "any_source_hits": 4,
+      "all_source_hits": 4,
+      "covered_source_targets": 4,
+      "mean_reciprocal_source_rank": 0.4375,
+      "expected_abstention_queries": 4,
+      "correct_abstentions": 1,
+      "abstentions": [
+        "H13"
+      ],
+      "median_latency_ms": 92.14119900025253,
+      "mean_context_bytes": 4553.076923076923,
+      "all_citation_integrity_correct": true,
+      "unknown_control_has_no_approval_or_outcome_assertions": true
+    },
+    "vector": {
+      "full_queries": 13,
+      "source_target_queries": 8,
+      "source_targets": 10,
+      "any_source_hits": 2,
+      "all_source_hits": 1,
+      "covered_source_targets": 3,
+      "mean_reciprocal_source_rank": 0.1875,
+      "expected_abstention_queries": 4,
+      "correct_abstentions": 2,
+      "abstentions": [
+        "H12",
+        "H13"
+      ],
+      "median_latency_ms": 119.21761899975536,
+      "mean_context_bytes": 4356.307692307692,
+      "all_citation_integrity_correct": true,
+      "unknown_control_has_no_approval_or_outcome_assertions": true
+    },
+    "hybrid": {
+      "full_queries": 13,
+      "source_target_queries": 8,
+      "source_targets": 10,
+      "any_source_hits": 3,
+      "all_source_hits": 2,
+      "covered_source_targets": 4,
+      "mean_reciprocal_source_rank": 0.2916666666666667,
+      "expected_abstention_queries": 4,
+      "correct_abstentions": 1,
+      "abstentions": [
+        "H13"
+      ],
+      "median_latency_ms": 126.60312199841428,
+      "mean_context_bytes": 4615.692307692308,
+      "all_citation_integrity_correct": true,
+      "unknown_control_has_no_approval_or_outcome_assertions": true
+    },
+    "connected": {
+      "full_queries": 13,
+      "source_target_queries": 8,
+      "source_targets": 10,
+      "any_source_hits": 2,
+      "all_source_hits": 1,
+      "covered_source_targets": 3,
+      "mean_reciprocal_source_rank": 0.1875,
+      "expected_abstention_queries": 4,
+      "correct_abstentions": 1,
+      "abstentions": [
+        "H13"
+      ],
+      "median_latency_ms": 151.3425399989501,
+      "mean_context_bytes": 4951,
+      "all_citation_integrity_correct": true,
+      "unknown_control_has_no_approval_or_outcome_assertions": true
+    }
+  },
+  "paired_connected_vs_hybrid": {
+    "H1": {
+      "source_coverage_delta": 0,
+      "classification": "unchanged"
+    },
+    "H2": {
+      "source_coverage_delta": 0,
+      "classification": "unchanged"
+    },
+    "H3": {
+      "abstention_changed": false,
+      "classification": "control"
+    },
+    "H4": {
+      "source_coverage_delta": -1,
+      "classification": "regressed"
+    },
+    "H5": {
+      "source_coverage_delta": 0,
+      "classification": "unchanged"
+    },
+    "H6": {
+      "source_coverage_delta": 0,
+      "classification": "unchanged"
+    },
+    "H7": {
+      "abstention_changed": false,
+      "classification": "control"
+    },
+    "H8": {
+      "abstention_changed": false,
+      "classification": "control"
+    },
+    "H9": {
+      "source_coverage_delta": 0,
+      "classification": "unchanged"
+    },
+    "H10": {
+      "source_coverage_delta": 0,
+      "classification": "unchanged"
+    },
+    "H11": {
+      "source_coverage_delta": 0,
+      "classification": "unchanged"
+    },
+    "H12": {
+      "abstention_changed": false,
+      "classification": "control"
+    },
+    "H13": {
+      "abstention_changed": false,
+      "classification": "control"
+    }
+  },
+  "limits": [
+    "Source-section proxy labels, not independently reviewed relevance gold.",
+    "Flat arms and connected get identical documents, records, scope, model, common conflict closure and output budget.",
+    "Connected changes selection order with typed bounded adjacency; it is a measured separate policy, not original V1 ranking.",
+    "Source digest correctness is separate from semantic relevance, verification, approval and unknown outcomes.",
+    "A returned relevant-looking source on a missing-evidence prompt is a false abstention under this provisional label, not proof of a false generated answer.",
+    "No generative agent was run; no task success, causal effect, original-export equivalence or statistically significant advantage established."
+  ]
+}

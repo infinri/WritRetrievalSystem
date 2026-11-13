@@ -21,9 +21,6 @@ from writ_retrieval.memory.store import LocalStore, claim_hash
 from writ_retrieval.frequency import evaluate_graduation
 from .contracts import Claim, Evidence, Binding, canonical, digest, text_digest, instant, now_utc, revision, binding_for, subject_digest, binding_matches, window_active
 
-EXTRA_IDS={"Evidence":"evidence_id","Claim":"claim_id","Conflict":"conflict_id","StoreState":"state_id",
-           "BoundObservation":"observation_id","ReliableReceipt":"receipt_id","EvidenceEvent":"event_id"}
-GRAPH_ID_FIELDS.update(EXTRA_IDS)
 STATE=Key("_system","StoreState","revision")
 
 

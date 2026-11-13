@@ -1,0 +1,87 @@
+{
+  "contract_version": "writ-phase3-run-provenance/1",
+  "baseline_merge": "cc8e32d1064805c8eb517e5d97cf37d4e49fe94b",
+  "phase2_reviewed_head": "26694a3a1c665eb0e97135d7a9a59ec598fb4fb3",
+  "checkpoint_map": {
+    "87ed6d2": {
+      "commit": "a6b6a9b72eebfabcf56b3bd9545def8bcf8b0773",
+      "tree": "ba2e31a0a072a1d7e220db6e94085f218bd9d01c"
+    },
+    "b8b13e1": {
+      "commit": "39dd1acb57774a96c4337b6bfc74825345f30be5",
+      "tree": "eeee8d5f75c0f7a28cb5bcf6005b58173fcfadb6"
+    },
+    "89cdb1c": {
+      "commit": "a2d51085f4c2a0744db9bc42690f3581106fb0b4",
+      "tree": "3919361659547144ed033fd8e8ef5c543c034216"
+    },
+    "3310a8f": {
+      "commit": "e309fc852b6067c8751d25c7e07e459a1923f34d",
+      "tree": "3caff1971fd9ed65a29fef08b139cf9faf4ad1a8"
+    },
+    "de85cdd": {
+      "commit": "815254625605de16a5bebaffdfd885b882fd32d1",
+      "tree": "d8a5fc02ae0ed5824304b1ee300a52436cdc9eba"
+    }
+  },
+  "primary_evaluation": "evaluation-release",
+  "primary_demo": "demo-release",
+  "evaluation_checkpoints": {
+    "evaluation-unbatched": "b8b13e1",
+    "evaluation-bounded-before-tie-fix": "89cdb1c",
+    "evaluation-network-denied": "3310a8f",
+    "evaluation-release": "de85cdd"
+  },
+  "notes": [
+    "GitHub publication creates commits with new author/time metadata. Every mapped tree was checked equal to the locally measured tree.",
+    "Freeze was a local pre-implementation checkpoint before later GitHub publication; labels are model-authored and unreviewed.",
+    "Earlier complete runs precede source-change provenance correction; they are retained diagnostics, not the final corpus.",
+    "The final agent and runner deny network sockets/connections before runtime imports; anonymous local socketpairs support asyncio.",
+    "Two attempted reruns were stopped by automatic approval review for an incidental Microsoft endpoint with unknown payload, even after telemetry opt-out. Neither is counted as completed.",
+    "Later release-only changes fix standalone graph identity registration and wrapper import paths; evaluated ranking/ingestion policy is unchanged.",
+    "No Phase 1/2 evidence or original gold fixture was edited. Telemetry is disabled in the original ONNX loader; original weighted ranking remains available."
+  ],
+  "result_sha256": {
+    "demo/after-restart.json": "c17b8702a0cf30e44783c4891a0f6a399fb52db1127747c749b8422036bed687",
+    "demo/before.json": "b41c2377401aea6c34d31733f6ab397dcbe9c7f0ca30392422b1543146d1a884",
+    "demo/historical-inspect.json": "cd8b1c683a0b77b11c45cb1f8c5c2f6180bb08565e70819d1719a92684c97879",
+    "demo/inspect-claim.json": "2b26bc8f756dfd8627e2a13c35e5e9aad529dfffd44421f6d4aca0bcc9dda532",
+    "demo/inspect-evidence.json": "348c5e57d93bf9cbaad8a23a0ad607041a573e71ceca9401609f515bd932c385",
+    "demo/retraction-receipt.json": "d360a85fd5a46302cc9d3e52093ab629339ba749be7d8a852160235a4225c746",
+    "demo/retraction.json": "f373e2f3bacb3c3f8464024eef8459686014a109caf7bf671599374117783fb2",
+    "demo/summary.json": "7bbdf8249333329df76594bda24b672c42f7061bd5019aac0dd6ddf91e26a4d9",
+    "demo-final/after-restart.json": "2bbd88d085e420f8febc5588577e44f8cd3d8a5d0d7452dc6750d49a52c41df2",
+    "demo-final/before.json": "46eb42733ea18681bff3fa8c66d0fbb080dbecbbe12d740f94cb0c8489c4a0bb",
+    "demo-final/historical-inspect.json": "cd681874a425509bbbe82ca17b41a8f8ff7954a792ec34e0b277b15714cdea3e",
+    "demo-final/inspect-claim.json": "172a889f9b32f20d1af6835845647bb273570ec667a3d35a7fc8e062dda56673",
+    "demo-final/inspect-evidence.json": "7f5b0ffee53b58000cd46f5b489fe161a1e2246f2369dce485246d272d349b26",
+    "demo-final/retraction-receipt.json": "45f9d482a4fa0b7b55ed9794dce3592e184fd2ce3402af88b109fa4bf97945be",
+    "demo-final/retraction.json": "f373e2f3bacb3c3f8464024eef8459686014a109caf7bf671599374117783fb2",
+    "demo-final/summary.json": "4ec0bcde34d64de42a0caeff13c57807a9b56bf0923d060410c35f4bd81e02d0",
+    "demo-network-denied/after-restart.json": "15a2f9efb7492b1b63f4634cbeb7708f328fc330a6a5711fb0677efb1dc892dd",
+    "demo-network-denied/before.json": "e75827ca1108b7149c1ebc398f6b1c9b05d7c54e6ead213102e4d6343750ec0b",
+    "demo-network-denied/historical-inspect.json": "cd4b591e0f6ec8b0fc7b257ce4566becbc0ff478ce7b33e801e6119c9411108d",
+    "demo-network-denied/inspect-claim.json": "8cc2d92099c2ef8ebeb14b8764b4c9787a4d5c8bb5979830342a23040d3d4eea",
+    "demo-network-denied/inspect-evidence.json": "e3d7fc436347cfde0eb2204c59786bcc5cbccb2a8a2e643b9f275876d97dd90a",
+    "demo-network-denied/retraction-receipt.json": "08d3ae8387c1abbd92c7fa4aacf3da8b40f7f820cec0c529080bb9440b317e45",
+    "demo-network-denied/retraction.json": "f373e2f3bacb3c3f8464024eef8459686014a109caf7bf671599374117783fb2",
+    "demo-network-denied/summary.json": "3b315aa28234444a684bf157532c18d66134386b504f44884a1cd8378ac78540",
+    "demo-release/after-restart.json": "7969b422e182d43cd78712b72480e784aaaae61e96c342f77838775c54ab9117",
+    "demo-release/before.json": "970fb2952cf2c4e5c9210c4c880b6552f2b05b23bac5786025ef832ed3207f10",
+    "demo-release/historical-inspect.json": "04618af9923461b2a8c128a9e7394983695c2f777c53bb0904a7a7996667015c",
+    "demo-release/inspect-claim.json": "c54ac3cb62e88cdb7526f521bb8ba5edeb8a662a385c2b781ff7fb6a34941b95",
+    "demo-release/inspect-evidence.json": "1fc4f960349d7f698d9e24ce4d0d2bdd75158a965d3662ffc3d177944272bfb4",
+    "demo-release/retraction-receipt.json": "66623a531052f8b2c8332fa2d34304d028b6eb309072adaefa2d52480d84b5b1",
+    "demo-release/retraction.json": "f373e2f3bacb3c3f8464024eef8459686014a109caf7bf671599374117783fb2",
+    "demo-release/summary.json": "6c83ef4c454f8e43c9fec5ae5050628e3d8b53445be70042b6f191c969474f98",
+    "evaluation-bounded-before-tie-fix/queries.jsonl": "952adfd03cad7f4acf9f8bac672da4757d3d41278ab49718eb678e8aa05dfc77",
+    "evaluation-bounded-before-tie-fix/summary.json": "9e402042348e55d23b725d49a1345ed9d01f83f52ac3b5e9e350a329d9710a83",
+    "evaluation-network-denied/queries.jsonl": "b0402b41d9e6119188f0b79e1a9add4a104c7028f6b5ecd548e292b00f23d0ae",
+    "evaluation-network-denied/summary.json": "2b3c8bf41cdf9aad0216829d03568fe64bce085528a04a801346f9d2fd9a327c",
+    "evaluation-release/queries.jsonl": "b51be4150fa061dfabcd08d76922c74c5b7e370fc73c443cd7e59262386e0947",
+    "evaluation-release/summary.json": "4899d3586de1de1abe26ebbfe54b6b6bf2ba84fa03b98810002b914b2cfd3af8",
+    "evaluation-unbatched/queries.jsonl": "5b2e88ee1c6f24892186a6d2ed947c919d333a741ea0f3cf11e0103153715dad",
+    "evaluation-unbatched/summary.json": "4bc191395b9e87ea32975e44fa8d0f9153e79fefd3a47cf36896179a1b4af35a",
+    "validation.json": "ce93dff4f290e031dd5e05e41958f64267d0a197e449a6596085bc4651419eaa"
+  }
+}

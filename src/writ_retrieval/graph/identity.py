@@ -5,7 +5,11 @@ from .schema import NODE_ID_FIELDS, RECORD_ID_FIELDS
 
 GRAPH_ID_FIELDS = {**NODE_ID_FIELDS, **RECORD_ID_FIELDS,
                    "Outcome": "outcome_id", "FeedbackObservation": "observation_id",
-                   "RecordRevision": "revision_id", "ReviewSnapshot": "review_id"}
+                   "RecordRevision": "revision_id", "ReviewSnapshot": "review_id",
+                   # Phase 3 records stay outside NODE_ID_FIELDS/doctrine candidates.
+                   "Evidence": "evidence_id", "Claim": "claim_id", "Conflict": "conflict_id",
+                   "StoreState": "state_id", "BoundObservation": "observation_id",
+                   "ReliableReceipt": "receipt_id", "EvidenceEvent": "event_id"}
 
 
 @dataclass(frozen=True, order=True)

@@ -43,6 +43,8 @@ def main():
     args=sys.argv[1:]
     if len(args)<2 or args[0] not in {'-m','-c'}: raise SystemExit('usage: offline_run.py -m MODULE [args...] | -c CODE')
     deny_network()
+    # Match python -m/-c import semantics rather than the wrapper script directory.
+    sys.path.insert(0,os.getcwd())
     if args[0]=='-m':
         sys.argv=[args[1],*args[2:]];runpy.run_module(args[1],run_name='__main__',alter_sys=True)
     else:

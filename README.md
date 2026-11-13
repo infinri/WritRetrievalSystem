@@ -20,7 +20,8 @@ See [runnable Phase 3 commands](docs/PHASE3.md), the [V2 scope map](docs/phase3/
 The real-history experiment is deliberately reported without a graph-advantage
 claim: connected covers 3/10 target source versions versus flat hybrid's 4/10.
 Labels remain unreviewed; no generative-agent outcome experiment was run.
-The scripted restart/retraction demonstration passes nine checks. Original
+Current validation is **115 pytest checks**, five original demo checks and nine
+scripted restart/retraction checks. Original
 weighted retrieval and all Phase 1/2 fixtures/evidence remain available below.
 
 ## Connected memory and feedback

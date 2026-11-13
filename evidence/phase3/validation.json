@@ -1,0 +1,35 @@
+{
+  "pytest": {
+    "command": "python scripts/offline_run.py -m pytest -q",
+    "result": "115 passed",
+    "log": "........................................................................ [ 62%]\n...........................................                              [100%]\n115 passed in 15.57s\n"
+  },
+  "unittest": {
+    "command": "python scripts/offline_run.py -m unittest discover -s tests -v",
+    "result": "5 passed",
+    "log": "test_demo_can_be_recalled_in_a_separate_process (test_relate_integration.ExtractedRecallDemoTests.test_demo_can_be_recalled_in_a_separate_process) ... ok\ntest_context_survives_a_separate_process (test_relate_integration.RelateIntegrationTests.test_context_survives_a_separate_process) ... ok\ntest_missing_store_is_not_silently_created_by_query (test_relate_integration.RelateIntegrationTests.test_missing_store_is_not_silently_created_by_query) ... ok\ntest_seed_can_be_repeated_without_duplicate_context (test_relate_integration.RelateIntegrationTests.test_seed_can_be_repeated_without_duplicate_context) ... ok\ntest_unknown_path_and_other_project_return_no_context (test_relate_integration.RelateIntegrationTests.test_unknown_path_and_other_project_return_no_context) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.454s\n\nOK\n"
+  },
+  "pip_check": {
+    "command": "python -m pip check",
+    "result": "No broken requirements found."
+  },
+  "wheel": {
+    "build": "pip wheel --no-deps . (declared build isolation)",
+    "sha256": "f056b0d6933fe1104353326db294668a569b855f0e65faac2f9806b5707094f2",
+    "test": "Installed wheel to a separate target, used validated dependencies, ran read-only agent context with real ONNX from /tmp; no source-checkout imports.",
+    "import_path": "/tmp/writ-phase3-installed/writ_retrieval/reliable/agent.py",
+    "selected_items": 2,
+    "network": "agent entry point denies network sockets before importing runtimes"
+  },
+  "demo_release": {
+    "generation_changed": true,
+    "revision_increased": true,
+    "before_support_active": true,
+    "after_support_inactive": true,
+    "retraction_visible": true,
+    "old_snapshot_recoverable": true,
+    "import_replay_did_not_restore": true,
+    "source_bytes_retained": true,
+    "no_approval_claimed": true
+  }
+}
