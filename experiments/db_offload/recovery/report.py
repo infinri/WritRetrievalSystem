@@ -33,7 +33,7 @@ def main():
     row=data[j];blind.append({'anonymous_id':i,'task':row['task_id'],'payload':row.get('payload'),'error':row.get('error'),'review':'UNREVIEWED','rubric':['full warranted answer','source/revision/digest','temporal correctness','conflicts','useful abstention']});keys.append({'anonymous_id':i,'arm':row['arm']})
    for r in data:
     if r['arm'] in {'A-hybrid','C-flat'}:packets.setdefault(r['task_id'],{})['flat' if r['arm']=='A-hybrid' else 'native']=r.get('payload','Explicit retrieval failure')
- if (a.root/'reranker/queries.jsonl').exists():
+ if (a.root/'reranker/queries.jsonl').exists() or (a.root/'reranker/queries.jsonl.gz').exists():
   rr=rows(a.root/'reranker');result['reranker']={'actual_calls':len(rr),'added_p50_ms':float(np.percentile([r['added_ms'] for r in rr],50)),'added_p95_ms':float(np.percentile([r['added_ms'] for r in rr],95)),'peak_worker_rss_kib':max(r['worker']['peak_rss_kib'] for r in rr),'composed_timings_only':True,'arms':{}}
   for arm in sorted({r['arm'] for r in rr}):
    group=[r for r in rr if r['arm']==arm];positive=[r for r in group if r['metrics']['gold_clauses']];result['reranker']['arms'][arm]={'complete':sum(r['metrics']['complete_answer'] for r in positive),'mrr':sum(r['metrics']['mrr'] for r in positive)/20,'changes':[{'task':r['task_id'],'complete_delta':int(r['metrics']['complete_answer'])-int(r['before']['complete_answer']),'mrr_delta':r['metrics']['mrr']-r['before']['mrr']} for r in positive]}

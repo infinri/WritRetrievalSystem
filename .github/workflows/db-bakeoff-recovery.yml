@@ -1,13 +1,17 @@
 name: Database bake-off replication
 on:
-  push:
-    branches: [codex/bakeoff-evaluation-recovery]
+  pull_request:
+    paths:
+      - 'experiments/db_offload/recovery/**'
+      - 'experiments/db_offload/tests/test_publication_failure.py'
+      - '.github/workflows/db-bakeoff-recovery.yml'
 permissions:
   contents: write
 env:
   EVIDENCE_ROOT: experiments/db_offload/evidence/recovered-ci/${{ github.run_id }}
 jobs:
   quality:
+    if: github.head_ref == 'codex/bakeoff-evaluation-recovery'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     outputs:
