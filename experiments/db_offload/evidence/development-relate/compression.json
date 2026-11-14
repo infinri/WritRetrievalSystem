@@ -1,0 +1,20 @@
+[
+  {
+    "file": "B-queries.json.gz",
+    "uncompressed_sha256": "0935ab1bbfbcaabc8a27c88ba5af8b0011808584c3fa0059851a6bda906ac78a",
+    "uncompressed_bytes": 1950724,
+    "compressed_sha256": "5f34cb6fbe29a42e27f6bee5a5afa460f57bceb182cca0af26fc5f3c80ec6d09"
+  },
+  {
+    "file": "C-queries.json.gz",
+    "uncompressed_sha256": "d7359cedd168906c653f0fba059e08732cc161b912a56365861ca302bed663e4",
+    "uncompressed_bytes": 2017316,
+    "compressed_sha256": "18b0c121c5a816c98d509225923b2db6a7f2a750e99f12e6dd2a210aad54cc45"
+  },
+  {
+    "file": "queries.jsonl.gz",
+    "uncompressed_sha256": "cb48c31445eb4c29db1b18a70aadffccb63f7e384eee7e78ed1fa16ca524468b",
+    "uncompressed_bytes": 7933074,
+    "compressed_sha256": "6e5894052bf971cf2edb7048403c3144ea48bb330f036a7bffcb7fa896b5eafe"
+  }
+]
