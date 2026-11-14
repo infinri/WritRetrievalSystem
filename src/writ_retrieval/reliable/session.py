@@ -75,25 +75,26 @@ def write_atomic(path, data):
 
 
 class ReliableSession:
-    def __init__(self,store,encoder,*,encoder_id,cache_dir):
+    def __init__(self,store,encoder,*,encoder_id,cache_dir,policy=None):
         if not encoder_id: raise ValueError('explicit encoder artifact identity required')
         self.store=store;self.encoder=encoder;self.encoder_id=encoder_id
+        self.policy=copy.deepcopy(POLICY if policy is None else policy)
         self.cache_dir=Path(cache_dir);self.cache_dir.mkdir(parents=True,exist_ok=True)
         self.current=None;self.previous=None;self._lock=threading.RLock()
 
     def _encode(self,items):
         fn=self.encoder.encode_batch if hasattr(self.encoder,'encode_batch') else self.encoder.encode
-        return np.concatenate([normalize(fn(items[start:start+POLICY['embedding_batch_limit']])) for start in range(0,len(items),POLICY['embedding_batch_limit'])],axis=0)
+        return np.concatenate([normalize(fn(items[start:start+self.policy['embedding_batch_limit']])) for start in range(0,len(items),self.policy['embedding_batch_limit'])],axis=0)
 
     def _build(self,export,at):
         nodes=export['nodes'];source=snapshot_document(export);source_digest=digest(source)
         # Expiry and retraction affect a generation even if no new write occurred.
         validity=[[k.token,lifecycle(n,at)] for k,n in sorted(nodes.items())]
         counts=active_counts(nodes,at)
-        generation=digest([source_digest,export['revision'],self.encoder_id,POLICY,validity])
+        generation=digest([source_digest,export['revision'],self.encoder_id,self.policy,validity])
         units={k:n for k,n in sorted(nodes.items()) if k.label in LABELS and lifecycle(n,at) not in {'deleted','outside_validity'}}
         if len(units)>5000: raise ValueError('bounded reliable working set exceeds 5000 units')
-        rows=[{'ref':k.as_dict(),'text':texts(n)[:POLICY['text_head_chars']]} for k,n in units.items()]
+        rows=[{'ref':k.as_dict(),'text':texts(n)[:self.policy['text_head_chars']]} for k,n in units.items()]
         identity=digest([rows,self.encoder_id])
         root=self.cache_dir/export['store_id'];root.mkdir(exist_ok=True)
         final=root/generation[7:]
@@ -106,7 +107,7 @@ class ReliableSession:
                 (temporary/'snapshot.json').write_text(canonical(source),encoding='utf-8')
                 (temporary/'rows.json').write_text(canonical(rows),encoding='utf-8')
                 manifest={'generation':generation,'revision':export['revision'],'source_digest':source_digest,
-                          'encoder_id':self.encoder_id,'index_identity':identity,'policy':POLICY,
+                          'encoder_id':self.encoder_id,'index_identity':identity,'policy':self.policy,
                           'files':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in temporary.iterdir()}}
                 (temporary/'manifest.json').write_text(canonical(manifest),encoding='utf-8')
                 for p in temporary.iterdir():
@@ -192,12 +193,12 @@ class ReliableSession:
             if lifecycle(visible[a],stage['as_of'])=='retracted' or lifecycle(visible[b],stage['as_of'])=='retracted': continue
             adjacency.setdefault(a,[]).append((b,kind));adjacency.setdefault(b,[]).append((a,kind))
         seen=set();queue=deque((k,0) for k in seeds);result=[];paths={}
-        while queue and len(seen)<POLICY['max_graph_nodes']:
+        while queue and len(seen)<self.policy['max_graph_nodes']:
             key,depth=queue.popleft()
             if key in seen or key not in visible: continue
             seen.add(key)
             if key not in seeds: result.append(key)
-            if depth<POLICY['graph_hops']:
+            if depth<self.policy['graph_hops']:
                 for target,kind in sorted(adjacency.get(key,[])):
                     if target.label=='Rule' and target not in seeds: continue
                     if target not in seen and target not in paths:
@@ -210,7 +211,7 @@ class ReliableSession:
         visible=self._visible(stage,project)
         eligible={k:n for k,n in visible.items() if not (k.label=='Rule' and (n.get('mandatory') or n.get('always_on') or n.get('superseded')))}
         keyword=KeywordIndex()
-        keyword.build([{'rule_id':k.token,'trigger':'','statement':texts(n)[:POLICY['text_head_chars']],'tags':''} for k,n in eligible.items()])
+        keyword.build([{'rule_id':k.token,'trigger':'','statement':texts(n)[:self.policy['text_head_chars']],'tags':''} for k,n in eligible.items()])
         by_token={k.token:k for k in eligible}
         hits=keyword.search(text[:2000],limit=len(eligible)) if eligible else []
         hits.sort(key=lambda hit:(-hit['score'],hit['rule_id']))
@@ -220,15 +221,15 @@ class ReliableSession:
             query=self._encode([text[:2000]])[0]
             if stage['matrix'].shape[1]!=len(query): raise ValueError('query/model dimension mismatch')
             similarities={k:float(np.dot(stage['matrix'][i],query)) for i,k in enumerate(stage['keys']) if k in eligible}
-            vec=sorted((k for k in eligible if similarities[k]>=POLICY['cosine_gate']),key=lambda k:(-similarities[k],k))
+            vec=sorted((k for k in eligible if similarities[k]>=self.policy['cosine_gate']),key=lambda k:(-similarities[k],k))
         if arm=='lexical': ranked=lex
         elif arm=='vector': ranked=vec
         else:
             scores={}
             for order in (lex,vec):
-                for rank,key in enumerate(order,1): scores[key]=scores.get(key,0)+1/(POLICY['rrf_k']+rank)
+                for rank,key in enumerate(order,1): scores[key]=scores.get(key,0)+1/(self.policy['rrf_k']+rank)
             ranked=sorted(scores,key=lambda k:(-scores[k],k))
-        ranked=ranked[:POLICY['candidate_k']]
+        ranked=ranked[:self.policy['candidate_k']]
         expanded=[];graph={};paths={}
         if arm=='connected' and ranked:
             expanded,graph=self._neighbors(ranked[:1],stage,eligible)
@@ -272,7 +273,7 @@ class ReliableSession:
         result['payload']=canonical(delivered)
         result['diagnostics'].update(bytes=len(result['payload'].encode()),characters=len(result['payload']),estimated_tokens=math.ceil(len(result['payload'])/4))
         result['diagnostics'].update(arm=arm,visible_units=len(visible),candidate_ids=[k.token for k in ranked],expanded_ids=[k.token for k in expanded],graph=graph,
-                                     snapshot_path=str(stage['path']),encoder_text_head_chars=POLICY['text_head_chars'])
+                                     snapshot_path=str(stage['path']),encoder_text_head_chars=self.policy['text_head_chars'])
         return result
 
     def context(self,text,*,project,arm='connected',budget=Budget(),required=()):
