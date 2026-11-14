@@ -179,7 +179,7 @@ rationale.
 docker compose -f experiments/laptop_decision/docker/compose.yaml up -d --build
 docker compose -f experiments/laptop_decision/docker/compose.yaml exec dev bash -c '
   python scripts/prepare_model.py --output data/model &&
-  git clone https://github.com/infinri/Writ data/Writ-public &&
+  git clone https://github.com/infinri/Writ /home/dev/Writ-public &&
   python -m experiments.db_offload.recovery.bootstrap --output data/bakeoff-tools &&
   RELATE_FFI_DIR=$PWD/data/bakeoff-tools cargo +1.85.1 build --release --locked \
     --manifest-path experiments/db_offload/rust/Cargo.toml --target-dir data/rust-target &&
@@ -197,3 +197,14 @@ python3 -m experiments.laptop_decision.grade summary --trials data/laptop-qa --r
 AI assistance: this protocol, the harness adapters and the analysis were
 written with Claude Code (Claude Opus 5.5). Earlier milestones disclose OpenAI
 Codex assistance. Writ/JolliAI attribution in `NOTICE.md` is unchanged.
+
+## Amendment 1 (before any scoring; correctness stage restarted)
+
+The first `correctness` attempt cloned upstream Writ to `data/Writ-public`
+inside the checkout. Bare `pytest -q` then collected upstream's `tests/`
+package, and 95 collection errors followed (rc=2). This was a setup error and
+not a repository failure. The clone now lives outside the checkout at
+`/home/dev/Writ-public`. The interrupted attempt's logs are kept in the
+container under `data/laptop-results-attempt1-invalid/` and are not used. The
+whole stage reruns fresh. No test, fixture, setting or gate changed. QA trials
+were already running from the committed packets and are unaffected.

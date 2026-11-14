@@ -12,7 +12,7 @@ OFF = [PY, 'scripts/offline_run.py']
 MODEL = 'data/model'
 TOOLS = 'data/bakeoff-tools'
 NEO = TOOLS + '/neo4j-community-5.26.0'
-REPO = 'data/Writ-public'
+REPO = '/home/dev/Writ-public'  # outside the checkout so pytest does not collect upstream tests
 RUST = 'data/rust-target/release/writ-db-thin-client'
 ARMS = 'A-lexical,A-vector,A-hybrid,A-connected,B-flat,B-connected,C-flat,C-connected,D-flat,D-connected'
 
