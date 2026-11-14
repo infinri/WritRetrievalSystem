@@ -1,0 +1,256 @@
+{
+  "version": "writ-bakeoff-quality/1",
+  "partition": "development",
+  "tasks": 32,
+  "label_status": "PROVISIONAL, NOT HUMAN REVIEWED",
+  "code_sha256": {
+    "data.py": "6593393a8256d9dac7d2caa702024308a815f5018db43a1cdf0ec7f1867c7589",
+    "adapters.py": "f57572a73529457dcbb97337bb8f9ca4f57ec45ca292ed0aa543f51811a6cf86",
+    "embed.py": "0a45ddefcc149c0b2e6e346485797f4c96acc603d9a5ffc9d22b6af0e0aa5178",
+    "model.py": "bd0e442709b8d38d32e50d8d581f975e70c66e2b3407d7a47863ac6fd6cd8d7f",
+    "run.py": "c4ebb7038b2cc278b5c6bac70dcbf8822c138e522f95efba6be65db37cf1054c"
+  },
+  "inference_threads": {
+    "intra_op": 2,
+    "inter_op": 1
+  },
+  "code_tree": "6204fd7f4456f4b01b2b28dbb810d4053359012d",
+  "model": {
+    "ready": true,
+    "encoder_id": "sha256:04f9a1801c7808406540ca5b70c7cc39a75a30f0d65b7528aed5958fa37ba42f",
+    "startup_ms": 1612.8780979997828
+  },
+  "corpus_embedding_ms": 11713.629961999686,
+  "corpus_sha256": "605f777bedbf9c625d5d5986491e542809a98adea4f80cd9f94e5984afae7c4f",
+  "imports": {
+    "B": {
+      "import_ms": 4058.879316000457,
+      "materialized_partitions": 5,
+      "materialized_rows": 666
+    },
+    "C": {
+      "import_ms": 1429.0111959999194,
+      "materialized_partitions": 5,
+      "materialized_rows": 666
+    },
+    "A": {
+      "import_ms": 489.98237300020264,
+      "materialized_partitions": 5,
+      "materialized_rows": 666
+    }
+  },
+  "arms": {
+    "A-lexical:0": {
+      "n": 32,
+      "errors": 1,
+      "positive_tasks": 19,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 23,
+      "mrr": 0.506140350877193,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 124.46695699964025,
+      "all_citations_scopes_correct": true
+    },
+    "A-lexical:1": {
+      "n": 32,
+      "errors": 1,
+      "positive_tasks": 19,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 23,
+      "mrr": 0.506140350877193,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 119.89250900023757,
+      "all_citations_scopes_correct": true
+    },
+    "A-vector:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 14,
+      "delivered_clauses": 17,
+      "gold_clauses": 24,
+      "mrr": 0.48833333333333334,
+      "unknown_tasks": 12,
+      "correct_abstentions": 5,
+      "e2e_p95_ms": 179.46858350001094,
+      "all_citations_scopes_correct": true
+    },
+    "A-vector:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 9,
+      "delivered_clauses": 11,
+      "gold_clauses": 24,
+      "mrr": 0.4,
+      "unknown_tasks": 12,
+      "correct_abstentions": 8,
+      "e2e_p95_ms": 100.6679164995603,
+      "all_citations_scopes_correct": true
+    },
+    "A-hybrid:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 17,
+      "delivered_clauses": 21,
+      "gold_clauses": 24,
+      "mrr": 0.5926388888888889,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 131.80625149948355,
+      "all_citations_scopes_correct": true
+    },
+    "A-hybrid:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 16,
+      "delivered_clauses": 20,
+      "gold_clauses": 24,
+      "mrr": 0.5916666666666667,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 134.66031274970192,
+      "all_citations_scopes_correct": true
+    },
+    "A-connected:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.5572222222222222,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 205.8013972500703,
+      "all_citations_scopes_correct": true
+    },
+    "A-connected:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.5338095238095238,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 129.27694725044603,
+      "all_citations_scopes_correct": true
+    },
+    "B-flat:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 17,
+      "delivered_clauses": 21,
+      "gold_clauses": 24,
+      "mrr": 0.5919444444444445,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 227.62178499965557,
+      "all_citations_scopes_correct": true
+    },
+    "B-flat:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 16,
+      "delivered_clauses": 20,
+      "gold_clauses": 24,
+      "mrr": 0.6,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 157.3545997500787,
+      "all_citations_scopes_correct": true
+    },
+    "B-connected:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.5572222222222222,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 186.80405799955224,
+      "all_citations_scopes_correct": true
+    },
+    "B-connected:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.535,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 167.26440400020692,
+      "all_citations_scopes_correct": true
+    },
+    "C-flat:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 17,
+      "delivered_clauses": 21,
+      "gold_clauses": 24,
+      "mrr": 0.5919444444444445,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 189.45568775006905,
+      "all_citations_scopes_correct": true
+    },
+    "C-flat:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 16,
+      "delivered_clauses": 20,
+      "gold_clauses": 24,
+      "mrr": 0.6,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 195.8952459997363,
+      "all_citations_scopes_correct": true
+    },
+    "C-connected:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.5572222222222222,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 234.12057424980048,
+      "all_citations_scopes_correct": true
+    },
+    "C-connected:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.535,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 190.31253425032446,
+      "all_citations_scopes_correct": true
+    }
+  },
+  "peak_client_process_rss_kib": 312952,
+  "memory_note": "quality process contains multiple arms; isolated total resources measured in performance profiles",
+  "measurement_scope": "Development bring-up only; e2e_ms excludes permitted-set preparation, which was timed separately. Final development/held-out runner includes it.",
+  "source_note": "Loaded-code archives reconstruct the two module files before the additive input validation added during this run; original end-of-run code_sha256 records on-disk files. Do not treat it as a final adoption performance measurement."
+}
