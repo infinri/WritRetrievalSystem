@@ -1,0 +1,13 @@
+{
+  "host_kernel": "6.17.0-40-generic",
+  "host_os": "Ubuntu 24.04.3 LTS",
+  "host_cpu": "AMD Ryzen 9 7940HS w/ Radeon 780M Graphics",
+  "host_logical_cpus": 16,
+  "host_mem_total_kib": 32146448,
+  "docker": "Docker version 29.1.2, build 890dcca",
+  "compose": "Docker Compose version v5.0.0",
+  "claude_cli": "2.1.325 (Claude Code)",
+  "host_python_for_trials": "3.12.3",
+  "container_limits": "none set (shares host CPUs/RAM); compose network 10.215.0.0/24",
+  "power_note": "Laptop on its normal power profile; CPU frequency scaling active; no governor changes, cache flushes or clock changes."
+}
