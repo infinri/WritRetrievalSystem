@@ -208,3 +208,45 @@ not a repository failure. The clone now lives outside the checkout at
 container under `data/laptop-results-attempt1-invalid/` and are not used. The
 whole stage reruns fresh. No test, fixture, setting or gate changed. QA trials
 were already running from the committed packets and are unaffected.
+
+## Amendment 2: corrected model-assisted grading (registered after the original review, before regrading)
+
+**Defect.** For blinding, the registered review removed `projection`,
+`snapshot.generation`, `encoder_id` and `selection_policy` from the context the
+grader saw, but the answering model saw the complete packet. When an answer
+correctly quoted a removed field (for example `permitted_rows: 0`, the
+`unrelated-project` projection or the generation digest), the grader counted it
+as unsupported. 17 of 21 grounded-flat and 17 of 20 grounded-relate answers
+flagged with unsupported claims cite removed fields, against 7 of 12 for legacy
+hybrid. The unsupported-assertion metric is therefore biased against the
+grounded conditions, and other rubric fields may also be affected.
+
+**Preserved unchanged.** The original grader code is in commits up to
+`0e3e602`. The original verdicts are in `evidence/qa-model-review/` (hashes in
+`SHA256SUMS`) and the original summary in `evidence/qa-summary-original/`.
+`grade.py inputs --context stripped` regenerates all 432 original grader
+inputs, and their SHA-256 values match the recorded `prompt_sha256` (0
+mismatches, `grader-inputs-stripped.jsonl.gz`).
+
+**Corrected review.** `grade.py review --context full` regrades all 432
+answers. The grader model, effort, system prompt, rubric, schema, isolation
+flags and seed-shuffled order are unchanged. The grader sees the exact packet
+supplied to the answerer, with only `projection.backend` (`flat` or `relate`,
+the only condition-naming field) replaced by `[condition-redacted]`. No answer
+text names a backend. An empty packet still reveals condition A, and the
+legacy and grounded packet formats remain distinguishable. Output goes to
+`evidence/qa-model-review-corrected/`. Original and corrected scores are
+reported side by side and never merged. Both remain model-assisted review, not
+independent human review.
+
+**Analysis (`grade.py compare`).** Results are split into natural-language
+(`section-question`), historical, explicit-source and unknown controls
+(missing-owner-confirmation plus project-isolation). The primary per-answer
+score is correct 1 / partial .5 / incorrect 0 for positives, and 1 for an
+unknown control when the answer warrantedly declines. Repetitions are paired
+within each task: the three repetitions are averaged per task, task-level
+differences are taken against grounded-flat and legacy-hybrid, and a 2,000-draw
+task bootstrap (seed 20261115) gives descriptive 95% intervals. Repetition-level
+better/worse counts are also reported. Grader and answerer token usage and
+CLI-reported list-price cost are summed. Actual billing is unknown. No adoption
+gate depends on these QA results.
