@@ -25,6 +25,8 @@ USAGE (all output is JSON on stdout; errors are JSON on stderr, exit code 2)
   writ-relate verify   --store DIR
   writ-relate mcp      --store DIR                        (read-only MCP server on stdio)
   writ-relate demo     --out DIR [--store DIR] [--fixture FILE] [--seed DIR]
+  writ-relate eval     --tasks FILE --fixtures DIR --work DIR --out DIR [--reference DIR] [--repetitions N]
+  writ-relate bench-cold --spec FILE --out DIR
 
   --model-dir defaults to $WRIT_MODEL_DIR or ./model (pinned MiniLM; see scripts/fetch-model.sh).
   context/inspect/verify/mcp open the store read-only and run with IPv4/IPv6 sockets denied.";
@@ -180,6 +182,16 @@ fn run() -> Result<Json> {
             a.get("seed").map(PathBuf::from),
             a.model_dir(),
         ),
+        "eval" => writ_relate::eval::eval(&writ_relate::eval::EvalArgs {
+            tasks: a.need("tasks")?.into(),
+            fixtures: a.need("fixtures")?.into(),
+            reference: a.get("reference").map(PathBuf::from),
+            work: a.need("work")?.into(),
+            out: a.need("out")?.into(),
+            repetitions: a.get("repetitions").unwrap_or("3").parse()?,
+            model_dir: a.model_dir(),
+        }),
+        "bench-cold" => writ_relate::eval::bench_cold(std::path::Path::new(a.need("spec")?), std::path::Path::new(a.need("out")?)),
         "selftest-offline" => {
             // Hidden diagnostic used by the test suite: proves the deny is active in this process.
             let installed = offline::deny_network()?;

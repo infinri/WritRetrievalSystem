@@ -289,7 +289,7 @@ pub fn import_passages(st: &mut Store, enc: &Encoder, fx: &PassageFixture, proje
                  verification:'unverified', approval:'unknown', outcome:'unknown', source_uri:$uri, source_revision:$rev, source_path:$path, \
                  start_line:$sl, end_line:$el, committed_at:$ca, file_digest:$fd, repository:$repo, license:$lic, search_scope:'pending', embedding:$emb})",
                 params!("key" => s(key.clone()), "vk" => s(vkey(&key, 1)), "p" => s(project), "id" => s(id), "title" => s(d.heading.clone()),
-                    "text" => s(d.text.clone()), "st" => s(format!("{}\n{}", d.heading, d.text)), "cd" => s(d.content_digest.clone()),
+                    "text" => s(d.text.clone()), "st" => s(prepare(&d.heading, &d.text)), "cd" => s(d.content_digest.clone()),
                     "rec" => s(fx.recorded_at.clone()), "at" => s(at.clone()), "uri" => s(d.uri.clone()), "rev" => s(fx.revision.clone()),
                     "path" => s(d.path.clone()), "sl" => Value::Int(d.start_line), "el" => Value::Int(d.end_line), "ca" => s(d.committed_at.clone()),
                     "fd" => s(d.source_digest.clone()), "repo" => s(fx.repository.clone()), "lic" => s(fx.license.clone()), "emb" => floats(v)),
@@ -417,7 +417,7 @@ fn create_decision(t: &mut Store, enc_vec: &[f32], project: &str, id: &str, rev:
     let key = record_key(project, "Decision", id);
     let vk = vkey(&key, rev);
     let mut p = params!("key" => s(key.clone()), "vk" => s(vk.clone()), "p" => s(project), "id" => s(id), "rev" => Value::Int(rev),
-        "title" => s(title), "text" => s(text), "st" => s(format!("{title}\n{text}")), "cd" => s(text_digest(text)), "rec" => s(recorded_at),
+        "title" => s(title), "text" => s(text), "st" => s(prepare(title, text)), "cd" => s(text_digest(text)), "rec" => s(recorded_at),
         "rat" => rationale.clone().map(s).unwrap_or(Value::Null), "vt" => valid_to.clone().map(s).unwrap_or(Value::Null),
         "req" => s(request_id), "emb" => floats(enc_vec));
     for (k, v) in source_params(source)? {

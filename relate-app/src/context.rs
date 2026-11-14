@@ -87,9 +87,13 @@ pub struct Timings {
     pub search_ms: f64,
     pub enrich_ms: f64,
     pub render_ms: f64,
+    /// Fused candidate order before budgeting (diagnostic; not part of the model payload).
+    pub candidates: Vec<String>,
 }
 
 /// Lexical + vector candidate search with RRF, entirely in Relate (one statement).
+/// Policy matches the reference: each list ranks the whole permitted partition, RRF fuses
+/// the complete rankings, and only the fused list is cut to k.
 pub fn search(st: &mut Store, req: &Request, qvec: &[f32], as_of: &str) -> Result<Vec<Ranked>> {
     let scope_list = vec![req.project.clone(), SHARED.to_string()];
     let has_ft = scopes(st)?.iter().any(|(p, _)| p == &req.project);
@@ -102,14 +106,14 @@ pub fn search(st: &mut Store, req: &Request, qvec: &[f32], as_of: &str) -> Resul
     let lexical = format!(
         "CALL db.index.fulltext.queryNodes('ft_{tag}', $q) YIELD node, score \
          WITH node, score WHERE node.recorded_at <= $as_of AND (node.valid_to IS NULL OR node.valid_to > $as_of) \
-         WITH node, score ORDER BY score DESC, node.vkey ASC LIMIT $k \
+         WITH node, score ORDER BY score DESC, node.vkey ASC LIMIT $scan \
          WITH collect(node.vkey) AS ks UNWIND range(0, size(ks) - 1) AS i RETURN ks[i] AS vkey, i + 1 AS rank, 'lexical' AS ch"
     );
     // Relate reports (cosine + 1) / 2; the gate is applied to raw cosine like the reference.
     let vector = format!(
         "MATCH (n:Searchable) SEARCH n IN (VECTOR INDEX {VECTOR_INDEX} FOR $v WHERE n.search_scope IN $sc LIMIT $scan) SCORE AS sc \
          WITH n, 2.0 * sc - 1.0 AS cos WHERE cos >= $gate AND n.recorded_at <= $as_of AND (n.valid_to IS NULL OR n.valid_to > $as_of) \
-         WITH n, cos ORDER BY cos DESC, n.vkey ASC LIMIT $k \
+         WITH n, cos ORDER BY cos DESC, n.vkey ASC LIMIT $scan \
          WITH collect(n.vkey) AS ks UNWIND range(0, size(ks) - 1) AS i RETURN ks[i] AS vkey, i + 1 AS rank, 'vector' AS ch"
     );
     let p = || params!("q" => s(kw.clone()), "v" => floats(qvec), "sc" => strings(scope_list.clone()), "scan" => Value::Int(scan),
@@ -441,5 +445,5 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
         bail!("internal: rendered payload exceeds the hard budget");
     }
     let render_ms = t3.elapsed().as_secs_f64() * 1e3;
-    Ok((payload, Timings { embed_ms, search_ms, enrich_ms, render_ms }))
+    Ok((payload, Timings { embed_ms, search_ms, enrich_ms, render_ms, candidates: ranked.iter().map(|r| r.vkey.clone()).collect() }))
 }

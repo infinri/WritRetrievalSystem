@@ -10,3 +10,5 @@ dist/
 .cache/
 .ruff_cache/
 relate-app/target/
+relate-app/demo-store/.cypherlite.writer
+relate-app/demo-store/wal/.cypherlite.writer

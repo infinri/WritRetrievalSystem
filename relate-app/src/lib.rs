@@ -5,6 +5,7 @@ pub mod db;
 pub mod demo;
 pub mod mcp;
 pub mod embed;
+pub mod eval;
 pub mod memory;
 pub mod offline;
 pub mod util;

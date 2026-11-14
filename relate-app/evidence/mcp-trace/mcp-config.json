@@ -1,0 +1,1 @@
+{"mcpServers":{"writ":{"command":"docker","args":["compose","-f","<host-checkout>/docker/compose.yaml","exec","-T","dev","/work/relate-app/target/release/writ-relate","mcp","--store","/work/relate-app/demo-store","--model-dir","/app/data/model"]}}}
