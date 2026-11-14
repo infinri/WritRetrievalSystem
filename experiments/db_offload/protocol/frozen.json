@@ -1,0 +1,17 @@
+{
+  "version": "writ-bakeoff-freeze/1",
+  "label_review": "NOT HUMAN REVIEWED",
+  "sha256": {
+    "fixtures/corpus.json": "605f777bedbf9c625d5d5986491e542809a98adea4f80cd9f94e5984afae7c4f",
+    "fixtures/tasks.json": "480446c88587c01403edd549530cb48c1438b6a012c852afc9d8d50dfd0acc15",
+    "fixtures/v2-acceptance-contracts.md": "188d21a1e40448703d489eeb1ebf34d6937461e1331794b0594b7a73aad28739",
+    "fixtures/v2-data-model.md": "0432f1ad4adbc2fd501d5733fa6b99e06c10ee522e82e5f86d987644dbaf5409",
+    "fixtures/v2-decisions.md": "a6909d6b150e46a69ac9d9d635ae703353ed6c8ed05c995596f676d9649229a3",
+    "fixtures/v2-retrieval-and-memory.md": "922669264af8648745681197c0a511da8f431c04e416055f04b2f4eb5c9c7baa",
+    "protocol/OWNERSHIP.md": "e396e7665912db753792b63a21aa7f7f43f4ed12f1226842c9d5955e4aec21fd",
+    "protocol/PROTOCOL.md": "28faf74007a0563f437275a4e1f7b7e1bab8f9a51d80506a8c4a58f747606edd",
+    "protocol/preserved.json": "6d3a617350d790bb679228574e26dc417780f49699a86af01757a2781d5b2b5d",
+    "protocol/recovery.json": "e89867ecc2b4927f2b5ecfc87cbda9db1885f973ad48bd37800e96bbac6953f3",
+    "protocol/settings.json": "4919baad677028d4b1d0cec22f2ff6f5f915537990019e783f6e1d37272b4178"
+  }
+}

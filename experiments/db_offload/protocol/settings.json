@@ -1,0 +1,97 @@
+{
+  "version": "writ-db-bakeoff/1",
+  "baseline": "892e13916eee5046feef5be8e1d22f63b8529df4",
+  "v2": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+  "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "model_sha256": {
+    "model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+    "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+  },
+  "dimensions": 384,
+  "metric": "raw cosine; native rebounded score converted 2*s-1",
+  "text_chars": 900,
+  "embedding_tokens": 128,
+  "batch_size": 16,
+  "candidates": 20,
+  "rrf_k": 60,
+  "vector_gate": 0.3,
+  "budget_bytes": 16000,
+  "budget_chars": 12000,
+  "graph_hops": 2,
+  "graph_nodes": 64,
+  "quality_repetitions": 3,
+  "performance_samples": 1000,
+  "warmup": 10,
+  "seed": 20261113,
+  "growth": [
+    1,
+    10,
+    100
+  ],
+  "concurrency": [
+    1,
+    4
+  ],
+  "rss_budget_mib": 2048,
+  "timeout_seconds": 180,
+  "noninferiority": {
+    "answer_sufficiency_absolute_margin": 0.03,
+    "mrr_absolute_margin": 0.03,
+    "citation_scope_lifecycle_failures": 0,
+    "bootstrap_confidence": 0.95,
+    "draws": 2000
+  },
+  "adoption": {
+    "p95_e2e_speedup_minimum": 1.2,
+    "max_total_rss_ratio": 1.1,
+    "correctness_required": "all gates pass; unsupported is not pass",
+    "quality_required": "paired one-sided 95% CI above -0.03; provisional pending independent review"
+  },
+  "tuning": {
+    "development_only": true,
+    "configurations_per_backend": 2,
+    "configs": [
+      {
+        "candidate_k": 20,
+        "gate": 0.3
+      },
+      {
+        "candidate_k": 40,
+        "gate": 0.4
+      }
+    ],
+    "objective": "answer sufficiency, then abstention, then e2e p95",
+    "heldout_open_only_after_config_freeze": true
+  },
+  "neo4j": {
+    "version": "5.26.0 Community",
+    "client": "5.28.2",
+    "heap_mib": 512,
+    "pagecache_mib": 128,
+    "listen": "127.0.0.1 only",
+    "transport": "HTTP JSON for equivalent Python/Rust; Bolt separate capability probe",
+    "ann_m": 16,
+    "ann_ef_construction": 100,
+    "quantization": false
+  },
+  "relate": {
+    "version": "1.0.1",
+    "source_tag": "v1.0.1",
+    "source_revision": "ef436ce10a54a43c8f84905bc45a8d053d99a0d8"
+  },
+  "rust": "1.85.1",
+  "reranker": "Optional independent ablation only after fixed-embedding results; not part of core ownership result",
+  "agent": {
+    "arms": [
+      "none",
+      "strongest_flat",
+      "promising_native"
+    ],
+    "repeats": 3,
+    "max_retrieval_calls": 2,
+    "output_tokens": 256,
+    "status": "NOT RUN unless authorized generative model endpoint/model identity is configured"
+  },
+  "p99_min_samples": 1000,
+  "uncertainty_unit": "paired topic family, not duplicate query formulations"
+}
