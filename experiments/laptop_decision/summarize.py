@@ -17,8 +17,42 @@ def read(path):
         return json.load(f)
 
 
+INTEGRATION = {
+    'legacy-hybrid': {
+        'entry_point': 'python -m writ_retrieval.reliable.agent --store S context ... (Phase 3, unchanged)',
+        'status': 'supported incumbent control',
+        'canonical_refresh_restart_retraction_replay': 'supported and tested (Phase 3 nine checks)',
+        'explicit_source_or_evidence_requests': 'unsupported contract (no writ-context-request/1)',
+        'blocking_gaps': []},
+    'grounded-flat': {
+        'entry_point': 'python -m writ_retrieval.reliable.grounded_cli --store S --cache-dir C --model-dir M --project P TEXT (backend omitted = flat, arm hybrid)',
+        'status': 'supported opt-in workflow; proposed recommended local hackathon workflow',
+        'canonical_refresh_restart_retraction_replay': 'supported and tested; generation rebuilt from the canonical ledger',
+        'explicit_source_or_evidence_requests': 'supported',
+        'blocking_gaps': []},
+    'grounded-relate': {
+        'entry_point': 'same grounded_cli with --backend relate',
+        'status': 'supported opt-in native Relate memory workflow',
+        'canonical_refresh_restart_retraction_replay': 'supported and tested: native persistent indexes derived from one canonical export; '
+            'restart, retraction visibility, replay safety, failed build/publication and corrupt-projection quarantine exercised on the real engine',
+        'policy_retained_in_writ_by_design': ['feedback/confidence', 'retraction/replay meaning', 'conflict bundles', 'budget', 'approval'],
+        'explicit_source_or_evidence_requests': 'supported',
+        'blocking_gaps': [],
+        'not_established': ['concurrency/multi-writer', 'power-loss/device faults', 'incremental refresh/compaction', 'large-corpus refresh cost']},
+    'B/C bake-off Relate prototypes': {
+        'status': 'experimental static prepared-generation profiles (separate 64-task corpus)',
+        'blocking_gaps': ['no canonical live-memory refresh: static projection only', 'full cold CLI recovery path not implemented',
+                          'trusted shared publication not implemented']},
+    'D bake-off Neo4j prototype': {
+        'status': 'experimental static projection on an owned loopback server (separate 64-task corpus)',
+        'blocking_gaps': ['no canonical live-memory refresh, feedback-ledger or recovery integration: static projection only',
+                          'full cold CLI recovery path not implemented', 'trusted shared publication not implemented',
+                          'remote server operation not measured (loopback only)']},
+}
+
+
 def gate(adopt_speed, adopt_rss, quality_ok, correctness_ok):
-    return {'engine_gates_pass_and_required_integrations_supported': correctness_ok, 'quality_noninferior': quality_ok, 'p95_speedup_ge_1_20': adopt_speed,
+    return {'engine_gates_pass_and_no_blocking_integration_gap': correctness_ok, 'quality_noninferior': quality_ok, 'p95_speedup_ge_1_20': adopt_speed,
             'rss_ratio_le_1_10': adopt_rss, 'qualifies': bool(correctness_ok and quality_ok and adopt_speed and adopt_rss)}
 
 
@@ -30,7 +64,8 @@ def main():
     mech = read(L / 'mechanics/mechanics.json')
     out['engine_gates'] = {e: {'pass': sum(c['status'] == 'PASS' for c in v['checks']), 'total': len(v['checks']),
                                'failed': [c['gate'] for c in v['checks'] if c['status'] != 'PASS']} for e, v in mech['engines'].items()}
-    out['engine_not_established'] = mech['not_established']
+    out['bakeoff_mechanics_not_established'] = mech['not_established']
+    out['integration_status'] = INTEGRATION
     out['phase3_restart_retraction'] = read(L / 'phase3-demo/summary.json')
     demo = read(L / 'reliable-memory-demo/demo.json')
     out['canonical_workflow'] = {k: demo[k] for k in ('status', 'steps', 'separate_process_per_step', 'active_positive_contributions', 'rule_approval')}
@@ -73,7 +108,7 @@ def main():
                 continue
             speed, rss = a['p95_ms'] / c['p95_ms'], c['peak_rss_mib'] / a['peak_rss_mib']
             gates[f'{arm}-{g}-{r}'] = {'speedup_vs_A': round(speed, 2), 'rss_ratio_vs_A': round(rss, 2),
-                                       **gate(speed >= 1.2, rss <= 1.1, nonin, ok_corr and not out['engine_not_established'])}
+                                       **gate(speed >= 1.2, rss <= 1.1, nonin, ok_corr and not INTEGRATION['D bake-off Neo4j prototype' if arm == 'D' else 'B/C bake-off Relate prototypes']['blocking_gaps'])}
     out['bakeoff_adoption_gates'] = gates
     flat, rel = rm['heldout']['arms']['grounded-flat'], rm['heldout']['arms']['grounded-relate']
     out['grounded_relate_vs_flat'] = {
@@ -82,8 +117,9 @@ def main():
         'cold_p95_speedup': out['cold_cli']['grounded-flat']['p95_ms'] / out['cold_cli']['grounded-relate']['p95_ms'],
         'cold_peak_rss_ratio': out['cold_cli']['grounded-relate']['max_child_peak_rss_kib'] / out['cold_cli']['grounded-flat']['max_child_peak_rss_kib'],
         'qualifies_for_default': False,
-        'reason': 'Equal labeled delivery, slower warm and cold p95 (no >=1.20x speedup); canonical refresh/replay still application-owned.'}
-    qa = E / 'qa-summary/summary.json'
+        'reason': 'Equal labeled delivery on all dev and held-out tasks; slower warm and cold p95 (no >=1.20x speedup); lower cold-process peak RSS. '
+                  'No correctness or integration blocker for opt-in use; retained Writ policy is by design.'}
+    qa = E / 'qa-comparison/qa-comparison.json'
     out['qa_trials'] = read(qa) if qa.exists() else 'pending'
     (E / 'decision-summary.json').write_text(json.dumps(out, indent=2) + '\n')
     print(json.dumps({k: out[k] for k in ('engine_gates', 'replication_vs_committed', 'bakeoff_adoption_gates', 'grounded_relate_vs_flat')}, indent=1))

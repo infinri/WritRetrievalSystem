@@ -7,6 +7,16 @@ bounded graph enrichment, weighted ranking, filtering, abstention and context
 budget selection. Decision and memory recall is a separate path. No Neo4j server,
 Bolt driver, agent host or Writ V2 kernel is required.
 
+## Laptop architecture validation (proposed, pending review)
+
+A registered laptop rerun of all correctness, quality and database comparisons
+adds 432 Claude fixed-context QA trials. It proposes grounded flat
+(`grounded_cli`, backend omitted, which is unchanged current behavior) for the
+local hackathon workflow, Relate persistence with native Relate as an opt-in
+profile, and no adopted Neo4j profile. See the [ADR](experiments/laptop_decision/ADR.md)
+and [findings](experiments/laptop_decision/FINDINGS.md). Labels and answer
+review are model-assisted and not human-reviewed.
+
 ## Opt-in canonical memory indexes
 
 A follow-up adds persistent native Relate projections from the canonical memory
