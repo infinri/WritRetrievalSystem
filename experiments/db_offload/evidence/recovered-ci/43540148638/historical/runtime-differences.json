@@ -1,0 +1,93 @@
+{
+  "arms": {
+    "lexical": {
+      "changed_outputs": [
+        "Q127"
+      ],
+      "changed_rank_ids": [
+        "Q127"
+      ],
+      "changed_modes": [],
+      "changed_metrics": [],
+      "max_score_or_similarity_abs_delta": 0
+    },
+    "vector": {
+      "changed_outputs": [
+        "Q51",
+        "Q79",
+        "Q120",
+        "Q121",
+        "Q126",
+        "Q134",
+        "Q136",
+        "Q161",
+        "Q163",
+        "Q174",
+        "Q180",
+        "Q185",
+        "P15",
+        "P22",
+        "P30",
+        "P31"
+      ],
+      "changed_rank_ids": [],
+      "changed_modes": [],
+      "changed_metrics": [],
+      "max_score_or_similarity_abs_delta": 9.999999999998899e-05
+    },
+    "hybrid_no_graph": {
+      "changed_outputs": [
+        "Q51",
+        "Q79",
+        "Q89",
+        "Q120",
+        "Q121",
+        "Q126",
+        "Q127",
+        "Q134",
+        "Q136",
+        "Q161",
+        "Q163",
+        "Q174",
+        "Q180",
+        "Q185",
+        "P15",
+        "P22",
+        "P30",
+        "P31"
+      ],
+      "changed_rank_ids": [
+        "Q127"
+      ],
+      "changed_modes": [],
+      "changed_metrics": [],
+      "max_score_or_similarity_abs_delta": 0.00020000000000003348
+    },
+    "hybrid_graph": {
+      "changed_outputs": [
+        "Q51",
+        "Q79",
+        "Q89",
+        "Q120",
+        "Q121",
+        "Q126",
+        "Q134",
+        "Q136",
+        "Q161",
+        "Q163",
+        "Q174",
+        "Q180",
+        "Q185",
+        "P15",
+        "P22",
+        "P30",
+        "P31"
+      ],
+      "changed_rank_ids": [],
+      "changed_modes": [],
+      "changed_metrics": [],
+      "max_score_or_similarity_abs_delta": 0.00020000000000003348
+    }
+  },
+  "note": "Cross-runtime exact differences are retained. No change to original retrieval source was made; no numerical-equivalence claim across runtimes."
+}

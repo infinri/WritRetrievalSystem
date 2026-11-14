@@ -1,0 +1,43 @@
+{
+  "version": "supplemental-load-diagnostic/1",
+  "status": "registered before implementation/execution; after primary held-out evaluation",
+  "purpose": "Avoid treating exact NumPy vector search as the strongest scalable flat control. No new held-out quality claim, tuning or adoption inference.",
+  "source_primary_run": 43540148638,
+  "frozen_input_files": [
+    "experiments/db_offload/fixtures/corpus.json",
+    "experiments/db_offload/fixtures/tasks.json",
+    "experiments/db_offload/protocol/settings.json"
+  ],
+  "arms": [
+    "A-exact",
+    "A-ANN",
+    "D-native"
+  ],
+  "growth": 100,
+  "readers": [
+    1,
+    4
+  ],
+  "samples": 1000,
+  "warmup": 10,
+  "query_budget_seconds": 180,
+  "outer_seconds": 300,
+  "rss_budget_mib": 2048,
+  "ANN": {
+    "library": "hnswlib==0.8.0",
+    "M": 16,
+    "ef_construction": 100,
+    "ef_search": 100,
+    "seed": 20261113,
+    "insert_threads": 1,
+    "query_threads": 1,
+    "metric": "cosine",
+    "candidate_k": 20,
+    "gate": 0.3,
+    "deterministic_sort": "score then qualified UID within ANN result set; no global exact-tie guarantee"
+  },
+  "same_policy": "Identical allowed units/vectors, keyword search, RRF60, rendering, limits and four development query inputs as primary static-generation profiles. A-ANN changes only the vector candidate method.",
+  "quality_measure": "Four cached development vectors: exact-oracle strict/tie-aware recall after timings; not semantic relevance. No held-out query scoring.",
+  "order": "seeded randomized six-profile order; fresh process per profile; common new host; record hardware and all failures",
+  "analysis": "Exploratory post-primary diagnostic only, separate from confirmatory primary results. No configurations tried or selected after results."
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "file": "A-ANN-1.json.gz",
+    "uncompressed_sha256": "8a65e5386b23036746df29f108841815882efe5a0183ac65f3045c88cd443542",
+    "compressed_sha256": "071e9f032bd4dde0147bcd1f6dcba4d61236d6adfdda86173dc5775b9c4df5c1",
+    "raw_bytes": 661914
+  },
+  {
+    "file": "A-ANN-4.json.gz",
+    "uncompressed_sha256": "ff0ae9986681c2dbceb0d09245b67ca1cc5b6ea711f2d535e3d482fac25b36ba",
+    "compressed_sha256": "5fdefeb3923294a9c0c9e926b94de912648e483dac407258b9562e00800b8f9b",
+    "raw_bytes": 896079
+  },
+  {
+    "file": "A-exact-1.json.gz",
+    "uncompressed_sha256": "c2100f396452e63143cffa436e554fe7de4b9979ef28c7db1aa537f142788015",
+    "compressed_sha256": "ce71c953629e0d677e3b6237c5f045d1c61cac2d4483f1597cd1338fd27faf70",
+    "raw_bytes": 812745
+  },
+  {
+    "file": "A-exact-4.json.gz",
+    "uncompressed_sha256": "693abdc2c45081116fc20614327e1f9b16ad315057c14a91bebc933150fb44e0",
+    "compressed_sha256": "29fb0a51837615213132644602e2576bd7e01704dfa8f85c841fb02a7627d401",
+    "raw_bytes": 831388
+  },
+  {
+    "file": "D-native-1.json.gz",
+    "uncompressed_sha256": "25757c1ddd753ecf62f0b767187b15395823ad0a28a33821d01c93abd4e6c0ac",
+    "compressed_sha256": "6f7ab1c800bc7cb1b5dca894a268eea27404ed260c8db3da55f3aea1d4e1c78a",
+    "raw_bytes": 659277
+  },
+  {
+    "file": "D-native-4.json.gz",
+    "uncompressed_sha256": "1586bbcaa4c52b207ec6c397ceb9a0215297fbf8c5af632742742b19dcb19dac",
+    "compressed_sha256": "ea636a29a531a783fab6fbeeee5c654cd0e9345d78b3e1f855fc850892eda61d",
+    "raw_bytes": 444092
+  },
+  {
+    "file": "checkpoints/A-ANN-1.partial.json.gz",
+    "uncompressed_sha256": "65c88cbb8559f5cf7571fd13d779d21ac6bee9c999c3e45b7f993768b90ad4f0",
+    "compressed_sha256": "2a5801b4ff144a2fd882bc306fa4c8543e4321da7625bf9f5deac2fadcb80b64",
+    "raw_bytes": 119480
+  },
+  {
+    "file": "checkpoints/A-ANN-4.partial.json.gz",
+    "uncompressed_sha256": "3313c6fef47bf2f918d9943b573f2616e2f7387a7357428d4c59974d29e180dd",
+    "compressed_sha256": "164c7390b75d4768f23f793af7bab4ed492c2e0c4cb7661d9e9797b5bfc91ca3",
+    "raw_bytes": 107300
+  },
+  {
+    "file": "checkpoints/A-exact-1.partial.json.gz",
+    "uncompressed_sha256": "56f8717f3de09d96c98754e6607d3a00ad9c005889ed9554332c8a0e1cb80541",
+    "compressed_sha256": "02175a3e79b7fcd03af6854c041cc2ca6f56b1f334fd081f6d8680e7ba9d1c27",
+    "raw_bytes": 120033
+  },
+  {
+    "file": "checkpoints/A-exact-4.partial.json.gz",
+    "uncompressed_sha256": "d553a5e7d2e8741b665d168c81759207e2f07196bd5168c9639235d58d60e445",
+    "compressed_sha256": "e2bfc1f65b50c5dc6e70508cc5f42525c2ebbd3a6c8b2c40caef42917f2535fd",
+    "raw_bytes": 118752
+  },
+  {
+    "file": "checkpoints/D-native-1.partial.json.gz",
+    "uncompressed_sha256": "b436b73e6693480ffdcd2ac43791a50812cd51d86178d9a0774a5e23f668ec1e",
+    "compressed_sha256": "95e5e1bc82d3ae760e14b3dc32ae5e7b3bf83cb3a9547931ca768517619a143a",
+    "raw_bytes": 119289
+  },
+  {
+    "file": "checkpoints/D-native-4.partial.json.gz",
+    "uncompressed_sha256": "cdc1d90a306e94b8cbf02ba9c618361478d71197da9f780dcaf61e1d4d8dc668",
+    "compressed_sha256": "1d26cf57e1f84054bde16e6af2731d9246e9a1201ad3249303e447ed9569ed28",
+    "raw_bytes": 119173
+  }
+]

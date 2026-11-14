@@ -1,0 +1,1 @@
+Labels and contexts are UNREVIEWED. Read exact public source versions and wider qualifications around the 120-character proxies; record alternatives and unknowns. Keep blind-key separate. No human approval or outcome follows from automated scoring.

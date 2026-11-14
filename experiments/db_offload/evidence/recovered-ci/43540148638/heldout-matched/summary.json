@@ -1,0 +1,184 @@
+{
+  "version": "writ-bakeoff-quality/1",
+  "partition": "heldout",
+  "track": "matched",
+  "tasks": 32,
+  "label_status": "PROVISIONAL, NOT HUMAN REVIEWED",
+  "code_sha256": {
+    "data.py": "3aeb5b3255863604439aef73ac1e0e3db5816ba7f0cbf24ddd269280dd3db7a5",
+    "adapters.py": "9da31d1313318b8a5f078916870b111e3726fec68cd74e4f2a50c19eaac2e559",
+    "embed.py": "0a45ddefcc149c0b2e6e346485797f4c96acc603d9a5ffc9d22b6af0e0aa5178",
+    "model.py": "bd0e442709b8d38d32e50d8d581f975e70c66e2b3407d7a47863ac6fd6cd8d7f",
+    "run.py": "b23abf2af00ae7df867283a9dd3f0429f00f83f887a847bfeea84028e678831e"
+  },
+  "inference_threads": {
+    "intra_op": 2,
+    "inter_op": 1
+  },
+  "code_tree": "f0901db1229f2ccc34955d81aaa2f08f341b70d2",
+  "model": {
+    "ready": true,
+    "encoder_id": "sha256:04f9a1801c7808406540ca5b70c7cc39a75a30f0d65b7528aed5958fa37ba42f",
+    "startup_ms": 323.7908950000019
+  },
+  "corpus_embedding_ms": 5612.117124000008,
+  "corpus_sha256": "605f777bedbf9c625d5d5986491e542809a98adea4f80cd9f94e5984afae7c4f",
+  "imports": {
+    "neo4j_startup_ms": 7531.749508000019,
+    "B": {
+      "import_ms": 506.99227800009794,
+      "materialized_partitions": 5,
+      "materialized_rows": 508
+    },
+    "D": {
+      "import_ms": 3677.4092560000327,
+      "materialized_partitions": 5,
+      "materialized_rows": 508
+    },
+    "A": {
+      "import_ms": 55.94711499998084,
+      "materialized_partitions": 5,
+      "materialized_rows": 508
+    },
+    "C": {
+      "import_ms": 481.24497299994573,
+      "materialized_partitions": 5,
+      "materialized_rows": 508
+    }
+  },
+  "arms": {
+    "A-lexical:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 13,
+      "delivered_clauses": 15,
+      "gold_clauses": 24,
+      "mrr": 0.41041666666666665,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 30.403855749995046,
+      "all_citations_scopes_correct": true
+    },
+    "A-vector:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 8,
+      "delivered_clauses": 9,
+      "gold_clauses": 24,
+      "mrr": 0.23214285714285715,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 30.81319200001076,
+      "all_citations_scopes_correct": true
+    },
+    "A-hybrid:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 14,
+      "delivered_clauses": 17,
+      "gold_clauses": 24,
+      "mrr": 0.3,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 30.648463749983534,
+      "all_citations_scopes_correct": true
+    },
+    "A-connected:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 8,
+      "delivered_clauses": 9,
+      "gold_clauses": 24,
+      "mrr": 0.22083333333333333,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 36.279624749980144,
+      "all_citations_scopes_correct": true
+    },
+    "B-flat:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 13,
+      "delivered_clauses": 15,
+      "gold_clauses": 24,
+      "mrr": 0.2922619047619048,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 39.6968222499936,
+      "all_citations_scopes_correct": true
+    },
+    "B-connected:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 8,
+      "delivered_clauses": 9,
+      "gold_clauses": 24,
+      "mrr": 0.22083333333333333,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 42.44874425000944,
+      "all_citations_scopes_correct": true
+    },
+    "C-flat:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 13,
+      "delivered_clauses": 15,
+      "gold_clauses": 24,
+      "mrr": 0.2922619047619048,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 38.40468025001087,
+      "all_citations_scopes_correct": true
+    },
+    "C-connected:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 8,
+      "delivered_clauses": 9,
+      "gold_clauses": 24,
+      "mrr": 0.22083333333333333,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 39.23612075000449,
+      "all_citations_scopes_correct": true
+    },
+    "D-flat:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 12,
+      "delivered_clauses": 14,
+      "gold_clauses": 24,
+      "mrr": 0.2851190476190476,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 72.48345474997109,
+      "all_citations_scopes_correct": true
+    },
+    "D-connected:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 8,
+      "delivered_clauses": 9,
+      "gold_clauses": 24,
+      "mrr": 0.22083333333333333,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 74.62843925000584,
+      "all_citations_scopes_correct": true
+    }
+  },
+  "measurement_note": "E2E includes permitted-set resolution, generation validation, inference, retrieval, fusion/expansion and rendering; initial import is separately measured",
+  "peak_client_process_rss_kib": 233640,
+  "memory_note": "quality process contains multiple arms; isolated total resources measured in performance profiles"
+}
