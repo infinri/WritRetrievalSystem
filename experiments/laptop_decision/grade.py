@@ -107,7 +107,7 @@ def cmd_review(a):
     random.Random(GRADER_SEED).shuffle(keys)
     a.out.mkdir(parents=True, exist_ok=True)
     log = a.out / 'model-review.jsonl'
-    done = {json.loads(x)['trial_key'] for x in log.open()} if log.exists() else set()
+    done = {r['trial_key'] for r in map(json.loads, log.open()) if r['verdict']} if log.exists() else set()  # failed attempts retry on resume
     (a.out / 'model-review-protocol.json').write_text(json.dumps({'grader_model_requested': GRADER_MODEL, 'effort': GRADER_EFFORT, 'seed': GRADER_SEED,
         'system': GRADER_SYSTEM, 'rubric': RUBRIC, 'schema': SCHEMA, 'context_mode': a.context,
         'blinding': ('arm/repeat hidden; backend metadata stripped from context; an empty context still reveals the no-history arm' if a.context == 'stripped' else
