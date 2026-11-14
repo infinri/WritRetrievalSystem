@@ -141,7 +141,74 @@ at 10x with four readers but use 2.9x the memory and fail quality.
 
 ## 4. Generated-answer correctness (fixed-context QA, model-assisted)
 
-QA_RESULTS_PLACEHOLDER
+Fixed-context QA with 36 held-out tasks × 4 conditions × 3 repetitions makes
+**432 of 432 trials completed**: zero errors, first attempt, zero tools, all
+resolved to `claude-sonnet-5-5`. Each condition's committed packet is inlined.
+This is a protocol adaptation, not tool-calling. Neo4j is not a condition:
+there is no grounded-memory Neo4j projection to receive the same inputs
+(missing integration). Grading is **model-assisted** (`claude-opus-5-5`,
+blinded to condition and repetition), **not independent human review**. Full
+tables: [QA-RESULTS.md](evidence/qa-comparison/QA-RESULTS.md) and
+[qa-comparison.json](evidence/qa-comparison/qa-comparison.json).
+
+**Grader correction (Amendment 2).** The registered review removed
+`projection`, `snapshot.generation`, `encoder_id` and `selection_policy` from
+the context it showed the grader, although the answerer saw them. Answers that
+correctly quoted those fields were flagged as unsupported. The original
+verdicts and inputs are preserved unchanged. The corrected review regraded all
+432 answers with the complete packet, masking only `projection.backend`. Of 432
+verdicts, these changed: unsupported-assertion count 50, citation correctness
+27, answer correctness 15, appropriate uncertainty 2, gold content 0 and
+warranted unknown 0. One corrected call hit the CLI's 5-hour quota limit; it
+was retried after the reset and both attempts are kept. The resume change to
+`grade.py` (failed attempts retry) does not alter prompts: 433 of 433 corrected
+inputs match their recorded hashes.
+
+Primary score: positives 1 / .5 / 0 for correct / partial / incorrect; unknown
+controls 1 when the answer warrantedly declines.
+
+| Class (answers per condition) | No history | Legacy hybrid | Grounded flat | Grounded Relate |
+|---|---|---|---|---|
+| Natural-language (60), original → corrected | .000 → .000 | .850 → .850 | .875 → .875 | .875 → .883 |
+| Historical (12) | .000 → .000 | .875 → .875 | .833 → .875 | .875 → .875 |
+| Explicit source (18) | .000 → .000 | .667 → .667 | 1.000 → 1.000 | 1.000 → 1.000 |
+| Unknown controls, warranted decline (18) | 18 → 18 | 18 → 18 | 18 → 18 | 18 → 18 |
+| Unknown controls, answers with "unsupported" claims | 0 → 0 | 6 → 0 | 17 → 0 | 18 → 0 |
+| All positives, correct / partial / incorrect (90), corrected | 0 / 0 / 87 | 66 / 15 / 7 | 78 / 6 / 5 | 78 / 7 / 5 |
+| All answers with unsupported claims (108), corrected | 0 | 3 | 3 | 1 |
+| Labeled passage present in packet (positives, 90) | 0 | 66 | 78 | 78 |
+
+Paired within task (three repetitions averaged per task; task bootstrap 95%,
+corrected review, all 30 positive tasks):
+
+- Grounded flat − legacy hybrid: **+.083 [+.017, +.183]**. Better on
+  `hel-06` (natural, a retrieval difference) and `hel-28/29/30` (explicit
+  source; legacy lacks the request contract). Worse on none.
+- Grounded Relate − grounded flat: +.006 [0, +.017]. Only `hel-24` differs,
+  by one repetition. The packets carry identical labeled targets, so this is
+  sampling variation.
+- Natural-language only: flat − legacy +.025 [0, +.075] (`hel-06`).
+  Historical and unknown controls show no differences.
+- Original-review direction is the same: flat − legacy +.078 [+.006, +.178].
+
+Answers track retrieval closely: correct positive answers are within one of
+the number of packets that contain the labeled passage, for every condition.
+No condition cited a revision absent from its packet or request. With no
+history, the model declined every positive question and handled every unknown
+control.
+
+**Usage** (CLI-reported list-price estimates, not an invoice; actual
+subscription billing unknown):
+
+| | Calls | Output tokens | Reported cost | p50 latency |
+|---|---:|---:|---:|---:|
+| Answerer (Sonnet 5.5) | 432 | 279,026 | $5.71 | 8.1 s |
+| Original grader (Opus 5.5) | 432 | 161,558 | $14.84 | 4.9 s |
+| Corrected grader (Opus 5.5) | 433 (1 quota error) | 157,055 | $15.23 | 4.9 s |
+
+These are small, provisional, model-graded differences on opened tasks with
+unreviewed labels. They describe answer quality given a fixed packet. They do
+not establish task completion and gate no architecture choice.
 
 ## 5. Task completion
 

@@ -73,5 +73,5 @@
   "context_mode": "full",
   "blinding": "Amendment 2: arm/repeat hidden; complete packet as supplied to the answerer, only projection.backend masked; empty context and legacy/grounded format still reveal some conditions",
   "status": "MODEL-ASSISTED REVIEW, NOT INDEPENDENT HUMAN REVIEW",
-  "runner_sha256": "f84c8303a07143ecd07db460b630cd1477ac073d01f3339df9868c097e837dd4"
+  "runner_sha256": "2e4fb8bbdd14899ca6e2ce2dc9cc41f6dea0638e76da91db1795069ee6b7b6ed"
 }

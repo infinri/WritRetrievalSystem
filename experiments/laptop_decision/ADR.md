@@ -82,9 +82,14 @@ necessary.
   recovery integration.
 - **B/C Relate prototypes:** they fail the quality margin (−0.15) and fail at
   100x load (timeout or about 4.7 GiB RSS with four readers).
-- **Fixed-context QA (model-assisted):** see the QA results. QA gates no
-  architecture choice. It cannot show task completion or the causal benefit of
-  a rule.
+- **Fixed-context QA (432 Claude Sonnet 5.5 trials; corrected
+  model-assisted review):** the mean score on all positives is legacy .817,
+  grounded flat .900 and grounded Relate .906. Grounded flat − legacy, paired
+  within task, is +.083 [+.017, +.183], driven by `hel-06` and the three
+  explicit-source tasks. Relate and flat do not differ beyond one repetition.
+  All conditions decline all unknown controls. Answers track retrieval
+  closely. QA gates no architecture choice, cannot show task completion or the
+  causal benefit of a rule, and is not human-reviewed.
 
 ## Reconsider when
 
