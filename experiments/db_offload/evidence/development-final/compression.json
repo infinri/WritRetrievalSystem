@@ -1,0 +1,26 @@
+[
+  {
+    "file": "B-queries.json.gz",
+    "uncompressed_sha256": "4448fe718f9ac799e691f3b9b9a64fd15bfed548bc10ce024972e3e0d0e75c87",
+    "uncompressed_bytes": 1833185,
+    "compressed_sha256": "eefcc65e2162305fb1cb27e2d23442d1cbec71d6f3df9aad17da4540fad0531e"
+  },
+  {
+    "file": "C-queries.json.gz",
+    "uncompressed_sha256": "05fa6488f5df4abbc4ea05e0717f3287270c05d984d05bba0546b6033c767b28",
+    "uncompressed_bytes": 1908289,
+    "compressed_sha256": "3646973b46c9df85637dfb7243d4df75a29de91e7a51545b3e1a68041230fb86"
+  },
+  {
+    "file": "D-queries.json.gz",
+    "uncompressed_sha256": "afcaef7f179a5acb497123a210d6b6eb44d23af691d07ae1d87fa490fdbfb2a0",
+    "uncompressed_bytes": 1910160,
+    "compressed_sha256": "22c27ece91cc1c81b908a2c5b9b9c21e67c34fdc8ed949d66019340b26917e6d"
+  },
+  {
+    "file": "queries.jsonl.gz",
+    "uncompressed_sha256": "09b435f9d6cfdd37a73fea3c9d375d945da3236e542bb02b0979bf6736726d51",
+    "uncompressed_bytes": 10131584,
+    "compressed_sha256": "9ba5266b51a17ec7bc621423192346b3ba4900c1091915f34fc8119eccc71dbc"
+  }
+]

@@ -1,0 +1,236 @@
+{
+  "version": "bakeoff-selection/1",
+  "frozen": true,
+  "basis": "development only; answer sufficiency, abstention, E2E p95; exactly two configs per arm",
+  "development_summary_sha256": "3ab336f30cd9084ced53b42690b887b84d17fe99a84fc6a5fdbc0a519a483369",
+  "matched_policy": {
+    "candidate_k": 20,
+    "gate": 0.3
+  },
+  "arms": {
+    "A-connected": {
+      "candidate_k": 40,
+      "gate": 0.4
+    },
+    "A-hybrid": {
+      "candidate_k": 20,
+      "gate": 0.3
+    },
+    "A-lexical": {
+      "candidate_k": 20,
+      "gate": 0.3
+    },
+    "A-vector": {
+      "candidate_k": 20,
+      "gate": 0.3
+    },
+    "B-connected": {
+      "candidate_k": 40,
+      "gate": 0.4
+    },
+    "B-flat": {
+      "candidate_k": 20,
+      "gate": 0.3
+    },
+    "C-connected": {
+      "candidate_k": 20,
+      "gate": 0.3
+    },
+    "C-flat": {
+      "candidate_k": 20,
+      "gate": 0.3
+    },
+    "D-connected": {
+      "candidate_k": 40,
+      "gate": 0.4
+    },
+    "D-flat": {
+      "candidate_k": 20,
+      "gate": 0.3
+    }
+  },
+  "rationale": {
+    "A-connected": {
+      "selected_config_index": 1,
+      "development": {
+        "n": 32,
+        "errors": 0,
+        "positive_tasks": 20,
+        "complete_answers": 15,
+        "delivered_clauses": 19,
+        "gold_clauses": 24,
+        "mrr": 0.5338095238095238,
+        "unknown_tasks": 12,
+        "correct_abstentions": 4,
+        "e2e_p95_ms": 82.34895450004842,
+        "all_citations_scopes_correct": true
+      }
+    },
+    "A-hybrid": {
+      "selected_config_index": 0,
+      "development": {
+        "n": 32,
+        "errors": 0,
+        "positive_tasks": 20,
+        "complete_answers": 17,
+        "delivered_clauses": 21,
+        "gold_clauses": 24,
+        "mrr": 0.5926388888888889,
+        "unknown_tasks": 12,
+        "correct_abstentions": 4,
+        "e2e_p95_ms": 96.29045575024975,
+        "all_citations_scopes_correct": true
+      }
+    },
+    "A-lexical": {
+      "selected_config_index": 0,
+      "development": {
+        "n": 32,
+        "errors": 0,
+        "positive_tasks": 20,
+        "complete_answers": 15,
+        "delivered_clauses": 19,
+        "gold_clauses": 24,
+        "mrr": 0.48083333333333333,
+        "unknown_tasks": 12,
+        "correct_abstentions": 4,
+        "e2e_p95_ms": 117.10116300037043,
+        "all_citations_scopes_correct": true
+      }
+    },
+    "A-vector": {
+      "selected_config_index": 0,
+      "development": {
+        "n": 32,
+        "errors": 0,
+        "positive_tasks": 20,
+        "complete_answers": 14,
+        "delivered_clauses": 17,
+        "gold_clauses": 24,
+        "mrr": 0.48833333333333334,
+        "unknown_tasks": 12,
+        "correct_abstentions": 5,
+        "e2e_p95_ms": 100.12389599978633,
+        "all_citations_scopes_correct": true
+      }
+    },
+    "B-connected": {
+      "selected_config_index": 1,
+      "development": {
+        "n": 32,
+        "errors": 0,
+        "positive_tasks": 20,
+        "complete_answers": 15,
+        "delivered_clauses": 19,
+        "gold_clauses": 24,
+        "mrr": 0.535,
+        "unknown_tasks": 12,
+        "correct_abstentions": 4,
+        "e2e_p95_ms": 106.90106824949908,
+        "all_citations_scopes_correct": true
+      }
+    },
+    "B-flat": {
+      "selected_config_index": 0,
+      "development": {
+        "n": 32,
+        "errors": 0,
+        "positive_tasks": 20,
+        "complete_answers": 17,
+        "delivered_clauses": 21,
+        "gold_clauses": 24,
+        "mrr": 0.5919444444444445,
+        "unknown_tasks": 12,
+        "correct_abstentions": 4,
+        "e2e_p95_ms": 106.50195449989042,
+        "all_citations_scopes_correct": true
+      }
+    },
+    "C-connected": {
+      "selected_config_index": 0,
+      "development": {
+        "n": 32,
+        "errors": 0,
+        "positive_tasks": 20,
+        "complete_answers": 15,
+        "delivered_clauses": 19,
+        "gold_clauses": 24,
+        "mrr": 0.5572222222222222,
+        "unknown_tasks": 12,
+        "correct_abstentions": 4,
+        "e2e_p95_ms": 120.7831584995347,
+        "all_citations_scopes_correct": true
+      }
+    },
+    "C-flat": {
+      "selected_config_index": 0,
+      "development": {
+        "n": 32,
+        "errors": 0,
+        "positive_tasks": 20,
+        "complete_answers": 17,
+        "delivered_clauses": 21,
+        "gold_clauses": 24,
+        "mrr": 0.5919444444444445,
+        "unknown_tasks": 12,
+        "correct_abstentions": 4,
+        "e2e_p95_ms": 94.9193372496211,
+        "all_citations_scopes_correct": true
+      }
+    },
+    "D-connected": {
+      "selected_config_index": 1,
+      "development": {
+        "n": 32,
+        "errors": 0,
+        "positive_tasks": 20,
+        "complete_answers": 15,
+        "delivered_clauses": 19,
+        "gold_clauses": 24,
+        "mrr": 0.535,
+        "unknown_tasks": 12,
+        "correct_abstentions": 4,
+        "e2e_p95_ms": 143.38260850036022,
+        "all_citations_scopes_correct": true
+      }
+    },
+    "D-flat": {
+      "selected_config_index": 0,
+      "development": {
+        "n": 32,
+        "errors": 0,
+        "positive_tasks": 20,
+        "complete_answers": 18,
+        "delivered_clauses": 22,
+        "gold_clauses": 24,
+        "mrr": 0.5981944444444445,
+        "unknown_tasks": 12,
+        "correct_abstentions": 4,
+        "e2e_p95_ms": 173.246574499899,
+        "all_citations_scopes_correct": true
+      }
+    }
+  },
+  "fixed_execution": {
+    "ort_intra_op": 2,
+    "ort_inter_op": 1,
+    "neo4j_transport": "stdlib HTTP JSON loopback; installed driver not used for timing"
+  },
+  "reranker": {
+    "separate_ablation": true,
+    "model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "candidate_cap": 20,
+    "max_length": 384,
+    "threads": 2,
+    "score": "descending relevance logit, qualified ID ties",
+    "apply_equally_to": [
+      "A-hybrid",
+      "B-flat",
+      "C-flat",
+      "D-flat"
+    ],
+    "no_additional_tuning": true
+  },
+  "human_review": "NOT REVIEWED; no replacement adoption authorized"
+}

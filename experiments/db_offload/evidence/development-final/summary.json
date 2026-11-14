@@ -1,0 +1,313 @@
+{
+  "version": "writ-bakeoff-quality/1",
+  "partition": "development",
+  "tasks": 32,
+  "label_status": "PROVISIONAL, NOT HUMAN REVIEWED",
+  "code_sha256": {
+    "data.py": "3aeb5b3255863604439aef73ac1e0e3db5816ba7f0cbf24ddd269280dd3db7a5",
+    "adapters.py": "9da31d1313318b8a5f078916870b111e3726fec68cd74e4f2a50c19eaac2e559",
+    "embed.py": "0a45ddefcc149c0b2e6e346485797f4c96acc603d9a5ffc9d22b6af0e0aa5178",
+    "model.py": "bd0e442709b8d38d32e50d8d581f975e70c66e2b3407d7a47863ac6fd6cd8d7f",
+    "run.py": "f5c3a080ea5e98b7734057fd872dcf3567ad717827551dc66214982dda102ef1"
+  },
+  "inference_threads": {
+    "intra_op": 2,
+    "inter_op": 1
+  },
+  "code_tree": "dafc44b766f38bf45b9e43ed1f652fba8bbcbb87",
+  "model": {
+    "ready": true,
+    "encoder_id": "sha256:04f9a1801c7808406540ca5b70c7cc39a75a30f0d65b7528aed5958fa37ba42f",
+    "startup_ms": 1519.6690060001856
+  },
+  "corpus_embedding_ms": 13474.142394999944,
+  "corpus_sha256": "605f777bedbf9c625d5d5986491e542809a98adea4f80cd9f94e5984afae7c4f",
+  "imports": {
+    "neo4j_startup_ms": 16953.050866000012,
+    "A": {
+      "import_ms": 275.6363850003254,
+      "materialized_partitions": 5,
+      "materialized_rows": 666
+    },
+    "B": {
+      "import_ms": 971.6740350004329,
+      "materialized_partitions": 5,
+      "materialized_rows": 666
+    },
+    "D": {
+      "import_ms": 7133.607595001195,
+      "materialized_partitions": 5,
+      "materialized_rows": 666
+    },
+    "C": {
+      "import_ms": 889.651934999165,
+      "materialized_partitions": 5,
+      "materialized_rows": 666
+    }
+  },
+  "arms": {
+    "A-lexical:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.48083333333333333,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 117.10116300037043,
+      "all_citations_scopes_correct": true
+    },
+    "A-lexical:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.48083333333333333,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 135.45970900008797,
+      "all_citations_scopes_correct": true
+    },
+    "A-vector:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 14,
+      "delivered_clauses": 17,
+      "gold_clauses": 24,
+      "mrr": 0.48833333333333334,
+      "unknown_tasks": 12,
+      "correct_abstentions": 5,
+      "e2e_p95_ms": 100.12389599978633,
+      "all_citations_scopes_correct": true
+    },
+    "A-vector:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 9,
+      "delivered_clauses": 11,
+      "gold_clauses": 24,
+      "mrr": 0.4,
+      "unknown_tasks": 12,
+      "correct_abstentions": 8,
+      "e2e_p95_ms": 84.64171250011532,
+      "all_citations_scopes_correct": true
+    },
+    "A-hybrid:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 17,
+      "delivered_clauses": 21,
+      "gold_clauses": 24,
+      "mrr": 0.5926388888888889,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 96.29045575024975,
+      "all_citations_scopes_correct": true
+    },
+    "A-hybrid:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 16,
+      "delivered_clauses": 20,
+      "gold_clauses": 24,
+      "mrr": 0.5916666666666667,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 119.85467649969905,
+      "all_citations_scopes_correct": true
+    },
+    "A-connected:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.5572222222222222,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 85.4798189993744,
+      "all_citations_scopes_correct": true
+    },
+    "A-connected:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.5338095238095238,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 82.34895450004842,
+      "all_citations_scopes_correct": true
+    },
+    "B-flat:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 17,
+      "delivered_clauses": 21,
+      "gold_clauses": 24,
+      "mrr": 0.5919444444444445,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 106.50195449989042,
+      "all_citations_scopes_correct": true
+    },
+    "B-flat:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 16,
+      "delivered_clauses": 20,
+      "gold_clauses": 24,
+      "mrr": 0.6,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 131.8728142496184,
+      "all_citations_scopes_correct": true
+    },
+    "B-connected:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.5572222222222222,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 111.52718449989152,
+      "all_citations_scopes_correct": true
+    },
+    "B-connected:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.535,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 106.90106824949908,
+      "all_citations_scopes_correct": true
+    },
+    "C-flat:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 17,
+      "delivered_clauses": 21,
+      "gold_clauses": 24,
+      "mrr": 0.5919444444444445,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 94.9193372496211,
+      "all_citations_scopes_correct": true
+    },
+    "C-flat:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 16,
+      "delivered_clauses": 20,
+      "gold_clauses": 24,
+      "mrr": 0.6,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 95.60311774998809,
+      "all_citations_scopes_correct": true
+    },
+    "C-connected:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.5572222222222222,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 120.7831584995347,
+      "all_citations_scopes_correct": true
+    },
+    "C-connected:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.535,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 137.72805624989815,
+      "all_citations_scopes_correct": true
+    },
+    "D-flat:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 18,
+      "delivered_clauses": 22,
+      "gold_clauses": 24,
+      "mrr": 0.5981944444444445,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 173.246574499899,
+      "all_citations_scopes_correct": true
+    },
+    "D-flat:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 16,
+      "delivered_clauses": 20,
+      "gold_clauses": 24,
+      "mrr": 0.6016666666666667,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 195.5543730005047,
+      "all_citations_scopes_correct": true
+    },
+    "D-connected:0": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.5572222222222222,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 208.57436325013623,
+      "all_citations_scopes_correct": true
+    },
+    "D-connected:1": {
+      "n": 32,
+      "errors": 0,
+      "positive_tasks": 20,
+      "complete_answers": 15,
+      "delivered_clauses": 19,
+      "gold_clauses": 24,
+      "mrr": 0.535,
+      "unknown_tasks": 12,
+      "correct_abstentions": 4,
+      "e2e_p95_ms": 143.38260850036022,
+      "all_citations_scopes_correct": true
+    }
+  },
+  "measurement_note": "E2E includes permitted-set resolution, generation validation, inference, retrieval, fusion/expansion and rendering; initial import is separately measured",
+  "peak_client_process_rss_kib": 293496,
+  "memory_note": "quality process contains multiple arms; isolated total resources measured in performance profiles"
+}

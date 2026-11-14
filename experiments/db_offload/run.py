@@ -40,7 +40,7 @@ def evaluation(args):
    order=[(task,arm) for task in tasks for arm in arm_names];rng.shuffle(order)
    for task,arm in order:
     if len(rows)%32==0:print('completed',len(rows),'of',len(configs)*len(order),flush=True)
-    owner,mode,connected=ARMS[arm];adapter=adapters[owner];config=configuration if selection is None else selection['arms'][arm]
+    owner,mode,connected=ARMS[arm];adapter=adapters[owner];config=configuration if selection is None else selection['matched_policy'] if args.track=='matched' else selection['arms'][arm]
     units=permitted(corpus,task);vectors=matrix[[positions[u['id']] for u in units]]
     start=time.perf_counter();scope=adapter.prepare(units,vectors,corpus['edges']);prepare_ms=(time.perf_counter()-start)*1000
     repetitions=[];context=None;ranked=None
@@ -59,7 +59,7 @@ def evaluation(args):
    imports[owner]={'import_ms':adapter.import_ms,'materialized_partitions':len(adapter.views),'materialized_rows':sum(len(v[0] if owner=='A' else v['units']) for v in adapter.views.values())}
    if owner!='A':(args.output/(owner+'-queries.json')).write_text(json.dumps(adapter.query_log,indent=2)+'\n')
  model.close()
- summary={'version':'writ-bakeoff-quality/1','partition':args.partition,'tasks':len(tasks),'label_status':'PROVISIONAL, NOT HUMAN REVIEWED','code_sha256':SOURCE_HASHES,'inference_threads':{'intra_op':2,'inter_op':1},'code_tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),'model':model.info,'corpus_embedding_ms':corpus_embed_ms,'corpus_sha256':hashlib.sha256(Path('experiments/db_offload/fixtures/corpus.json').read_bytes()).hexdigest(),'imports':imports,'arms':{},'measurement_note':'E2E includes permitted-set resolution, generation validation, inference, retrieval, fusion/expansion and rendering; initial import is separately measured', 'peak_client_process_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,'memory_note':'quality process contains multiple arms; isolated total resources measured in performance profiles'}
+ summary={'version':'writ-bakeoff-quality/1','partition':args.partition,'track':args.track,'tasks':len(tasks),'label_status':'PROVISIONAL, NOT HUMAN REVIEWED','code_sha256':SOURCE_HASHES,'inference_threads':{'intra_op':2,'inter_op':1},'code_tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),'model':model.info,'corpus_embedding_ms':corpus_embed_ms,'corpus_sha256':hashlib.sha256(Path('experiments/db_offload/fixtures/corpus.json').read_bytes()).hexdigest(),'imports':imports,'arms':{},'measurement_note':'E2E includes permitted-set resolution, generation validation, inference, retrieval, fusion/expansion and rendering; initial import is separately measured', 'peak_client_process_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,'memory_note':'quality process contains multiple arms; isolated total resources measured in performance profiles'}
  for arm in arm_names:
   for ci in range(len(configs)):
    group=[r for r in rows if r['arm']==arm and r['config_index']==ci];valid=[r for r in group if 'metrics' in r];positive=[r for r in valid if r['metrics']['gold_clauses']];negative=[r for r in valid if r['expected_unknown']]
@@ -67,5 +67,5 @@ def evaluation(args):
  (args.output/'queries.jsonl').write_text(''.join(json.dumps(r,sort_keys=True)+'\n' for r in rows));(args.output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary['arms'],indent=2))
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--partition',choices=['development','heldout'],required=True);p.add_argument('--selection',type=Path);p.add_argument('--arms',default='A-lexical,A-vector,A-hybrid,A-connected,B-flat,B-connected,C-flat,C-connected');p.add_argument('--model-dir',type=Path,required=True);p.add_argument('--neo4j-home',type=Path);p.add_argument('--work',type=Path,required=True);p.add_argument('--output',type=Path,required=True);evaluation(p.parse_args())
+ p=argparse.ArgumentParser();p.add_argument('--partition',choices=['development','heldout'],required=True);p.add_argument('--selection',type=Path);p.add_argument('--track',choices=['matched','best'],default='best');p.add_argument('--arms',default='A-lexical,A-vector,A-hybrid,A-connected,B-flat,B-connected,C-flat,C-connected');p.add_argument('--model-dir',type=Path,required=True);p.add_argument('--neo4j-home',type=Path);p.add_argument('--work',type=Path,required=True);p.add_argument('--output',type=Path,required=True);evaluation(p.parse_args())
 if __name__=='__main__':main()
