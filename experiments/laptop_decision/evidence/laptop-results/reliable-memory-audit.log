@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "preserved_files": 324,
+  "drift": [],
+  "sources": [
+    {
+      "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "passages": 127,
+      "export_digest": "sha256:d23215622ab213b181a39878e5dfb7c33e75bd7274c5b9b0cde22cccd0249861",
+      "git_objects_equal": true
+    },
+    {
+      "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "passages": 127,
+      "export_digest": "sha256:49ae9d8ea3043be759ffc14b6ea47e7bb4b55239f0ebb03c89fa8d270bcc2df0",
+      "git_objects_equal": true
+    }
+  ],
+  "source_version_passages": 254,
+  "distinct_passage_texts": 127,
+  "source_paths": 12,
+  "task_families": 60,
+  "note": "Git byte/object equality only. Source truth, successful outcomes and independent human relevance judgments are not verified."
+}

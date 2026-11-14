@@ -1,0 +1,75 @@
+{
+  "lexical": {
+    "full_queries": 13,
+    "source_target_queries": 8,
+    "source_targets": 10,
+    "any_source_hits": 4,
+    "all_source_hits": 4,
+    "covered_source_targets": 4,
+    "mean_reciprocal_source_rank": 0.4375,
+    "expected_abstention_queries": 4,
+    "correct_abstentions": 1,
+    "abstentions": [
+      "H13"
+    ],
+    "median_latency_ms": 32.663315999798215,
+    "mean_context_bytes": 4553.076923076923,
+    "all_citation_integrity_correct": true,
+    "unknown_control_has_no_approval_or_outcome_assertions": true
+  },
+  "vector": {
+    "full_queries": 13,
+    "source_target_queries": 8,
+    "source_targets": 10,
+    "any_source_hits": 2,
+    "all_source_hits": 1,
+    "covered_source_targets": 3,
+    "mean_reciprocal_source_rank": 0.1875,
+    "expected_abstention_queries": 4,
+    "correct_abstentions": 2,
+    "abstentions": [
+      "H12",
+      "H13"
+    ],
+    "median_latency_ms": 44.09437899994373,
+    "mean_context_bytes": 4356.307692307692,
+    "all_citation_integrity_correct": true,
+    "unknown_control_has_no_approval_or_outcome_assertions": true
+  },
+  "hybrid": {
+    "full_queries": 13,
+    "source_target_queries": 8,
+    "source_targets": 10,
+    "any_source_hits": 3,
+    "all_source_hits": 2,
+    "covered_source_targets": 4,
+    "mean_reciprocal_source_rank": 0.2916666666666667,
+    "expected_abstention_queries": 4,
+    "correct_abstentions": 1,
+    "abstentions": [
+      "H13"
+    ],
+    "median_latency_ms": 45.11083499983215,
+    "mean_context_bytes": 4615.692307692308,
+    "all_citation_integrity_correct": true,
+    "unknown_control_has_no_approval_or_outcome_assertions": true
+  },
+  "connected": {
+    "full_queries": 13,
+    "source_target_queries": 8,
+    "source_targets": 10,
+    "any_source_hits": 2,
+    "all_source_hits": 1,
+    "covered_source_targets": 3,
+    "mean_reciprocal_source_rank": 0.1875,
+    "expected_abstention_queries": 4,
+    "correct_abstentions": 1,
+    "abstentions": [
+      "H13"
+    ],
+    "median_latency_ms": 59.172578000016074,
+    "mean_context_bytes": 4951,
+    "all_citation_integrity_correct": true,
+    "unknown_control_has_no_approval_or_outcome_assertions": true
+  }
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "name": "reliable-memory-dev",
+    "command": [
+      "/opt/venv/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "experiments.reliable_memory.run",
+      "--model-dir",
+      "data/model",
+      "--work-dir",
+      "data/laptop-work/rm-dev",
+      "--out",
+      "data/laptop-results/reliable-memory-dev",
+      "--split",
+      "development"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 36.596885754999676,
+    "finished_utc": "2026-11-14T17:35:27Z"
+  },
+  {
+    "name": "reliable-memory-dev-analyze",
+    "command": [
+      "/opt/venv/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "experiments.reliable_memory.analyze",
+      "--results",
+      "data/laptop-results/reliable-memory-dev/queries.jsonl.gz",
+      "--out",
+      "data/laptop-results/reliable-memory-dev/comparison.json"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 0.6153549770006066,
+    "finished_utc": "2026-11-14T17:35:27Z"
+  },
+  {
+    "name": "reliable-memory-heldout",
+    "command": [
+      "/opt/venv/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "experiments.reliable_memory.run",
+      "--model-dir",
+      "data/model",
+      "--work-dir",
+      "data/laptop-work/rm-heldout",
+      "--out",
+      "data/laptop-results/reliable-memory-heldout",
+      "--split",
+      "heldout"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 37.79873171700001,
+    "finished_utc": "2026-11-14T17:36:05Z"
+  },
+  {
+    "name": "reliable-memory-heldout-analyze",
+    "command": [
+      "/opt/venv/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "experiments.reliable_memory.analyze",
+      "--results",
+      "data/laptop-results/reliable-memory-heldout/queries.jsonl.gz",
+      "--out",
+      "data/laptop-results/reliable-memory-heldout/comparison.json"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 0.6154887319999034,
+    "finished_utc": "2026-11-14T17:36:06Z"
+  },
+  {
+    "name": "db-offload-heldout-matched",
+    "command": [
+      "/opt/venv/bin/python",
+      "-m",
+      "experiments.db_offload.run",
+      "--partition",
+      "heldout",
+      "--selection",
+      "experiments/db_offload/protocol/selection.json",
+      "--track",
+      "matched",
+      "--arms",
+      "A-lexical,A-vector,A-hybrid,A-connected,B-flat,B-connected,C-flat,C-connected,D-flat,D-connected",
+      "--model-dir",
+      "data/model",
+      "--neo4j-home",
+      "data/bakeoff-tools/neo4j-community-5.26.0",
+      "--work",
+      "data/laptop-work/bakeoff-matched",
+      "--output",
+      "data/laptop-results/db-offload-heldout-matched"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 52.79595621899989,
+    "finished_utc": "2026-11-14T17:36:59Z"
+  },
+  {
+    "name": "db-offload-heldout-best",
+    "command": [
+      "/opt/venv/bin/python",
+      "-m",
+      "experiments.db_offload.run",
+      "--partition",
+      "heldout",
+      "--selection",
+      "experiments/db_offload/protocol/selection.json",
+      "--track",
+      "best",
+      "--arms",
+      "A-lexical,A-vector,A-hybrid,A-connected,B-flat,B-connected,C-flat,C-connected,D-flat,D-connected",
+      "--model-dir",
+      "data/model",
+      "--neo4j-home",
+      "data/bakeoff-tools/neo4j-community-5.26.0",
+      "--work",
+      "data/laptop-work/bakeoff-best",
+      "--output",
+      "data/laptop-results/db-offload-heldout-best"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 59.02014586199948,
+    "finished_utc": "2026-11-14T17:37:58Z"
+  }
+]

@@ -1,0 +1,88 @@
+development: repetition 1 complete
+development: repetition 2 complete
+development: repetition 3 complete
+{
+  "out": "data/laptop-results/reliable-memory-dev",
+  "quality": {
+    "grounded-flat": {
+      "tasks": 36,
+      "positive_tasks": 30,
+      "supported_positive_tasks": 30,
+      "complete_proxy": 21,
+      "target_passage_delivery": 0.7,
+      "wilson_95": [
+        0.5212387898833981,
+        0.8333543735604105
+      ],
+      "unknown_tasks": 6,
+      "supported_unknown_tasks": 6,
+      "correct_unknown": 6,
+      "failures": 0,
+      "citation_failures": 0,
+      "mrr": 0.6,
+      "latency_samples": 108,
+      "p50_ms": 59.62872150030307,
+      "p95_ms": 125.4925936498239
+    },
+    "grounded-relate": {
+      "tasks": 36,
+      "positive_tasks": 30,
+      "supported_positive_tasks": 30,
+      "complete_proxy": 21,
+      "target_passage_delivery": 0.7,
+      "wilson_95": [
+        0.5212387898833981,
+        0.8333543735604105
+      ],
+      "unknown_tasks": 6,
+      "supported_unknown_tasks": 6,
+      "correct_unknown": 6,
+      "failures": 0,
+      "citation_failures": 0,
+      "mrr": 0.6,
+      "latency_samples": 108,
+      "p50_ms": 61.87817699992593,
+      "p95_ms": 179.10894285000722
+    },
+    "legacy-connected": {
+      "tasks": 36,
+      "positive_tasks": 30,
+      "supported_positive_tasks": 24,
+      "complete_proxy": 21,
+      "target_passage_delivery": 0.7,
+      "wilson_95": [
+        0.5212387898833981,
+        0.8333543735604105
+      ],
+      "unknown_tasks": 6,
+      "supported_unknown_tasks": 3,
+      "correct_unknown": 3,
+      "failures": 0,
+      "citation_failures": 0,
+      "mrr": 0.5222222222222223,
+      "latency_samples": 108,
+      "p50_ms": 40.66514299984192,
+      "p95_ms": 143.58470724964718
+    },
+    "legacy-hybrid": {
+      "tasks": 36,
+      "positive_tasks": 30,
+      "supported_positive_tasks": 24,
+      "complete_proxy": 21,
+      "target_passage_delivery": 0.7,
+      "wilson_95": [
+        0.5212387898833981,
+        0.8333543735604105
+      ],
+      "unknown_tasks": 6,
+      "supported_unknown_tasks": 3,
+      "correct_unknown": 3,
+      "failures": 0,
+      "citation_failures": 0,
+      "mrr": 0.5222222222222223,
+      "latency_samples": 108,
+      "p50_ms": 40.72393849992295,
+      "p95_ms": 142.61711505023413
+    }
+  }
+}

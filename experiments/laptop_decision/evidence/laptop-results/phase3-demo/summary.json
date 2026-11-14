@@ -1,0 +1,181 @@
+{
+  "contract_version": "writ-agent-demo-result/1",
+  "driver": "deterministic Python subprocess calls to the read-only agent CLI; no generative agent run",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2 public ONNX 1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "model_sha256": {
+    "model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+    "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+  },
+  "input_sha256": {
+    "evaluation.json": "84595a72050dd0f5a3c2cccd41be444186a90c37158c2930bddb5cec8577097b",
+    "demo-history.json": "87af3888af2991498d6952634bdeb9a59620be7f722a1b2379d3ce481d400213",
+    "train-history.json": "db6675e2f0903368f8e0978af8866505ad7384f356a2c875ff274bb663cc34e2",
+    "queries.json": "a689d987576bc9756b66225174cbe9b5e935a4748deb3b8b3b852c3a32ba4c31"
+  },
+  "source_revision": "82971fdbfd0a8650db247e832cf8df89948e2cd6",
+  "task": "Implement the transition service approver provenance and immutable grant binding. Inspect D-035 and its evidence.",
+  "capture": {
+    "commits": 14,
+    "document_versions": 57,
+    "git_objects_checked": true,
+    "receipt": {
+      "id": "git:82971fdbfd0a8650db247e832cf8df89948e2cd6",
+      "label": "ReliableReceipt",
+      "project": "writ-history"
+    },
+    "replayed": false
+  },
+  "checks": {
+    "generation_changed": true,
+    "revision_increased": true,
+    "before_support_active": true,
+    "after_support_inactive": true,
+    "retraction_visible": true,
+    "old_snapshot_recoverable": true,
+    "import_replay_did_not_restore": true,
+    "source_bytes_retained": true,
+    "no_approval_claimed": true
+  },
+  "before_snapshot": {
+    "as_of": "2026-11-14T16:36:27Z",
+    "generation": "sha256:f920bf193ce6e954fcc8bf5348cbbef68768282f06f5312b7f81f21378e6ca8a",
+    "revision": 2,
+    "source_digest": "sha256:8491cf352ae199d0507912908d60bfef946b73106830513b0f7678263882aeef",
+    "status": "current"
+  },
+  "after_snapshot": {
+    "as_of": "2026-11-14T16:36:31Z",
+    "generation": "sha256:aa3d391d0127a4314ae2d39401be4ff9b98df50e4a1a9e7e5f056af97779c069",
+    "revision": 3,
+    "source_digest": "sha256:1ed43d68d7ee14fdfd9cc898e2e558d0a68449157031b98bce223f26468f3d7e",
+    "status": "current"
+  },
+  "why_changed": "A supported local retraction tombstoned the bound Evidence record (revision 1 -> 2). The complete new source snapshot/index generation identifies it as retracted with active_support=false. Original source bytes, prior snapshot and receipt survive. The unverified repository claim remains readable; this is not upstream policy revocation or a measured task outcome.",
+  "commands": [
+    [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.cli",
+      "--store",
+      "data/laptop-work/phase3-demo/graph",
+      "history-import",
+      "examples/phase3/demo-history.json",
+      "--verify-repo",
+      "/home/dev/Writ-public",
+      "--create"
+    ],
+    [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.agent",
+      "--store",
+      "data/laptop-work/phase3-demo/graph",
+      "context",
+      "Implement the transition service approver provenance and immutable grant binding. Inspect D-035 and its evidence.",
+      "--project",
+      "writ-history",
+      "--model-dir",
+      "data/model",
+      "--cache-dir",
+      "data/laptop-work/phase3-demo/cache",
+      "--max-bytes",
+      "16000",
+      "--max-chars",
+      "12000",
+      "--require",
+      "@[\"writ-history\",\"Claim\",\"5c9a39c74a26b8b1f4c1173d12d3782ec0b6b28a56492e7eb9721e8c7b96b7ec\"]",
+      "--require",
+      "@[\"writ-history\",\"Evidence\",\"doc-5c9a39c74a26b8b1f4c1173d12d3782ec0b6b28a56492e7eb9721e8c7b96b7ec\"]",
+      "--inspect"
+    ],
+    [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.agent",
+      "--store",
+      "data/laptop-work/phase3-demo/graph",
+      "inspect",
+      "{\"id\":\"5c9a39c74a26b8b1f4c1173d12d3782ec0b6b28a56492e7eb9721e8c7b96b7ec\",\"label\":\"Claim\",\"project\":\"writ-history\"}",
+      "--project",
+      "writ-history",
+      "--generation",
+      "sha256:f920bf193ce6e954fcc8bf5348cbbef68768282f06f5312b7f81f21378e6ca8a",
+      "--cache-dir",
+      "data/laptop-work/phase3-demo/cache"
+    ],
+    [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.agent",
+      "--store",
+      "data/laptop-work/phase3-demo/graph",
+      "inspect",
+      "{\"id\":\"doc-5c9a39c74a26b8b1f4c1173d12d3782ec0b6b28a56492e7eb9721e8c7b96b7ec\",\"label\":\"Evidence\",\"project\":\"writ-history\"}",
+      "--project",
+      "writ-history",
+      "--generation",
+      "sha256:f920bf193ce6e954fcc8bf5348cbbef68768282f06f5312b7f81f21378e6ca8a",
+      "--cache-dir",
+      "data/laptop-work/phase3-demo/cache"
+    ],
+    [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.cli",
+      "--store",
+      "data/laptop-work/phase3-demo/graph",
+      "retract",
+      "data/laptop-work/phase3-demo/retraction.json"
+    ],
+    [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.cli",
+      "--store",
+      "data/laptop-work/phase3-demo/graph",
+      "history-import",
+      "examples/phase3/demo-history.json",
+      "--verify-repo",
+      "/home/dev/Writ-public"
+    ],
+    [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.agent",
+      "--store",
+      "data/laptop-work/phase3-demo/graph",
+      "context",
+      "Implement the transition service approver provenance and immutable grant binding. Inspect D-035 and its evidence.",
+      "--project",
+      "writ-history",
+      "--model-dir",
+      "data/model",
+      "--cache-dir",
+      "data/laptop-work/phase3-demo/cache",
+      "--max-bytes",
+      "16000",
+      "--max-chars",
+      "12000",
+      "--require",
+      "@[\"writ-history\",\"Claim\",\"5c9a39c74a26b8b1f4c1173d12d3782ec0b6b28a56492e7eb9721e8c7b96b7ec\"]",
+      "--require",
+      "@[\"writ-history\",\"Evidence\",\"doc-5c9a39c74a26b8b1f4c1173d12d3782ec0b6b28a56492e7eb9721e8c7b96b7ec\"]",
+      "--inspect"
+    ],
+    [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.agent",
+      "--store",
+      "data/laptop-work/phase3-demo/graph",
+      "inspect",
+      "{\"id\":\"doc-5c9a39c74a26b8b1f4c1173d12d3782ec0b6b28a56492e7eb9721e8c7b96b7ec\",\"label\":\"Evidence\",\"project\":\"writ-history\"}",
+      "--project",
+      "writ-history",
+      "--generation",
+      "sha256:f920bf193ce6e954fcc8bf5348cbbef68768282f06f5312b7f81f21378e6ca8a",
+      "--cache-dir",
+      "data/laptop-work/phase3-demo/cache"
+    ]
+  ]
+}

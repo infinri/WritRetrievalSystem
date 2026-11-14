@@ -1,0 +1,42 @@
+[
+  {
+    "name": "cold-cli",
+    "command": [
+      "/opt/venv/bin/python",
+      "-m",
+      "experiments.laptop_decision.cold_cli",
+      "--store",
+      "data/laptop-work/rm-heldout/store-a0e0e41",
+      "--model-dir",
+      "data/model",
+      "--cache-root",
+      "data/laptop-work/cold-cli-cache",
+      "--out",
+      "data/laptop-results/cold-cli"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 188.71302312900025,
+    "finished_utc": "2026-11-14T17:41:33Z"
+  },
+  {
+    "name": "db-offload-load-suite",
+    "command": [
+      "/opt/venv/bin/python",
+      "-m",
+      "experiments.db_offload.recovery.suite",
+      "--model-dir",
+      "data/model",
+      "--neo4j-home",
+      "data/bakeoff-tools/neo4j-community-5.26.0",
+      "--work",
+      "data/laptop-work/load-suite",
+      "--output",
+      "data/laptop-results/load-suite"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 1645.5333133369995,
+    "finished_utc": "2026-11-14T18:08:58Z"
+  }
+]
