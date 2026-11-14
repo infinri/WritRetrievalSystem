@@ -471,6 +471,35 @@ Complete target delivery means all 120-character frozen source proxies with exac
 
 Added processing and worker memory are measured independently; composed E2E is not a direct full-system reranking measurement. No threshold was tuned.
 
+## All registered resource profiles
+
+| Profile | Status | n | p50/p95/p99 ms | Peak RSS MiB | Import ms | Disk MiB | CPU s |
+|---|---|---:|---|---:|---:|---:|---:|
+| C-10-1 | COMPLETE | 1000 | 89.0/96.1/108.6 | 632.8 | 1709.3 | 13.8 | 184.5 |
+| B-10-1 | COMPLETE | 1000 | 88.2/95.3/108.5 | 632.3 | 1754.6 | 13.8 | 183.2 |
+| D-100-4 | COMPLETE | 1000 | 189.0/283.5/330.7 | 1899.8 | 30027.9 | 308.4 | 280.7 |
+| A-10-4 | COMPLETE | 1000 | 220.8/315.4/338.8 | 443.3 | 74.5 | 0.0 | 238.2 |
+| D-1-4 | COMPLETE | 1000 | 122.1/165.6/207.6 | 1364.7 | 2125.6 | 5.3 | 150.5 |
+| D-1-1 | COMPLETE | 1000 | 39.2/55.2/66.9 | 1187.1 | 2026.8 | 5.3 | 151.2 |
+| B-100-1 | FAILED | 248 | - | 1473.4 | 24745.4 | 152.9 | 273.5 |
+| A-100-4 | FAILED | 708 | - | 600.9 | 702.0 | 0.0 | 565.0 |
+| D-10-4 | COMPLETE | 1000 | 123.1/182.8/229.9 | 1401.3 | 5265.6 | 32.9 | 164.3 |
+| C-100-1 | FAILED | 254 | - | 1473.3 | 24585.7 | 152.9 | 272.5 |
+| A-10-1 | COMPLETE | 1000 | 72.1/107.6/113.4 | 441.7 | 77.1 | 0.0 | 300.4 |
+| B-10-4 | COMPLETE | 1000 | 195.0/255.9/304.8 | 1333.2 | 1692.8 | 13.8 | 210.4 |
+| C-1-4 | COMPLETE | 1000 | 107.7/134.0/145.2 | 759.8 | 176.7 | 1.5 | 88.8 |
+| D-100-1 | COMPLETE | 1000 | 84.2/107.1/124.4 | 1904.2 | 29916.7 | 308.4 | 282.2 |
+| B-1-1 | COMPLETE | 1000 | 30.8/34.6/41.1 | 484.4 | 176.0 | 1.5 | 80.7 |
+| B-100-4 | FAILED | 1 | - | 4832.2 | 24611.6 | 138.3 | 84.4 |
+| A-100-1 | FAILED | 715 | - | 553.8 | 688.6 | 0.0 | 466.9 |
+| C-1-1 | COMPLETE | 1000 | 31.0/34.7/41.0 | 483.7 | 174.9 | 1.5 | 81.4 |
+| C-10-4 | COMPLETE | 1000 | 191.0/254.0/287.0 | 1334.1 | 1746.4 | 13.8 | 206.8 |
+| C-100-4 | FAILED | 1 | - | 4833.3 | 24726.5 | 138.3 | 86.1 |
+| D-10-1 | COMPLETE | 1000 | 41.9/61.8/71.5 | 1222.6 | 5226.2 | 32.9 | 166.7 |
+| A-1-4 | COMPLETE | 1000 | 85.9/109.6/134.5 | 417.1 | 18.9 | 0.0 | 65.5 |
+| A-1-1 | COMPLETE | 1000 | 23.4/25.8/33.5 | 408.9 | 17.7 | 0.0 | 63.6 |
+| B-1-4 | COMPLETE | 1000 | 108.6/133.0/145.6 | 761.0 | 175.0 | 1.5 | 89.4 |
+
 ## Limits and proposed split
 
 No production modules or dependencies are removed. Keep Relate persistence and application source/binding/visibility/replay/confidence/approval/budget semantics. Native partitions are not built-in authorization. Automatic conflict discovery, trusted shared publication, full canonical-memory projection, native evidence replay/retraction, device faults, remote server and full cold CLI recovery remain unsupported adoption gates.
