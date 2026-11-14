@@ -17,7 +17,7 @@ PATHS = (
 
 
 def git(repo, *args):
-    env = {**os.environ, "GIT_OPTIONAL_LOCKS": "0", "GIT_CONFIG_NOSYSTEM": "1", "GIT_CONFIG_GLOBAL": os.devnull, "GIT_NO_REPLACE_OBJECTS": "1", "GIT_TERMINAL_PROMPT":"0"}
+    env = {**os.environ, "GIT_OPTIONAL_LOCKS": "0", "GIT_CONFIG_NOSYSTEM": "1", "GIT_CONFIG_GLOBAL": os.devnull, "GIT_NO_REPLACE_OBJECTS": "1", "GIT_TERMINAL_PROMPT":"0", "GIT_NO_LAZY_FETCH":"1"}
     # Bound both output and execution; none of these object reads invokes hooks or a shell.
     import threading
     command=["git", "--no-pager", "--no-replace-objects", "-c", "core.hooksPath=/dev/null", "-C", str(repo), *args]
@@ -74,8 +74,9 @@ def export_history(repo, end, *, limit=12, recorded_at=None):
         for path in PATHS:
             if revision != revisions[0] and path not in paths: continue
             spec = revision+":"+path
-            try: git(repo,"cat-file","-e",spec)
-            except ValueError: continue
+            # A missing path is different from an unavailable promised blob.
+            # Never turn object-read/storage failure into a silently incomplete export.
+            if not git(repo,"ls-tree",revision,"--",path): continue
             material = git(repo, "show", spec).decode()
             total_bytes+=len(material.encode())
             if total_bytes>8_000_000: raise ValueError("Git history exceeds 8 MB source-read limit")

@@ -1,0 +1,502 @@
+{
+  "arms": {
+    "grounded-flat": {
+      "natural": {
+        "tasks": 27,
+        "positive_tasks": 24,
+        "complete_proxy": 15,
+        "target_passage_delivery": 0.625,
+        "wilson_95": [
+          0.42709619037907065,
+          0.7884086656636855
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5,
+        "latency_samples": 81,
+        "p50_ms": 50.38922400035517,
+        "p95_ms": 79.73968999976933
+      },
+      "structured": {
+        "tasks": 9,
+        "positive_tasks": 6,
+        "complete_proxy": 6,
+        "target_passage_delivery": 1.0,
+        "wilson_95": [
+          0.6096569663469354,
+          0.9999999999999999
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 1.0,
+        "latency_samples": 27,
+        "p50_ms": 34.80612200019095,
+        "p95_ms": 129.42776430008962
+      },
+      "all": {
+        "tasks": 36,
+        "positive_tasks": 30,
+        "complete_proxy": 21,
+        "target_passage_delivery": 0.7,
+        "wilson_95": [
+          0.5212387898833981,
+          0.8333543735604105
+        ],
+        "unknown_tasks": 6,
+        "supported_unknown_tasks": 6,
+        "correct_unknown": 6,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.6,
+        "latency_samples": 108,
+        "p50_ms": 49.69011100001808,
+        "p95_ms": 128.41127534998122
+      }
+    },
+    "grounded-relate": {
+      "natural": {
+        "tasks": 27,
+        "positive_tasks": 24,
+        "complete_proxy": 15,
+        "target_passage_delivery": 0.625,
+        "wilson_95": [
+          0.42709619037907065,
+          0.7884086656636855
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5,
+        "latency_samples": 81,
+        "p50_ms": 53.300479000427,
+        "p95_ms": 150.17629299927648
+      },
+      "structured": {
+        "tasks": 9,
+        "positive_tasks": 6,
+        "complete_proxy": 6,
+        "target_passage_delivery": 1.0,
+        "wilson_95": [
+          0.6096569663469354,
+          0.9999999999999999
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 1.0,
+        "latency_samples": 27,
+        "p50_ms": 30.245773999922676,
+        "p95_ms": 39.2765964003047
+      },
+      "all": {
+        "tasks": 36,
+        "positive_tasks": 30,
+        "complete_proxy": 21,
+        "target_passage_delivery": 0.7,
+        "wilson_95": [
+          0.5212387898833981,
+          0.8333543735604105
+        ],
+        "unknown_tasks": 6,
+        "supported_unknown_tasks": 6,
+        "correct_unknown": 6,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.6,
+        "latency_samples": 108,
+        "p50_ms": 50.80757449968587,
+        "p95_ms": 147.40102689947886
+      }
+    },
+    "legacy-connected": {
+      "natural": {
+        "tasks": 27,
+        "positive_tasks": 24,
+        "complete_proxy": 17,
+        "target_passage_delivery": 0.7083333333333334,
+        "wilson_95": [
+          0.508319363412903,
+          0.8508553966583573
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5138888888888888,
+        "latency_samples": 81,
+        "p50_ms": 35.5544469994129,
+        "p95_ms": 101.53648599953158
+      },
+      "structured": {
+        "tasks": 9,
+        "positive_tasks": 6,
+        "complete_proxy": 4,
+        "target_passage_delivery": 0.6666666666666666,
+        "wilson_95": [
+          0.29998832134152864,
+          0.9032306674407831
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 0,
+        "correct_unknown": 0,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5555555555555556,
+        "latency_samples": 27,
+        "p50_ms": 36.950857999727305,
+        "p95_ms": 149.61337409959015
+      },
+      "all": {
+        "tasks": 36,
+        "positive_tasks": 30,
+        "complete_proxy": 21,
+        "target_passage_delivery": 0.7,
+        "wilson_95": [
+          0.5212387898833981,
+          0.8333543735604105
+        ],
+        "unknown_tasks": 6,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5222222222222223,
+        "latency_samples": 108,
+        "p50_ms": 35.849942499680765,
+        "p95_ms": 131.25628099983257
+      }
+    },
+    "legacy-hybrid": {
+      "natural": {
+        "tasks": 27,
+        "positive_tasks": 24,
+        "complete_proxy": 17,
+        "target_passage_delivery": 0.7083333333333334,
+        "wilson_95": [
+          0.508319363412903,
+          0.8508553966583573
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5138888888888888,
+        "latency_samples": 81,
+        "p50_ms": 38.72186300031899,
+        "p95_ms": 114.55268600002455
+      },
+      "structured": {
+        "tasks": 9,
+        "positive_tasks": 6,
+        "complete_proxy": 4,
+        "target_passage_delivery": 0.6666666666666666,
+        "wilson_95": [
+          0.29998832134152864,
+          0.9032306674407831
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 0,
+        "correct_unknown": 0,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5555555555555556,
+        "latency_samples": 27,
+        "p50_ms": 39.562486999784596,
+        "p95_ms": 134.66494530011914
+      },
+      "all": {
+        "tasks": 36,
+        "positive_tasks": 30,
+        "complete_proxy": 21,
+        "target_passage_delivery": 0.7,
+        "wilson_95": [
+          0.5212387898833981,
+          0.8333543735604105
+        ],
+        "unknown_tasks": 6,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5222222222222223,
+        "latency_samples": 108,
+        "p50_ms": 38.9485529999547,
+        "p95_ms": 125.74690245010049
+      }
+    }
+  },
+  "paired_vs_grounded_flat": {
+    "grounded-flat": {
+      "improved": [],
+      "regressed": [],
+      "unchanged": [
+        "dev-08",
+        "dev-25",
+        "dev-23",
+        "dev-19",
+        "dev-30",
+        "dev-27",
+        "dev-18",
+        "dev-13",
+        "dev-01",
+        "dev-07",
+        "dev-22",
+        "dev-21",
+        "dev-14",
+        "dev-09",
+        "dev-26",
+        "dev-29",
+        "dev-03",
+        "dev-24",
+        "dev-15",
+        "dev-05",
+        "dev-16",
+        "dev-28",
+        "dev-17",
+        "dev-20",
+        "dev-02",
+        "dev-06",
+        "dev-11",
+        "dev-04",
+        "dev-12",
+        "dev-10"
+      ]
+    },
+    "grounded-relate": {
+      "improved": [],
+      "regressed": [],
+      "unchanged": [
+        "dev-08",
+        "dev-25",
+        "dev-23",
+        "dev-19",
+        "dev-30",
+        "dev-27",
+        "dev-18",
+        "dev-13",
+        "dev-01",
+        "dev-07",
+        "dev-22",
+        "dev-21",
+        "dev-14",
+        "dev-09",
+        "dev-26",
+        "dev-29",
+        "dev-03",
+        "dev-24",
+        "dev-15",
+        "dev-05",
+        "dev-16",
+        "dev-28",
+        "dev-17",
+        "dev-20",
+        "dev-02",
+        "dev-06",
+        "dev-11",
+        "dev-04",
+        "dev-12",
+        "dev-10"
+      ]
+    },
+    "legacy-connected": {
+      "improved": [
+        "dev-07",
+        "dev-22",
+        "dev-05",
+        "dev-04"
+      ],
+      "regressed": [
+        "dev-27",
+        "dev-29",
+        "dev-02",
+        "dev-11"
+      ],
+      "unchanged": [
+        "dev-08",
+        "dev-25",
+        "dev-23",
+        "dev-19",
+        "dev-30",
+        "dev-18",
+        "dev-13",
+        "dev-01",
+        "dev-21",
+        "dev-14",
+        "dev-09",
+        "dev-26",
+        "dev-03",
+        "dev-24",
+        "dev-15",
+        "dev-16",
+        "dev-28",
+        "dev-17",
+        "dev-20",
+        "dev-06",
+        "dev-12",
+        "dev-10"
+      ]
+    },
+    "legacy-hybrid": {
+      "improved": [
+        "dev-07",
+        "dev-22",
+        "dev-05",
+        "dev-04"
+      ],
+      "regressed": [
+        "dev-27",
+        "dev-29",
+        "dev-02",
+        "dev-11"
+      ],
+      "unchanged": [
+        "dev-08",
+        "dev-25",
+        "dev-23",
+        "dev-19",
+        "dev-30",
+        "dev-18",
+        "dev-13",
+        "dev-01",
+        "dev-21",
+        "dev-14",
+        "dev-09",
+        "dev-26",
+        "dev-03",
+        "dev-24",
+        "dev-15",
+        "dev-16",
+        "dev-28",
+        "dev-17",
+        "dev-20",
+        "dev-06",
+        "dev-12",
+        "dev-10"
+      ]
+    }
+  },
+  "labels": "MODEL_AUTHORED_UNREVIEWED",
+  "quality_note": "Complete labelled paragraph actually delivered, not independently reviewed answer sufficiency. Timing repetitions are not independent quality tasks.",
+  "split": "development",
+  "protocol": "sha256:cc0a396bce6346c8cae3a94f6bc3e40410459e8e8a02ddfad902eb31a9c5ae30",
+  "model_identity": "sha256:04f9a1801c7808406540ca5b70c7cc39a75a30f0d65b7528aed5958fa37ba42f",
+  "model_startup_ms": 620.6267199995636,
+  "imports": {
+    "b60bf33983b96ccfbc5c1464dcf32687c789703e": {
+      "elapsed_ms": 58.79411900059495,
+      "receipt": {
+        "replayed": false,
+        "receipt": {
+          "project": "writ-public",
+          "label": "ReliableReceipt",
+          "id": "passages:d23215622ab213b181a39878e5dfb7c33e75bd7274c5b9b0cde22cccd0249861"
+        },
+        "passages": 127,
+        "git_objects_checked": false,
+        "assertion_verification": "unverified"
+      },
+      "documents": 127
+    },
+    "a0e0e413e3b20082a85e7d75c58b45b0ba09b903": {
+      "elapsed_ms": 41.19142000035936,
+      "receipt": {
+        "replayed": false,
+        "receipt": {
+          "project": "writ-public",
+          "label": "ReliableReceipt",
+          "id": "passages:49ae9d8ea3043be759ffc14b6ea47e7bb4b55239f0ebb03c89fa8d270bcc2df0"
+        },
+        "passages": 127,
+        "git_objects_checked": false,
+        "assertion_verification": "unverified"
+      },
+      "documents": 127
+    }
+  },
+  "cold_first_context": [
+    {
+      "arm": "legacy-hybrid",
+      "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "elapsed_ms": 1686.2296429999333,
+      "error": null
+    },
+    {
+      "arm": "grounded-relate",
+      "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "elapsed_ms": 1434.4198310000138,
+      "error": null
+    },
+    {
+      "arm": "grounded-flat",
+      "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "elapsed_ms": 1368.6366060001092,
+      "error": null
+    },
+    {
+      "arm": "legacy-connected",
+      "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "elapsed_ms": 54.801708000013605,
+      "error": null
+    },
+    {
+      "arm": "legacy-hybrid",
+      "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "elapsed_ms": 1308.7071660002039,
+      "error": null
+    },
+    {
+      "arm": "grounded-flat",
+      "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "elapsed_ms": 1218.7500319996616,
+      "error": null
+    },
+    {
+      "arm": "grounded-relate",
+      "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "elapsed_ms": 1460.4035199999998,
+      "error": null
+    },
+    {
+      "arm": "legacy-connected",
+      "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "elapsed_ms": 58.15653799982101,
+      "error": null
+    }
+  ],
+  "hardware": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "machine": "x86_64",
+    "cpu_count": 9,
+    "cpu_model": "AMD EPYC 9V45 96-Core Processor"
+  },
+  "resources": {
+    "process_peak_rss_kib": 709436,
+    "cpu_seconds": 59.159752536999996,
+    "disk_bytes": 5447107,
+    "note": "Shared persistent Python process, embedded Relate and ONNX included. Peak RSS is whole run, not per-arm attribution. Local filesystem warm; no privileged cache flush."
+  },
+  "versions": {
+    "relate-db": "1.0.1",
+    "numpy": "2.5.4",
+    "tantivy": "0.27.0",
+    "onnxruntime": "1.32.0",
+    "tokenizers": "0.23.3",
+    "pydantic": "2.14.3"
+  },
+  "agent_trials": {
+    "status": "NOT RUN",
+    "missing": "Authorized generative endpoint/host invocation and exact generative model identity. Embedding inference and scripted tests are not agent trials."
+  }
+}

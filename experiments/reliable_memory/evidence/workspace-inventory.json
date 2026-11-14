@@ -1,0 +1,27 @@
+{
+  "isolated_branch": "codex/reliable-memory-quality",
+  "base": "8533eb65d1f8dc9bf3f91194ed97665f294e17c4",
+  "other_checkouts": {
+    "WritRetrievalSystem": {
+      "head": "bb68a48d99facf3d7e9fb5b1b9878c7fa94990de",
+      "tracked_or_untracked_changes": []
+    },
+    "WritRetrievalBakeoff": {
+      "head": "5ddea0d083f591b944b1dce05e212083ac1fb1ef",
+      "tracked_or_untracked_changes": []
+    },
+    "WritRetrievalFinal": {
+      "head": "eb2d49fb0d80442a11ef35ff3a68347f218d0d39",
+      "tracked_or_untracked_changes": []
+    },
+    "Writ-upstream": {
+      "head": "ebdafe5450b201339f81e717ed104e6bcfd3fe3e",
+      "tracked_or_untracked_changes": []
+    },
+    "WritReferenceReadOnly": {
+      "head": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "tracked_or_untracked_changes": []
+    }
+  },
+  "note": "Existing checkout heads and unpublished local commits preserved; original Writ checkout unchanged. V2 reference read in separate clone at supplied pin."
+}

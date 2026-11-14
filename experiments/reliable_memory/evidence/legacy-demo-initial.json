@@ -1,0 +1,11 @@
+{
+  "status": "FAILED_BEFORE_WORKFLOW",
+  "command": "network-denied reliable_demo with fresh --filter=blob:none reference clone",
+  "error": {
+    "kind": "ValueError",
+    "message": "frozen history differs from immutable Git objects"
+  },
+  "resolution": "Prepared required pinned historical Git objects explicitly, outside ingestion. Export then equals the entire unchanged frozen history. All nine demo checks pass in legacy-demo-complete.",
+  "fixtures_changed": false,
+  "followup": "GIT_NO_LAZY_FETCH=1 and missing-path versus unavailable-object distinction now enforced; actual filtered local-clone regression passes."
+}

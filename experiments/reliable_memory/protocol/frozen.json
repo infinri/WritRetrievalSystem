@@ -1,0 +1,9 @@
+{
+  "contract_version": "writ-freeze/1",
+  "sha256": {
+    "fixtures/history-a0e0e41.json": "6abbe4a2d189ef2db7b1ec82f4f60022ca1ea534f942606e19a47229d4ffd908",
+    "fixtures/history-b60bf33.json": "34f84c8c20951f6e27f87d2cd56fc4afc7836bd6bdc4430d83f37b24f8a8c2a2",
+    "fixtures/tasks.json": "7cbcfe85f07a6f9341935e1062423f2b9202d254a8f61cc6ea85b2b5cf26b123",
+    "protocol/settings.json": "b6ee8c9e3257631b0a0b3c2bc4ec5b965b0f19e1000f40786baa759c5e4e3204"
+  }
+}

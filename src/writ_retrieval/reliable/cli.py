@@ -50,6 +50,10 @@ def main(argv=None,*,agent_only=False):
             sub=commands.add_parser(name);sub.add_argument('input',type=Path)
         imp=commands.add_parser('history-import');imp.add_argument('input',type=Path);imp.add_argument('--project',default='writ-history');imp.add_argument('--verify-repo',type=Path);imp.add_argument('--create',action='store_true')
         git=commands.add_parser('git-ingest');git.add_argument('--repo',type=Path,required=True);git.add_argument('--end',required=True);git.add_argument('--limit',type=int,default=12);git.add_argument('--project',default='writ-history');git.add_argument('--create',action='store_true')
+    if not agent_only:
+        passages=commands.add_parser('passage-ingest');passages.add_argument('--repo',type=Path,required=True);passages.add_argument('--revision',required=True);passages.add_argument('--path',action='append',required=True);passages.add_argument('--project',required=True);passages.add_argument('--create',action='store_true')
+    if not agent_only:
+        repair=commands.add_parser('projection-quarantine');repair.add_argument('--cache-dir',type=Path,required=True);repair.add_argument('--identity',required=True)
     args=parser.parse_args(argv)
     try:
         with ReliableStore(args.store,create=getattr(args,'create',False),initialize=not agent_only) as store:
@@ -81,6 +85,12 @@ def main(argv=None,*,agent_only=False):
                 from .contracts import binding_for
                 result={'store_revision':selected_revision,'generation':selected_generation,'current_store_revision':export['revision'],'ref':ref.as_dict(),'record':node,'binding':binding_for(ref,node),
                         'note':'read-only local-owner data inspection, not approval'}
+            elif name=='projection-quarantine':
+                from .projection import quarantine_projection
+                result=quarantine_projection(store,args.cache_dir,args.identity)
+            elif name=='passage-ingest':
+                from .passages import export_passages,ingest_passages
+                result=ingest_passages(store,export_passages(args.repo,args.revision,args.path),project=args.project,verify_repo=args.repo)
             elif name=='history-import': result=ingest_history(store,load_json(args.input),project=args.project,verify_repo=args.verify_repo)
             elif name=='git-ingest':
                 history=export_history(args.repo,args.end,limit=args.limit)

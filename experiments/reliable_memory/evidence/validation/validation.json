@@ -1,0 +1,35 @@
+{
+  "baseline_main": "8533eb65d1f8dc9bf3f91194ed97665f294e17c4",
+  "protocol_commit": "74fecfc0a056a1263693ec580f3d51d9168ae18a",
+  "evaluation_implementation_commit": "f16a3502ff9ab4b262262d9eab07dae84cb77d71",
+  "pytest": "149 passed in 12.83s",
+  "unittest_log": "demo-checks.log",
+  "pip_check": "No broken requirements found.",
+  "wheel": {
+    "sha256": "ab9ddbec51fdccb2ca686e96e8a57fa4960ef98fd59090fac84cbe631dd8272d",
+    "build_tool": "setuptools 84.2.1",
+    "installed_module": "/tmp/writ-reliable-installed/writ_retrieval/reliable/grounded.py",
+    "executed_from": "/tmp",
+    "native_onnx_payload_bytes": 4306,
+    "note": "Initial --no-build-isolation pip attempt failed because the reused venv lacked setuptools. Direct setuptools build using the primary runtime succeeded; failed log retained."
+  },
+  "legacy_fixture_note": "Existing controlled-parity tests pass. The historical 1,012-query claim was not rerun in this follow-up.",
+  "generative_trials": "NOT RUN: authorized endpoint/model/artifact identity missing",
+  "human_review": "PENDING: no independent reviewer",
+  "changes_after_evaluation": "Malformed import guards plus fetch-free Git object reads that fail on unavailable promised blobs; ranking/rendering/search unchanged. Final importer accepts all 254 frozen passage versions.",
+  "logs": {
+    "pytest.log": "413729c133b07aa19f5ea65c059d4ff217b00a2776d51415ed0774cf2aced43f",
+    "wheel-build-direct.log": "f0a8fe42f6b75d47c9cb7a76f404a763feb7fdb8feea4ec5b8f26deb93bd3c7d",
+    "demo-checks.log": "05ecc6a0568c52cee0ebeb02862c228ca8eecf0fc7ed6f2653a3781cee3739dd",
+    "wheel-install.log": "a6e67f7fce5139df0b3a5fd7a0a8be6092d7400b46a7f55f4c4a868854bb5e35",
+    "wheel-build.log": "77e89a4abc6f2e4ebdffc532c7702895c93f0b6dd9f80be6b98d7e38ff5de5d2",
+    "wheel-context.json": "a9b28f3508eb15da2df722964dc2d79536714a2a1069495deb4dbe7de6a1715f",
+    "pip-check.log": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+  },
+  "git": "2.52.0; actual missing-promisor-object/no-lazy-fetch regression",
+  "phase3_original_scripted_checks": {
+    "passed": 9,
+    "evidence": "../legacy-demo-complete",
+    "initial_failure": "../legacy-demo-initial.json"
+  }
+}
