@@ -23,14 +23,16 @@ def main():
    raw=read(r/'performance'/(name+'.json'));values=np.array([x['e2e_ms'] for x in raw['rows']]);blocks=values[:len(values)//50*50].reshape(-1,50);rng=np.random.default_rng(20261113);sample=blocks[rng.integers(0,len(blocks),(2000,len(blocks)))].reshape(2000,-1);q=np.percentile(sample,95,axis=1);support['performance_uncertainty'][name]={'n':len(values),'p95_block_bootstrap_95_interval_ms':np.percentile(q,[2.5,97.5]).tolist(),'blocks':len(blocks),'draws':2000,'note':'Within one run, 50-request blocks; not independent host replications.'}
  (r/'supporting-summary.json').write_text(json.dumps(support,indent=2))
  fig,axes=plt.subplots(1,2,figsize=(11,4.5),layout='constrained')
+ colors={arm:plt.get_cmap('tab10')(i) for i,arm in enumerate(('A-hybrid','A-lexical','B-flat','C-flat','D-flat','C-connected'))}
  for track,marker in [('matched','o'),('best','x')]:
   for arm,row in quality['tracks'][track]['arms'].items():
    if arm in {'A-hybrid','A-lexical','B-flat','C-flat','D-flat','C-connected'}:
-    axes[0].scatter(row['e2e_p95_ms'],row['complete']/20,marker=marker);axes[0].annotate(arm+' '+track,(row['e2e_p95_ms'],row['complete']/20),fontsize=7,xytext=(3,3),textcoords='offset points')
+    axes[0].scatter(row['e2e_p95_ms'],row['complete']/20,marker=marker,color=colors[arm],label=arm if track=='matched' else None)
  axes[0].set(xlabel='Measured E2E p95 (ms)',ylabel='Complete labelled proxy delivery /20',ylim=(0,1),title='Held-out, unreviewed: quality/latency')
+ axes[0].legend(title='o matched; x best',fontsize=7,title_fontsize=7,loc='lower left',ncol=2)
  for backend in ['Relate-exact','Neo4j-ANN','HNSW-ef20','HNSW-ef50','HNSW-ef100']:
   points=[support['oracle_curves'][backend+':'+str(k)] for k in (5,10,20,50)];axes[1].plot([x['raw_p95_ms'] for x in points],[x['recall'] for x in points],marker='.',label=backend)
- axes[1].set(xlabel='Raw vector p95 ms; precomputed embeddings',ylabel='Exact-oracle recall',ylim=(.75,1.02),title='188 units; k=5/10/20/50, separate from relevance');axes[1].legend(fontsize=7)
+ axes[1].set(xlabel='Raw vector p95 ms; precomputed embeddings',ylabel='Exact-oracle recall',ylim=(.75,1.02),title='188 units; k=5/10/20/50, separate from relevance');axes[1].set_xscale('log');axes[1].legend(fontsize=7)
  for ax in axes:ax.grid(alpha=.2)
  fig.savefig(r/'comparison.svg');plt.close(fig)
  lines=['# Supporting measurements','','All results are from the registered hosted replication, not restored local files.','','| Backend | Python p95 ms | Rust p95 ms | Paired queries |','|---|---:|---:|---:|']
