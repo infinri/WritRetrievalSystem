@@ -1,0 +1,154 @@
+running bdist_wheel
+running build
+running build_py
+copying src/writ_retrieval/reliable/git_history.py -> build/lib/writ_retrieval/reliable
+running egg_info
+writing src/writ_retrieval_system.egg-info/PKG-INFO
+writing dependency_links to src/writ_retrieval_system.egg-info/dependency_links.txt
+writing entry points to src/writ_retrieval_system.egg-info/entry_points.txt
+writing requirements to src/writ_retrieval_system.egg-info/requires.txt
+writing top-level names to src/writ_retrieval_system.egg-info/top_level.txt
+reading manifest file 'src/writ_retrieval_system.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+adding license file 'NOTICE.md'
+writing manifest file 'src/writ_retrieval_system.egg-info/SOURCES.txt'
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/writ_retrieval
+creating build/bdist.linux-x86_64/wheel/writ_retrieval/retrieval
+copying build/lib/writ_retrieval/retrieval/embeddings.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/retrieval
+copying build/lib/writ_retrieval/retrieval/keyword.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/retrieval
+copying build/lib/writ_retrieval/retrieval/traversal.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/retrieval
+copying build/lib/writ_retrieval/retrieval/injection_ceiling.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/retrieval
+copying build/lib/writ_retrieval/retrieval/__init__.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/retrieval
+copying build/lib/writ_retrieval/retrieval/collectors.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/retrieval
+copying build/lib/writ_retrieval/retrieval/node_scope.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/retrieval
+copying build/lib/writ_retrieval/retrieval/pipeline.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/retrieval
+copying build/lib/writ_retrieval/retrieval/documents.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/retrieval
+copying build/lib/writ_retrieval/retrieval/ranking.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/retrieval
+creating build/bdist.linux-x86_64/wheel/writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/projection.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/git_history.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/passages.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/agent.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/contracts.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/session.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/review.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/budget.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/grounded.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/__init__.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/offline.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/ingest.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/store.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/cli.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+copying build/lib/writ_retrieval/reliable/grounded_cli.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/reliable
+creating build/bdist.linux-x86_64/wheel/writ_retrieval/session
+copying build/lib/writ_retrieval/session/remote_parse.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/session
+copying build/lib/writ_retrieval/session/__init__.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/session
+copying build/lib/writ_retrieval/session/recall.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/session
+creating build/bdist.linux-x86_64/wheel/writ_retrieval/memory
+copying build/lib/writ_retrieval/memory/models.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/memory
+copying build/lib/writ_retrieval/memory/review.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/memory
+copying build/lib/writ_retrieval/memory/service.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/memory
+copying build/lib/writ_retrieval/memory/__init__.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/memory
+copying build/lib/writ_retrieval/memory/store.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/memory
+creating build/bdist.linux-x86_64/wheel/writ_retrieval/graph
+copying build/lib/writ_retrieval/graph/adapter.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/graph
+copying build/lib/writ_retrieval/graph/importer.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/graph
+copying build/lib/writ_retrieval/graph/__init__.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/graph
+copying build/lib/writ_retrieval/graph/identity.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/graph
+copying build/lib/writ_retrieval/graph/snapshot.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/graph
+copying build/lib/writ_retrieval/graph/predicates.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/graph
+copying build/lib/writ_retrieval/graph/schema.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/graph
+creating build/bdist.linux-x86_64/wheel/writ_retrieval/evaluation
+copying build/lib/writ_retrieval/evaluation/compare.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/evaluation
+copying build/lib/writ_retrieval/evaluation/reliable_history.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/evaluation
+copying build/lib/writ_retrieval/evaluation/scenario.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/evaluation
+copying build/lib/writ_retrieval/evaluation/full_corpus.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/evaluation
+copying build/lib/writ_retrieval/evaluation/__init__.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/evaluation
+copying build/lib/writ_retrieval/evaluation/reliable_demo.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/evaluation
+copying build/lib/writ_retrieval/config.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval
+copying build/lib/writ_retrieval/__init__.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval
+creating build/bdist.linux-x86_64/wheel/writ_retrieval/shared
+copying build/lib/writ_retrieval/shared/tokens.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/shared
+copying build/lib/writ_retrieval/shared/budget.json -> build/bdist.linux-x86_64/wheel/./writ_retrieval/shared
+copying build/lib/writ_retrieval/shared/__init__.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/shared
+copying build/lib/writ_retrieval/shared/trust.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/shared
+copying build/lib/writ_retrieval/shared/logging.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/shared
+copying build/lib/writ_retrieval/shared/injection_text.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/shared
+copying build/lib/writ_retrieval/shared/atomic_file.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval/shared
+copying build/lib/writ_retrieval/cli.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval
+copying build/lib/writ_retrieval/frequency.py -> build/bdist.linux-x86_64/wheel/./writ_retrieval
+running install_egg_info
+Copying src/writ_retrieval_system.egg-info to build/bdist.linux-x86_64/wheel/./writ_retrieval_system-0.1.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/writ_retrieval_system-0.1.0.dist-info/WHEEL
+creating '/tmp/writ-reliable-wheel/.tmp-05dn6o2n/writ_retrieval_system-0.1.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'writ_retrieval/__init__.py'
+adding 'writ_retrieval/cli.py'
+adding 'writ_retrieval/config.py'
+adding 'writ_retrieval/frequency.py'
+adding 'writ_retrieval/evaluation/__init__.py'
+adding 'writ_retrieval/evaluation/compare.py'
+adding 'writ_retrieval/evaluation/full_corpus.py'
+adding 'writ_retrieval/evaluation/reliable_demo.py'
+adding 'writ_retrieval/evaluation/reliable_history.py'
+adding 'writ_retrieval/evaluation/scenario.py'
+adding 'writ_retrieval/graph/__init__.py'
+adding 'writ_retrieval/graph/adapter.py'
+adding 'writ_retrieval/graph/identity.py'
+adding 'writ_retrieval/graph/importer.py'
+adding 'writ_retrieval/graph/predicates.py'
+adding 'writ_retrieval/graph/schema.py'
+adding 'writ_retrieval/graph/snapshot.py'
+adding 'writ_retrieval/memory/__init__.py'
+adding 'writ_retrieval/memory/models.py'
+adding 'writ_retrieval/memory/review.py'
+adding 'writ_retrieval/memory/service.py'
+adding 'writ_retrieval/memory/store.py'
+adding 'writ_retrieval/reliable/__init__.py'
+adding 'writ_retrieval/reliable/agent.py'
+adding 'writ_retrieval/reliable/budget.py'
+adding 'writ_retrieval/reliable/cli.py'
+adding 'writ_retrieval/reliable/contracts.py'
+adding 'writ_retrieval/reliable/git_history.py'
+adding 'writ_retrieval/reliable/grounded.py'
+adding 'writ_retrieval/reliable/grounded_cli.py'
+adding 'writ_retrieval/reliable/ingest.py'
+adding 'writ_retrieval/reliable/offline.py'
+adding 'writ_retrieval/reliable/passages.py'
+adding 'writ_retrieval/reliable/projection.py'
+adding 'writ_retrieval/reliable/review.py'
+adding 'writ_retrieval/reliable/session.py'
+adding 'writ_retrieval/reliable/store.py'
+adding 'writ_retrieval/retrieval/__init__.py'
+adding 'writ_retrieval/retrieval/collectors.py'
+adding 'writ_retrieval/retrieval/documents.py'
+adding 'writ_retrieval/retrieval/embeddings.py'
+adding 'writ_retrieval/retrieval/injection_ceiling.py'
+adding 'writ_retrieval/retrieval/keyword.py'
+adding 'writ_retrieval/retrieval/node_scope.py'
+adding 'writ_retrieval/retrieval/pipeline.py'
+adding 'writ_retrieval/retrieval/ranking.py'
+adding 'writ_retrieval/retrieval/traversal.py'
+adding 'writ_retrieval/session/__init__.py'
+adding 'writ_retrieval/session/recall.py'
+adding 'writ_retrieval/session/remote_parse.py'
+adding 'writ_retrieval/shared/__init__.py'
+adding 'writ_retrieval/shared/atomic_file.py'
+adding 'writ_retrieval/shared/budget.json'
+adding 'writ_retrieval/shared/injection_text.py'
+adding 'writ_retrieval/shared/logging.py'
+adding 'writ_retrieval/shared/tokens.py'
+adding 'writ_retrieval/shared/trust.py'
+adding 'writ_retrieval_system-0.1.0.dist-info/licenses/LICENSE'
+adding 'writ_retrieval_system-0.1.0.dist-info/licenses/NOTICE.md'
+adding 'writ_retrieval_system-0.1.0.dist-info/METADATA'
+adding 'writ_retrieval_system-0.1.0.dist-info/WHEEL'
+adding 'writ_retrieval_system-0.1.0.dist-info/entry_points.txt'
+adding 'writ_retrieval_system-0.1.0.dist-info/top_level.txt'
+adding 'writ_retrieval_system-0.1.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+writ_retrieval_system-0.1.0-py3-none-any.whl

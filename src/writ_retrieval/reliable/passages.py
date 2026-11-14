@@ -47,6 +47,14 @@ def ingest_passages(store,document,*,project,verify_repo=None):
     if document.get('contract_version')!='writ-passage-import/1' or document.get('repository')!=PUBLIC_REPOSITORY:raise ValueError('unsupported passage import contract')
     if set(document)!={'contract_version','repository','revision','recorded_at','documents','paths','unknowns'}:raise ValueError('unexpected passage import fields')
     instant(document['recorded_at'])
+    if instant(document['recorded_at'])>instant(store.clock()):raise ValueError('future recorded source time')
+    if not re.fullmatch(r'[0-9a-f]{40}',document['revision']):raise ValueError('exact source revision required')
+    paths=document['paths'];docs=document['documents']
+    if not isinstance(paths,list) or not 1<=len(paths)<=32 or len(set(paths))!=len(paths):raise ValueError('bounded distinct source paths required')
+    for path in paths:
+        p=PurePosixPath(path)
+        if p.is_absolute() or '..' in p.parts or str(p)!=path or not path.endswith('.md'):raise ValueError('normalized repository Markdown path required')
+    if not isinstance(docs,list) or len(docs)>1000 or sum(len(d['text'].encode()) for d in docs)>8_000_000:raise ValueError('passage import exceeds source bounds')
     if verify_repo is not None:
         actual=export_passages(verify_repo,document['revision'],document['paths'])
         if digest(actual)!=digest(document):raise ValueError('passages differ from exact Git objects')
@@ -61,6 +69,10 @@ def ingest_passages(store,document,*,project,verify_repo=None):
             if item['path'] not in document['paths'] or item['revision']!=document['revision'] or item['committed_at']!=document['recorded_at']:raise ValueError('passage revision/time/path mismatch')
             if type(item['start']) is not int or type(item['end']) is not int or item['start']<0 or item['end']-item['start']!=len(item['text']):raise ValueError('invalid passage character interval')
             expected=hashlib.sha256((item['path']+'\0'+str(item['start'])+'\0'+item['text']).encode()).hexdigest()[:24]
+            if any(type(item[k]) is not int or item[k]<1 for k in ('start_line','end_line')) or item['end_line']<item['start_line']:raise ValueError('invalid source line interval')
+            if item['end_line']-item['start_line']!=item['text'].count('\n'):raise ValueError('source line span does not match passage')
+            if not 70<=len(item['text'])<=1600:raise ValueError('passage outside selection size contract')
+            if item['uri']!=f"{PUBLIC_REPOSITORY}/blob/{document['revision']}/{item['path']}#L{item['start_line']}":raise ValueError('public source URI/path/revision/line mismatch')
             if item['id']!=expected or item['content_digest']!=text_digest(item['text']):raise ValueError('passage identity/digest mismatch')
             if not re.fullmatch(r'[0-9a-f]{64}',item['source_digest']):raise ValueError('invalid source digest')
             value=Claim(**{'project':project,'claim_id':item['revision']+':'+item['id'],

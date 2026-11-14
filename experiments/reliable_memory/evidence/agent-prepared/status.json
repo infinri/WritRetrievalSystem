@@ -1,0 +1,10 @@
+{
+  "status": "NOT RUN",
+  "actual_trials": 0,
+  "missing": [
+    "explicit authorized localhost OpenAI-compatible generative endpoint",
+    "model identifier",
+    "immutable model artifact revision"
+  ],
+  "note": "No generative host/model was configured for this work. Embedding inference and deterministic scripts are separate."
+}

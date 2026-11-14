@@ -169,6 +169,13 @@ def test_public_passage_import_is_closed_idempotent_and_source_bound(store):
     bad=copy.deepcopy(document);bad['documents'][0]['verification_status']='owner_confirmed'
     with pytest.raises(ValueError):ingest_passages(store,bad,project='app')
     assert store.current_revision()==rev
+    for mutate in ('path','uri','line'):
+        bad=copy.deepcopy(document)
+        if mutate=='path':bad['paths']=['docs/../example.md'];bad['documents'][0]['path']='docs/../example.md'
+        if mutate=='uri':bad['documents'][0]['uri']=bad['documents'][0]['uri'].replace('infinri/Writ','foreign/Other')
+        if mutate=='line':bad['documents'][0]['uri']=bad['documents'][0]['uri'].replace('#L2','#L3')
+        with pytest.raises(ValueError):ingest_passages(store,bad,project='app')
+    assert store.current_revision()==rev
 
 
 def test_native_vector_lists_match_exact_oracle_and_types_do_not_collide(store,tmp_path):
@@ -232,3 +239,31 @@ def test_mandatory_delivery_does_not_satisfy_missing_evidence(store,tmp_path):
         assert len(r['payload'].encode())<=8000
         small=s.context('sql',project='app',budget=Budget(1200,1200))
         assert small['error']['kind']=='BudgetError'
+
+
+def test_native_served_confidence_crosses_threshold_and_withdrawal_survives_replay(store,tmp_path,monkeypatch):
+    from tests.test_memory_workflow import outcome,ref
+    setup_feedback(store)
+    records=[outcome('native-'+str(i),result='pass' if i<40 else 'fail') for i in range(50)]
+    for item in records:item['data']['ts']+='T00:00:00Z'
+    store.capture(records);refs=[]
+    for i in range(50):
+        ident='native-'+str(i);store.add_evidence(evidence(store,ident,ref('Outcome',ident)));refs.append(ref('Evidence',ident))
+    token=digest([store.bind(r) for r in refs])
+    monkeypatch.setattr(sys.stdin,'isatty',lambda:True);monkeypatch.setattr(sys.stdout,'isatty',lambda:True)
+    monkeypatch.setattr('builtins.input',lambda _:'confirm '+token);store.confirm_evidence(refs)  # simulated terminal, not label review
+    rule=store.bind(ref('Rule','SQL-001','writ'));signals=[{'rule':rule,'evidence_ref':r,'signal':'positive' if i<40 else 'negative'} for i,r in enumerate(refs)]
+    store.feedback_bound(project='app',batch_id='native-fifty',signals=signals)
+    with make(store,tmp_path) as s:
+        before=payload(s.context('sql',project='app',required=[Key.parse(rule['ref']).token]))
+        card=next(i for i in before['items'] if i['ref']==rule['ref'])
+        assert card['ranking_metadata']['confidence_weight']==.8 and card['ranking_metadata']['positive']==40 and card['ranking_metadata']['negative']==10
+        assert card['human_approval']=='unknown'
+        store.retract_evidence(ref=refs[0],expected_revision=1,request_id='native-threshold-withdrawal',reason='withdraw simulated owner-confirmed report')
+        store.feedback_bound(project='app',batch_id='native-fifty',signals=signals)
+        after=payload(s.context('sql',project='app',required=[Key.parse(rule['ref']).token]))
+        card=next(i for i in after['items'] if i['ref']==rule['ref'])
+        assert card['ranking_metadata']['confidence_weight']==.3 and card['ranking_metadata']['positive']==39
+        assert before['snapshot']['generation']!=after['snapshot']['generation']
+        assert before['projection']['identity']!=after['projection']['identity']
+        assert len([k for k in store.export()['nodes'] if k.label=='BoundObservation'])==50

@@ -1,5 +1,15 @@
 # Validation
 
+## Canonical memory / native projection follow-up
+
+The isolated follow-up passes **149 pytest checks** and all five original unittest demo checks. It preserves prior evidence and adds actual persistent native
+index refresh/restart/corruption checks, complete-passage context, explicit
+requirements and a 17-process CLI workflow. See [findings](../experiments/reliable_memory/FINDINGS.md),
+[commands](../experiments/reliable_memory/COMMANDS.md), and machine-readable
+[held-out results](../experiments/reliable_memory/evidence/heldout/summary.json).
+The 72-task benchmark remains provisional and unreviewed; actual generative-agent
+trials are NOT RUN. Prior evidence remains historical and byte-preserved.
+
 ## Phase 3 evidence
 
 **117 pytest checks pass**, including real Relate regressions; the original five

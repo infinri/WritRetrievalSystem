@@ -61,3 +61,11 @@ the upstream license, source revisions and attribution. New Python contracts,
 local generations and evaluation tooling implement this adaptation's narrower
 scope; no Rust kernel, broker or enterprise infrastructure is ported. Existing
 Writ and JolliAI credits above remain applicable.
+
+## Canonical-memory follow-up
+
+The opt-in native projection and grounded-context workflow applies Writ V2
+retrieval/memory design inputs at `a0e0e413e3b20082a85e7d75c58b45b0ba09b903`.
+New public source passages retain exact MIT Writ citations and the existing
+Lucio Saldivar / JolliAI attribution. OpenAI Codex assisted with implementation,
+provisional labels and evaluation; independent human review remains pending.

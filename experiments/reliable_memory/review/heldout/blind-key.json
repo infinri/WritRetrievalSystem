@@ -1,0 +1,722 @@
+[
+  {
+    "anonymous_id": "context-1",
+    "task": "hel-13",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-2",
+    "task": "hel-27",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-3",
+    "task": "hel-11",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-4",
+    "task": "hel-28",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-5",
+    "task": "hel-04",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-6",
+    "task": "hel-25",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-7",
+    "task": "hel-05",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-8",
+    "task": "hel-06",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-9",
+    "task": "hel-unknown-1",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-10",
+    "task": "hel-14",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-11",
+    "task": "hel-26",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-12",
+    "task": "hel-unknown-6",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-13",
+    "task": "hel-22",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-14",
+    "task": "hel-12",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-15",
+    "task": "hel-27",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-16",
+    "task": "hel-04",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-17",
+    "task": "hel-23",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-18",
+    "task": "hel-13",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-19",
+    "task": "hel-05",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-20",
+    "task": "hel-09",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-21",
+    "task": "hel-26",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-22",
+    "task": "hel-unknown-6",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-23",
+    "task": "hel-unknown-6",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-24",
+    "task": "hel-08",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-25",
+    "task": "hel-19",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-26",
+    "task": "hel-25",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-27",
+    "task": "hel-15",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-28",
+    "task": "hel-25",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-29",
+    "task": "hel-20",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-30",
+    "task": "hel-26",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-31",
+    "task": "hel-08",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-32",
+    "task": "hel-22",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-33",
+    "task": "hel-unknown-2",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-34",
+    "task": "hel-04",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-35",
+    "task": "hel-11",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-36",
+    "task": "hel-unknown-2",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-37",
+    "task": "hel-unknown-6",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-38",
+    "task": "hel-unknown-5",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-39",
+    "task": "hel-unknown-3",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-40",
+    "task": "hel-07",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-41",
+    "task": "hel-21",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-42",
+    "task": "hel-unknown-3",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-43",
+    "task": "hel-18",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-44",
+    "task": "hel-unknown-5",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-45",
+    "task": "hel-10",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-46",
+    "task": "hel-03",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-47",
+    "task": "hel-03",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-48",
+    "task": "hel-03",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-49",
+    "task": "hel-11",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-50",
+    "task": "hel-30",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-51",
+    "task": "hel-unknown-2",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-52",
+    "task": "hel-13",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-53",
+    "task": "hel-27",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-54",
+    "task": "hel-01",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-55",
+    "task": "hel-15",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-56",
+    "task": "hel-29",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-57",
+    "task": "hel-07",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-58",
+    "task": "hel-17",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-59",
+    "task": "hel-23",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-60",
+    "task": "hel-unknown-1",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-61",
+    "task": "hel-21",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-62",
+    "task": "hel-14",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-63",
+    "task": "hel-30",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-64",
+    "task": "hel-19",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-65",
+    "task": "hel-05",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-66",
+    "task": "hel-12",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-67",
+    "task": "hel-15",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-68",
+    "task": "hel-29",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-69",
+    "task": "hel-02",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-70",
+    "task": "hel-28",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-71",
+    "task": "hel-29",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-72",
+    "task": "hel-09",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-73",
+    "task": "hel-20",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-74",
+    "task": "hel-22",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-75",
+    "task": "hel-15",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-76",
+    "task": "hel-08",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-77",
+    "task": "hel-unknown-1",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-78",
+    "task": "hel-02",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-79",
+    "task": "hel-16",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-80",
+    "task": "hel-12",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-81",
+    "task": "hel-07",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-82",
+    "task": "hel-10",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-83",
+    "task": "hel-05",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-84",
+    "task": "hel-18",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-85",
+    "task": "hel-21",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-86",
+    "task": "hel-unknown-4",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-87",
+    "task": "hel-13",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-88",
+    "task": "hel-16",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-89",
+    "task": "hel-28",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-90",
+    "task": "hel-09",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-91",
+    "task": "hel-01",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-92",
+    "task": "hel-unknown-5",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-93",
+    "task": "hel-17",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-94",
+    "task": "hel-06",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-95",
+    "task": "hel-25",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-96",
+    "task": "hel-03",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-97",
+    "task": "hel-unknown-4",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-98",
+    "task": "hel-24",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-99",
+    "task": "hel-17",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-100",
+    "task": "hel-22",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-101",
+    "task": "hel-24",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-102",
+    "task": "hel-06",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-103",
+    "task": "hel-23",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-104",
+    "task": "hel-01",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-105",
+    "task": "hel-unknown-2",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-106",
+    "task": "hel-23",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-107",
+    "task": "hel-24",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-108",
+    "task": "hel-unknown-5",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-109",
+    "task": "hel-unknown-1",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-110",
+    "task": "hel-16",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-111",
+    "task": "hel-18",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-112",
+    "task": "hel-10",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-113",
+    "task": "hel-07",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-114",
+    "task": "hel-19",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-115",
+    "task": "hel-04",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-116",
+    "task": "hel-20",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-117",
+    "task": "hel-01",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-118",
+    "task": "hel-02",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-119",
+    "task": "hel-19",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-120",
+    "task": "hel-29",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-121",
+    "task": "hel-09",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-122",
+    "task": "hel-unknown-3",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-123",
+    "task": "hel-24",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-124",
+    "task": "hel-unknown-4",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-125",
+    "task": "hel-21",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-126",
+    "task": "hel-30",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-127",
+    "task": "hel-30",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-128",
+    "task": "hel-26",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-129",
+    "task": "hel-28",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-130",
+    "task": "hel-16",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-131",
+    "task": "hel-17",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-132",
+    "task": "hel-12",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-133",
+    "task": "hel-18",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-134",
+    "task": "hel-20",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-135",
+    "task": "hel-14",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-136",
+    "task": "hel-02",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-137",
+    "task": "hel-08",
+    "arm": "grounded-relate"
+  },
+  {
+    "anonymous_id": "context-138",
+    "task": "hel-06",
+    "arm": "grounded-flat"
+  },
+  {
+    "anonymous_id": "context-139",
+    "task": "hel-27",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-140",
+    "task": "hel-11",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-141",
+    "task": "hel-unknown-3",
+    "arm": "legacy-connected"
+  },
+  {
+    "anonymous_id": "context-142",
+    "task": "hel-10",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-143",
+    "task": "hel-14",
+    "arm": "legacy-hybrid"
+  },
+  {
+    "anonymous_id": "context-144",
+    "task": "hel-unknown-4",
+    "arm": "legacy-hybrid"
+  }
+]

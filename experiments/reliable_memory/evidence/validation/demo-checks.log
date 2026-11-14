@@ -1,0 +1,10 @@
+test_demo_can_be_recalled_in_a_separate_process (test_relate_integration.ExtractedRecallDemoTests.test_demo_can_be_recalled_in_a_separate_process) ... ok
+test_context_survives_a_separate_process (test_relate_integration.RelateIntegrationTests.test_context_survives_a_separate_process) ... ok
+test_missing_store_is_not_silently_created_by_query (test_relate_integration.RelateIntegrationTests.test_missing_store_is_not_silently_created_by_query) ... ok
+test_seed_can_be_repeated_without_duplicate_context (test_relate_integration.RelateIntegrationTests.test_seed_can_be_repeated_without_duplicate_context) ... ok
+test_unknown_path_and_other_project_return_no_context (test_relate_integration.RelateIntegrationTests.test_unknown_path_and_other_project_return_no_context) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.255s
+
+OK

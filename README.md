@@ -7,6 +7,17 @@ bounded graph enrichment, weighted ranking, filtering, abstention and context
 budget selection. Decision and memory recall is a separate path. No Neo4j server,
 Bolt driver, agent host or Writ V2 kernel is required.
 
+## Opt-in canonical memory indexes
+
+A follow-up adds persistent native Relate projections from the canonical memory
+ledger, full-text context cards and explicit source/evidence requirements. The
+existing retrieval paths remain controls. See [commands](experiments/reliable_memory/COMMANDS.md),
+[contracts](experiments/reliable_memory/CONTRACTS.md) and [measured findings](experiments/reliable_memory/FINDINGS.md).
+On the provisional held-out natural-language subset, grounded flat/native deliver
+20/24 labeled passages versus legacy hybrid’s 19/24; development regresses
+15/24 versus 17/24. Native is slightly slower at the median. This does not establish a graph advantage or better agent outcomes.
+Human review and actual generative trials remain pending.
+
 ## Reliable versioned context (Phase 3)
 
 A separate local path binds guidance, memory, evidence and rendering to one
@@ -20,7 +31,7 @@ See [runnable Phase 3 commands](docs/PHASE3.md), the [V2 scope map](docs/phase3/
 The real-history experiment is deliberately reported without a graph-advantage
 claim: connected covers 3/10 target source versions versus flat hybrid's 4/10.
 Labels remain unreviewed; no generative-agent outcome experiment was run.
-Current validation is **117 pytest checks**, five original demo checks and nine
+Historical Phase 3 validation is **117 pytest checks**, five original demo checks and nine
 scripted restart/retraction checks. Original
 weighted retrieval and all Phase 1/2 fixtures/evidence remain available below.
 
