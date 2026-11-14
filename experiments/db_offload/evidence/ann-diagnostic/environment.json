@@ -1,0 +1,9 @@
+{
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "logical_cpus": 9,
+  "cpu_model": "model name\t: AMD EPYC 9V45 96-Core Processor",
+  "source_commit": "8ebc53cc27ec5bf33d127924e8bda9e4ebdbb8b9",
+  "protocol_commit": "2f2729b2459b5c0eef1b73e4b4f9be4de48fa395",
+  "scope": "Exploratory static-generation load only; new local host, never combine with primary hosted timings; no held-out quality claim."
+}

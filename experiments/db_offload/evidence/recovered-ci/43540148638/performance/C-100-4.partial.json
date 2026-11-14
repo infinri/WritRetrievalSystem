@@ -1,0 +1,1 @@
+{"version": "hosted-replication/1", "arm": "C", "growth": 100, "readers": 4, "status": "RUNNING", "target_samples": 1000, "synthetic_scaling": true, "model_startup_ms": 587.8515449999213, "corpus_embedding_ms": 3576.73401299985, "units": 18800, "import_index_ms": 24726.496647999964, "n": 0, "partial_rows": [], "combined_peak_rss_bytes": 1545445376}

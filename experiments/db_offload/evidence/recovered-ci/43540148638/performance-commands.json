@@ -1,0 +1,34 @@
+[
+  {
+    "name": "performance",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-m",
+      "experiments.db_offload.recovery.suite",
+      "--model-dir",
+      "data/model",
+      "--neo4j-home",
+      "data/bakeoff-tools/neo4j-community-5.26.0",
+      "--work",
+      "data/recovery-performance",
+      "--output",
+      "experiments/db_offload/evidence/recovered-ci/43540148638/performance"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 2077.6699965069997
+  },
+  {
+    "name": "report",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-m",
+      "experiments.db_offload.recovery.report",
+      "--root",
+      "experiments/db_offload/evidence/recovered-ci/43540148638"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 0.4651795839999977
+  }
+]

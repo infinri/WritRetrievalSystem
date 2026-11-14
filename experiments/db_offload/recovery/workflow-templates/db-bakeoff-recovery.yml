@@ -1,0 +1,103 @@
+name: Database bake-off replication
+on:
+  pull_request:
+    paths:
+      - 'experiments/db_offload/recovery/**'
+      - 'experiments/db_offload/tests/test_publication_failure.py'
+      - '.github/workflows/db-bakeoff-recovery.yml'
+permissions:
+  contents: write
+env:
+  EVIDENCE_ROOT: experiments/db_offload/evidence/recovered-ci/${{ github.run_id }}
+jobs:
+  quality:
+    if: github.head_ref == 'codex/bakeoff-evaluation-recovery' && github.event.pull_request.head.sha == 'cfd54b9dfdc4deb257642c328a125e0395aa6b6a'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    outputs:
+      evidence_branch: ${{ steps.publish.outputs.evidence_branch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21.0.13'
+      - name: Install pinned Python stack
+        run: python -m pip install --no-cache-dir --no-binary=hnswlib -c requirements-validated.txt -e '.[dev]' -r experiments/db_offload/requirements.txt
+        env:
+          CC: gcc
+          CXX: g++
+          HNSWLIB_NO_NATIVE: '1'
+      - name: Prepare fixed artifacts and Rust
+        run: |
+          python scripts/prepare_model.py --output data/model
+          python -m experiments.db_offload.recovery.bootstrap --output data/bakeoff-tools
+          rustup toolchain install 1.85.1 --profile minimal
+          RELATE_FFI_DIR="$PWD/data/bakeoff-tools" cargo +1.85.1 build --release --locked --manifest-path experiments/db_offload/rust/Cargo.toml
+          python -m compileall -q experiments/db_offload/recovery
+          python -m pip check
+      - name: Execute frozen quality, native gates and historical regressions
+        id: experiments
+        continue-on-error: true
+        run: python -m experiments.db_offload.recovery.runner --root "$EVIDENCE_ROOT" --tools data/bakeoff-tools
+      - name: Persist quality before long load profiles
+        id: publish
+        if: always()
+        run: |
+          mkdir -p "$EVIDENCE_ROOT"
+          python -m experiments.db_offload.recovery.archive "$EVIDENCE_ROOT"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          evidence_branch="codex/bakeoff-evidence-$GITHUB_RUN_ID"
+          git switch -c "$evidence_branch"
+          git add "$EVIDENCE_ROOT"
+          git diff --cached --quiet || git commit -m "Persist hosted quality replication $GITHUB_RUN_ID"
+          git push origin "HEAD:refs/heads/$evidence_branch"
+          echo "evidence_branch=$evidence_branch" >> "$GITHUB_OUTPUT"
+      - name: Report execution failure honestly
+        if: steps.experiments.outcome != 'success'
+        run: exit 1
+  performance:
+    needs: quality
+    if: always() && needs.quality.outputs.evidence_branch != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.quality.outputs.evidence_branch }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21.0.13'
+      - name: Install and prepare the same pinned stack
+        run: |
+          CC=gcc CXX=g++ HNSWLIB_NO_NATIVE=1 python -m pip install --no-cache-dir --no-binary=hnswlib -c requirements-validated.txt -e '.[dev]' -r experiments/db_offload/requirements.txt
+          python scripts/prepare_model.py --output data/model
+          python -m experiments.db_offload.recovery.bootstrap --output data/bakeoff-tools
+      - name: Run all 24 registered profiles
+        id: profiles
+        continue-on-error: true
+        run: python -m experiments.db_offload.recovery.runner --performance --root "$EVIDENCE_ROOT" --tools data/bakeoff-tools
+      - name: Persist every result and partial failure
+        if: always()
+        run: |
+          python -m experiments.db_offload.recovery.report --root "$EVIDENCE_ROOT" || true
+          python -m experiments.db_offload.recovery.archive "$EVIDENCE_ROOT"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$EVIDENCE_ROOT"
+          git diff --cached --quiet || git commit -m "Persist all hosted load profiles $GITHUB_RUN_ID"
+          git push origin "HEAD:refs/heads/${{ needs.quality.outputs.evidence_branch }}"
+      - name: Report harness failures
+        if: steps.profiles.outcome != 'success'
+        run: exit 1

@@ -1,0 +1,13 @@
+[0;93m2026-11-14 01:29:34.611718073 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+[0;93m2026-11-14 01:29:39.763208975 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+{
+  "generation_changed": true,
+  "revision_increased": true,
+  "before_support_active": true,
+  "after_support_inactive": true,
+  "retraction_visible": true,
+  "old_snapshot_recoverable": true,
+  "import_replay_did_not_restore": true,
+  "source_bytes_retained": true,
+  "no_approval_claimed": true
+}

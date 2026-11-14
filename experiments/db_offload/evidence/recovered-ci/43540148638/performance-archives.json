@@ -1,0 +1,12 @@
+{
+  "neo4j-community-5.26.0-unix.tar.gz": {
+    "url": "https://dist.neo4j.org/neo4j-community-5.26.0-unix.tar.gz",
+    "sha256": "ad8ac3398606145502b8f489530bbd39333707ae4668156af16b6086b5b037d7",
+    "bytes": 158822080
+  },
+  "relate-ffi-1.0.1.tar.gz": {
+    "url": "https://github.com/relatedb/relate/releases/download/v1.0.1/relate-ffi-x86_64-unknown-linux-gnu.tar.gz",
+    "sha256": "6d1f67258ab8cdfd4beea3102bf9c3f6846505652f30fee9110e0888bd3c98a2",
+    "bytes": 25274880
+  }
+}
