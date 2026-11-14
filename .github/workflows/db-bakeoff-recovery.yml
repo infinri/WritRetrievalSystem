@@ -11,7 +11,7 @@ env:
   EVIDENCE_ROOT: experiments/db_offload/evidence/recovered-ci/${{ github.run_id }}
 jobs:
   quality:
-    if: github.head_ref == 'codex/bakeoff-evaluation-recovery'
+    if: github.head_ref == 'codex/bakeoff-evaluation-recovery' && github.event.pull_request.head.sha == 'cfd54b9dfdc4deb257642c328a125e0395aa6b6a'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     outputs:
