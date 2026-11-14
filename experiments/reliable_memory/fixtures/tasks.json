@@ -1,0 +1,1530 @@
+{
+  "contract_version": "writ-reliable-tasks/1",
+  "labels": "Provisional model-authored passages. No independent human review. Section questions can admit additional relevant answers; exact-paragraph scores are conservative proxies.",
+  "tasks": [
+    {
+      "id": "dev-01",
+      "split": "development",
+      "track": "natural",
+      "category": "historical",
+      "family": "docs/architecture/retrieval-and-memory.md#Separate intelligence plane from authority plane",
+      "query": "What does Writ specify under 'Separate intelligence plane from authority plane' in retrieval-and-memory.md?",
+      "project": "writ-public",
+      "corpus_revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/b60bf33983b96ccfbc5c1464dcf32687c789703e/docs/architecture/retrieval-and-memory.md#L5",
+          "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+          "content_digest": "sha256:79a29fc29312caa59b5995faa3a20635f0792644a2123440158bf342fc7296f9",
+          "answer_text": "Writ V2 preserves the product's distinctive context behavior: relevant rules near the action, a connected knowledge graph, evidence-backed decisions and durable memory. But all retrieved text, graph facts and memories are **untrusted data**. A retrieved 'you may do X' is never a broker permit."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-02",
+      "split": "development",
+      "track": "natural",
+      "category": "historical",
+      "family": "docs/architecture/retrieval-and-memory.md#Retrieval stages",
+      "query": "What does Writ specify under 'Retrieval stages' in retrieval-and-memory.md?",
+      "project": "writ-public",
+      "corpus_revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/b60bf33983b96ccfbc5c1464dcf32687c789703e/docs/architecture/retrieval-and-memory.md#L9",
+          "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+          "content_digest": "sha256:c837ee58daa0fad8203b73a0754d256e89630c3a7372150e5afd44960225d220",
+          "answer_text": "1. **Resolve caller:** verified tenant/principal/project, workload intent, confidentiality boundary and query budget.\n2. **Intent and scope:** classify needed evidence type and likely relevant files or domains; abstain when context is insufficient.\n3. **Candidate retrieval:** lexical and vector indexes, ideally warmed and read-only in the local process. Compare ONNX-HNSW-Tantivy V1 behavior rather than blindly replacing it.\n4. **Graph expansion:** bounded multi-hop relationships (e.g., rule-to-exception, decision-to-evidence, file-to-change), with per-node authorization and edge provenance.\n5. **Conflict/staleness:** filter invalid, revoked, stale or contradictory claims; surface conflicts rather than merging incompatible instructions.\n6. **Rank and budget:** deterministic score, importance and recency/authority weighting, diversity, token/character cap, dedup and citation references.\n7. **Deliver:** explicit evidence/guide classes, source IDs, confidence, version and exclusions; abstain on insufficient evidence.\n8. **Feedback:** separate user-confirmed outcomes from model-generated speculation. Update indexes asynchronously with generation swaps and rollback."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-03",
+      "split": "development",
+      "track": "natural",
+      "category": "historical",
+      "family": "docs/architecture/retrieval-and-memory.md#Data model",
+      "query": "What does Writ specify under 'Data model' in retrieval-and-memory.md?",
+      "project": "writ-public",
+      "corpus_revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/b60bf33983b96ccfbc5c1464dcf32687c789703e/docs/architecture/retrieval-and-memory.md#L20",
+          "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+          "content_digest": "sha256:5207f9ac926722bb6652bc2c62be80f220738f7caa5d73535e961a4dde2477fe",
+          "answer_text": "Doctrine (guidance/policy description), Evidence, Decision, FileChange, Memory, Source, Entity, Relation, Claim, Project, Tenant, Principal and ProvenanceEvent. Only policy registry controls enforcement. Graph queries receive caller scope; no 'project=None means all tenant records' behavior. Shared doctrine is explicitly published into a shared namespace, never inferred from a field named project."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-04",
+      "split": "development",
+      "track": "natural",
+      "category": "historical",
+      "family": "docs/architecture/retrieval-and-memory.md#Recall: what persists",
+      "query": "What does Writ specify under 'Recall: what persists' in retrieval-and-memory.md?",
+      "project": "writ-public",
+      "corpus_revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/b60bf33983b96ccfbc5c1464dcf32687c789703e/docs/architecture/retrieval-and-memory.md#L26",
+          "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+          "content_digest": "sha256:e85fa8e592d3871f6d693fbaae5a1dc4d316a8d2da0b9ee49ae1455425961997",
+          "answer_text": "- Provenance-backed **decision**: rationale, affected artifacts, evidence links, approval status and supersession.\n- **Observation**: tool result or externally verified claim, timestamp, expiry and confidence.\n- **Preference**: user or tenant provided with consent and revocation semantics.\n- **Project constraint**: scoped instruction, version and owner; if it is an actual enforcement rule it must be separately published through policy.\n- **Ephemeral context**: short-retention recent activity, not silently promoted to permanent fact."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-05",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/retrieval-and-memory.md#Evaluation program",
+      "query": "What does Writ specify under 'Evaluation program' in retrieval-and-memory.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md#L36",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:94fbed60bf7c484f88f1dbdd08cabd6034cee5c5f71119564eb8aad149767867",
+          "answer_text": "Freeze golden V1 query sets covering general coding, Magento/opaque SDKs, permissions, multi-project isolation, near misses, abstentions and conflicting evidence. Compare precision/recall@k, mean reciprocal rank, relevant tokens per turn, memory RSS, refresh time and p95. Re-run with 10x corpus growth. Preserve strong V1 ranking where it wins; replace only with measured evidence."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-06",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/data-model.md#Operational relational schema (logical)",
+      "query": "What does Writ specify under 'Operational relational schema (logical)' in data-model.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md#L76",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:c8a4ccee7d440f11ff5e16b228a297d2cb804659e6bcc7a767928cf6b69d6602",
+          "answer_text": "**Important:** This is a logical PostgreSQL example, not executable migration code for SQLite. Migrations must also add FKs, query indexes, retention partitions, row-level/DB privilege enforcement, envelope encryption and migration safety. The prototype's SQLite schema uses equivalent semantics but compatible types and locking."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-07",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/data-model.md#Neo4j logical graph",
+      "query": "What does Writ specify under 'Neo4j logical graph' in data-model.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md#L84",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:851ec8d6a41bce98dc6f0f11af4c5e28e67b61aa089be2d590c2bc2e21ccd84a",
+          "answer_text": "Node labels: Tenant, Project, KnowledgeRule, Playbook, Evidence, Source, Claim, Decision, Memory, File, Commit, Change, ActorRef, PolicyRef (read-only evidence link), ContextSnapshot. Relationships: APPLIES_TO, SUPPORTS, CONTRADICTS, DERIVED_FROM, SUPERSEDES, RELATED_TO, AFFECTS, OBSERVED_IN, RETRIEVED_FOR, RECORDED_BY, SCOPED_TO."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-08",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/data-model.md#Evidence and temporal truth",
+      "query": "What does Writ specify under 'Evidence and temporal truth' in data-model.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md#L99",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:c119b2e5bf45567c999df3edc1fe8a50815b9c834cf699d8aa81d543e1cb40cc",
+          "answer_text": "Every claim has origin, source digest, recorded_at, valid_from/valid_to if known, confidence and supersession link. A contradicted claim is retained as history but should not be returned as uncontested current truth. Retrieval returns evidence references and explicit conflicts. A model-authored memory cannot become an authorization policy via a graph edge."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-09",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/data-model.md#Import rules",
+      "query": "What does Writ specify under 'Import rules' in data-model.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md#L103",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:4d35ba490e3891784e3f5890cb59ad8ff8a246b65059cb7840b51fbd8f1af467",
+          "answer_text": "V1 Cypher dump is read-only input. Validate labels and schema against an allowlist, convert to V2 IDs, classify rules as advisory vs enforceable, map project scope to tenant scope, deduplicate by provenance and record an import receipt. Require human review for ambiguous canonical facts or access policies. Never execute untrusted V1 Cypher in a privileged production DB as the migration mechanism."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-10",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/data-model.md#Backups, retention and encryption",
+      "query": "What does Writ specify under 'Backups, retention and encryption' in data-model.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/data-model.md#L107",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:d3c3662ef0fadbc8ad465273f6ec87d1fa91a0dc804ceb06edeb3b6fb7ee4f32",
+          "answer_text": "Encrypted backups of both stores, separate key management, tenant-specific retention, deletion/tombstone propagation into search indexes, periodic restore drills and audit chain verification. Ensure ordinary telemetry is not used as a substitute for durable effect records."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-11",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/host-adapters.md#Adapter responsibilities",
+      "query": "What does Writ specify under 'Adapter responsibilities' in host-adapters.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/host-adapters.md#L7",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:0a95ce4f452024d8025552bab644bb9a1b760f2e60e7085d20fb80940a4b6a47",
+          "answer_text": "1. Authenticate the host origin and bind principal, project, tenant and session without trusting raw caller text.\n2. Parse a bounded versioned host event. Reject malformed/ambiguous input.\n3. Normalize tool variants into a declared capability + canonical resource.\n4. Submit an ActionRequest to the local kernel and map the Decision back to the host.\n5. If broker-mediated, invoke the broker rather than the host's unmediated executor.\n6. For advisory-only hosts, disclose gaps clearly and never claim security prevention.\n7. Forward context/RAG independently from authorization, with injection sanitization and caps.\n8. Emit trace/receipt references without leaking approval credentials in logs."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-12",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/host-adapters.md#Initial capability registry",
+      "query": "What does Writ specify under 'Initial capability registry' in host-adapters.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/host-adapters.md#L29",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:6268268678d62978bb5afc195cab4819bd2fc463eebf188e8c85b1950286f4ec",
+          "answer_text": "A hook rule matching only Write does not cover Edit; a text parser of shell syntax does not mediate all process effects."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-13",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/host-adapters.md#Claude Code bridge profile",
+      "query": "What does Writ specify under 'Claude Code bridge profile' in host-adapters.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/host-adapters.md#L33",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:5ce06ee7ef1e921bcd8cf2b32c16697be3d59247c88ad0619df74d082aeb8ab1",
+          "answer_text": "Minimum supported event mappings, subject to host-integration verification:"
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-14",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/host-adapters.md#Interoperability",
+      "query": "What does Writ specify under 'Interoperability' in host-adapters.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/host-adapters.md#L44",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:d0cf9d30b06033c6372eb163636d1d744a8f01232e92611fee6b43f9c1c7c631",
+          "answer_text": "Define HostAdapter and BrokerExecutor ports independent of language. MCP-hosted tools may advertise capabilities, but tool metadata is not proof of permission; broker validates actual operation/target before executing. SDK adapters require transport authentication and tenant-bound principal mapping. Standard JSON Schemas under [contracts](../contracts/) are the source for generated clients."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-15",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/host-adapters.md#Coverage matrix and unsupported calls",
+      "query": "What does Writ specify under 'Coverage matrix and unsupported calls' in host-adapters.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/host-adapters.md#L48",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:2311732724163f3f2ad917fe75583dc4e453e55df25c24b519af3c65679c1a2e",
+          "answer_text": "Each adapter publishes a machine-readable matrix: event name, tool variants, canonical capability, interceptor location, can_prevent boolean, can_observe boolean, test ID and host version. Any unknown action is DENY for a governed broker profile; advisory profile labels it ungoverned. Release docs must not silently fill coverage gaps using assumptions."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-16",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/observability.md#Two distinct channels",
+      "query": "What does Writ specify under 'Two distinct channels' in observability.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/observability.md#L7",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:888ee4b830fe321430a38aecf75d053935c1afefab9eb64ce07f253a2fef210d",
+          "answer_text": "**Operational audit (durable):** request, principal proof reference, policy bundle SHA, state revision, decision, approval grant reference, effect intent, receipt and reconciliation outcome. Must be written/committed as part of the relevant authorization/effect transaction; audit unavailability on privileged path is a blocking error."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-17",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/observability.md#Minimum trace",
+      "query": "What does Writ specify under 'Minimum trace' in observability.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/observability.md#L25",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:a80d6de98d7ef5ff244b7924c9a13f331250a9217b62bdbb4453a66737b8f19b",
+          "answer_text": "Common attributes: trace_id, request_id, tenant_id, project_id, action.kind, resource.hash (not raw secrets), policy_sha, state_revision, decision.status, broker.attempt_id. Never log grant plaintext, full credentials, secret-bearing source contents, private prompts by default or cross-tenant PII into common metrics."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-18",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/observability.md#Metrics and SLO partitions",
+      "query": "What does Writ specify under 'Metrics and SLO partitions' in observability.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/observability.md#L29",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:630e398f06954094ea5c21c8727aa4816667c04fb9824059829d5bf9e4e17a97",
+          "answer_text": "- Kernel deterministic decision p50/p95/p99, reject rates, policy cache hit.\n- Adapter invocation and normalization failures, unsupported capability count.\n- Broker effect success/failure/unknown, idempotency collision, receipt backlog.\n- Approval pending/expired/consumed/revoked, unauthorized-replay refusal count.\n- Retrieval query latency/quality/abstention, index refresh generation and memory RSS.\n- Graph query latency, cache invalidation, neighbor scope filtering, cross-tenant deny.\n- Crash/restart recovery duration, audit chain continuity and operator intervention."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-19",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/observability.md#Incident procedure",
+      "query": "What does Writ specify under 'Incident procedure' in observability.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/observability.md#L39",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:3d355bde5398ee44a8e2c39d6c9a5b2175079663f6df45e583860992ae446946",
+          "answer_text": "Stop new privileged effects on loss of trusted policy, approval ledger or broker. Inspect durable effect intents, reconcile UNKNOWN before retry, invalidate compromised grants, verify audit linkage and restore unaffected tenant operations. See [incident and recovery](../operations/incident-and-recovery.md)."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-20",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/observability.md#Evidence levels",
+      "query": "What does Writ specify under 'Evidence levels' in observability.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/observability.md#L43",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:12399bddfd8fd0ac943937002a143ee336a4a08db80c94262358a2235e7db09b",
+          "answer_text": "Claim as **implemented** only with source path + commit; **verified** only with reproducible test/log; **benchmarked** only with hardware/workload version and results; **planned** when only docs exist. Every website diagram displays planning status until verified."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-21",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/capability-packs.md#Manifest",
+      "query": "What does Writ specify under 'Manifest' in capability-packs.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/capability-packs.md#L9",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:912ec997d51ebd1a85b4c6e17ac069386495d80a946c09222636df04afaae5dd",
+          "answer_text": "- Identity: pack_id, version, publisher, signature reference, domain, compatibility range.\n- Tasks and workflows: typed tasks, required inputs, ordered/branching steps, review and completion gates.\n- Tool requirements: symbolic capability names; broker independently authorizes them.\n- Artifacts: output types and schema references, provenance and scope.\n- Evaluation: rubric IDs/versions and mechanical, source-based, model-assisted or human evaluators.\n- Retrieval/Recall: evidence expectations, graph scope, allowed memory record types, retention.\n- Models: optional required features, never a hard-coded model provider.\n- Limits: duration, tool calls, model calls, token/cost budget and cancellation policy."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-22",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/capability-packs.md#Reference packs",
+      "query": "What does Writ specify under 'Reference packs' in capability-packs.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/capability-packs.md#L29",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:24366df1266884370e0a6f79a054c2272fa3b1bf8a9c1df899d9898617679750",
+          "answer_text": "Research and Review are **not restricted to repositories or coding**. Higher-risk domain packs require domain-specific safeguards and qualified human review."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-23",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/capability-packs.md#Workflow and evaluation",
+      "query": "What does Writ specify under 'Workflow and evaluation' in capability-packs.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/capability-packs.md#L41",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:741a13becb30ec2b74acf962a1b237a6346c95d86f5e3c9f8ea03e5c0f8ff4f2",
+          "answer_text": "An evaluator distinguishes: deterministic checks, source-backed evidence, model-assisted hypotheses and authenticated human signoff. A model labeling a finding \"verified\" does not make it independently verified. Unknown or contradictory evidence must be surfaced, not silently incorporated into durable Recall as fact."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-24",
+      "split": "development",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/capability-packs.md#M0 demonstration scenarios",
+      "query": "What does Writ specify under 'M0 demonstration scenarios' in capability-packs.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/capability-packs.md#L47",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:27b7bb4daee750b0c59bf5a5ebacb2e36f96720ed308f4c415c56680469ecb2d",
+          "answer_text": "1. **Coding:** inspect a diff and produce source-linked review findings.\n2. **Research:** investigate an unfamiliar question, cross-check sources, record counterevidence and return a cited synthesis with uncertainty.\n3. **Document Review:** evaluate a noncode document against a versioned rubric with exact locations and human-signoff needs."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-25",
+      "split": "development",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/capability-packs.md#Security and release criteria",
+      "query": "What does Writ specify under 'Security and release criteria' in capability-packs.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/capability-packs.md#L55",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/capability-packs.md#L55",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:eabfec8f54c9ac79b78f15f6fd17a9d3e41751554c563273e46dd335109af29e",
+          "answer_text": "Pack must be signed/verified before execution; unsupported requirements reject activation. A pack requesting network access does not grant network access. Memory reads/writes are scoped and consent-aware. Tests must prove forged citations, missing evidence, conflicting sources, cross-tenant data and unauthorized tool calls cannot be silently accepted."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-26",
+      "split": "development",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/architecture.md#Architecture in one sentence",
+      "query": "What does Writ specify under 'Architecture in one sentence' in architecture.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/architecture.md#L7",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/architecture.md#L7",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:312ee931780a529d2f8a3dfc3ba96e7232eaffc1f49bbf17c4cfceb8ea0c2c49",
+          "answer_text": "A small deterministic **decision kernel** authorizes normalized actions; a **capability broker** is the actual executor; retrieval and graph intelligence supply evidence but never mint authority; host adapters supply authenticated identity and transport."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-27",
+      "split": "development",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/architecture.md#Trust boundaries",
+      "query": "What does Writ specify under 'Trust boundaries' in architecture.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/architecture.md#L28",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/architecture.md#L28",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:90f6c3aea8502f538122dd027e66f1db4eb83a8e91575d6f126f3f5af89317fd",
+          "answer_text": "**T1 Host→Adapter:** untrusted agent tool requests become validated, canonical, identity-bound actions. Host-provided identity must be cryptographically or OS/transport verified where possible. Caller-supplied string IDs are not authentication."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-28",
+      "split": "development",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/architecture.md#Performance boundary",
+      "query": "What does Writ specify under 'Performance boundary' in architecture.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/architecture.md#L60",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/architecture.md#L60",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:37c324672e218e7277bb558c75d60dca403b6c563fa035a5572a46b7b2a43639",
+          "answer_text": "The permission hot path should need only: validated request, verified identity, in-memory/pinned policy and locally available operational state. Graph, vector retrieval, remote LLM and remote durable workflow services are never unconditional prerequisites to deciding an ordinary privileged tool action. Failures are explicit; context generation can degrade without changing a policy verdict."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-29",
+      "split": "development",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/architecture.md#Modes",
+      "query": "What does Writ specify under 'Modes' in architecture.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/architecture.md#L64",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/architecture.md#L64",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:8474b4fe030f82cac7cdcfae6475a7652080d250f096d24a763786311e2e6fe3",
+          "answer_text": "Conversation, investigation, review, plan and implementation are **workflow state**. They do not change fundamental tenant or organization permissions. Any user-configured workflows are orthogonal to the security decision."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-30",
+      "split": "development",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/architecture.md#Extension points",
+      "query": "What does Writ specify under 'Extension points' in architecture.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/architecture.md#L68",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/architecture.md#L68",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:f0a060f2a25411c4592538c65bd6a650f3b25615da2dd1ba1d120ec74ebd0107",
+          "answer_text": "HostAdapter, PolicyProvider, ActionExecutor, GraphPort, RetrievalPort, MemoryPort, EventStore and WorkflowCoordinator. Each has a versioned contract; test doubles prove interchangeability. See [extensions](extensibility.md) and [repository layout](repository-layout.md)."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-unknown-1",
+      "split": "development",
+      "track": "structured",
+      "category": "missing-owner-confirmation",
+      "family": "development-unknown-0",
+      "query": "What owner-confirmed successful outcome establishes Separate intelligence plane from authority plane?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md#L5",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        },
+        "verification": "owner_confirmed"
+      },
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-unknown-2",
+      "split": "development",
+      "track": "structured",
+      "category": "missing-owner-confirmation",
+      "family": "development-unknown-1",
+      "query": "What owner-confirmed successful outcome establishes Retrieval stages?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md#L9",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        },
+        "verification": "owner_confirmed"
+      },
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-unknown-3",
+      "split": "development",
+      "track": "structured",
+      "category": "missing-owner-confirmation",
+      "family": "development-unknown-2",
+      "query": "What owner-confirmed successful outcome establishes Data model?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/retrieval-and-memory.md#L20",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        },
+        "verification": "owner_confirmed"
+      },
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-unknown-4",
+      "split": "development",
+      "track": "natural",
+      "category": "project-isolation",
+      "family": "development-unknown-3",
+      "query": "What does Writ specify under 'Recall: what persists'?",
+      "project": "unrelated-project",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-unknown-5",
+      "split": "development",
+      "track": "natural",
+      "category": "project-isolation",
+      "family": "development-unknown-4",
+      "query": "What does Writ specify under 'Evaluation program'?",
+      "project": "unrelated-project",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "dev-unknown-6",
+      "split": "development",
+      "track": "natural",
+      "category": "project-isolation",
+      "family": "development-unknown-5",
+      "query": "What does Writ specify under 'Operational relational schema (logical)'?",
+      "project": "unrelated-project",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-01",
+      "split": "heldout",
+      "track": "natural",
+      "category": "historical",
+      "family": "docs/architecture/acceptance-gate-integrity.md#1. Normative requirement",
+      "query": "What does Writ specify under '1. Normative requirement' in acceptance-gate-integrity.md?",
+      "project": "writ-public",
+      "corpus_revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/b60bf33983b96ccfbc5c1464dcf32687c789703e/docs/architecture/acceptance-gate-integrity.md#L9",
+          "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+          "content_digest": "sha256:39b1f19e35001412ebec1b90d450a0f766c97865b3488ce219f5fbb0266c9b10",
+          "answer_text": "Acceptance Gate Integrity (AGI) is a security and correctness requirement of the core, not a Capability Pack feature. In **Governed Execution** mode:"
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-02",
+      "split": "heldout",
+      "track": "natural",
+      "category": "historical",
+      "family": "docs/architecture/acceptance-gate-integrity.md#2. Three distinct concepts, three owners",
+      "query": "What does Writ specify under '2. Three distinct concepts, three owners' in acceptance-gate-integrity.md?",
+      "project": "writ-public",
+      "corpus_revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/b60bf33983b96ccfbc5c1464dcf32687c789703e/docs/architecture/acceptance-gate-integrity.md#L27",
+          "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+          "content_digest": "sha256:fb152abadbe8525f5d61363fcc23db8c67d996697d09bf3bfc0d56632297490e",
+          "answer_text": "There is **no second authorization authority**. A promotion is an ordinary ActionRequest of kind `workflow.transition` on resource `workflow:<tenant>/<project>/<workflow_id>`, with attributes `from_state`, `to_state`, `artifact_digest` and `acceptance_record_id`. Policy decides whether the principal may request it (deny > require_approval > permit > default deny). The acceptance check is a use-time precondition inside the broker, like grant consumption."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-03",
+      "split": "heldout",
+      "track": "natural",
+      "category": "historical",
+      "family": "docs/architecture/acceptance-gate-integrity.md#3. Operating modes",
+      "query": "What does Writ specify under '3. Operating modes' in acceptance-gate-integrity.md?",
+      "project": "writ-public",
+      "corpus_revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/b60bf33983b96ccfbc5c1464dcf32687c789703e/docs/architecture/acceptance-gate-integrity.md#L36",
+          "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+          "content_digest": "sha256:ee2fb574843e6f2a8ff32f5797dd9ffff8a3b647962289b94dabde565306e7be",
+          "answer_text": "Governed Execution requires that the agent **does not hold** the credentials or write access needed to perform the effect or the state change itself: the workflow state store, publish targets, deployment credentials and release channels are writable only by the transition service and effect adapters. Where the agent retains such access (for example a local shell with the same credentials), that path is UNMEDIATED and the product must say so."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-04",
+      "split": "heldout",
+      "track": "natural",
+      "category": "historical",
+      "family": "docs/architecture/acceptance-gate-integrity.md#4. AcceptanceRecord contract (proposed for M2)",
+      "query": "What does Writ specify under '4. AcceptanceRecord contract (proposed for M2)' in acceptance-gate-integrity.md?",
+      "project": "writ-public",
+      "corpus_revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/b60bf33983b96ccfbc5c1464dcf32687c789703e/docs/architecture/acceptance-gate-integrity.md#L42",
+          "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+          "content_digest": "sha256:f24cdd64327349efcd865f9ee61b58d61a2da3a24cf8f544c528baa7c4a9b0f2",
+          "answer_text": "Issued only by the acceptance service; MAC or signature over the canonical digest (D-006) with the acceptance-service key, which no agent-realm component holds."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-05",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/acceptance-gate-integrity.md#5. Trusted evaluators and evidence verification",
+      "query": "What does Writ specify under '5. Trusted evaluators and evidence verification' in acceptance-gate-integrity.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/acceptance-gate-integrity.md#L70",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:d2b242de78d77375614e392ea2aa5f86c5718a200b22621f275a58ceb2484266",
+          "answer_text": "**Registration.** An evaluator counts toward a mandatory criterion only when registered in the evaluator registry by an authorized human publisher (policy publish path, INV-12). An entry records `evaluator_id`, `version`, `class`, implementation digest, execution environment, attestation key id, the criteria it may satisfy, scope, owner and its test suite. Packs may **reference** registered evaluators and **propose** rubrics; they cannot register a trusted evaluator or raise an evaluator's trust (INV-23)."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-06",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/execution-and-state.md#Normalized action life cycle",
+      "query": "What does Writ specify under 'Normalized action life cycle' in execution-and-state.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/execution-and-state.md#L5",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:be2ae6b72ce831eb570226c7878045435f5a0d7381a714dfbc2b5b19d77b897c",
+          "answer_text": "1. Host adapter receives event and verifies host identity / peer origin.\n2. Canonicalizer maps tool call to a **declared action**, resource scope and content/operation digest.\n3. Kernel loads relevant state revision and immutable policy version.\n4. Pure evaluator returns ALLOW, DENY, REQUIRE_APPROVAL, INVALID, or UNAVAILABLE with structured reason.\n5. For ALLOW, broker obtains a short-lived bound authorization capability and revalidates it at execution time.\n6. Broker atomically records an effect attempt with idempotency key; checks replay and limit state.\n7. Effect adapter executes within granted capability/sandbox.\n8. Broker persists observed receipt, reconciles ambiguous timeouts, and emits audit-linked event.\n9. Adapter maps result into the host-specific response; context injection is a separate advisory operation."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-07",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/execution-and-state.md#Reducer and state transitions",
+      "query": "What does Writ specify under 'Reducer and state transitions' in execution-and-state.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/execution-and-state.md#L39",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:d6f173e36b71c114b9f88f439e11755c0a2ae81f3951a0f25dde36ddc2510593",
+          "answer_text": "State is materialized by reducing immutable ordered events. Commands carry expected revision, subject and idempotency key. Concurrent changes use compare-and-swap. Missing/out-of-order causal predecessors return conflict requiring reconciliation. Auth policy is not a property of a workflow phase, so selecting 'conversation' or 'prototype' never bypasses organization restrictions."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-08",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/execution-and-state.md#Idempotency and outages",
+      "query": "What does Writ specify under 'Idempotency and outages' in execution-and-state.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/execution-and-state.md#L53",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:57ea277c433e8b9225daa565260a755e4f835b490270b149854ca879f2d2b3fd",
+          "answer_text": "Duplicate action with same request + digest returns existing receipt if effect completed. Same key with different action digest is INVALID. Crash after dispatch but before receipt creates UNKNOWN and requires effect-specific reconciliation; do not blindly retry irreversible actions. Broker keeps durable authorization and effect receipts even if telemetry sink fails. Read-only advisory queries may continue on graph outage; privileged actions reject when required policy or receipt storage is unavailable."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-09",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/execution-and-state.md#Capability limitations",
+      "query": "What does Writ specify under 'Capability limitations' in execution-and-state.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/execution-and-state.md#L57",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:10c162c36dca53a5c93ec44a162632c698e54a1e71c58cf81a0e3d4c98cc9373",
+          "answer_text": "Host hooks may intercept specific named tools but cannot prove all filesystem/network/process effects. A true **broker-enforced profile** requires all permitted effect routes to be broker-owned, or an independently verified host sandbox. A **hook-advisory profile** must label unsupported or unmediated tool paths. This difference is displayed in product UI and audit events."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-10",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/authorization-and-approvals.md#Four separate concepts",
+      "query": "What does Writ specify under 'Four separate concepts' in authorization-and-approvals.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/authorization-and-approvals.md#L5",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:3af4682baa4ac8945890d4638be692455ef7ee1e5f9ca3dd8f8485edbc791b98",
+          "answer_text": "**Guidance:** text retrieved into model context; never enforces.  \n**Validation:** checks result or intended change; may produce warnings or blockers only at a real controlled boundary.  \n**Authorization:** deterministic allow/deny/approval-required decisions over trusted identity and normalized capability.  \n**Execution:** mediated action performed by broker with a recorded effect receipt."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-11",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/authorization-and-approvals.md#Decision lattice",
+      "query": "What does Writ specify under 'Decision lattice' in authorization-and-approvals.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/authorization-and-approvals.md#L14",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:59a2467942b5951ca0aa9979a08e97283c585e796a7a1a595a1bec3bde50882c",
+          "answer_text": "1. Invalid request/identity -> INVALID; no effect.\n2. Policy bundle missing/stale/unverified -> UNAVAILABLE or DENY according to strict security profile; no privileged effect.\n3. Any applicable hard prohibition -> DENY; overrides cannot turn it into approval.\n4. Applicable policy that requires a human grant -> REQUIRE_APPROVAL with typed request.\n5. Only explicitly allowed capability -> ALLOW with bounded permit.\n6. Unknown capability -> DENY by default on governed profile."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-12",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/authorization-and-approvals.md#Policy binding and conflict control",
+      "query": "What does Writ specify under 'Policy binding and conflict control' in authorization-and-approvals.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/authorization-and-approvals.md#L25",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:918907a2d06d3d181fe76cf3dea8274ab3511a9eb5496540334c72c76f031b0f",
+          "answer_text": "Each policy has: id/version, publisher/owner, scope, action selector, normalized resource constraints, precedence, advisory or enforced classification, effect/denial category, failure mode, implementation binding, tests, issue/expiry metadata, and signed bundle digest. Publishing rejects missing validators, ambiguous precedence, invalid schema or failing negative controls."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-13",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/authorization-and-approvals.md#Human approval protocol",
+      "query": "What does Writ specify under 'Human approval protocol' in authorization-and-approvals.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/authorization-and-approvals.md#L31",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:52f8df3d32d7686cd1dc6078e07ca2c95bfbf4cf6790635bd8f4706ab498fbe6",
+          "answer_text": "The human approves **the exact requested operation**, not an ambient session mode or an arbitrary future command. Request includes authenticated principal/tenant, operation, target, content digest, relevant plan/effect summary, policy version, constraints, expiry and a trusted request identifier. The model can describe it but cannot mint the authorization."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-14",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/authorization-and-approvals.md#Failure policy",
+      "query": "What does Writ specify under 'Failure policy' in authorization-and-approvals.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/authorization-and-approvals.md#L39",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:56ac6d6ff3d483b784d3a08f6be717eef2f54a35ba5eea13f96ca4267627cd85",
+          "answer_text": "- Strict/enterprise: deny privileged effects if kernel, policy validation, audit receipt store or authenticated identity is unavailable.\n- Advisory/local: retrieval may degrade, but no false claim of enforcement. If an operator elects to run ungoverned, that is a separately displayed, audited outside-Writ mode, not a permission verdict.\n- Post-action detection must never claim to prevent a completed action."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-15",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/extensibility.md#Modular core",
+      "query": "What does Writ specify under 'Modular core' in extensibility.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/extensibility.md#L5",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:54d56a158212f4e3c076b2b4ddcb7d9f95ac3d354806783db4f470ddd7acd606",
+          "answer_text": "Modules follow ports-and-adapters (hexagonal) architecture. The kernel defines minimal ports:"
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-16",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/extensibility.md#Package/plugin lifecycle",
+      "query": "What does Writ specify under 'Package/plugin lifecycle' in extensibility.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/extensibility.md#L24",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:b500ebf08aa41ad28cfd7d50b13303fecbf79d7bf5cdf4e4705398be7031ece6",
+          "answer_text": "Manifest: plugin_id, version, API compatibility range, declared host capabilities, tenant scope, limits, data-access purpose, publisher signature, test vectors and health/readiness. Install verifies signature and admin policy. Disable and rollback require an explicit revocation procedure and cache invalidation."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-17",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/extensibility.md#Durable workflows",
+      "query": "What does Writ specify under 'Durable workflows' in extensibility.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/extensibility.md#L36",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:de68aded7ba68f9e1af288120e7540a4102a0e66e4c42bc3e9a6f4b1b2e503fa",
+          "answer_text": "Long-running review/approval/reconciliation flows may later use Temporal, Restate or another durable coordinator. The coordinator stores orchestration intent, backoff and rescheduling; all effects still call the broker. Do not add remote workflow dependency for synchronous local file permissions. Evaluate only after local M0–M9 functionality is correct."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-18",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/extensibility.md#Multi-tenant execution",
+      "query": "What does Writ specify under 'Multi-tenant execution' in extensibility.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/extensibility.md#L40",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:3e36dcac48e9bf479c437234745609939a2b2d777b189caa3a2c485ddc576779",
+          "answer_text": "Per-tenant quotas, admission control, max concurrency, prioritized queues, backpressure, policy bundle namespace and audit partition. Local installation has one explicit tenant and local principal, but keeps the same wire and storage contracts. Enterprise profile does not assume Neo4j alone provides isolation."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-19",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/extensibility.md#Replaceability tests",
+      "query": "What does Writ specify under 'Replaceability tests' in extensibility.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/extensibility.md#L44",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:cf8958c3dd0802d265ff3270bdd6f83df258aaccb1c3cba4611fc62747cd0821",
+          "answer_text": "Every adapter must pass the same contract suite, not merely implement a method with the same name. Change implementations behind stable API versions, compare verdicts in shadow mode, and run failure injection for extension crash/unavailability. None may alter security decisions on timeout."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-20",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/model-agnostic-runtime.md#Model, agent, host and tool are different things",
+      "query": "What does Writ specify under 'Model, agent, host and tool are different things' in model-agnostic-runtime.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/model-agnostic-runtime.md#L16",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:d0bc0275b7f212eb97919200ea936fb3ecac83b438bad9feab3bf169f76a3153",
+          "answer_text": "A model with tool-calling does not automatically become an enforceable host. An agent can propose a tool call; the trusted broker executes only allowed effects."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-21",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/model-agnostic-runtime.md#Two equal integration modes",
+      "query": "What does Writ specify under 'Two equal integration modes' in model-agnostic-runtime.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/model-agnostic-runtime.md#L20",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:a1996b92175072560148959cb6695f028fb1c335cfb0fbce90ba05504988ea36",
+          "answer_text": "**External host:** Claude Code first; then other agent hosts, such as Codex, Gemini CLI and custom MCP/SDK agents, subject to real adapter support. Their host retains the model conversation, planning loop and UI. Writ supplies context, policy, Recall, scoped tools and validation. **No ModelAdapter is required** if the host already calls its own model."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-22",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/model-agnostic-runtime.md#ModelAdapter design",
+      "query": "What does Writ specify under 'ModelAdapter design' in model-agnostic-runtime.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/model-agnostic-runtime.md#L33",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:8bca23d542153eb4f0719c6aed15819fa4c537b783d34ac7315e82b9e2809b99",
+          "answer_text": "Versioned capabilities include streaming, tool-call proposals, native structured output, cancellation, context/output limits and optional multimodal features. Availability can depend on model, account, region, version or price, and is negotiated rather than assumed. Writ validates all outputs locally, including when a provider advertises JSON schema enforcement."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-23",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/model-agnostic-runtime.md#Routing, fallback and reproducibility",
+      "query": "What does Writ specify under 'Routing, fallback and reproducibility' in model-agnostic-runtime.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/model-agnostic-runtime.md#L41",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:8db861e3d499d7ab210d049afb8d0cf4b195763b92eb42a84066a2cd632dc0ce",
+          "answer_text": "Model choice can account for capability requirements, tenant privacy, approved egress, data residency, token budget and expected cost. A fallback must never weaken policy or silently change privacy jurisdiction. A provider lacking required tools/structured outputs returns an explicit unsupported/unavailable result. Record provider/model/version in evaluation evidence; multi-model agreement is not proof of truth."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-24",
+      "split": "heldout",
+      "track": "natural",
+      "category": "section-question",
+      "family": "docs/architecture/model-agnostic-runtime.md#Tests and implementation order",
+      "query": "What does Writ specify under 'Tests and implementation order' in model-agnostic-runtime.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/model-agnostic-runtime.md#L45",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:75037ea23deec869d8f1c8f5938ecbe9a8001a5de83071ea40e0300b6ee77a9f",
+          "answer_text": "- Stub two providers with different supported features and failure modes.\n- Validate events across streaming chunk boundaries and malformed proposed tool arguments.\n- Prove provider/tool-call proposals cannot skip the broker.\n- Test cancellation, rate limits, timeouts, privacy-preserving fallback and unknown capabilities.\n- Prove external-agent integration requires no Writ-managed model call.\n- Add real provider adapters only after stub contracts and data retention controls pass."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-25",
+      "split": "heldout",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/repository-layout.md#Import rules",
+      "query": "What does Writ specify under 'Import rules' in repository-layout.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/repository-layout.md#L54",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/repository-layout.md#L54",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:f6d87fccc68f6d469bbce71bfc9deb9911d748e7af9c14be5673459aa9d96e5b",
+          "answer_text": "Kernel (`kernel/`, formerly called core) imports contracts and pure domain types only. Policy evaluator imports contracts plus Cedar adapter. Broker imports contracts/core policy interface and persistence port; it does not reach into prompt retrieval. Graph and retrieval may import read-only domain types but not broker internals. Adapters translate events into contracts; they do not implement a second state machine. Core, policy evaluator and broker never import `management/` or `control-center/`; the management service talks to the registry, approval service and read-only stores through their APIs (ADR-0007)."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-26",
+      "split": "heldout",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/repository-layout.md#Existing files and branch state",
+      "query": "What does Writ specify under 'Existing files and branch state' in repository-layout.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/repository-layout.md#L60",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/repository-layout.md#L60",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:1d3fb7940aed6a7befd7e401327ea333b43fa54a86e27787ac0f525731608106",
+          "answer_text": "For now, top-level writ/, hooks/, bin/, agents/, rules/, legacy V1 CI and tests are still present. The initial docs-only commit is intentionally **not** a V2 runtime release. M0 will produce a porting/disposition map for each V1 component. M2+ builds clean packages; M12 removes/deprecates V1 paths after verified cutover. Avoid moving thousands of files only for cosmetic layout before semantic contracts exist."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-27",
+      "split": "heldout",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/repository-layout.md#Generated artifact rule",
+      "query": "What does Writ specify under 'Generated artifact rule' in repository-layout.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/repository-layout.md#L64",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/repository-layout.md#L64",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:ded01692f215a79c02cc8b6a16f0f3ac1ebb18760b1e474a6d7e653effe82240",
+          "answer_text": "The architecture website is a static projection of Markdown source. In M2, generate the pages from a single manifest to prevent drift. Until that generator exists, reviewers must update both in the same PR, and CI should validate page/link sets. No production data or old V1 graph-data.js payload belongs in these pages."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-28",
+      "split": "heldout",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/repository-layout.md#Domain-independent additions",
+      "query": "What does Writ specify under 'Domain-independent additions' in repository-layout.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/repository-layout.md#L78",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/repository-layout.md#L78",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:d7c61d12b5c3fdfb82f53213ac7d45d2b13cdfad8e8c71142a8b3f4467c4afa3",
+          "answer_text": "These describe target folders, not current source. An externally managed Claude Code integration must not import AgentRunner or a model client. The kernel must not import a pack, model provider or coding-specific module. See [model](model-agnostic-runtime.md), [packs](capability-packs.md) and [M0](../implementation/M0-START-HERE.md)."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-29",
+      "split": "heldout",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/acceptance-gate-integrity.md#6. Protected transition service",
+      "query": "What does Writ specify under '6. Protected transition service' in acceptance-gate-integrity.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/acceptance-gate-integrity.md#L92",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/acceptance-gate-integrity.md#L92",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:f1a725246af9496c4b0759d93470d3ac838273de20252723e2969ac268ac13a8",
+          "answer_text": "1. Agent or runner **proposes** `workflow.transition` through sealed ingress (D-010). Proposing is all it can do.\n2. Kernel evaluates the request under the current bundle: unknown transition or missing policy is DENY or UNAVAILABLE; protected transitions may additionally REQUIRE_APPROVAL.\n3. Broker transition operation, in **one** ledger transaction (`BEGIN IMMEDIATE` locally; serializable in enterprise):\n   1. Verify the permit and request fingerprint (D-012) and the deadline.\n   2. Compare-and-set: current workflow `state_revision` equals the request's expected revision, current state equals `from_state`.\n   3. Load the AcceptanceRecord; verify issuer signature and `record_digest`.\n   4. Recompute the artifact digest from the artifact store; check scope, transition, artifact digest, active acceptance-policy version and bundle sha, state revision and expiry against the record.\n   5. Check every mandatory criterion is `pass` from an evaluator of sufficient trust, not stale (`fresh_until`), with evaluator version and key not revoked.\n   6. Consume the record for this transition (single use) and any approval grant.\n   7. Append the transition event and the receipt; increment the revision.\n4. Any failed check refuses with a specific code and changes nothing."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-30",
+      "split": "heldout",
+      "track": "structured",
+      "category": "exact-source",
+      "family": "docs/architecture/acceptance-gate-integrity.md#6a. Immutable artifact snapshots",
+      "query": "What does Writ specify under '6a. Immutable artifact snapshots' in acceptance-gate-integrity.md?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/acceptance-gate-integrity.md#L110",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        }
+      },
+      "gold": [
+        {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/acceptance-gate-integrity.md#L110",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+          "content_digest": "sha256:764a311dbd71132ffcee3b964568c7b18981ee8c7c1b5052da4016876f0a8007",
+          "answer_text": "Recomputing a digest at promotion time is not enough if the artifact lives where the agent or another process can change it between evaluation, promotion and the downstream effect (publish, deploy). An open file descriptor, a file lock or a single digest comparison does **not** guarantee immutability: another process can modify the underlying contents through a different descriptor or path, and advisory locks bind only cooperating processes. None of these is represented as a guarantee."
+        }
+      ],
+      "expected_unknown": false,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-unknown-1",
+      "split": "heldout",
+      "track": "structured",
+      "category": "missing-owner-confirmation",
+      "family": "heldout-unknown-0",
+      "query": "What owner-confirmed successful outcome establishes 1. Normative requirement?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/acceptance-gate-integrity.md#L9",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        },
+        "verification": "owner_confirmed"
+      },
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-unknown-2",
+      "split": "heldout",
+      "track": "structured",
+      "category": "missing-owner-confirmation",
+      "family": "heldout-unknown-1",
+      "query": "What owner-confirmed successful outcome establishes 2. Three distinct concepts, three owners?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/acceptance-gate-integrity.md#L27",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        },
+        "verification": "owner_confirmed"
+      },
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-unknown-3",
+      "split": "heldout",
+      "track": "structured",
+      "category": "missing-owner-confirmation",
+      "family": "heldout-unknown-2",
+      "query": "What owner-confirmed successful outcome establishes 3. Operating modes?",
+      "project": "writ-public",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {
+        "source": {
+          "uri": "https://github.com/infinri/Writ/blob/a0e0e413e3b20082a85e7d75c58b45b0ba09b903/docs/architecture/acceptance-gate-integrity.md#L36",
+          "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+        },
+        "verification": "owner_confirmed"
+      },
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-unknown-4",
+      "split": "heldout",
+      "track": "natural",
+      "category": "project-isolation",
+      "family": "heldout-unknown-3",
+      "query": "What does Writ specify under '4. AcceptanceRecord contract (proposed for M2)'?",
+      "project": "unrelated-project",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-unknown-5",
+      "split": "heldout",
+      "track": "natural",
+      "category": "project-isolation",
+      "family": "heldout-unknown-4",
+      "query": "What does Writ specify under '5. Trusted evaluators and evidence verification'?",
+      "project": "unrelated-project",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    },
+    {
+      "id": "hel-unknown-6",
+      "split": "heldout",
+      "track": "natural",
+      "category": "project-isolation",
+      "family": "heldout-unknown-5",
+      "query": "What does Writ specify under 'Normalized action life cycle'?",
+      "project": "unrelated-project",
+      "corpus_revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "request": {},
+      "gold": [],
+      "expected_unknown": true,
+      "review_status": "model_authored_unreviewed"
+    }
+  ]
+}

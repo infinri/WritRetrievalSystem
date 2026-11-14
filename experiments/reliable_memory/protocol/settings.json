@@ -1,0 +1,42 @@
+{
+  "contract_version": "writ-reliable-protocol/1",
+  "baseline": "8533eb65d1f8dc9bf3f91194ed97665f294e17c4",
+  "source_revisions": [
+    "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+    "a0e0e413e3b20082a85e7d75c58b45b0ba09b903"
+  ],
+  "model": {
+    "repository": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "sha256": {
+      "model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+      "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+    },
+    "dimensions": 384,
+    "intra_threads": 2,
+    "inter_threads": 1
+  },
+  "budget_bytes": 8000,
+  "budget_chars": 6000,
+  "candidate_k": 6,
+  "rrf_k": 60,
+  "cosine_gate": 0.3,
+  "text_head_chars": 1600,
+  "max_graph_nodes": 64,
+  "graph_hops": 2,
+  "tuning_trials": 0,
+  "repetitions": 3,
+  "warmups": 1,
+  "seed": 20261114,
+  "native": "relate-db==1.0.1 exact cosine and fulltext; application RRF/validation/rendering",
+  "comparisons": [
+    "legacy-hybrid",
+    "legacy-connected",
+    "grounded-flat",
+    "grounded-relate"
+  ],
+  "quality_margin_absolute": 0.03,
+  "adoption": "No production replacement this milestone. Zero correctness failures; provisional target passage delivery noninferiority 3 percentage points; speed descriptive, no superiority with unreviewed labels.",
+  "token_accounting": "Complete canonical UTF-8 JSON and Unicode codepoints. ceil(chars/4) estimate; no exact target model tokenizer.",
+  "unknowns": "No human label review and no authorized generative model endpoint; actual agent trials NOT RUN."
+}
