@@ -1,0 +1,44 @@
+{
+  "contract_version": "writ-relate-capture/1",
+  "request_id": "owner-direction-rust-relate",
+  "project": "writ-retrieval-system",
+  "recorded_at": "2026-11-14T22:00:00Z",
+  "operations": [
+    {
+      "op": "supersede",
+      "decision": {
+        "key": "writ-retrieval-system|Decision|local-workflow-backend",
+        "revision": 1,
+        "content_digest": "sha256:288735e9f5e433ab9167d9683fa48331f40891e9c8ced8e9a5d944f2f4b09078"
+      },
+      "title": "Ship the Rust-native, Relate-centered writ-relate application",
+      "text": "The hackathon workflow ships the Rust writ-relate CLI and read-only MCP server over an embedded Relate directory store. The Python grounded profiles remain historical reference material, not the shipping runtime.",
+      "reason": "Owner direction 2026-11-14 (Python-free, Relate-centered product)",
+      "rationale": "Owner product requirement; not a measured performance or accuracy win.",
+      "governed_by": [
+        {
+          "key": "_shared|Guidance|a0e0e413e3b20082a85e7d75c58b45b0ba09b903:55d0bebf491f3e237eb4a0c8",
+          "revision": 1,
+          "content_digest": "sha256:79a29fc29312caa59b5995faa3a20635f0792644a2123440158bf342fc7296f9"
+        }
+      ],
+      "affects": [
+        "relate-app/src/main.rs",
+        "README.md"
+      ]
+    },
+    {
+      "op": "evidence",
+      "id": "owner-direction-rust-relate",
+      "kind": "local_owner_report",
+      "text": "Owner direction recorded 2026-11-14: the shipping application must be Python-free and centered on Relate; the Python-profile ADR remains historical evidence and does not dictate the new product implementation.",
+      "supports": [
+        {
+          "key": "writ-retrieval-system|Decision|local-workflow-backend",
+          "revision": 2,
+          "content_digest": "sha256:a6ac627320521a0d1e29fe88bc50638e3f0b8fe4ec0caa6c204909e2289ea2d9"
+        }
+      ]
+    }
+  ]
+}

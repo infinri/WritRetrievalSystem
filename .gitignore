@@ -9,3 +9,4 @@ dist/
 .pytest_cache/
 .cache/
 .ruff_cache/
+relate-app/target/

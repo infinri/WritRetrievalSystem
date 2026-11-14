@@ -1,0 +1,93 @@
+{
+  "contract_version": "writ-relate-capture/1",
+  "request_id": "seed-pr10-adr",
+  "project": "writ-retrieval-system",
+  "recorded_at": "2026-11-14T21:27:54Z",
+  "operations": [
+    {
+      "op": "decision",
+      "id": "local-workflow-backend",
+      "title": "Recommended local hackathon workflow: grounded flat (Python grounded_cli)",
+      "text": "1. **Recommended local hackathon workflow: grounded flat.** \"Default\" means\n   this exact entry point:\n\n   ```bash\n   python -m writ_retrieval.reliable.grounded_cli --store STORE --cache-dir CACHE \\\n     --model-dir MODEL --project PROJECT 'question'\n   ```\n\n   With `--backend` omitted the backend is `flat`, and with `--arm` omitted\n   the arm is `hybrid`. That is the command's existing behavior. **No CLI\n   behavior changes are made or proposed.** The legacy",
+      "rationale": null,
+      "source": {
+        "uri": "https://github.com/infinri/WritRetrievalSystem/blob/0bdf50381f222ff8aa1eea3a273f2c6f61698a34/experiments/laptop_decision/ADR.md#L15-L25",
+        "revision": "0bdf50381f222ff8aa1eea3a273f2c6f61698a34",
+        "path": "experiments/laptop_decision/ADR.md",
+        "start_line": 15,
+        "end_line": 25
+      },
+      "governed_by": [
+        {
+          "key": "_shared|Guidance|a0e0e413e3b20082a85e7d75c58b45b0ba09b903:55d0bebf491f3e237eb4a0c8",
+          "revision": 1,
+          "content_digest": "sha256:79a29fc29312caa59b5995faa3a20635f0792644a2123440158bf342fc7296f9"
+        }
+      ],
+      "affects": [
+        "src/writ_retrieval/reliable/grounded_cli.py",
+        "README.md"
+      ]
+    },
+    {
+      "op": "evidence",
+      "id": "laptop-native-flat-identical-delivery",
+      "kind": "repository_document",
+      "text": "Native Relate and flat deliver identical targets on every positive. Candidate\norder differs on dev-01/02/03/15/22 and hel-07/08/16/20.",
+      "source": {
+        "uri": "https://github.com/infinri/WritRetrievalSystem/blob/0bdf50381f222ff8aa1eea3a273f2c6f61698a34/experiments/laptop_decision/FINDINGS.md#L83-L84",
+        "revision": "0bdf50381f222ff8aa1eea3a273f2c6f61698a34",
+        "path": "experiments/laptop_decision/FINDINGS.md",
+        "start_line": 83,
+        "end_line": 84
+      },
+      "supports": [
+        {
+          "key": "writ-retrieval-system|Decision|local-workflow-backend",
+          "revision": 1,
+          "content_digest": "sha256:288735e9f5e433ab9167d9683fa48331f40891e9c8ced8e9a5d944f2f4b09078"
+        }
+      ]
+    },
+    {
+      "op": "evidence",
+      "id": "laptop-cold-cli-latency",
+      "kind": "repository_document",
+      "text": "| Legacy hybrid | 862 | 1062 | 1.60 | 279.6 |\n| Grounded flat | 919 | 1077 | 1.73 | 283.6 |\n| Grounded Relate | 1020 | 1294 | 1.80 | **237.7** |",
+      "source": {
+        "uri": "https://github.com/infinri/WritRetrievalSystem/blob/0bdf50381f222ff8aa1eea3a273f2c6f61698a34/experiments/laptop_decision/FINDINGS.md#L116-L118",
+        "revision": "0bdf50381f222ff8aa1eea3a273f2c6f61698a34",
+        "path": "experiments/laptop_decision/FINDINGS.md",
+        "start_line": 116,
+        "end_line": 118
+      },
+      "supports": [
+        {
+          "key": "writ-retrieval-system|Decision|local-workflow-backend",
+          "revision": 1,
+          "content_digest": "sha256:288735e9f5e433ab9167d9683fa48331f40891e9c8ced8e9a5d944f2f4b09078"
+        }
+      ]
+    },
+    {
+      "op": "evidence",
+      "id": "original-review-unsupported-claims",
+      "kind": "repository_document",
+      "text": "| unknown-control | grounded-flat | 18 | 1.0 | 0 / 0 / 0 | 18 | 17 | 8 / 8 / 2 |",
+      "source": {
+        "uri": "https://github.com/infinri/WritRetrievalSystem/blob/0bdf50381f222ff8aa1eea3a273f2c6f61698a34/experiments/laptop_decision/evidence/qa-comparison/QA-RESULTS.md#L23-L23",
+        "revision": "0bdf50381f222ff8aa1eea3a273f2c6f61698a34",
+        "path": "experiments/laptop_decision/evidence/qa-comparison/QA-RESULTS.md",
+        "start_line": 23,
+        "end_line": 23
+      },
+      "contradicts": [
+        {
+          "key": "writ-retrieval-system|Decision|local-workflow-backend",
+          "revision": 1,
+          "content_digest": "sha256:288735e9f5e433ab9167d9683fa48331f40891e9c8ced8e9a5d944f2f4b09078"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+[toolchain]
+# Matches the pinned Relate 1.0.1 workspace (rust-version = "1.88", rust-toolchain 1.88.0 at ef436ce).
+channel = "1.88.0"
+components = ["clippy", "rustfmt"]

@@ -1,0 +1,28 @@
+{
+  "contract_version": "writ-relate-capture/1",
+  "request_id": "attempt-reactivate-retracted",
+  "project": "writ-retrieval-system",
+  "recorded_at": "2026-11-14T22:05:00Z",
+  "operations": [
+    {
+      "op": "evidence",
+      "id": "original-review-unsupported-claims",
+      "kind": "repository_document",
+      "text": "| unknown-control | grounded-flat | 18 | 1.0 | 0 / 0 / 0 | 18 | 17 | 8 / 8 / 2 |",
+      "source": {
+        "uri": "https://github.com/infinri/WritRetrievalSystem/blob/0bdf50381f222ff8aa1eea3a273f2c6f61698a34/experiments/laptop_decision/evidence/qa-comparison/QA-RESULTS.md#L23-L23",
+        "revision": "0bdf50381f222ff8aa1eea3a273f2c6f61698a34",
+        "path": "experiments/laptop_decision/evidence/qa-comparison/QA-RESULTS.md",
+        "start_line": 23,
+        "end_line": 23
+      },
+      "contradicts": [
+        {
+          "key": "writ-retrieval-system|Decision|local-workflow-backend",
+          "revision": 1,
+          "content_digest": "sha256:288735e9f5e433ab9167d9683fa48331f40891e9c8ced8e9a5d944f2f4b09078"
+        }
+      ]
+    }
+  ]
+}
