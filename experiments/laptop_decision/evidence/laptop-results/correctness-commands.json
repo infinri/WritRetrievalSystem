@@ -1,0 +1,153 @@
+[
+  {
+    "name": "pytest",
+    "command": [
+      "/opt/venv/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 21.619418707000023,
+    "finished_utc": "2026-11-14T16:36:12Z"
+  },
+  {
+    "name": "unittest-original-demo",
+    "command": [
+      "/opt/venv/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 1.6178096280000318,
+    "finished_utc": "2026-11-14T16:36:14Z"
+  },
+  {
+    "name": "phase3-reliable-history",
+    "command": [
+      "/opt/venv/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "writ_retrieval.evaluation.reliable_history",
+      "--repo",
+      "/home/dev/Writ-public",
+      "--model-dir",
+      "data/model",
+      "--work-dir",
+      "data/laptop-work/phase3-history",
+      "--output",
+      "data/laptop-results/phase3-history"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 11.24027348699974,
+    "finished_utc": "2026-11-14T16:36:25Z"
+  },
+  {
+    "name": "phase3-reliable-demo",
+    "command": [
+      "/opt/venv/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "writ_retrieval.evaluation.reliable_demo",
+      "--repo",
+      "/home/dev/Writ-public",
+      "--model-dir",
+      "data/model",
+      "--work-dir",
+      "data/laptop-work/phase3-demo",
+      "--output",
+      "data/laptop-results/phase3-demo"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 8.08725983300019,
+    "finished_utc": "2026-11-14T16:36:33Z"
+  },
+  {
+    "name": "reliable-memory-audit",
+    "command": [
+      "/opt/venv/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "experiments.reliable_memory.audit",
+      "--repo",
+      "/home/dev/Writ-public",
+      "--out",
+      "data/laptop-results/passage-provenance.json"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 0.6158276520000072,
+    "finished_utc": "2026-11-14T16:36:34Z"
+  },
+  {
+    "name": "reliable-memory-demo",
+    "command": [
+      "/opt/venv/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "experiments.reliable_memory.demo",
+      "--repo",
+      "/home/dev/Writ-public",
+      "--model-dir",
+      "data/model",
+      "--work-dir",
+      "data/laptop-work/rm-demo",
+      "--out",
+      "data/laptop-results/reliable-memory-demo"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 9.544415604000278,
+    "finished_utc": "2026-11-14T16:36:43Z"
+  },
+  {
+    "name": "db-offload-capability",
+    "command": [
+      "/opt/venv/bin/python",
+      "-m",
+      "experiments.db_offload.capability",
+      "--output",
+      "data/laptop-results/capability.json",
+      "--neo4j-home",
+      "data/bakeoff-tools/neo4j-community-5.26.0"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 16.309771029999865,
+    "finished_utc": "2026-11-14T16:37:00Z"
+  },
+  {
+    "name": "db-offload-mechanics",
+    "command": [
+      "/opt/venv/bin/python",
+      "-m",
+      "experiments.db_offload.recovery.mechanics",
+      "--model-dir",
+      "data/model",
+      "--neo4j-home",
+      "data/bakeoff-tools/neo4j-community-5.26.0",
+      "--ffi",
+      "data/bakeoff-tools",
+      "--rust",
+      "data/rust-target/release/writ-db-thin-client",
+      "--work",
+      "data/laptop-work/mechanics",
+      "--output",
+      "data/laptop-results/mechanics"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 49.18515311200008,
+    "finished_utc": "2026-11-14T16:37:49Z"
+  }
+]

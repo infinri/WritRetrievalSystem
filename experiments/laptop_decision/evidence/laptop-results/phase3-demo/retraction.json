@@ -1,0 +1,10 @@
+{
+  "ref": {
+    "project": "writ-history",
+    "label": "Evidence",
+    "id": "doc-5c9a39c74a26b8b1f4c1173d12d3782ec0b6b28a56492e7eb9721e8c7b96b7ec"
+  },
+  "expected_revision": 1,
+  "request_id": "real-history-demo-retraction/1",
+  "reason": "Demonstration-only local withdrawal of this evidence association. The upstream document is retained as an unverified repository assertion; no correction of public Writ facts is claimed."
+}

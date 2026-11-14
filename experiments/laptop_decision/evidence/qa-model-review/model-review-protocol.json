@@ -1,0 +1,76 @@
+{
+  "grader_model_requested": "claude-opus-5-5",
+  "effort": "low",
+  "seed": 20261115,
+  "system": "You are a strict, blinded reviewer applying a fixed rubric to one answer. You do not know which retrieval system, if any, produced the context. Labels are provisional, model-authored proxies. Judge only from the question, the label, the supplied context and the answer. Return only the structured result.",
+  "rubric": {
+    "gold_content_conveyed": "Positive task only: does the answer convey the substance of the labelled passage? yes / partial / no; not_applicable for expected-unknown tasks.",
+    "answer_correctness": "Relative to the labelled passage and supplied context: correct / partially_correct / incorrect / not_applicable (expected-unknown tasks).",
+    "appropriate_uncertainty": "yes if the answer states unknowns where the supplied context does not warrant an answer (and does not abstain when it does); otherwise no.",
+    "warranted_unknown": "Expected-unknown task only: does the answer decline to assert the requested content / missing confirmation, or correctly say it is unavailable? yes / no; not_applicable for positive tasks.",
+    "unsupported_assertions": "Integer: substantive factual claims about the project that are supported neither by the supplied context nor by the label.",
+    "citation_correctness": "correct (cited source/revision matches supplied evidence for the claims), incorrect, or none (no citation)."
+  },
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "gold_content_conveyed",
+      "answer_correctness",
+      "appropriate_uncertainty",
+      "warranted_unknown",
+      "unsupported_assertions",
+      "citation_correctness",
+      "rationale"
+    ],
+    "properties": {
+      "gold_content_conveyed": {
+        "enum": [
+          "yes",
+          "partial",
+          "no",
+          "not_applicable"
+        ]
+      },
+      "answer_correctness": {
+        "enum": [
+          "correct",
+          "partially_correct",
+          "incorrect",
+          "not_applicable"
+        ]
+      },
+      "appropriate_uncertainty": {
+        "enum": [
+          "yes",
+          "no"
+        ]
+      },
+      "warranted_unknown": {
+        "enum": [
+          "yes",
+          "no",
+          "not_applicable"
+        ]
+      },
+      "unsupported_assertions": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "citation_correctness": {
+        "enum": [
+          "correct",
+          "incorrect",
+          "none"
+        ]
+      },
+      "rationale": {
+        "type": "string",
+        "maxLength": 600
+      }
+    }
+  },
+  "blinding": "arm/repeat hidden; backend metadata stripped from context; an empty context still reveals the no-history arm",
+  "status": "MODEL-ASSISTED REVIEW, NOT INDEPENDENT HUMAN REVIEW",
+  "runner_sha256": "ed32e514710ce4b95fe6558194a9cc3be027da744e3fe5f0dfd6f15bdeac390c"
+}

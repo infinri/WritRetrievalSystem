@@ -1,0 +1,77 @@
+{
+  "tasks": 20,
+  "repetitions": 3,
+  "warmups_per_profile": 2,
+  "seed": 20261114,
+  "warmup_runs": [
+    {
+      "profile": "legacy-hybrid",
+      "returncode": 0,
+      "elapsed_ms": 3335.857889000181,
+      "stderr": null
+    },
+    {
+      "profile": "legacy-hybrid",
+      "returncode": 0,
+      "elapsed_ms": 1126.3820220001435,
+      "stderr": null
+    },
+    {
+      "profile": "grounded-flat",
+      "returncode": 0,
+      "elapsed_ms": 2458.608861000357,
+      "stderr": null
+    },
+    {
+      "profile": "grounded-flat",
+      "returncode": 0,
+      "elapsed_ms": 995.3730349998295,
+      "stderr": null
+    },
+    {
+      "profile": "grounded-relate",
+      "returncode": 0,
+      "elapsed_ms": 2434.2817659999127,
+      "stderr": null
+    },
+    {
+      "profile": "grounded-relate",
+      "returncode": 0,
+      "elapsed_ms": 1064.8308030004046,
+      "stderr": null
+    }
+  ],
+  "profiles": {
+    "legacy-hybrid": {
+      "samples": 60,
+      "failures": 0,
+      "p50_ms": 862.0137564998913,
+      "p95_ms": 1061.9161957499725,
+      "mean_ms": 909.9032074000055,
+      "mean_child_cpu_s": 1.6043506333333333,
+      "max_child_peak_rss_kib": 286324,
+      "deterministic_payloads": false
+    },
+    "grounded-flat": {
+      "samples": 60,
+      "failures": 0,
+      "p50_ms": 918.6778895000316,
+      "p95_ms": 1077.238101699868,
+      "mean_ms": 948.9438190500399,
+      "mean_child_cpu_s": 1.7258855833333333,
+      "max_child_peak_rss_kib": 290384,
+      "deterministic_payloads": false
+    },
+    "grounded-relate": {
+      "samples": 60,
+      "failures": 0,
+      "p50_ms": 1020.1156164998793,
+      "p95_ms": 1293.6237190999677,
+      "mean_ms": 1090.7051678166379,
+      "mean_child_cpu_s": 1.8042786166666667,
+      "max_child_peak_rss_kib": 243416,
+      "deterministic_payloads": false
+    }
+  },
+  "note": "Cold process, warm disk/OS page cache, prebuilt derived caches; sequential, randomized interleaving; no other benchmark jobs. Per-process peak RSS/CPU via wait4 (includes ONNX model, embedded Relate). Not a persistent-service or remote measurement."
+}

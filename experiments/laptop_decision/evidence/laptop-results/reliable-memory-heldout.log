@@ -1,0 +1,88 @@
+heldout: repetition 1 complete
+heldout: repetition 2 complete
+heldout: repetition 3 complete
+{
+  "out": "data/laptop-results/reliable-memory-heldout",
+  "quality": {
+    "grounded-flat": {
+      "tasks": 36,
+      "positive_tasks": 30,
+      "supported_positive_tasks": 30,
+      "complete_proxy": 26,
+      "target_passage_delivery": 0.8666666666666667,
+      "wilson_95": [
+        0.7031831605558306,
+        0.9469043057578189
+      ],
+      "unknown_tasks": 6,
+      "supported_unknown_tasks": 6,
+      "correct_unknown": 6,
+      "failures": 0,
+      "citation_failures": 0,
+      "mrr": 0.7833333333333333,
+      "latency_samples": 108,
+      "p50_ms": 60.31387100028951,
+      "p95_ms": 140.79125005000597
+    },
+    "grounded-relate": {
+      "tasks": 36,
+      "positive_tasks": 30,
+      "supported_positive_tasks": 30,
+      "complete_proxy": 26,
+      "target_passage_delivery": 0.8666666666666667,
+      "wilson_95": [
+        0.7031831605558306,
+        0.9469043057578189
+      ],
+      "unknown_tasks": 6,
+      "supported_unknown_tasks": 6,
+      "correct_unknown": 6,
+      "failures": 0,
+      "citation_failures": 0,
+      "mrr": 0.7833333333333333,
+      "latency_samples": 108,
+      "p50_ms": 62.3313484998107,
+      "p95_ms": 179.8287723498106
+    },
+    "legacy-connected": {
+      "tasks": 36,
+      "positive_tasks": 30,
+      "supported_positive_tasks": 24,
+      "complete_proxy": 22,
+      "target_passage_delivery": 0.7333333333333333,
+      "wilson_95": [
+        0.5555169795568831,
+        0.8581750444608938
+      ],
+      "unknown_tasks": 6,
+      "supported_unknown_tasks": 3,
+      "correct_unknown": 3,
+      "failures": 0,
+      "citation_failures": 0,
+      "mrr": 0.6333333333333333,
+      "latency_samples": 108,
+      "p50_ms": 41.219764500056044,
+      "p95_ms": 144.26786259941764
+    },
+    "legacy-hybrid": {
+      "tasks": 36,
+      "positive_tasks": 30,
+      "supported_positive_tasks": 24,
+      "complete_proxy": 22,
+      "target_passage_delivery": 0.7333333333333333,
+      "wilson_95": [
+        0.5555169795568831,
+        0.8581750444608938
+      ],
+      "unknown_tasks": 6,
+      "supported_unknown_tasks": 3,
+      "correct_unknown": 3,
+      "failures": 0,
+      "citation_failures": 0,
+      "mrr": 0.6333333333333333,
+      "latency_samples": 108,
+      "p50_ms": 41.16281750020789,
+      "p95_ms": 143.69947235059044
+    }
+  }
+}

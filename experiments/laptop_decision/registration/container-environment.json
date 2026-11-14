@@ -1,0 +1,121 @@
+{
+  "source_head": "0511139990775097cbbe59320b7745b7920b52ee",
+  "source_status_porcelain": "?? experiments/laptop_decision/",
+  "python": "3.12.14",
+  "executable": "/opt/venv/bin/python",
+  "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "cpu_model": "AMD Ryzen 9 7940HS w/ Radeon 780M Graphics",
+  "cpu_count_visible": 16,
+  "affinity": 16,
+  "meminfo": [
+    "MemTotal:       32146448 kB",
+    "MemFree:         4830608 kB",
+    "MemAvailable:   22084352 kB"
+  ],
+  "cgroup_limits": {
+    "memory.max": "max",
+    "cpu.max": "max 100000",
+    "pids.max": "37442"
+  },
+  "rlimits": {
+    "RLIMIT_AS": [
+      -1,
+      -1
+    ],
+    "RLIMIT_NOFILE": [
+      1024,
+      524288
+    ],
+    "RLIMIT_NPROC": [
+      -1,
+      -1
+    ]
+  },
+  "java": "openjdk version \"21.0.13\" 2026-10-20\nOpenJDK Runtime Environment (build 21.0.13+9-1-deb13u2-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.13+9-1-deb13u2-Debian, mixed mode, sharing)",
+  "rustc": "rustc 1.85.1 (4eb161250 2025-03-15)",
+  "cargo": "cargo 1.85.1 (d73d2caf9 2024-12-31)",
+  "packages": [
+    "annotated-types==0.8.0",
+    "anyio==4.16.0",
+    "click==8.5.1",
+    "filelock==4.2.10",
+    "flatbuffers==25.12.19",
+    "fsspec==2026.9.0",
+    "h11==0.16.0",
+    "hf-xet==1.8.0",
+    "hnswlib==0.8.0",
+    "httpcore2==2.16.0",
+    "httpx2==2.16.0",
+    "huggingface_hub==2.4.0",
+    "idna==3.20",
+    "iniconfig==2.3.1",
+    "neo4j==5.28.2",
+    "numpy==2.5.4",
+    "onnxruntime==1.32.0",
+    "packaging==26.3",
+    "pluggy==1.7.0",
+    "protobuf==7.36.2",
+    "psutil==7.1.3",
+    "pydantic==2.14.3",
+    "pydantic_core==2.50.4",
+    "Pygments==2.21.0",
+    "pytest==9.2.0",
+    "pytest-asyncio==1.5.0",
+    "pytz==2026.6",
+    "PyYAML==6.0.3",
+    "relate-db==1.0.1",
+    "tantivy==0.27.0",
+    "tokenizers==0.23.3",
+    "tqdm==4.70.1",
+    "truststore==0.10.5",
+    "typing-inspection==0.4.5",
+    "typing_extensions==4.16.0",
+    "-e git+https://github.com/infinri/WritRetrievalSystem.git@0511139990775097cbbe59320b7745b7920b52ee#egg=writ_retrieval_system&subdirectory=../../../../../../app"
+  ],
+  "model_sha256": {
+    "MODEL-README.md": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0",
+    "manifest.json": "b6183269a8123b11a56ce71c4e56827d7ff3507acc6643682976bf10a9ed9b69",
+    "model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+    "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+  },
+  "tool_archives": {
+    "neo4j-community-5.26.0-unix.tar.gz": {
+      "url": "https://dist.neo4j.org/neo4j-community-5.26.0-unix.tar.gz",
+      "sha256": "ad8ac3398606145502b8f489530bbd39333707ae4668156af16b6086b5b037d7",
+      "bytes": 158822080
+    },
+    "relate-ffi-1.0.1.tar.gz": {
+      "url": "https://github.com/relatedb/relate/releases/download/v1.0.1/relate-ffi-x86_64-unknown-linux-gnu.tar.gz",
+      "sha256": "6d1f67258ab8cdfd4beea3102bf9c3f6846505652f30fee9110e0888bd3c98a2",
+      "bytes": 25274880
+    }
+  },
+  "thread_env": {
+    "OMP_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null,
+    "RAYON_NUM_THREADS": null
+  },
+  "input_sha256": {
+    "experiments/reliable_memory/fixtures/tasks.json": "7cbcfe85f07a6f9341935e1062423f2b9202d254a8f61cc6ea85b2b5cf26b123",
+    "experiments/reliable_memory/fixtures/history-a0e0e41.json": "6abbe4a2d189ef2db7b1ec82f4f60022ca1ea534f942606e19a47229d4ffd908",
+    "experiments/reliable_memory/fixtures/history-b60bf33.json": "34f84c8c20951f6e27f87d2cd56fc4afc7836bd6bdc4430d83f37b24f8a8c2a2",
+    "experiments/reliable_memory/protocol/settings.json": "b6ee8c9e3257631b0a0b3c2bc4ec5b965b0f19e1000f40786baa759c5e4e3204",
+    "experiments/reliable_memory/protocol/frozen.json": "7ca0b24a90ccfdb3074ff4bcf2014f5eb85ffe6899d151ac5feff3352e1d772c",
+    "experiments/reliable_memory/protocol/preserved.json": "95bf59b6062b1adfe1d6fc0be36c6f6a033eec3947e3daac281475adccfdf55e",
+    "experiments/reliable_memory/evidence/heldout/queries.jsonl.gz": "b17c72a5fcbbedabfc459d6dba03046fa1f02abbe929d1aa5cf73d7c26dadf15",
+    "experiments/reliable_memory/evidence/development/queries.jsonl.gz": "fbefe6647a322f9ece0f1caa41fd979195adffa1c304947ecdf89b1addf0cbb8",
+    "experiments/reliable_memory/agent.py": "dc6154591342658088c2919834e240befc24c40ac41fd69d5d2e50d987d8e2f1",
+    "experiments/db_offload/protocol/settings.json": "4919baad677028d4b1d0cec22f2ff6f5f915537990019e783f6e1d37272b4178",
+    "experiments/db_offload/protocol/selection.json": "f797f39a5e1bbf61d81152bf966a63e35ba424b81b323f252516273aca65742c",
+    "experiments/db_offload/protocol/frozen.json": "428a92948f9e932ca0927011044ba11d73ac609d92847e4e0fbd9cbe1caa5f5c",
+    "experiments/db_offload/protocol/preserved.json": "6d3a617350d790bb679228574e26dc417780f49699a86af01757a2781d5b2b5d",
+    "src/writ_retrieval/shared/budget.json": "4435b83b73551b919908f402e42afaf95addf3f9e159e2a0f733b02da818e636",
+    "requirements-validated.txt": "7bbb4f48828b73b9372d56b6a19bddc8f6a6c7daa91e9ade82018cee748c8e9a",
+    "experiments/db_offload/requirements.txt": "312b68e545049ff8b461ed7b94d7f6496e5c037b21ac9c5013e55085df93b15c",
+    "experiments/laptop_decision/qa_trials.py": "be6fdda1d9a2a2b731edabee2fd51948b22cabbdd7a03de2aeea9237992766ed",
+    "experiments/laptop_decision/grade.py": "ed32e514710ce4b95fe6558194a9cc3be027da744e3fe5f0dfd6f15bdeac390c",
+    "experiments/laptop_decision/cold_cli.py": "7f16724396612e7503e55d456414f28e8f69d0d1967462098dd641c9db8e9f73",
+    "experiments/laptop_decision/replicate.py": "9bba5fa681878be0e14b93bd3aba032186b2fbcb23fe1b10a225fb4b15f6d91a"
+  }
+}

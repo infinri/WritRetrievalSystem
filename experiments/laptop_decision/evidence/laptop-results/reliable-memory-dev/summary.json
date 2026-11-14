@@ -1,0 +1,532 @@
+{
+  "arms": {
+    "grounded-flat": {
+      "natural": {
+        "tasks": 27,
+        "positive_tasks": 24,
+        "supported_positive_tasks": 24,
+        "complete_proxy": 15,
+        "target_passage_delivery": 0.625,
+        "wilson_95": [
+          0.42709619037907065,
+          0.7884086656636855
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5,
+        "latency_samples": 81,
+        "p50_ms": 60.6432960003076,
+        "p95_ms": 81.22980700045446
+      },
+      "structured": {
+        "tasks": 9,
+        "positive_tasks": 6,
+        "supported_positive_tasks": 6,
+        "complete_proxy": 6,
+        "target_passage_delivery": 1.0,
+        "wilson_95": [
+          0.6096569663469354,
+          0.9999999999999999
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 1.0,
+        "latency_samples": 27,
+        "p50_ms": 38.34648300016852,
+        "p95_ms": 140.15297589949114
+      },
+      "all": {
+        "tasks": 36,
+        "positive_tasks": 30,
+        "supported_positive_tasks": 30,
+        "complete_proxy": 21,
+        "target_passage_delivery": 0.7,
+        "wilson_95": [
+          0.5212387898833981,
+          0.8333543735604105
+        ],
+        "unknown_tasks": 6,
+        "supported_unknown_tasks": 6,
+        "correct_unknown": 6,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.6,
+        "latency_samples": 108,
+        "p50_ms": 59.62872150030307,
+        "p95_ms": 125.4925936498239
+      }
+    },
+    "grounded-relate": {
+      "natural": {
+        "tasks": 27,
+        "positive_tasks": 24,
+        "supported_positive_tasks": 24,
+        "complete_proxy": 15,
+        "target_passage_delivery": 0.625,
+        "wilson_95": [
+          0.42709619037907065,
+          0.7884086656636855
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5,
+        "latency_samples": 81,
+        "p50_ms": 63.10472299992398,
+        "p95_ms": 182.2500560001572
+      },
+      "structured": {
+        "tasks": 9,
+        "positive_tasks": 6,
+        "supported_positive_tasks": 6,
+        "complete_proxy": 6,
+        "target_passage_delivery": 1.0,
+        "wilson_95": [
+          0.6096569663469354,
+          0.9999999999999999
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 1.0,
+        "latency_samples": 27,
+        "p50_ms": 35.80581799997162,
+        "p95_ms": 57.3161688995242
+      },
+      "all": {
+        "tasks": 36,
+        "positive_tasks": 30,
+        "supported_positive_tasks": 30,
+        "complete_proxy": 21,
+        "target_passage_delivery": 0.7,
+        "wilson_95": [
+          0.5212387898833981,
+          0.8333543735604105
+        ],
+        "unknown_tasks": 6,
+        "supported_unknown_tasks": 6,
+        "correct_unknown": 6,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.6,
+        "latency_samples": 108,
+        "p50_ms": 61.87817699992593,
+        "p95_ms": 179.10894285000722
+      }
+    },
+    "legacy-connected": {
+      "natural": {
+        "tasks": 27,
+        "positive_tasks": 24,
+        "supported_positive_tasks": 24,
+        "complete_proxy": 17,
+        "target_passage_delivery": 0.7083333333333334,
+        "wilson_95": [
+          0.508319363412903,
+          0.8508553966583573
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5138888888888888,
+        "latency_samples": 81,
+        "p50_ms": 40.69281499960198,
+        "p95_ms": 144.20854299987695
+      },
+      "structured": {
+        "tasks": 9,
+        "positive_tasks": 6,
+        "supported_positive_tasks": 0,
+        "complete_proxy": 4,
+        "target_passage_delivery": 0.6666666666666666,
+        "wilson_95": [
+          0.29998832134152864,
+          0.9032306674407831
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 0,
+        "correct_unknown": 0,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5555555555555556,
+        "latency_samples": 27,
+        "p50_ms": 39.760689999639,
+        "p95_ms": 46.03014500007703
+      },
+      "all": {
+        "tasks": 36,
+        "positive_tasks": 30,
+        "supported_positive_tasks": 24,
+        "complete_proxy": 21,
+        "target_passage_delivery": 0.7,
+        "wilson_95": [
+          0.5212387898833981,
+          0.8333543735604105
+        ],
+        "unknown_tasks": 6,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5222222222222223,
+        "latency_samples": 108,
+        "p50_ms": 40.66514299984192,
+        "p95_ms": 143.58470724964718
+      }
+    },
+    "legacy-hybrid": {
+      "natural": {
+        "tasks": 27,
+        "positive_tasks": 24,
+        "supported_positive_tasks": 24,
+        "complete_proxy": 17,
+        "target_passage_delivery": 0.7083333333333334,
+        "wilson_95": [
+          0.508319363412903,
+          0.8508553966583573
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5138888888888888,
+        "latency_samples": 81,
+        "p50_ms": 40.76753499975894,
+        "p95_ms": 142.729184000018
+      },
+      "structured": {
+        "tasks": 9,
+        "positive_tasks": 6,
+        "supported_positive_tasks": 0,
+        "complete_proxy": 4,
+        "target_passage_delivery": 0.6666666666666666,
+        "wilson_95": [
+          0.29998832134152864,
+          0.9032306674407831
+        ],
+        "unknown_tasks": 3,
+        "supported_unknown_tasks": 0,
+        "correct_unknown": 0,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5555555555555556,
+        "latency_samples": 27,
+        "p50_ms": 40.680342000086966,
+        "p95_ms": 113.82564809973694
+      },
+      "all": {
+        "tasks": 36,
+        "positive_tasks": 30,
+        "supported_positive_tasks": 24,
+        "complete_proxy": 21,
+        "target_passage_delivery": 0.7,
+        "wilson_95": [
+          0.5212387898833981,
+          0.8333543735604105
+        ],
+        "unknown_tasks": 6,
+        "supported_unknown_tasks": 3,
+        "correct_unknown": 3,
+        "failures": 0,
+        "citation_failures": 0,
+        "mrr": 0.5222222222222223,
+        "latency_samples": 108,
+        "p50_ms": 40.72393849992295,
+        "p95_ms": 142.61711505023413
+      }
+    }
+  },
+  "paired_vs_grounded_flat": {
+    "grounded-flat": {
+      "improved": [],
+      "regressed": [],
+      "unchanged": [
+        "dev-08",
+        "dev-25",
+        "dev-23",
+        "dev-19",
+        "dev-30",
+        "dev-27",
+        "dev-18",
+        "dev-13",
+        "dev-01",
+        "dev-07",
+        "dev-22",
+        "dev-21",
+        "dev-14",
+        "dev-09",
+        "dev-26",
+        "dev-29",
+        "dev-03",
+        "dev-24",
+        "dev-15",
+        "dev-05",
+        "dev-16",
+        "dev-28",
+        "dev-17",
+        "dev-20",
+        "dev-02",
+        "dev-06",
+        "dev-11",
+        "dev-04",
+        "dev-12",
+        "dev-10"
+      ]
+    },
+    "grounded-relate": {
+      "improved": [],
+      "regressed": [],
+      "unchanged": [
+        "dev-08",
+        "dev-25",
+        "dev-23",
+        "dev-19",
+        "dev-30",
+        "dev-27",
+        "dev-18",
+        "dev-13",
+        "dev-01",
+        "dev-07",
+        "dev-22",
+        "dev-21",
+        "dev-14",
+        "dev-09",
+        "dev-26",
+        "dev-29",
+        "dev-03",
+        "dev-24",
+        "dev-15",
+        "dev-05",
+        "dev-16",
+        "dev-28",
+        "dev-17",
+        "dev-20",
+        "dev-02",
+        "dev-06",
+        "dev-11",
+        "dev-04",
+        "dev-12",
+        "dev-10"
+      ]
+    },
+    "legacy-connected": {
+      "improved": [
+        "dev-07",
+        "dev-22",
+        "dev-05",
+        "dev-04"
+      ],
+      "regressed": [
+        "dev-27",
+        "dev-29",
+        "dev-02",
+        "dev-11"
+      ],
+      "unchanged": [
+        "dev-08",
+        "dev-25",
+        "dev-23",
+        "dev-19",
+        "dev-30",
+        "dev-18",
+        "dev-13",
+        "dev-01",
+        "dev-21",
+        "dev-14",
+        "dev-09",
+        "dev-26",
+        "dev-03",
+        "dev-24",
+        "dev-15",
+        "dev-16",
+        "dev-28",
+        "dev-17",
+        "dev-20",
+        "dev-06",
+        "dev-12",
+        "dev-10"
+      ]
+    },
+    "legacy-hybrid": {
+      "improved": [
+        "dev-07",
+        "dev-22",
+        "dev-05",
+        "dev-04"
+      ],
+      "regressed": [
+        "dev-27",
+        "dev-29",
+        "dev-02",
+        "dev-11"
+      ],
+      "unchanged": [
+        "dev-08",
+        "dev-25",
+        "dev-23",
+        "dev-19",
+        "dev-30",
+        "dev-18",
+        "dev-13",
+        "dev-01",
+        "dev-21",
+        "dev-14",
+        "dev-09",
+        "dev-26",
+        "dev-03",
+        "dev-24",
+        "dev-15",
+        "dev-16",
+        "dev-28",
+        "dev-17",
+        "dev-20",
+        "dev-06",
+        "dev-12",
+        "dev-10"
+      ]
+    }
+  },
+  "labels": "MODEL_AUTHORED_UNREVIEWED",
+  "quality_note": "Complete labelled paragraph actually delivered, not independently reviewed answer sufficiency. Timing repetitions are not independent quality tasks.",
+  "implementation_files": {
+    "src/writ_retrieval/reliable/__init__.py": "e747d56ef9ba2f65e8ba6b35e9e512f3f3404f29bbf7443eb37ce95ff7cae0ce",
+    "src/writ_retrieval/reliable/agent.py": "6a39466b517fd373912d6f4638f6fa9c792d1d6374210d1d8570eabb1df11383",
+    "src/writ_retrieval/reliable/budget.py": "ac410a63fad471fd4f61584097f960ecc340d48e43ffa6e48ebe5b2f7db585a1",
+    "src/writ_retrieval/reliable/cli.py": "0f0e509418a9f053fe2badcf63d9b365ce8a3cf143a63f573634b084f08c6beb",
+    "src/writ_retrieval/reliable/contracts.py": "1aedf728f8e482e0a810c8de7fdb178234bb5ed2cf0142a596261485f7601c7a",
+    "src/writ_retrieval/reliable/git_history.py": "091aa86441b9d95d509906f0f76689fa44e466dfc51810f4dcb54cb3fe39fcbc",
+    "src/writ_retrieval/reliable/grounded.py": "cd80bc919fb050e0c7489c2548f5323e7d2fd9224409ae5d5e8bbeb36fa7eef9",
+    "src/writ_retrieval/reliable/grounded_cli.py": "19220e302ecca226b81186e6422d9cdf63ad9f786cf4080e4c3438fd282c6602",
+    "src/writ_retrieval/reliable/ingest.py": "d4f88ce4b7fef9951cb7bb20f6f5d206507245135864f264e9bd1f127caec360",
+    "src/writ_retrieval/reliable/offline.py": "3c187b45068f3302094bd8e454b4ce98791a4445471a61a02edbadacaf9b34c6",
+    "src/writ_retrieval/reliable/passages.py": "2fee254b5ddf089f28a39d89958f2cfc57ab2782ccac27f7b560d3bf4d8ad5a8",
+    "src/writ_retrieval/reliable/projection.py": "0d4fdf523b5fcb84f95f9169e982e06e69e8033ea155705cd567181828df760e",
+    "src/writ_retrieval/reliable/review.py": "ba79a91ce76948d8308ef7b9ce66c1579c53389cef3e0864a018d37019acf96c",
+    "src/writ_retrieval/reliable/session.py": "e024cd09d2731a6d261ac6eb8687bd2622f2c8a78106d15a75e318c099268d3d",
+    "src/writ_retrieval/reliable/store.py": "553cbac6ddccd48ef010d7f180d5d84e849962d55f87bca2ba306e11e01d260a",
+    "/app/experiments/reliable_memory/run.py": "860eae9b4129957e0a242120c247c332a61a2e67d50c66fefa184071806004e6"
+  },
+  "split": "development",
+  "protocol": "sha256:cc0a396bce6346c8cae3a94f6bc3e40410459e8e8a02ddfad902eb31a9c5ae30",
+  "model_identity": "sha256:04f9a1801c7808406540ca5b70c7cc39a75a30f0d65b7528aed5958fa37ba42f",
+  "model_startup_ms": 215.8885429998918,
+  "imports": {
+    "b60bf33983b96ccfbc5c1464dcf32687c789703e": {
+      "elapsed_ms": 51.34188800002448,
+      "receipt": {
+        "replayed": false,
+        "receipt": {
+          "project": "writ-public",
+          "label": "ReliableReceipt",
+          "id": "passages:d23215622ab213b181a39878e5dfb7c33e75bd7274c5b9b0cde22cccd0249861"
+        },
+        "passages": 127,
+        "git_objects_checked": false,
+        "assertion_verification": "unverified"
+      },
+      "documents": 127
+    },
+    "a0e0e413e3b20082a85e7d75c58b45b0ba09b903": {
+      "elapsed_ms": 41.101220000200556,
+      "receipt": {
+        "replayed": false,
+        "receipt": {
+          "project": "writ-public",
+          "label": "ReliableReceipt",
+          "id": "passages:49ae9d8ea3043be759ffc14b6ea47e7bb4b55239f0ebb03c89fa8d270bcc2df0"
+        },
+        "passages": 127,
+        "git_objects_checked": false,
+        "assertion_verification": "unverified"
+      },
+      "documents": 127
+    }
+  },
+  "cold_first_context": [
+    {
+      "arm": "legacy-hybrid",
+      "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "elapsed_ms": 1828.39620499999,
+      "error": null
+    },
+    {
+      "arm": "grounded-relate",
+      "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "elapsed_ms": 2138.3514499993908,
+      "error": null
+    },
+    {
+      "arm": "grounded-flat",
+      "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "elapsed_ms": 1722.2222069995041,
+      "error": null
+    },
+    {
+      "arm": "legacy-connected",
+      "revision": "b60bf33983b96ccfbc5c1464dcf32687c789703e",
+      "elapsed_ms": 37.999494000359846,
+      "error": null
+    },
+    {
+      "arm": "legacy-hybrid",
+      "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "elapsed_ms": 1646.975344000566,
+      "error": null
+    },
+    {
+      "arm": "grounded-flat",
+      "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "elapsed_ms": 1783.0971429993951,
+      "error": null
+    },
+    {
+      "arm": "grounded-relate",
+      "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "elapsed_ms": 1885.2638749995094,
+      "error": null
+    },
+    {
+      "arm": "legacy-connected",
+      "revision": "a0e0e413e3b20082a85e7d75c58b45b0ba09b903",
+      "elapsed_ms": 37.26131299936242,
+      "error": null
+    }
+  ],
+  "hardware": {
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.41",
+    "machine": "x86_64",
+    "cpu_count": 16,
+    "cpu_model": "AMD Ryzen 9 7940HS w/ Radeon 780M Graphics"
+  },
+  "resources": {
+    "process_peak_rss_kib": 715112,
+    "cpu_seconds": 66.96339682499999,
+    "disk_bytes": 5447107,
+    "note": "Shared persistent Python process, embedded Relate and ONNX included. Peak RSS is whole run, not per-arm attribution. Local filesystem warm; no privileged cache flush."
+  },
+  "versions": {
+    "relate-db": "1.0.1",
+    "numpy": "2.5.4",
+    "tantivy": "0.27.0",
+    "onnxruntime": "1.32.0",
+    "tokenizers": "0.23.3",
+    "pydantic": "2.14.3"
+  },
+  "agent_trials": {
+    "status": "NOT RUN",
+    "missing": "Authorized generative endpoint/host invocation and exact generative model identity. Embedding inference and scripted tests are not agent trials."
+  }
+}

@@ -1,0 +1,81 @@
+{
+ "note": "Two fresh runs per task; snapshot.as_of is the request wall-clock time and is removed before comparison.",
+ "rows": [
+  {
+   "profile": "legacy-hybrid",
+   "task": "hel-05",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "legacy-hybrid",
+   "task": "hel-06",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "legacy-hybrid",
+   "task": "hel-07",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "legacy-hybrid",
+   "task": "hel-08",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "legacy-hybrid",
+   "task": "hel-09",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "grounded-flat",
+   "task": "hel-05",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "grounded-flat",
+   "task": "hel-06",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "grounded-flat",
+   "task": "hel-07",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "grounded-flat",
+   "task": "hel-08",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "grounded-flat",
+   "task": "hel-09",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "grounded-relate",
+   "task": "hel-05",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "grounded-relate",
+   "task": "hel-06",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "grounded-relate",
+   "task": "hel-07",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "grounded-relate",
+   "task": "hel-08",
+   "identical_except_as_of": true
+  },
+  {
+   "profile": "grounded-relate",
+   "task": "hel-09",
+   "identical_except_as_of": true
+  }
+ ],
+ "all_identical": true
+}
