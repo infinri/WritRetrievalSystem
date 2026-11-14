@@ -1,0 +1,35 @@
+[0;93m2026-11-14 01:28:57.814594115 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+{
+  "lexical": {
+    "n": 193,
+    "hit5": 0.7098445595854922,
+    "rr5": 0.5780656303972366,
+    "rr10": 0.5780656303972366,
+    "ndcg10": 0.6111387427220759,
+    "abstentions": 0
+  },
+  "vector": {
+    "n": 193,
+    "hit5": 0.8082901554404145,
+    "rr5": 0.6867875647668394,
+    "rr10": 0.6867875647668394,
+    "ndcg10": 0.717236268549326,
+    "abstentions": 7
+  },
+  "hybrid_no_graph": {
+    "n": 193,
+    "hit5": 0.8186528497409327,
+    "rr5": 0.6917098445595855,
+    "rr10": 0.6917098445595855,
+    "ndcg10": 0.7235473346441657,
+    "abstentions": 7
+  },
+  "hybrid_graph": {
+    "n": 193,
+    "hit5": 0.8134715025906736,
+    "rr5": 0.692314335060449,
+    "rr10": 0.692314335060449,
+    "ndcg10": 0.722942491789944,
+    "abstentions": 7
+  }
+}

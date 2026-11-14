@@ -1,0 +1,233 @@
+[
+  {
+    "name": "pytest",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 18.512929242000013
+  },
+  {
+    "name": "original-demo-tests",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 2.2215008729999965
+  },
+  {
+    "name": "capability",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-m",
+      "experiments.db_offload.capability",
+      "--output",
+      "experiments/db_offload/evidence/recovered-ci/43540148638/capability.json",
+      "--neo4j-home",
+      "data/bakeoff-tools/neo4j-community-5.26.0"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 22.87054103
+  },
+  {
+    "name": "heldout-matched",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-m",
+      "experiments.db_offload.run",
+      "--partition",
+      "heldout",
+      "--selection",
+      "experiments/db_offload/protocol/selection.json",
+      "--track",
+      "matched",
+      "--arms",
+      "A-lexical,A-vector,A-hybrid,A-connected,B-flat,B-connected,C-flat,C-connected,D-flat,D-connected",
+      "--model-dir",
+      "data/model",
+      "--neo4j-home",
+      "data/bakeoff-tools/neo4j-community-5.26.0",
+      "--work",
+      "data/recovery-matched",
+      "--output",
+      "experiments/db_offload/evidence/recovered-ci/43540148638/heldout-matched"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 74.336624777
+  },
+  {
+    "name": "heldout-best",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-m",
+      "experiments.db_offload.run",
+      "--partition",
+      "heldout",
+      "--selection",
+      "experiments/db_offload/protocol/selection.json",
+      "--track",
+      "best",
+      "--arms",
+      "A-lexical,A-vector,A-hybrid,A-connected,B-flat,B-connected,C-flat,C-connected,D-flat,D-connected",
+      "--model-dir",
+      "data/model",
+      "--neo4j-home",
+      "data/bakeoff-tools/neo4j-community-5.26.0",
+      "--work",
+      "data/recovery-best",
+      "--output",
+      "experiments/db_offload/evidence/recovered-ci/43540148638/heldout-best"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 75.34064391100003
+  },
+  {
+    "name": "reranker-prepare",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-m",
+      "experiments.db_offload.recovery.reranker",
+      "--prepare",
+      "--model-dir",
+      "data/reranker"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 1.066054199000007
+  },
+  {
+    "name": "reranker",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-m",
+      "experiments.db_offload.recovery.reranker",
+      "--model-dir",
+      "data/reranker",
+      "--input",
+      "experiments/db_offload/evidence/recovered-ci/43540148638/heldout-matched",
+      "--output",
+      "experiments/db_offload/evidence/recovered-ci/43540148638/reranker"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 94.71710092199999
+  },
+  {
+    "name": "mechanics",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-m",
+      "experiments.db_offload.recovery.mechanics",
+      "--model-dir",
+      "data/model",
+      "--neo4j-home",
+      "data/bakeoff-tools/neo4j-community-5.26.0",
+      "--ffi",
+      "data/bakeoff-tools",
+      "--rust",
+      "experiments/db_offload/rust/target/release/writ-db-thin-client",
+      "--work",
+      "data/recovery-mechanics",
+      "--output",
+      "experiments/db_offload/evidence/recovered-ci/43540148638/mechanics"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 60.39833519800004
+  },
+  {
+    "name": "historical",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "experiments.db_offload.recovery.historical",
+      "--model-dir",
+      "data/model",
+      "--work",
+      "data/recovery-original",
+      "--output",
+      "experiments/db_offload/evidence/recovered-ci/43540148638/historical"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 33.550620672000036
+  },
+  {
+    "name": "source-clone",
+    "command": [
+      "git",
+      "clone",
+      "--no-checkout",
+      "https://github.com/infinri/Writ",
+      "data/source-read-only"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 1.8187212600000748
+  },
+  {
+    "name": "production-demo",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "scripts/offline_run.py",
+      "-m",
+      "writ_retrieval.evaluation.reliable_demo",
+      "--repo",
+      "data/source-read-only",
+      "--model-dir",
+      "data/model",
+      "--work-dir",
+      "data/recovery-production-demo",
+      "--output",
+      "experiments/db_offload/evidence/recovered-ci/43540148638/production-demo"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 10.358851152000057
+  },
+  {
+    "name": "report",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-m",
+      "experiments.db_offload.recovery.report",
+      "--root",
+      "experiments/db_offload/evidence/recovered-ci/43540148638"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 0.3151597949999996
+  },
+  {
+    "name": "agent-not-run",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "-m",
+      "experiments.db_offload.recovery.agent",
+      "--packets",
+      "experiments/db_offload/evidence/recovered-ci/43540148638/review/agent-packets.json",
+      "--output",
+      "experiments/db_offload/evidence/recovered-ci/43540148638/agent-trials"
+    ],
+    "returncode": 0,
+    "error": null,
+    "seconds": 0.1651055529999894
+  }
+]

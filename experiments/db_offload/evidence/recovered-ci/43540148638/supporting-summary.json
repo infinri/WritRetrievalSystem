@@ -1,0 +1,809 @@
+{
+  "engines": {
+    "relate": {
+      "checks": [
+        {
+          "gate": "native fusion and deterministic qualified ordering",
+          "status": "PASS"
+        },
+        {
+          "gate": "revision replacement, withdrawal and prior-generation readability",
+          "status": "PASS"
+        },
+        {
+          "gate": "foreign partition does not influence permitted FTS/vector hits",
+          "status": "PASS"
+        },
+        {
+          "gate": "manifest corruption fails closed with explicit recovery",
+          "status": "PASS"
+        },
+        {
+          "gate": "duplicate identity and imported trust awards rejected",
+          "status": "PASS"
+        },
+        {
+          "gate": "whole required conflict bundle or budget error",
+          "status": "PASS"
+        },
+        {
+          "gate": "cycle deduplication and irrelevant-edge exclusion",
+          "status": "PASS"
+        },
+        {
+          "gate": "stored source revision/digest citation validation",
+          "status": "PASS"
+        },
+        {
+          "gate": "missing native index cannot be reported fresh",
+          "status": "PASS"
+        }
+      ],
+      "restart_ms": null,
+      "metadata": [
+        {
+          "query": "CALL dbms.components()",
+          "rows": [
+            {
+              "name": "Neo4j Kernel",
+              "versions": [
+                "2026.10-relate"
+              ],
+              "edition": "community"
+            },
+            {
+              "name": "Cypher",
+              "versions": [
+                "5",
+                "25"
+              ],
+              "edition": "community"
+            },
+            {
+              "name": "Relate",
+              "versions": [
+                "1.0.1"
+              ],
+              "edition": "community"
+            }
+          ]
+        },
+        {
+          "query": "SHOW INDEXES YIELD name,type,options RETURN name,type,options",
+          "rows": [
+            {
+              "name": "index_1b9dcc97",
+              "type": "LOOKUP",
+              "options": {
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "index_460996c0",
+              "type": "LOOKUP",
+              "options": {
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bf_22e3c1ef041bf990bcda",
+              "type": "FULLTEXT",
+              "options": {
+                "indexConfig": {
+                  "fulltext.analyzer": "standard-no-stop-words",
+                  "fulltext.eventually_consistent": false
+                }
+              }
+            },
+            {
+              "name": "bf_2ec7f5ca62581f49e5a2",
+              "type": "FULLTEXT",
+              "options": {
+                "indexConfig": {
+                  "fulltext.analyzer": "standard-no-stop-words",
+                  "fulltext.eventually_consistent": false
+                }
+              }
+            },
+            {
+              "name": "bf_3505f6d4a43294e449a3",
+              "type": "FULLTEXT",
+              "options": {
+                "indexConfig": {
+                  "fulltext.analyzer": "standard-no-stop-words",
+                  "fulltext.eventually_consistent": false
+                }
+              }
+            },
+            {
+              "name": "bf_5c4ff3d6c5c170feea34",
+              "type": "FULLTEXT",
+              "options": {
+                "indexConfig": {
+                  "fulltext.analyzer": "standard-no-stop-words",
+                  "fulltext.eventually_consistent": false
+                }
+              }
+            },
+            {
+              "name": "bf_a758630026eb8ea18829",
+              "type": "FULLTEXT",
+              "options": {
+                "indexConfig": {
+                  "fulltext.analyzer": "standard-no-stop-words",
+                  "fulltext.eventually_consistent": false
+                }
+              }
+            },
+            {
+              "name": "bf_e1378e77f14c759972de",
+              "type": "FULLTEXT",
+              "options": {
+                "indexConfig": {
+                  "fulltext.analyzer": "standard-no-stop-words",
+                  "fulltext.eventually_consistent": false
+                }
+              }
+            },
+            {
+              "name": "bf_fbbd1830a840e6fe3f1f",
+              "type": "FULLTEXT",
+              "options": {
+                "indexConfig": {
+                  "fulltext.analyzer": "standard-no-stop-words",
+                  "fulltext.eventually_consistent": false
+                }
+              }
+            },
+            {
+              "name": "bu_22e3c1ef041bf990bcda",
+              "type": "RANGE",
+              "options": {
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_2ec7f5ca62581f49e5a2",
+              "type": "RANGE",
+              "options": {
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_3505f6d4a43294e449a3",
+              "type": "RANGE",
+              "options": {
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_5c4ff3d6c5c170feea34",
+              "type": "RANGE",
+              "options": {
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_a758630026eb8ea18829",
+              "type": "RANGE",
+              "options": {
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_e1378e77f14c759972de",
+              "type": "RANGE",
+              "options": {
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_fbbd1830a840e6fe3f1f",
+              "type": "RANGE",
+              "options": {
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bv_22e3c1ef041bf990bcda",
+              "type": "VECTOR",
+              "options": {
+                "indexConfig": {
+                  "vector.default_search_expansion_factor": 3.0,
+                  "vector.hnsw.ef_construction": 100,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.type": "BINARY",
+                  "vector.similarity_function": "COSINE"
+                }
+              }
+            },
+            {
+              "name": "bv_3505f6d4a43294e449a3",
+              "type": "VECTOR",
+              "options": {
+                "indexConfig": {
+                  "vector.default_search_expansion_factor": 3.0,
+                  "vector.hnsw.ef_construction": 100,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.type": "BINARY",
+                  "vector.similarity_function": "COSINE"
+                }
+              }
+            },
+            {
+              "name": "bv_5c4ff3d6c5c170feea34",
+              "type": "VECTOR",
+              "options": {
+                "indexConfig": {
+                  "vector.default_search_expansion_factor": 3.0,
+                  "vector.hnsw.ef_construction": 100,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.type": "BINARY",
+                  "vector.similarity_function": "COSINE"
+                }
+              }
+            },
+            {
+              "name": "bv_a758630026eb8ea18829",
+              "type": "VECTOR",
+              "options": {
+                "indexConfig": {
+                  "vector.default_search_expansion_factor": 3.0,
+                  "vector.hnsw.ef_construction": 100,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.type": "BINARY",
+                  "vector.similarity_function": "COSINE"
+                }
+              }
+            },
+            {
+              "name": "bv_e1378e77f14c759972de",
+              "type": "VECTOR",
+              "options": {
+                "indexConfig": {
+                  "vector.default_search_expansion_factor": 3.0,
+                  "vector.hnsw.ef_construction": 100,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.type": "BINARY",
+                  "vector.similarity_function": "COSINE"
+                }
+              }
+            },
+            {
+              "name": "bv_fbbd1830a840e6fe3f1f",
+              "type": "VECTOR",
+              "options": {
+                "indexConfig": {
+                  "vector.default_search_expansion_factor": 3.0,
+                  "vector.hnsw.ef_construction": 100,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.type": "BINARY",
+                  "vector.similarity_function": "COSINE"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "query": "SHOW SETTINGS YIELD name,value WHERE name CONTAINS 'fulltext' RETURN name,value",
+          "rows": []
+        }
+      ]
+    },
+    "neo4j": {
+      "checks": [
+        {
+          "gate": "native fusion and deterministic qualified ordering",
+          "status": "PASS"
+        },
+        {
+          "gate": "revision replacement, withdrawal and prior-generation readability",
+          "status": "PASS"
+        },
+        {
+          "gate": "foreign partition does not influence permitted FTS/vector hits",
+          "status": "PASS"
+        },
+        {
+          "gate": "manifest corruption fails closed with explicit recovery",
+          "status": "PASS"
+        },
+        {
+          "gate": "duplicate identity and imported trust awards rejected",
+          "status": "PASS"
+        },
+        {
+          "gate": "whole required conflict bundle or budget error",
+          "status": "PASS"
+        },
+        {
+          "gate": "cycle deduplication and irrelevant-edge exclusion",
+          "status": "PASS"
+        },
+        {
+          "gate": "stored source revision/digest citation validation",
+          "status": "PASS"
+        },
+        {
+          "gate": "missing native index cannot be reported fresh",
+          "status": "PASS"
+        },
+        {
+          "gate": "actual server restart returns exact persisted result",
+          "status": "PASS"
+        }
+      ],
+      "restart_ms": 8733.964914000011,
+      "metadata": [
+        {
+          "query": "CALL dbms.components()",
+          "rows": [
+            {
+              "name": "Neo4j Kernel",
+              "versions": [
+                "5.26.0"
+              ],
+              "edition": "community"
+            }
+          ]
+        },
+        {
+          "query": "SHOW INDEXES YIELD name,type,options RETURN name,type,options",
+          "rows": [
+            {
+              "name": "bf_22e3c1ef041bf990bcda",
+              "type": "FULLTEXT",
+              "options": {
+                "indexProvider": "fulltext-1.0",
+                "indexConfig": {
+                  "fulltext.eventually_consistent": false,
+                  "fulltext.analyzer": "standard-no-stop-words"
+                }
+              }
+            },
+            {
+              "name": "bf_2ec7f5ca62581f49e5a2",
+              "type": "FULLTEXT",
+              "options": {
+                "indexProvider": "fulltext-1.0",
+                "indexConfig": {
+                  "fulltext.eventually_consistent": false,
+                  "fulltext.analyzer": "standard-no-stop-words"
+                }
+              }
+            },
+            {
+              "name": "bf_3505f6d4a43294e449a3",
+              "type": "FULLTEXT",
+              "options": {
+                "indexProvider": "fulltext-1.0",
+                "indexConfig": {
+                  "fulltext.eventually_consistent": false,
+                  "fulltext.analyzer": "standard-no-stop-words"
+                }
+              }
+            },
+            {
+              "name": "bf_5c4ff3d6c5c170feea34",
+              "type": "FULLTEXT",
+              "options": {
+                "indexProvider": "fulltext-1.0",
+                "indexConfig": {
+                  "fulltext.eventually_consistent": false,
+                  "fulltext.analyzer": "standard-no-stop-words"
+                }
+              }
+            },
+            {
+              "name": "bf_a758630026eb8ea18829",
+              "type": "FULLTEXT",
+              "options": {
+                "indexProvider": "fulltext-1.0",
+                "indexConfig": {
+                  "fulltext.eventually_consistent": false,
+                  "fulltext.analyzer": "standard-no-stop-words"
+                }
+              }
+            },
+            {
+              "name": "bf_e1378e77f14c759972de",
+              "type": "FULLTEXT",
+              "options": {
+                "indexProvider": "fulltext-1.0",
+                "indexConfig": {
+                  "fulltext.eventually_consistent": false,
+                  "fulltext.analyzer": "standard-no-stop-words"
+                }
+              }
+            },
+            {
+              "name": "bf_fbbd1830a840e6fe3f1f",
+              "type": "FULLTEXT",
+              "options": {
+                "indexProvider": "fulltext-1.0",
+                "indexConfig": {
+                  "fulltext.eventually_consistent": false,
+                  "fulltext.analyzer": "standard-no-stop-words"
+                }
+              }
+            },
+            {
+              "name": "bu_22e3c1ef041bf990bcda",
+              "type": "RANGE",
+              "options": {
+                "indexProvider": "range-1.0",
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_2ec7f5ca62581f49e5a2",
+              "type": "RANGE",
+              "options": {
+                "indexProvider": "range-1.0",
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_3505f6d4a43294e449a3",
+              "type": "RANGE",
+              "options": {
+                "indexProvider": "range-1.0",
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_5c4ff3d6c5c170feea34",
+              "type": "RANGE",
+              "options": {
+                "indexProvider": "range-1.0",
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_a758630026eb8ea18829",
+              "type": "RANGE",
+              "options": {
+                "indexProvider": "range-1.0",
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_e1378e77f14c759972de",
+              "type": "RANGE",
+              "options": {
+                "indexProvider": "range-1.0",
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bu_fbbd1830a840e6fe3f1f",
+              "type": "RANGE",
+              "options": {
+                "indexProvider": "range-1.0",
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "bv_22e3c1ef041bf990bcda",
+              "type": "VECTOR",
+              "options": {
+                "indexProvider": "vector-2.0",
+                "indexConfig": {
+                  "vector.dimensions": 384,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.enabled": false,
+                  "vector.similarity_function": "COSINE",
+                  "vector.hnsw.ef_construction": 100
+                }
+              }
+            },
+            {
+              "name": "bv_3505f6d4a43294e449a3",
+              "type": "VECTOR",
+              "options": {
+                "indexProvider": "vector-2.0",
+                "indexConfig": {
+                  "vector.dimensions": 384,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.enabled": false,
+                  "vector.similarity_function": "COSINE",
+                  "vector.hnsw.ef_construction": 100
+                }
+              }
+            },
+            {
+              "name": "bv_5c4ff3d6c5c170feea34",
+              "type": "VECTOR",
+              "options": {
+                "indexProvider": "vector-2.0",
+                "indexConfig": {
+                  "vector.dimensions": 384,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.enabled": false,
+                  "vector.similarity_function": "COSINE",
+                  "vector.hnsw.ef_construction": 100
+                }
+              }
+            },
+            {
+              "name": "bv_a758630026eb8ea18829",
+              "type": "VECTOR",
+              "options": {
+                "indexProvider": "vector-2.0",
+                "indexConfig": {
+                  "vector.dimensions": 384,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.enabled": false,
+                  "vector.similarity_function": "COSINE",
+                  "vector.hnsw.ef_construction": 100
+                }
+              }
+            },
+            {
+              "name": "bv_e1378e77f14c759972de",
+              "type": "VECTOR",
+              "options": {
+                "indexProvider": "vector-2.0",
+                "indexConfig": {
+                  "vector.dimensions": 384,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.enabled": false,
+                  "vector.similarity_function": "COSINE",
+                  "vector.hnsw.ef_construction": 100
+                }
+              }
+            },
+            {
+              "name": "bv_fbbd1830a840e6fe3f1f",
+              "type": "VECTOR",
+              "options": {
+                "indexProvider": "vector-2.0",
+                "indexConfig": {
+                  "vector.dimensions": 384,
+                  "vector.hnsw.m": 16,
+                  "vector.quantization.enabled": false,
+                  "vector.similarity_function": "COSINE",
+                  "vector.hnsw.ef_construction": 100
+                }
+              }
+            },
+            {
+              "name": "index_343aff4e",
+              "type": "LOOKUP",
+              "options": {
+                "indexProvider": "token-lookup-1.0",
+                "indexConfig": {}
+              }
+            },
+            {
+              "name": "index_f7700477",
+              "type": "LOOKUP",
+              "options": {
+                "indexProvider": "token-lookup-1.0",
+                "indexConfig": {}
+              }
+            }
+          ]
+        },
+        {
+          "query": "SHOW SETTINGS YIELD name,value WHERE name CONTAINS 'fulltext' RETURN name,value",
+          "rows": [
+            {
+              "name": "db.index.fulltext.default_analyzer",
+              "value": "standard-no-stop-words"
+            },
+            {
+              "name": "db.index.fulltext.eventually_consistent",
+              "value": "false"
+            },
+            {
+              "name": "db.index.fulltext.eventually_consistent_apply_parallelism",
+              "value": "1"
+            },
+            {
+              "name": "db.index.fulltext.eventually_consistent_index_update_queue_max_length",
+              "value": "10000"
+            },
+            {
+              "name": "db.index.fulltext.eventually_consistent_refresh_interval",
+              "value": "0s"
+            },
+            {
+              "name": "db.index.fulltext.eventually_consistent_refresh_parallelism",
+              "value": "1"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "language": {
+    "relate": {
+      "p95_ms": {
+        "python": 9.586598900045828,
+        "rust": 9.27395654991301
+      },
+      "n_pairs": 200,
+      "parity": true,
+      "note": "Query-only thin client stacks; same outer Python contracts; PyO3 versus C ABI and HTTP client differences remain; model/render excluded.",
+      "mean_paired_rust_minus_python_ms": -0.1930168550001099
+    },
+    "neo4j": {
+      "p95_ms": {
+        "python": 17.32541705006837,
+        "rust": 14.616279999995637
+      },
+      "n_pairs": 200,
+      "parity": true,
+      "note": "Query-only thin client stacks; same outer Python contracts; PyO3 versus C ABI and HTTP client differences remain; model/render excluded.",
+      "mean_paired_rust_minus_python_ms": -2.098108394993119
+    }
+  },
+  "oracle_curves": {
+    "HNSW-ef100:5": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 1.0,
+      "tie_aware_recall": 1.0,
+      "raw_p95_ms": 0.060335249941090296
+    },
+    "HNSW-ef100:10": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 1.0,
+      "tie_aware_recall": 1.0,
+      "raw_p95_ms": 0.055025000023078974
+    },
+    "HNSW-ef100:20": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 1.0,
+      "tie_aware_recall": 1.0,
+      "raw_p95_ms": 0.06094874999007516
+    },
+    "HNSW-ef100:50": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 0.999375,
+      "tie_aware_recall": 1.0,
+      "raw_p95_ms": 0.0669925000238436
+    },
+    "HNSW-ef20:5": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 1.0,
+      "tie_aware_recall": 1.0,
+      "raw_p95_ms": 0.09833850000973143
+    },
+    "HNSW-ef20:10": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 0.9875,
+      "tie_aware_recall": 0.9875,
+      "raw_p95_ms": 0.09542850008870118
+    },
+    "HNSW-ef20:20": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 0.971875,
+      "tie_aware_recall": 0.971875,
+      "raw_p95_ms": 0.10930374997997205
+    },
+    "HNSW-ef20:50": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 0.996875,
+      "tie_aware_recall": 0.9975,
+      "raw_p95_ms": 0.12111549997939619
+    },
+    "HNSW-ef50:5": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 1.0,
+      "tie_aware_recall": 1.0,
+      "raw_p95_ms": 0.046065750041179854
+    },
+    "HNSW-ef50:10": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 1.0,
+      "tie_aware_recall": 1.0,
+      "raw_p95_ms": 0.05459649997874294
+    },
+    "HNSW-ef50:20": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 0.9984375,
+      "tie_aware_recall": 0.9984375,
+      "raw_p95_ms": 0.056676499980312656
+    },
+    "HNSW-ef50:50": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 0.996875,
+      "tie_aware_recall": 0.9975,
+      "raw_p95_ms": 0.05968924998001057
+    },
+    "Neo4j-ANN:5": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 0.8562500000000001,
+      "tie_aware_recall": 0.8562500000000001,
+      "raw_p95_ms": 7.048642749936107
+    },
+    "Neo4j-ANN:10": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 0.925,
+      "tie_aware_recall": 0.925,
+      "raw_p95_ms": 7.010527250002951
+    },
+    "Neo4j-ANN:20": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 0.9734375,
+      "tie_aware_recall": 0.9734375,
+      "raw_p95_ms": 7.596499749979557
+    },
+    "Neo4j-ANN:50": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 0.99625,
+      "tie_aware_recall": 0.996875,
+      "raw_p95_ms": 9.074058499948023
+    },
+    "Relate-exact:5": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 1.0,
+      "tie_aware_recall": 1.0,
+      "raw_p95_ms": 1.3114662500015584
+    },
+    "Relate-exact:10": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 1.0,
+      "tie_aware_recall": 1.0,
+      "raw_p95_ms": 1.2787075000062487
+    },
+    "Relate-exact:20": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 1.0,
+      "tie_aware_recall": 1.0,
+      "raw_p95_ms": 1.3299824999535304
+    },
+    "Relate-exact:50": {
+      "queries": 32,
+      "samples": 96,
+      "recall": 0.999375,
+      "tie_aware_recall": 1.0,
+      "raw_p95_ms": 1.6580927500342568
+    }
+  },
+  "historical": {
+    "outputs": 1012,
+    "changed_outputs": 52,
+    "note": "Only timing excluded. Thread limits and repeat counts differ; no latency parity claim."
+  },
+  "production_demo_checks": {
+    "generation_changed": true,
+    "revision_increased": true,
+    "before_support_active": true,
+    "after_support_inactive": true,
+    "retraction_visible": true,
+    "old_snapshot_recoverable": true,
+    "import_replay_did_not_restore": true,
+    "source_bytes_retained": true,
+    "no_approval_claimed": true
+  },
+  "not_established": [
+    "canonical live-memory projection",
+    "trusted shared publication",
+    "automatic required conflict construction",
+    "native canonical feedback/replay",
+    "storage-device faults",
+    "remote server",
+    "full cold CLI context recovery"
+  ]
+}
