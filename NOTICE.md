@@ -69,3 +69,14 @@ retrieval/memory design inputs at `a0e0e413e3b20082a85e7d75c58b45b0ba09b903`.
 New public source passages retain exact MIT Writ citations and the existing
 Lucio Saldivar / JolliAI attribution. OpenAI Codex assisted with implementation,
 provisional labels and evaluation; independent human review remains pending.
+
+## Rust application (`relate-app/`)
+
+The Rust writ-relate application (added 2026-11-14) reuses this repository's own policies,
+fixtures and the public MIT Writ architecture text, as described in
+`relate-app/docs/REUSE-MAP.md`. It depends on the Apache-2.0 `relate` 1.0.1 crate
+(Neo4j Labs), tract, Hugging Face tokenizers, seccompiler and the Apache-2.0
+all-MiniLM-L6-v2 model. None are vendored or relicensed. The application, tests and
+documentation were written with AI assistance (Claude Code, Claude Opus 5.5) under the
+owner's direction. Labels used in its regression evaluation are model-authored and
+unreviewed.

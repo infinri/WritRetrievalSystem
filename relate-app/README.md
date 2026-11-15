@@ -71,7 +71,7 @@ Inspect any version exactly:
 ```
 
 Rebuild the whole story from an empty store. This takes 13 steps, each in a separate process, so
-the store is closed and reopened every time, and 13 checked expectations:
+the store is closed and reopened every time, and 15 checked expectations:
 
 ```bash
 ./target/release/writ-relate demo --out /tmp/writ-demo

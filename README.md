@@ -1,5 +1,17 @@
 # Writ Retrieval System
 
+## writ-relate: the Rust + Relate application (hackathon entry, proposed)
+
+Connected project memory for coding agents, stored and searched in an embedded Relate
+graph. It shows which decision governs a file, the exact evidence versions for and against
+it, and later corrections, with no Python at runtime. **Start here:
+[relate-app/README.md](relate-app/README.md)**. Its first useful result takes three
+commands (fetch model, build, query the committed `relate-app/demo-store/`).
+
+Everything below documents the earlier Python research baseline. It is kept as historical
+reference and is not needed to build, run or judge `relate-app/`.
+
+
 Connected context for AI agents, extracted from Writ V1 and adapted to embedded Relate.
 
 The standalone baseline runs BM25 (Tantivy), vector search (HNSW + MiniLM ONNX),

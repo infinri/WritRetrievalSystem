@@ -11,15 +11,15 @@
     "seed": 20261114,
     "warmup_passes": 1
   },
-  "model_load_ms": 250.63322300000002,
+  "model_load_ms": 249.947049,
   "imports": {
     "a0e0e413e3b20082a85e7d75c58b45b0ba09b903": {
       "passages": 127,
-      "import_ms_including_inference": 6852.098666
+      "import_ms_including_inference": 6802.375163
     },
     "b60bf33983b96ccfbc5c1464dcf32687c789703e": {
       "passages": 127,
-      "import_ms_including_inference": 6655.5372210000005
+      "import_ms_including_inference": 6719.261509
     }
   },
   "summary": {
@@ -35,8 +35,8 @@
       "citation_failures": 0,
       "max_chars": 5996,
       "warm_samples": 108,
-      "warm_p50_ms": 56.973121,
-      "warm_p95_ms": 63.333824699999994
+      "warm_p50_ms": 57.0381955,
+      "warm_p95_ms": 62.29168874999999
     },
     "development/cypher": {
       "natural_complete": 19,
@@ -50,8 +50,8 @@
       "citation_failures": 0,
       "max_chars": 5992,
       "warm_samples": 108,
-      "warm_p50_ms": 57.766937,
-      "warm_p95_ms": 66.54730500000001
+      "warm_p50_ms": 58.5653135,
+      "warm_p95_ms": 63.63991755
     },
     "heldout/app": {
       "natural_complete": 21,
@@ -65,8 +65,8 @@
       "citation_failures": 0,
       "max_chars": 5977,
       "warm_samples": 108,
-      "warm_p50_ms": 56.631065,
-      "warm_p95_ms": 63.670078
+      "warm_p50_ms": 57.506615999999994,
+      "warm_p95_ms": 66.5557544
     },
     "heldout/cypher": {
       "natural_complete": 21,
@@ -80,8 +80,8 @@
       "citation_failures": 0,
       "max_chars": 5992,
       "warm_samples": 108,
-      "warm_p50_ms": 57.69059849999999,
-      "warm_p95_ms": 64.33658495
+      "warm_p50_ms": 58.6091575,
+      "warm_p95_ms": 64.21329014999999
     }
   },
   "comparison": {
@@ -120,7 +120,7 @@
       "python_only": []
     }
   },
-  "process_peak_rss_kib": 202912,
-  "cpu_seconds": 47.173594,
+  "process_peak_rss_kib": 203236,
+  "cpu_seconds": 47.300927,
   "note": "Warm persistent Rust process; timings include query embedding, Relate search/fusion, enrichment queries, validation and complete rendering. One process for all arms; RSS is not per-arm."
 }
