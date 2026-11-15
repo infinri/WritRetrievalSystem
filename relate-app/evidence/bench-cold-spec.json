@@ -1,0 +1,88 @@
+{
+ "commands": {
+  "rust-relate-q0": [
+   "/work/relate-app/target/release/writ-relate",
+   "context",
+   "--store",
+   "/tmp/evalwork/store-a0e0e41",
+   "--project",
+   "writ-public",
+   "--model-dir",
+   "/app/data/model",
+   "What does Writ specify under '5. Trusted evaluators and evidence verification' in acceptance-gate-integrity.md?"
+  ],
+  "python-grounded-relate-q0": [
+   "/opt/venv/bin/python",
+   "-m",
+   "writ_retrieval.reliable.grounded_cli",
+   "--store",
+   "/app/data/laptop-work/rm-heldout/store-a0e0e41",
+   "--cache-dir",
+   "/app/data/laptop-work/cold-cli-cache/grounded-relate",
+   "--model-dir",
+   "/app/data/model",
+   "--project",
+   "writ-public",
+   "--backend",
+   "relate",
+   "What does Writ specify under '5. Trusted evaluators and evidence verification' in acceptance-gate-integrity.md?"
+  ],
+  "python-grounded-flat-q0": [
+   "/opt/venv/bin/python",
+   "-m",
+   "writ_retrieval.reliable.grounded_cli",
+   "--store",
+   "/app/data/laptop-work/rm-heldout/store-a0e0e41",
+   "--cache-dir",
+   "/app/data/laptop-work/cold-cli-cache/grounded-flat",
+   "--model-dir",
+   "/app/data/model",
+   "--project",
+   "writ-public",
+   "What does Writ specify under '5. Trusted evaluators and evidence verification' in acceptance-gate-integrity.md?"
+  ],
+  "rust-relate-q1": [
+   "/work/relate-app/target/release/writ-relate",
+   "context",
+   "--store",
+   "/tmp/evalwork/store-a0e0e41",
+   "--project",
+   "writ-public",
+   "--model-dir",
+   "/app/data/model",
+   "What does Writ specify under 'Policy binding and conflict control' in authorization-and-approvals.md?"
+  ],
+  "python-grounded-relate-q1": [
+   "/opt/venv/bin/python",
+   "-m",
+   "writ_retrieval.reliable.grounded_cli",
+   "--store",
+   "/app/data/laptop-work/rm-heldout/store-a0e0e41",
+   "--cache-dir",
+   "/app/data/laptop-work/cold-cli-cache/grounded-relate",
+   "--model-dir",
+   "/app/data/model",
+   "--project",
+   "writ-public",
+   "--backend",
+   "relate",
+   "What does Writ specify under 'Policy binding and conflict control' in authorization-and-approvals.md?"
+  ],
+  "python-grounded-flat-q1": [
+   "/opt/venv/bin/python",
+   "-m",
+   "writ_retrieval.reliable.grounded_cli",
+   "--store",
+   "/app/data/laptop-work/rm-heldout/store-a0e0e41",
+   "--cache-dir",
+   "/app/data/laptop-work/cold-cli-cache/grounded-flat",
+   "--model-dir",
+   "/app/data/model",
+   "--project",
+   "writ-public",
+   "What does Writ specify under 'Policy binding and conflict control' in authorization-and-approvals.md?"
+  ]
+ },
+ "repetitions": 30,
+ "warmups": 2
+}

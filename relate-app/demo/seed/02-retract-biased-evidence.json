@@ -1,0 +1,12 @@
+{
+  "contract_version": "writ-relate-retract/1",
+  "request_id": "retract-original-review-bias",
+  "recorded_at": "2026-11-14T21:30:00Z",
+  "evidence": "writ-retrieval-system|Evidence|original-review-unsupported-claims",
+  "decision": {
+    "key": "writ-retrieval-system|Decision|local-workflow-backend",
+    "revision": 1,
+    "content_digest": "sha256:288735e9f5e433ab9167d9683fa48331f40891e9c8ced8e9a5d944f2f4b09078"
+  },
+  "reason": "Amendment 2 (experiments/laptop_decision/PROTOCOL.md L214-L222 at 0bdf503): the grader saw stripped context, so unsupported-claim counts were biased against the grounded conditions; corrected review shows 0."
+}

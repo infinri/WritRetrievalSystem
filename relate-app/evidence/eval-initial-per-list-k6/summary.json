@@ -1,0 +1,132 @@
+{
+  "contract_version": "writ-relate-eval/1",
+  "labels": "MODEL-AUTHORED, NOT HUMAN REVIEWED; opened sets used as regression data only",
+  "settings": {
+    "k": 6,
+    "cosine_gate": 0.3,
+    "rrf_k": 60,
+    "max_bytes": 8000,
+    "max_chars": 6000,
+    "repetitions": 3,
+    "seed": 20261114,
+    "warmup_passes": 1
+  },
+  "model_load_ms": 260.280941,
+  "imports": {
+    "a0e0e413e3b20082a85e7d75c58b45b0ba09b903": {
+      "passages": 127,
+      "import_ms_including_inference": 6715.365699
+    },
+    "b60bf33983b96ccfbc5c1464dcf32687c789703e": {
+      "passages": 127,
+      "import_ms_including_inference": 6966.944705
+    }
+  },
+  "summary": {
+    "development/app": {
+      "natural_complete": 20,
+      "natural_positive": 24,
+      "all_complete": 26,
+      "all_positive": 30,
+      "natural_mrr": 0.576388888888889,
+      "correct_unknown": 6,
+      "unknown": 6,
+      "errors": 0,
+      "citation_failures": 0,
+      "max_chars": 5996,
+      "warm_samples": 108,
+      "warm_p50_ms": 58.2314005,
+      "warm_p95_ms": 64.43364675
+    },
+    "development/cypher": {
+      "natural_complete": 20,
+      "natural_positive": 24,
+      "all_complete": 26,
+      "all_positive": 30,
+      "natural_mrr": 0.576388888888889,
+      "correct_unknown": 6,
+      "unknown": 6,
+      "errors": 0,
+      "citation_failures": 0,
+      "max_chars": 5988,
+      "warm_samples": 108,
+      "warm_p50_ms": 58.3694945,
+      "warm_p95_ms": 66.78087694999999
+    },
+    "heldout/app": {
+      "natural_complete": 20,
+      "natural_positive": 24,
+      "all_complete": 26,
+      "all_positive": 30,
+      "natural_mrr": 0.7222222222222222,
+      "correct_unknown": 6,
+      "unknown": 6,
+      "errors": 0,
+      "citation_failures": 0,
+      "max_chars": 5995,
+      "warm_samples": 108,
+      "warm_p50_ms": 58.758903499999995,
+      "warm_p95_ms": 72.07899034999998
+    },
+    "heldout/cypher": {
+      "natural_complete": 20,
+      "natural_positive": 24,
+      "all_complete": 26,
+      "all_positive": 30,
+      "natural_mrr": 0.7222222222222222,
+      "correct_unknown": 6,
+      "unknown": 6,
+      "errors": 0,
+      "citation_failures": 0,
+      "max_chars": 5992,
+      "warm_samples": 108,
+      "warm_p50_ms": 59.096509999999995,
+      "warm_p95_ms": 70.94671655
+    }
+  },
+  "comparison": {
+    "fusion_owner_identical_delivery": 72,
+    "tasks": 72,
+    "candidates_identical_order_vs_python_grounded_relate": 9,
+    "candidates_identical_set_vs_python_grounded_relate": 11,
+    "mean_items_delivered": {
+      "rust": 2.6666666666666665,
+      "python_grounded_relate": 1.5
+    },
+    "rust_vs_python_grounded_relate": {
+      "both_complete": 46,
+      "rust_only": [
+        "dev-04",
+        "dev-05",
+        "dev-07",
+        "dev-12",
+        "dev-22",
+        "hel-07"
+      ],
+      "python_only": [
+        "hel-11"
+      ],
+      "identical_delivered_passages": 8
+    },
+    "rust_vs_python_legacy_hybrid": {
+      "rust_only": [
+        "dev-02",
+        "dev-11",
+        "dev-12",
+        "dev-27",
+        "dev-29",
+        "hel-06",
+        "hel-07",
+        "hel-28",
+        "hel-29",
+        "hel-30"
+      ],
+      "python_only": [
+        "hel-11"
+      ]
+    }
+  },
+  "process_peak_rss_kib": 203312,
+  "cpu_seconds": 48.448198,
+  "note": "Warm persistent Rust process; timings include query embedding, Relate search/fusion, enrichment queries, validation and complete rendering. One process for all arms; RSS is not per-arm."
+}

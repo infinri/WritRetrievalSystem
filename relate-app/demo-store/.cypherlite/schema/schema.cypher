@@ -1,0 +1,2 @@
+CREATE FULLTEXT INDEX `ft_d78cfc6d19b5` FOR (n:`FT_d78cfc6d19b5`) ON EACH [n.`search_text`] OPTIONS {indexConfig: {`fulltext.analyzer`: 'standard-no-stop-words',`fulltext.eventually_consistent`: false}};
+CREATE VECTOR INDEX `writ_vec` FOR (n:`Searchable`) ON (n.`embedding`) WITH [n.`search_scope`] OPTIONS {indexConfig: {`vector.default_search_expansion_factor`: 3.0,`vector.hnsw.ef_construction`: 100,`vector.hnsw.m`: 16,`vector.quantization.type`: 'BINARY',`vector.similarity_function`: 'COSINE'}};

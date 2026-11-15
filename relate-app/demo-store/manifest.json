@@ -1,0 +1,137 @@
+{
+  "format_version": 5,
+  "next_node_id": 142,
+  "next_rel_id": 11,
+  "checkpoint_lsn": 6,
+  "commit_ts": 6,
+  "node_parts": [
+    {
+      "path": "nodes/0-262144-df72aff2a0dbb3f9c07c95505ea69094.parquet",
+      "id_lo": 0,
+      "id_hi": 262144,
+      "rows": 142,
+      "bytes": 964850
+    }
+  ],
+  "rel_parts": [
+    {
+      "path": "relationships/0-262144-a5bd4e2bb0b618254785f3f7ab4db932.parquet",
+      "id_lo": 0,
+      "id_hi": 262144,
+      "rows": 11,
+      "bytes": 3861
+    }
+  ],
+  "bytes_per_node": 6732.456449562803,
+  "bytes_per_rel": 444.3307736666666,
+  "codec": "parquet",
+  "indexes": [
+    {
+      "name": "ft_d78cfc6d19b5",
+      "label": "FT_d78cfc6d19b5",
+      "property": "search_text#FULLTEXT#ft_d78cfc6d19b5"
+    },
+    {
+      "name": "writ_vec",
+      "label": "Searchable",
+      "property": "embedding#VECTOR#writ_vec"
+    }
+  ],
+  "constraints": [],
+  "theater": {
+    "databases": {
+      "neo4j": [
+        25,
+        false
+      ],
+      "system": [
+        25,
+        false
+      ],
+      "system_ontologies": [
+        25,
+        false
+      ]
+    },
+    "index_details": {
+      "ft_d78cfc6d19b5": {
+        "kind": "Fulltext",
+        "relationship": false,
+        "labels": [
+          "FT_d78cfc6d19b5"
+        ],
+        "properties": [
+          "search_text"
+        ],
+        "with_properties": []
+      },
+      "writ_vec": {
+        "kind": "Vector",
+        "relationship": false,
+        "labels": [
+          "Searchable"
+        ],
+        "properties": [
+          "embedding"
+        ],
+        "with_properties": [
+          "search_scope"
+        ]
+      }
+    },
+    "index_options": {
+      "ft_d78cfc6d19b5": {
+        "indexConfig": {
+          "t": "map",
+          "v": {
+            "fulltext.analyzer": {
+              "t": "string",
+              "v": "standard-no-stop-words"
+            },
+            "fulltext.eventually_consistent": {
+              "t": "bool",
+              "v": false
+            }
+          }
+        }
+      },
+      "writ_vec": {
+        "indexConfig": {
+          "t": "map",
+          "v": {
+            "vector.default_search_expansion_factor": {
+              "t": "float",
+              "v": 3.0
+            },
+            "vector.hnsw.ef_construction": {
+              "t": "int",
+              "v": 100
+            },
+            "vector.hnsw.m": {
+              "t": "int",
+              "v": 16
+            },
+            "vector.quantization.type": {
+              "t": "string",
+              "v": "BINARY"
+            },
+            "vector.similarity_function": {
+              "t": "string",
+              "v": "COSINE"
+            }
+          }
+        }
+      }
+    },
+    "graph_types": {},
+    "current_graph_type": {
+      "node_types": [],
+      "edge_types": [],
+      "constraints": [],
+      "drop_constraint_names": []
+    },
+    "derived_constraints": {}
+  },
+  "query_engine": "in-memory",
+  "write_engine": "local"
+}

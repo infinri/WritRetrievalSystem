@@ -1,0 +1,1 @@
+I am about to edit src/writ_retrieval/reliable/grounded_cli.py to make it the shipping entry point for the hackathon. Before I do: which retrieval implementation does the project currently intend to ship, what evidence supports or contradicts that, and has anything been corrected or superseded? Use the writ tools (project writ-retrieval-system), then answer in under 200 words.

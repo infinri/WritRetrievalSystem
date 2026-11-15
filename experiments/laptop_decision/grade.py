@@ -12,6 +12,8 @@ GRADER_EFFORT = 'low'
 GRADER_SEED = 20261115
 REVISIONS = ('a0e0e413e3b20082a85e7d75c58b45b0ba09b903', 'b60bf33983b96ccfbc5c1464dcf32687c789703e')
 HEX = re.compile(r'(?<![0-9a-fA-F])[0-9a-f]{7,40}(?![0-9a-fA-F])')
+# Whole-word revision-like tokens (must contain a digit, so English words such as 'cceeded' in 'succeeded' are not revisions).
+REVLIKE = re.compile(r'(?<![0-9A-Za-z])(?=[0-9a-f]*[0-9])[0-9a-f]{7,40}(?![0-9A-Za-z])')
 RUBRIC = {
     'gold_content_conveyed': 'Positive task only: does the answer convey the substance of the labelled passage? yes / partial / no; not_applicable for expected-unknown tasks.',
     'answer_correctness': 'Relative to the labelled passage and supplied context: correct / partially_correct / incorrect / not_applicable (expected-unknown tasks).',
@@ -68,9 +70,14 @@ def build_prompt(task, packet, answer, mode):
             '\n\nAnswer to review:\n' + answer + '\n')
 
 
+def open_log(path):
+    """Read a JSONL log, or its committed .gz copy when the uncompressed resume file is absent."""
+    return path.open() if path.exists() else gzip.open(str(path) + '.gz', 'rt')
+
+
 def completed(trial_dir):
     rows = {}
-    for line in (trial_dir / 'attempts.jsonl').open():
+    for line in open_log(trial_dir / 'attempts.jsonl'):
         r = json.loads(line)
         if r['error'] is None:
             rows.setdefault((r['task'], r['arm'], r['repeat']), r)
@@ -87,16 +94,21 @@ def retrieval_scores():
 
 
 def mechanical(task, arm, packet, output):
-    cited = set()
+    cited, unregistered = set(), set()
     for token in HEX.findall(output or ''):
-        for rev in REVISIONS:
-            if rev.startswith(token):
-                cited.add(rev)
+        cited.update(rev for rev in REVISIONS if rev.startswith(token))
+    # Housekeeping fix: a whole-word revision-like token that is not a prefix of a registered
+    # revision, nor text present in the supplied packet/request (e.g. a digest), is flagged.
+    for token in REVLIKE.findall(output or ''):
+        if not any(rev.startswith(token) for rev in REVISIONS) and token not in (packet or '') and token not in canonical(task['request']):
+            unregistered.add(token)
     supported = {rev for rev in REVISIONS if rev in (packet or '') or rev in canonical(task['request'])}
     return {'cited_revisions': sorted(cited),
             'cites_task_revision': task['corpus_revision'] in cited if task['gold'] else None,
             'cites_unsupplied_revision': bool(cited - supported),
-            'cites_other_snapshot': bool(cited - {task['corpus_revision']})}
+            'cites_other_snapshot': bool(cited - {task['corpus_revision']}),
+            'unregistered_revision_tokens': sorted(unregistered),
+            'cites_unregistered_revision': bool(unregistered)}
 
 
 def cmd_review(a):
@@ -207,16 +219,20 @@ def cmd_materials(a):
             aid = f'resp-{i + 1:03d}'
             w.writerow([aid, t['id'], t['query'], t['expected_unknown'], ' || '.join(x['answer_text'] for x in t['gold']),
                         ' '.join(x['revision'] for x in t['gold']), rows[key]['output'], *[''] * len(RUBRIC), '', '', ''])
+            shown = '' if key[1] == 'none' else packets[key[0]][key[1]]
             g.write((canonical({'anonymous_id': aid, 'task': t['id'], 'question': t['query'], 'requirements': t['request'],
-                                'context': blind('' if key[1] == 'none' else packets[key[0]][key[1]]), 'answer': rows[key]['output']}) + '\n').encode())
+                                'context_mode': a.context,
+                                'context': blind(shown) if a.context == 'stripped' else blind_full(shown), 'answer': rows[key]['output']}) + '\n').encode())
             key_rows.append({'anonymous_id': aid, 'task': key[0], 'arm': key[1], 'repeat': key[2]})
     (a.out / 'blind-key.json').write_text(json.dumps(key_rows, indent=1) + '\n')
+    context_note = ('have backend metadata removed (original registered materials)' if a.context == 'stripped' else
+                    'are the complete packets each answering model received, with only projection.backend masked (housekeeping fix; matches Amendment 2)')
     (a.out / 'README.md').write_text(
         '# Blinded response review (pending)\n\nNo human has reviewed these responses. `human-review.csv` lists every completed trial in a shuffled order '
-        '(seed %d) without arm or repetition. Fill each rubric column from RUBRIC below, plus your real name/date. Context copies in '
-        '`human-review-packets.jsonl.gz` have backend metadata removed; an empty context still reveals the no-history condition, and format may hint at '
+        f'(seed {GRADER_SEED + 1}) without arm or repetition. Fill each rubric column from RUBRIC below, plus your real name/date. Context copies in '
+        f'`human-review-packets.jsonl.gz` {context_note}; an empty context still reveals the no-history condition, and format may hint at '
         'legacy vs grounded. Keep `blind-key.json` closed until all rows are complete. Labels are model-authored and unreviewed: record label disagreements in notes.\n\n'
-        '## Rubric\n\n' % (GRADER_SEED + 1) + '\n'.join(f'- **{k}**: {v}' for k, v in RUBRIC.items()) + '\n')
+        '## Rubric\n\n' + '\n'.join(f'- **{k}**: {v}' for k, v in RUBRIC.items()) + '\n')
 
 
 CLASSES = {'section-question': 'natural-language', 'historical': 'historical', 'exact-source': 'explicit-source',
@@ -226,7 +242,7 @@ CORRECT = {'correct': 1.0, 'partially_correct': .5, 'incorrect': 0.0}
 
 def load_review(path):
     out, meta = {}, []
-    for line in (path / 'model-review.jsonl').open():
+    for line in open_log(path / 'model-review.jsonl'):
         r = json.loads(line)
         meta.append(r)
         if r['verdict']:
@@ -264,7 +280,11 @@ def review_tables(tasks, verdicts):
                 'unsupported_assertions_total': sum(v['unsupported_assertions'] for _, v in vs),
                 'citation_correct': sum(v['citation_correctness'] == 'correct' for _, v in vs),
                 'citation_incorrect': sum(v['citation_correctness'] == 'incorrect' for _, v in vs),
-                'citation_none': sum(v['citation_correctness'] == 'none' for _, v in vs)}
+                'citation_none': sum(v['citation_correctness'] == 'none' for _, v in vs),
+                'answer_correctness_not_applicable': sum(v['answer_correctness'] == 'not_applicable' for _, v in vs),
+                'gold_content_conveyed_not_applicable': sum(v['gold_content_conveyed'] == 'not_applicable' for _, v in vs),
+                'warranted_unknown_not_applicable': sum(v['warranted_unknown'] == 'not_applicable' for _, v in vs),
+                'positive_answers_marked_not_applicable': sum(v['answer_correctness'] == 'not_applicable' for t, v in vs if not t['expected_unknown'])}
     return table
 
 
@@ -339,10 +359,10 @@ def cmd_compare(a):
              'Primary score: positives 1 / .5 / 0 for correct / partial / incorrect; unknown controls 1 if the answer warrantedly declines. '
              'Paired differences average the three repetitions within each task, then bootstrap over tasks (descriptive 95%).', '']
     for name in ('original_registered', 'corrected_amendment_2'):
-        lines += [f'## {name}', '', '| Class | Arm | Answers | Mean score | Correct / partial / incorrect | Warranted unknown | Answers with unsupported claims | Citation correct / incorrect / none |', '|---|---|---:|---:|---|---:|---:|---|']
+        lines += [f'## {name}', '', '| Class | Arm | Answers | Mean score | Correct / partial / incorrect / n.a. | Warranted unknown | Answers with unsupported claims | Citation correct / incorrect / none |', '|---|---|---:|---:|---|---:|---:|---|']
         for cls, arms in report[name]['tables'].items():
             for arm, v in arms.items():
-                lines.append(f"| {cls} | {arm} | {v['answers']} | {v['mean_score']} | {v['correct']} / {v['partially_correct']} / {v['incorrect']} | {v['warranted_unknown_yes']} | {v['answers_with_unsupported_assertions']} | {v['citation_correct']} / {v['citation_incorrect']} / {v['citation_none']} |")
+                lines.append(f"| {cls} | {arm} | {v['answers']} | {v['mean_score']} | {v['correct']} / {v['partially_correct']} / {v['incorrect']} / {v['answer_correctness_not_applicable']} | {v['warranted_unknown_yes']} | {v['answers_with_unsupported_assertions']} | {v['citation_correct']} / {v['citation_incorrect']} / {v['citation_none']} |")
         lines += ['', '| Class | Arm vs grounded-flat | Tasks | Mean task diff | 95% task bootstrap | Better / worse tasks |', '|---|---|---:|---:|---|---|']
         for cls, arms in report[name]['paired_vs_grounded_flat'].items():
             for arm, v in arms.items():
@@ -365,12 +385,12 @@ def pct(xs, q):
 def cmd_summary(a):
     tasks, _, packets = load_inputs()
     by_id = {t['id']: t for t in tasks}
-    attempts = [json.loads(x) for x in (a.trials / 'attempts.jsonl').open()]
+    attempts = [json.loads(x) for x in open_log(a.trials / 'attempts.jsonl')]
     rows = completed(a.trials)
     retr = retrieval_scores()
     reviews = {}
-    if (a.review / 'model-review.jsonl').exists():
-        for line in (a.review / 'model-review.jsonl').open():
+    if (a.review / 'model-review.jsonl').exists() or (a.review / 'model-review.jsonl.gz').exists():
+        for line in open_log(a.review / 'model-review.jsonl'):
             r = json.loads(line)
             if r['verdict']:
                 reviews[tuple(r['trial_key'].split('|')[:2]) + (int(r['trial_key'].split('|')[2]),)] = r['verdict']
@@ -400,6 +420,7 @@ def cmd_summary(a):
             'gold_passage_in_context': sum(bool(r['gold_passage_in_context']) for r in pos),
             'cites_task_revision': sum(bool(r['cites_task_revision']) for r in pos),
             'cites_unsupplied_revision': sum(r['cites_unsupplied_revision'] for r in rs),
+            'cites_unregistered_revision': sum(r['cites_unregistered_revision'] for r in rs),
             'model_reviewed': len(rev),
             'mr_gold_conveyed_yes': sum(v['gold_content_conveyed'] == 'yes' for v in revpos),
             'mr_gold_conveyed_partial': sum(v['gold_content_conveyed'] == 'partial' for v in revpos),

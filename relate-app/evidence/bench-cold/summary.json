@@ -1,0 +1,147 @@
+{
+  "contract_version": "writ-relate-bench-cold/1",
+  "repetitions": 30,
+  "warmups": 2,
+  "seed": 20261114,
+  "commands": {
+    "python-grounded-flat-q0": [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.grounded_cli",
+      "--store",
+      "/app/data/laptop-work/rm-heldout/store-a0e0e41",
+      "--cache-dir",
+      "/app/data/laptop-work/cold-cli-cache/grounded-flat",
+      "--model-dir",
+      "/app/data/model",
+      "--project",
+      "writ-public",
+      "What does Writ specify under '5. Trusted evaluators and evidence verification' in acceptance-gate-integrity.md?"
+    ],
+    "python-grounded-flat-q1": [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.grounded_cli",
+      "--store",
+      "/app/data/laptop-work/rm-heldout/store-a0e0e41",
+      "--cache-dir",
+      "/app/data/laptop-work/cold-cli-cache/grounded-flat",
+      "--model-dir",
+      "/app/data/model",
+      "--project",
+      "writ-public",
+      "What does Writ specify under 'Policy binding and conflict control' in authorization-and-approvals.md?"
+    ],
+    "python-grounded-relate-q0": [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.grounded_cli",
+      "--store",
+      "/app/data/laptop-work/rm-heldout/store-a0e0e41",
+      "--cache-dir",
+      "/app/data/laptop-work/cold-cli-cache/grounded-relate",
+      "--model-dir",
+      "/app/data/model",
+      "--project",
+      "writ-public",
+      "--backend",
+      "relate",
+      "What does Writ specify under '5. Trusted evaluators and evidence verification' in acceptance-gate-integrity.md?"
+    ],
+    "python-grounded-relate-q1": [
+      "/opt/venv/bin/python",
+      "-m",
+      "writ_retrieval.reliable.grounded_cli",
+      "--store",
+      "/app/data/laptop-work/rm-heldout/store-a0e0e41",
+      "--cache-dir",
+      "/app/data/laptop-work/cold-cli-cache/grounded-relate",
+      "--model-dir",
+      "/app/data/model",
+      "--project",
+      "writ-public",
+      "--backend",
+      "relate",
+      "What does Writ specify under 'Policy binding and conflict control' in authorization-and-approvals.md?"
+    ],
+    "rust-relate-q0": [
+      "/work/relate-app/target/release/writ-relate",
+      "context",
+      "--store",
+      "/tmp/evalwork/store-a0e0e41",
+      "--project",
+      "writ-public",
+      "--model-dir",
+      "/app/data/model",
+      "What does Writ specify under '5. Trusted evaluators and evidence verification' in acceptance-gate-integrity.md?"
+    ],
+    "rust-relate-q1": [
+      "/work/relate-app/target/release/writ-relate",
+      "context",
+      "--store",
+      "/tmp/evalwork/store-a0e0e41",
+      "--project",
+      "writ-public",
+      "--model-dir",
+      "/app/data/model",
+      "What does Writ specify under 'Policy binding and conflict control' in authorization-and-approvals.md?"
+    ]
+  },
+  "summary": {
+    "python-grounded-flat-q0": {
+      "samples": 30,
+      "failures": 0,
+      "p50_ms": 807.6970065,
+      "p95_ms": 929.4756473499999,
+      "max_peak_rss_kib": 287704,
+      "mean_cpu_s": 2.227270266666667,
+      "deterministic_stdout": false
+    },
+    "python-grounded-flat-q1": {
+      "samples": 30,
+      "failures": 0,
+      "p50_ms": 808.9613735,
+      "p95_ms": 925.6908927499999,
+      "max_peak_rss_kib": 287704,
+      "mean_cpu_s": 2.2165535333333333,
+      "deterministic_stdout": false
+    },
+    "python-grounded-relate-q0": {
+      "samples": 30,
+      "failures": 0,
+      "p50_ms": 916.895892,
+      "p95_ms": 1003.9490529999998,
+      "max_peak_rss_kib": 240608,
+      "mean_cpu_s": 2.290582066666667,
+      "deterministic_stdout": false
+    },
+    "python-grounded-relate-q1": {
+      "samples": 30,
+      "failures": 0,
+      "p50_ms": 915.6649505,
+      "p95_ms": 1030.30044785,
+      "max_peak_rss_kib": 238316,
+      "mean_cpu_s": 2.2778479,
+      "deterministic_stdout": false
+    },
+    "rust-relate-q0": {
+      "samples": 30,
+      "failures": 0,
+      "p50_ms": 345.13838250000003,
+      "p95_ms": 361.89009365,
+      "max_peak_rss_kib": 203060,
+      "mean_cpu_s": 0.3475781666666667,
+      "deterministic_stdout": false
+    },
+    "rust-relate-q1": {
+      "samples": 30,
+      "failures": 0,
+      "p50_ms": 344.2391315,
+      "p95_ms": 382.82940154999983,
+      "max_peak_rss_kib": 203136,
+      "mean_cpu_s": 0.3511405333333332,
+      "deterministic_stdout": false
+    }
+  },
+  "note": "Fresh process per sample, randomized interleaving, warm disk. Peak RSS/CPU per child via wait4. Loopback/local only."
+}

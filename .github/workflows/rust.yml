@@ -1,0 +1,52 @@
+name: Rust writ-relate
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: relate-app
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain from rust-toolchain.toml (1.88.0)
+        run: rustup show active-toolchain || rustup toolchain install
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            relate-app/target
+          key: rust-${{ runner.os }}-${{ hashFiles('relate-app/Cargo.lock', 'relate-app/rust-toolchain.toml') }}
+      - name: Fetch pinned embedding model (curl + sha256sum, no Python)
+        run: scripts/fetch-model.sh model
+      - name: Format and lint
+        run: |
+          cargo fmt --check
+          cargo clippy --release --locked --all-targets -- -D warnings
+      - name: Build
+        run: cargo build --release --locked
+      - name: Binary does not link Python
+        run: "! ldd target/release/writ-relate | grep -i python"
+      - name: Read-only clone of public Writ (for the extractor equivalence test)
+        run: git clone --quiet https://github.com/infinri/Writ "$RUNNER_TEMP/Writ-public"
+      - name: Tests (real Relate engine and real ONNX inference)
+        run: cargo test --release --locked
+        env:
+          WRIT_MODEL_DIR: ${{ github.workspace }}/relate-app/model
+          WRIT_PUBLIC_REPO: ${{ runner.temp }}/Writ-public
+      - name: End-to-end demo from an empty store
+        run: ./target/release/writ-relate demo --out "$RUNNER_TEMP/demo"
+        env:
+          WRIT_MODEL_DIR: ${{ github.workspace }}/relate-app/model
+      - name: Committed demo store opens read-only, verifies and answers
+        run: |
+          ./target/release/writ-relate verify --store demo-store
+          ./target/release/writ-relate context --store demo-store --project writ-retrieval-system \
+            --path relate-app/src/main.rs "Which retrieval implementation does the project ship?" > "$RUNNER_TEMP/ctx.json"
+          grep -q 'local-workflow-backend@2' "$RUNNER_TEMP/ctx.json"
+        env:
+          WRIT_MODEL_DIR: ${{ github.workspace }}/relate-app/model

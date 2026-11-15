@@ -1,0 +1,3 @@
+# Resolve dependency versions compatible with rust-version 1.88 (MSRV-aware resolver).
+[resolver]
+incompatible-rust-versions = "fallback"
