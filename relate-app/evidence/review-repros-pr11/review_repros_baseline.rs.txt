@@ -1,0 +1,94 @@
+//! Independent review probes (PR #11 review, 2026-11-14). These assert observed defects, not desired contracts.
+use std::path::PathBuf;
+use std::sync::OnceLock;
+use serde_json::{json, Value as Json};
+use writ_relate::{context::{context, Request}, db::Store, embed::Encoder, memory::{self, Capture}};
+
+fn enc() -> &'static Encoder {
+    static E: OnceLock<Encoder> = OnceLock::new();
+    E.get_or_init(|| Encoder::load(&PathBuf::from(std::env::var("WRIT_MODEL_DIR").unwrap())).unwrap())
+}
+fn setup() -> (tempfile::TempDir, Store) {
+    let d = tempfile::tempdir().unwrap();
+    let mut st = Store::open(d.path().join("g").to_str().unwrap(), false).unwrap();
+    memory::init(&mut st, &enc().identity).unwrap();
+    (d, st)
+}
+fn binding(id: &str, text: &str) -> Json {
+    json!({"key":format!("p|Decision|{id}"),"revision":1,"content_digest":writ_relate::util::text_digest(text)})
+}
+fn capture(st: &mut Store, id: &str, at: &str, operations: Json) -> anyhow::Result<Json> {
+    let c: Capture = serde_json::from_value(json!({"contract_version":"writ-relate-capture/1","request_id":id,"project":"p","recorded_at":at,"operations":operations})).unwrap();
+    memory::capture(st, enc(), &c)
+}
+fn request(id: &str, at: &str) -> Request {
+    let mut r = Request::new("zzzzzzzznoquerymatch", "p");
+    r.required = vec![format!("p|Decision|{id}")];
+    r.as_of = Some(at.into());
+    r.gate = 2.0;
+    r.max_bytes = 64000; r.max_chars = 64000;
+    r
+}
+
+#[test]
+fn review_impossible_calendar_date_is_accepted() {
+    assert!(writ_relate::util::check_utc("2026-02-31T12:00:00Z").is_ok());
+}
+
+#[test]
+fn review_future_evidence_leaks_into_as_of_context() {
+    let (_d, mut st) = setup();
+    capture(&mut st,"d","2026-11-10T00:00:00Z",json!([{"op":"decision","id":"a","title":"A","text":"Use indexed context."}])).unwrap();
+    capture(&mut st,"e","2026-11-12T00:00:00Z",json!([{"op":"evidence","id":"later","kind":"tool_output","text":"Test measured later.","supports":[binding("a","Use indexed context.")]}])).unwrap();
+    let c = context(&mut st,enc(),&request("a","2026-11-11T00:00:00Z")).unwrap().0;
+    assert!(c["items"].as_array().unwrap().iter().any(|i|i["vkey"]=="p|Evidence|later@1"));
+}
+
+#[test]
+fn review_conflict_chain_is_incomplete() {
+    let (_d, mut st) = setup();
+    capture(&mut st,"d","2026-11-10T00:00:00Z",json!([
+        {"op":"decision","id":"a","title":"A","text":"Alpha."},
+        {"op":"decision","id":"b","title":"B","text":"Beta."},
+        {"op":"decision","id":"c","title":"C","text":"Gamma."},
+        {"op":"conflict","a":binding("a","Alpha."),"b":binding("b","Beta."),"reason":"AB conflict"},
+        {"op":"conflict","a":binding("b","Beta."),"b":binding("c","Gamma."),"reason":"BC conflict"}
+    ])).unwrap();
+    let c = context(&mut st,enc(),&request("a","2026-11-11T00:00:00Z")).unwrap().0;
+    let ks:Vec<_> = c["items"].as_array().unwrap().iter().map(|i|i["vkey"].as_str().unwrap()).collect();
+    assert!(ks.contains(&"p|Decision|a@1") && ks.contains(&"p|Decision|b@1"));
+    assert!(!ks.contains(&"p|Decision|c@1"));
+}
+
+#[test]
+fn review_expired_conflict_partner_is_rendered_current() {
+    let (_d, mut st) = setup();
+    capture(&mut st,"d","2026-11-10T00:00:00Z",json!([
+        {"op":"decision","id":"a","title":"A","text":"Alpha."},
+        {"op":"decision","id":"b","title":"B","text":"Beta.","valid_to":"2026-11-11T00:00:00Z"},
+        {"op":"conflict","a":binding("a","Alpha."),"b":binding("b","Beta."),"reason":"conflict"}
+    ])).unwrap();
+    let c=context(&mut st,enc(),&request("a","2026-11-12T00:00:00Z")).unwrap().0;
+    let b=c["items"].as_array().unwrap().iter().find(|i|i["vkey"]=="p|Decision|b@1").unwrap();
+    assert_eq!(b["lifecycle"],"current");
+    assert!(b.get("valid_to").is_none());
+}
+
+#[test]
+fn review_backdated_supersession_is_accepted() {
+    let (_d, mut st) = setup();
+    capture(&mut st,"d","2026-11-12T00:00:00Z",json!([{"op":"decision","id":"a","title":"A","text":"Alpha."}])).unwrap();
+    let r=capture(&mut st,"s","2026-11-11T00:00:00Z",json!([{"op":"supersede","decision":binding("a","Alpha."),"title":"A2","text":"Beta.","reason":"backdated"}]));
+    assert!(r.is_ok());
+}
+
+#[test]
+fn review_old_as_of_cannot_recover_pre_supersession_guidance() {
+    let (_d, mut st) = setup();
+    capture(&mut st,"d","2026-11-10T00:00:00Z",json!([{"op":"decision","id":"a","title":"A","text":"Alpha.","affects":["src/a.rs"]}])).unwrap();
+    capture(&mut st,"s","2026-11-12T00:00:00Z",json!([{"op":"supersede","decision":binding("a","Alpha."),"title":"A2","text":"Beta.","reason":"revision","affects":["src/a.rs"]}])).unwrap();
+    let mut r=Request::new("zzzzzzzznoquerymatch","p");
+    r.as_of=Some("2026-11-11T00:00:00Z".into());r.path=Some("src/a.rs".into());r.gate=2.0;
+    let c=context(&mut st,enc(),&r).unwrap().0;
+    assert_eq!(c["abstained"],true);
+}

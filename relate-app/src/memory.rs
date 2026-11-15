@@ -145,6 +145,14 @@ pub fn ensure_scope(st: &mut Store, project: &str) -> Result<String> {
     st.q0(&format!(
         "CREATE FULLTEXT INDEX ft_{tag} FOR (n:FT_{tag}) ON EACH [n.search_text]"
     ))?;
+    // All-version partition (current + superseded/inactive) for point-in-time requests.
+    st.q(
+        &format!("MATCH (n:Searchable) WHERE n.project IN [$p, $sh] SET n:FTH_{tag}"),
+        params!("p" => s(project), "sh" => s(SHARED)),
+    )?;
+    st.q0(&format!(
+        "CREATE FULLTEXT INDEX fth_{tag} FOR (n:FTH_{tag}) ON EACH [n.search_text]"
+    ))?;
     Ok(tag)
 }
 
@@ -157,6 +165,13 @@ fn set_searchable(st: &mut Store, vk: &str, project: &str, active: bool) -> Resu
         vec![scope_tag(project)]
     };
     let labels: String = tags.iter().map(|t| format!(":FT_{t}")).collect();
+    // All-version labels are added once and never removed by lifecycle changes.
+    let hist: String = tags.iter().map(|t| format!(":FTH_{t}")).collect();
+    let labels = if active {
+        format!("{labels}{hist}")
+    } else {
+        labels
+    };
     if active {
         st.q(
             &format!(
@@ -476,7 +491,7 @@ pub struct Retraction {
 
 fn current_version(st: &mut Store, b: &Binding, label: &str) -> Result<Row> {
     let rows = st.q(
-        &format!("MATCH (n:{label} {{vkey:$vk}}) RETURN n.vkey AS vkey, n.project AS project, n.rev AS rev, n.content_digest AS digest, n.lifecycle AS lifecycle, n.key AS key"),
+        &format!("MATCH (n:{label} {{vkey:$vk}}) RETURN n.vkey AS vkey, n.project AS project, n.rev AS rev, n.content_digest AS digest, n.lifecycle AS lifecycle, n.key AS key, n.recorded_at AS recorded_at"),
         params!("vk" => s(vkey(&b.key, b.revision))),
     )?;
     let r = rows
@@ -543,13 +558,13 @@ fn create_decision(
     let mut p = params!("key" => s(key.clone()), "vk" => s(vk.clone()), "p" => s(project), "id" => s(id), "rev" => Value::Int(rev),
         "title" => s(title), "text" => s(text), "st" => s(prepare(title, text)), "cd" => s(text_digest(text)), "rec" => s(recorded_at),
         "rat" => rationale.clone().map(s).unwrap_or(Value::Null), "vt" => valid_to.clone().map(s).unwrap_or(Value::Null),
-        "req" => s(request_id), "emb" => floats(enc_vec));
+        "req" => s(request_id), "ing" => s(now_utc()), "emb" => floats(enc_vec));
     for (k, v) in source_params(source)? {
         p.insert(k.to_string(), v);
     }
     t.q(
         "CREATE (n:Decision:Searchable {key:$key, vkey:$vk, label:'Decision', project:$p, id:$id, rev:$rev, title:$title, text:$text, search_text:$st, \
-         content_digest:$cd, recorded_at:$rec, rationale:$rat, valid_to:$vt, lifecycle:'current', origin:'local_owner_capture', \
+         content_digest:$cd, recorded_at:$rec, rationale:$rat, valid_to:$vt, lifecycle:'current', ingested_at:$ing, origin:'local_owner_capture', \
          verification:'unverified', approval:'unknown', outcome:'unknown', request_id:$req, source_uri:$source_uri, source_revision:$source_revision, \
          source_path:$source_path, start_line:$start_line, end_line:$end_line, search_scope:'pending', embedding:$emb})",
         p,
@@ -564,9 +579,16 @@ fn link_decision(
     vk: &str,
     governed_by: &[Binding],
     affects: &[String],
+    at: &str,
 ) -> Result<()> {
     for g in governed_by {
         let r = current_version(t, g, "Guidance")?;
+        if r["recorded_at"].as_str().unwrap_or("") > at {
+            bail!(
+                "guidance {} was recorded after {at}; a decision cannot cite it earlier",
+                g.key
+            );
+        }
         if !visible(project, r["project"].as_str().unwrap()) {
             bail!("guidance {} is not visible to project {project}", g.key);
         }
@@ -631,11 +653,14 @@ pub fn capture(st: &mut Store, enc: &Encoder, c: &Capture) -> Result<Json> {
                         bail!("decision {key} exists; revise it with a supersede operation");
                     }
                     let vk = create_decision(t, vec, &c.project, id, 1, title, text, rationale, source, valid_to, &c.recorded_at, &c.request_id)?;
-                    link_decision(t, &c.project, &vk, governed_by, affects)?;
+                    link_decision(t, &c.project, &vk, governed_by, affects, &c.recorded_at)?;
                     applied.push(json!({"op": "decision", "created": vk}));
                 }
                 Op::Supersede { decision, title, text, reason, rationale, source, governed_by, affects } => {
                     let old = current_version(t, decision, "Decision")?;
+                    if old["recorded_at"].as_str().unwrap_or("") > c.recorded_at.as_str() {
+                        bail!("supersession recorded at {} precedes the superseded revision's recorded time {}", c.recorded_at, old["recorded_at"]);
+                    }
                     if old["project"] != c.project.as_str() {
                         bail!("cannot supersede another project's decision");
                     }
@@ -654,7 +679,7 @@ pub fn capture(st: &mut Store, enc: &Encoder, c: &Capture) -> Result<Json> {
                         params!("n" => s(vk.clone()), "o" => s(old_vk.clone()), "r" => s(reason.clone()), "at" => s(c.recorded_at.clone()),
                             "fr" => Value::Int(decision.revision), "fd" => s(decision.content_digest.clone())),
                     )?;
-                    link_decision(t, &c.project, &vk, governed_by, affects)?;
+                    link_decision(t, &c.project, &vk, governed_by, affects, &c.recorded_at)?;
                     applied.push(json!({"op": "supersede", "superseded": old_vk, "current": vk}));
                 }
                 Op::Evidence { id, kind, text, source, supports, contradicts, valid_to } => {
@@ -671,16 +696,23 @@ pub fn capture(st: &mut Store, enc: &Encoder, c: &Capture) -> Result<Json> {
                         None => {
                             let mut p = params!("key" => s(key.clone()), "vk" => s(vkey(&key, 1)), "p" => s(c.project.clone()), "id" => s(id.clone()),
                                 "kind" => s(kind.clone()), "text" => s(text.clone()), "cd" => s(text_digest(text)), "rec" => s(c.recorded_at.clone()),
-                                "vt" => valid_to.clone().map(s).unwrap_or(Value::Null), "req" => s(c.request_id.clone()));
+                                "vt" => valid_to.clone().map(s).unwrap_or(Value::Null), "req" => s(c.request_id.clone()), "ing" => s(now_utc()));
                             for (k, v) in source_params(source)? { p.insert(k.to_string(), v); }
                             t.q("CREATE (e:Evidence {key:$key, vkey:$vk, label:'Evidence', project:$p, id:$id, rev:1, kind:$kind, text:$text, content_digest:$cd, \
-                                 recorded_at:$rec, valid_to:$vt, request_id:$req, lifecycle:'current', verification:'unverified', approval:'unknown', outcome:'unknown', \
+                                 recorded_at:$rec, valid_to:$vt, request_id:$req, ingested_at:$ing, lifecycle:'current', verification:'unverified', approval:'unknown', outcome:'unknown', \
                                  source_uri:$source_uri, source_revision:$source_revision, source_path:$source_path, start_line:$start_line, end_line:$end_line})", p)?;
                         }
                     }
                     for (rel, targets) in [("SUPPORTS", supports), ("CONTRADICTS", contradicts)] {
                         for b in targets {
                             let d = current_version(t, b, "Decision")?;
+                            if d["recorded_at"].as_str().unwrap_or("") > c.recorded_at.as_str() {
+                                bail!("association recorded at {} precedes decision {}@{} (recorded {})", c.recorded_at, b.key, b.revision, d["recorded_at"]);
+                            }
+                            let ev_at = t.q("MATCH (e:Evidence {key:$k}) RETURN e.recorded_at AS r", params!("k" => s(key.clone())))?;
+                            if ev_at.first().and_then(|r| r["r"].as_str()).unwrap_or("") > c.recorded_at.as_str() {
+                                bail!("association recorded at {} precedes evidence {key}'s recorded time", c.recorded_at);
+                            }
                             if d["project"] != c.project.as_str() || d["lifecycle"] != "current" {
                                 bail!("evidence can bind only the current revision of a decision in this project");
                             }
@@ -697,6 +729,9 @@ pub fn capture(st: &mut Store, enc: &Encoder, c: &Capture) -> Result<Json> {
                 }
                 Op::Conflict { a, b, reason } => {
                     let (x, y) = (current_version(t, a, "Decision")?, current_version(t, b, "Decision")?);
+                    if x["recorded_at"].as_str().unwrap_or("") > c.recorded_at.as_str() || y["recorded_at"].as_str().unwrap_or("") > c.recorded_at.as_str() {
+                        bail!("conflict recorded at {} precedes one of its decisions", c.recorded_at);
+                    }
                     if x["project"] != c.project.as_str() || y["project"] != c.project.as_str() || a.key == b.key {
                         bail!("conflicts link two different decisions in this project");
                     }
@@ -734,13 +769,16 @@ pub fn retract(st: &mut Store, r: &Retraction) -> Result<Json> {
     st.tx(|t| {
         current_version(t, &r.decision, "Decision")?;
         let rows = t.q(
-            "MATCH (e:Evidence {key:$e})-[a]->(d:Decision {vkey:$d}) WHERE a.decision_digest = $dg RETURN a.state AS state",
+            "MATCH (e:Evidence {key:$e})-[a]->(d:Decision {vkey:$d}) WHERE a.decision_digest = $dg RETURN a.state AS state, a.at AS at",
             params!("e" => s(r.evidence.clone()), "d" => s(vkey(&r.decision.key, r.decision.revision)), "dg" => s(r.decision.content_digest.clone())),
         )?;
         match rows.first().map(|x| x["state"].as_str().unwrap_or("")) {
             None => bail!("no association between {} and {}@{}", r.evidence, r.decision.key, r.decision.revision),
             Some("retracted") => bail!("association already retracted"),
             _ => {}
+        }
+        if rows[0]["at"].as_str().unwrap_or("") > r.recorded_at.as_str() {
+            bail!("retraction recorded at {} precedes the association it retracts ({})", r.recorded_at, rows[0]["at"]);
         }
         t.q(
             "MATCH (e:Evidence {key:$e})-[a]->(d:Decision {vkey:$d}) SET a.state = 'retracted', a.retracted_at = $at, a.retraction_reason = $why, a.retraction_request = $req",
@@ -764,7 +802,7 @@ const RECORD_FIELDS: &str = "n.key AS key, n.vkey AS vkey, n.label AS label, n.p
     n.text AS text, n.content_digest AS content_digest, n.recorded_at AS recorded_at, n.valid_to AS valid_to, n.lifecycle AS lifecycle, \
     n.origin AS origin, n.kind AS kind, n.verification AS verification, n.approval AS approval, n.outcome AS outcome, n.rationale AS rationale, \
     n.source_uri AS source_uri, n.source_revision AS source_revision, n.source_path AS source_path, n.start_line AS start_line, \
-    n.end_line AS end_line, n.committed_at AS committed_at, n.superseded_at AS superseded_at, n.path AS path";
+    n.end_line AS end_line, n.committed_at AS committed_at, n.superseded_at AS superseded_at, n.path AS path, n.ingested_at AS ingested_at";
 
 pub fn record_fields() -> &'static str {
     RECORD_FIELDS

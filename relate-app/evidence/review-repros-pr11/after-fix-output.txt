@@ -1,0 +1,7 @@
+test review_backdated_supersession_is_accepted ... FAILED
+test review_conflict_chain_is_incomplete ... FAILED
+test review_expired_conflict_partner_is_rendered_current ... FAILED
+test review_future_evidence_leaks_into_as_of_context ... FAILED
+test review_impossible_calendar_date_is_accepted ... FAILED
+test review_old_as_of_cannot_recover_pre_supersession_guidance ... FAILED
+test result: FAILED. 0 passed; 6 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.11s
