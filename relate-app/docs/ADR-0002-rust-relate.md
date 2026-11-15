@@ -1,6 +1,6 @@
 # ADR-0002: Ship a Rust-native, Relate-centered connected-memory application
 
-**Status: PROPOSED (implemented on branch `rust-relate-app`; not owner-approved, not merged).**
+**Status: implemented and merged in PR #11 (`00505e9`).** The merge records that the owner accepted the code change. It does not confirm any stored assertion, label or evidence record; those remain unverified unless a later owner-confirmation step says otherwise.
 
 ## Context
 

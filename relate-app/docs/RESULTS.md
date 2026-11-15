@@ -94,6 +94,11 @@ scope failures, and a maximum payload of 5,996 of 6,000 characters.
 | Python grounded_cli `--backend relate` | 916–917 | 1004–1030 | 235 | 2.29 |
 | Python grounded_cli (flat) | 808–809 | 926–929 | 281 | 2.23 |
 
+**Budget mismatch (disclosed after review):** the committed benchmark commands use each CLI's
+default budget. Rust `context` defaults to 16,000 bytes / 12,000 codepoints; Python
+`grounded_cli` defaults to 8,000 / 6,000. These are default-workflow observations, not a
+matched-budget comparison. No new language comparison is planned.
+
 These are whole-CLI differences: language, runtime imports, inference engine (tract vs
 onnxruntime) and implementation all differ, so no language-only speedup is claimed.
 Native Relate retrieval keeps the lower cold-process memory seen in the earlier Python
@@ -125,3 +130,43 @@ about task success.
   extracted.
 - Labels are unreviewed. No independent human review and no generative-agent outcome
   experiment was run for this application.
+
+## Increment A: reliability repairs (after PR #11 review)
+
+Six defects found by an independent review were reproduced on the real engine
+(`evidence/review-repros-pr11/`: probe source, baseline output where all six probes passed,
+and post-fix output where all six fail). They were then replaced by desired-contract tests
+(`tests/temporal_contracts.rs`, 6 tests):
+
+1. Evidence recorded after `as_of` was delivered as active support. Associations and evidence
+   now count only from their recorded time, and retractions only from theirs.
+2. An expired conflict partner was rendered current. Partners that are not in effect are now
+   history, with `valid_to`.
+3. An A–B–C conflict chain seeded at A omitted C. Components are now traversed up to 4 hops
+   and 12 members, flagged `complete` or not, and a required incomplete component is an
+   error.
+4. `as_of` lost the then-current decision after a later supersession. Point-in-time
+   requests now search all versions through an all-version index. Older stores report
+   unsupported.
+5. `check_utc` accepted February 31. Month lengths and leap years are now validated.
+6. Backdated supersession was accepted. Interval ordering is now enforced for supersede,
+   associations, conflicts, retractions and cited guidance.
+
+Review host note: one reviewer host rejected AF_UNIX sockets before the application's
+seccomp filter ran, so `read_only_surfaces_deny_network` failed its Unix-socket assertion
+there. The filter itself is unchanged and denies only AF_INET and AF_INET6. The test passes
+on this laptop and in CI.
+
+Regression check (`evidence/reliability-pr12/eval/`):
+
+- Candidate order is identical across fusion owners on 72/72 tasks.
+- Delivery changed only through payload size. Items now carry `stored_lifecycle`,
+  `valid_to` and `superseded_at`, and the header carries `time_semantics` and
+  `conflict_bundles`. Mean records per 8,000-byte payload fell from 2.68 to 2.50.
+- Held-out natural delivery rose 21 → 22/24 (`hel-03` now fits). No task was lost against
+  PR #11.
+- On `dev-25`, the Rust-fusion header label is 8 characters longer, so its third record no
+  longer fits (5,993 of 6,000 characters for the Cypher payload). Delivered passages
+  therefore differ on 1 of 72 tasks.
+
+These are rendering effects on opened tasks, not retrieval gains.

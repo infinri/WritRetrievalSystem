@@ -107,7 +107,14 @@ pub struct Timings {
 /// Policy matches the reference: each list ranks the whole permitted partition, RRF fuses
 /// the complete rankings, and only the fused list is cut to k.
 pub fn search(st: &mut Store, req: &Request, qvec: &[f32], as_of: &str) -> Result<Vec<Ranked>> {
-    let scope_list = vec![req.project.clone(), SHARED.to_string()];
+    // An explicit as_of is a point-in-time request: search every version in scope and let the
+    // live() rule decide; without it, the current-only native partition is used.
+    let historical = req.as_of.is_some();
+    let mut scope_list = vec![req.project.clone(), SHARED.to_string()];
+    if historical {
+        scope_list.push(format!("inactive:{}", req.project));
+        scope_list.push(format!("inactive:{SHARED}"));
+    }
     let has_ft = scopes(st)?.iter().any(|(p, _)| p == &req.project);
     let scan = st.q(
         "MATCH (n:Searchable) WHERE n.search_scope IN $sc RETURN count(n) AS c",
@@ -120,18 +127,31 @@ pub fn search(st: &mut Store, req: &Request, qvec: &[f32], as_of: &str) -> Resul
     }
     let kw = keywords(&req.query);
     let tag = scope_tag(&req.project);
+    let index = if historical {
+        format!("fth_{tag}")
+    } else {
+        format!("ft_{tag}")
+    };
+    if historical && has_ft {
+        let names = st.q0("SHOW INDEXES YIELD name RETURN name")?;
+        if !names.iter().any(|r| r["name"] == index.as_str()) {
+            bail!("point-in-time (as_of) search is unsupported for this store: it has no all-version index {index} (stores created before writ-relate 0.2); rebuild the store or omit --as-of");
+        }
+    }
     let lexical = format!(
-        "CALL db.index.fulltext.queryNodes('ft_{tag}', $q) YIELD node, score \
-         WITH node, score WHERE node.recorded_at <= $as_of AND (node.valid_to IS NULL OR node.valid_to > $as_of) \
+        "CALL db.index.fulltext.queryNodes('{index}', $q) YIELD node, score \
+         WITH node, score WHERE {} \
          WITH node, score ORDER BY score DESC, node.vkey ASC LIMIT $scan \
-         WITH collect(node.vkey) AS ks UNWIND range(0, size(ks) - 1) AS i RETURN ks[i] AS vkey, i + 1 AS rank, 'lexical' AS ch"
+         WITH collect(node.vkey) AS ks UNWIND range(0, size(ks) - 1) AS i RETURN ks[i] AS vkey, i + 1 AS rank, 'lexical' AS ch",
+        live("node")
     );
     // Relate reports (cosine + 1) / 2; the gate is applied to raw cosine like the reference.
     let vector = format!(
         "MATCH (n:Searchable) SEARCH n IN (VECTOR INDEX {VECTOR_INDEX} FOR $v WHERE n.search_scope IN $sc LIMIT $scan) SCORE AS sc \
-         WITH n, 2.0 * sc - 1.0 AS cos WHERE cos >= $gate AND n.recorded_at <= $as_of AND (n.valid_to IS NULL OR n.valid_to > $as_of) \
+         WITH n, 2.0 * sc - 1.0 AS cos WHERE cos >= $gate AND {} \
          WITH n, cos ORDER BY cos DESC, n.vkey ASC LIMIT $scan \
-         WITH collect(n.vkey) AS ks UNWIND range(0, size(ks) - 1) AS i RETURN ks[i] AS vkey, i + 1 AS rank, 'vector' AS ch"
+         WITH collect(n.vkey) AS ks UNWIND range(0, size(ks) - 1) AS i RETURN ks[i] AS vkey, i + 1 AS rank, 'vector' AS ch",
+        live("n")
     );
     let p = || {
         params!("q" => s(kw.clone()), "v" => floats(qvec), "sc" => strings(scope_list.clone()), "scan" => Value::Int(scan),
@@ -193,6 +213,62 @@ pub fn search(st: &mut Store, req: &Request, qvec: &[f32], as_of: &str) -> Resul
             Ok(v)
         }
     }
+}
+
+pub const MAX_CONFLICT_HOPS: usize = 4;
+pub const MAX_CONFLICT_MEMBERS: usize = 12;
+
+/// Point-in-time rule (valid time): a record is in effect at `$as_of` when it was recorded
+/// at or before it, has not expired, and was not superseded at or before it.
+fn live(v: &str) -> String {
+    format!("({v}.recorded_at <= $as_of AND ({v}.valid_to IS NULL OR {v}.valid_to > $as_of) AND ({v}.superseded_at IS NULL OR {v}.superseded_at > $as_of))")
+}
+
+pub fn lifecycle_at(
+    superseded_at: Option<&str>,
+    valid_to: Option<&str>,
+    as_of: &str,
+) -> &'static str {
+    if superseded_at.is_some_and(|t| t <= as_of) {
+        "superseded"
+    } else if valid_to.is_some_and(|t| t <= as_of) {
+        "expired"
+    } else {
+        "current"
+    }
+}
+
+fn empty_support() -> Json {
+    json!({"active_supporting": [], "active_contradicting": [], "retracted": [], "expired": [], "unbound": []})
+}
+
+type EvidenceRows = BTreeMap<String, Vec<(String, String, String, Json)>>;
+
+/// Evidence associations as they stood at `as_of`: an association or evidence record
+/// created later does not exist yet; a retraction counts only once it has happened.
+fn evidence_summary(
+    st: &mut Store,
+    decisions: &[String],
+    scopes: &[String],
+    as_of: &str,
+) -> Result<EvidenceRows> {
+    let mut out: EvidenceRows = BTreeMap::new();
+    if decisions.is_empty() {
+        return Ok(out);
+    }
+    for r in st.q("MATCH (e:Evidence)-[a]->(d:Decision) WHERE d.vkey IN $ds AND type(a) IN ['SUPPORTS', 'CONTRADICTS'] AND e.project IN $sc \
+                   AND a.at <= $as_of AND e.recorded_at <= $as_of \
+                   RETURN d.vkey AS d, e.vkey AS e, type(a) AS rel, (a.state = 'retracted' AND a.retracted_at <= $as_of) AS retracted, \
+                   a.decision_rev = d.rev AND a.decision_digest = d.content_digest AS bound, a.retraction_reason AS why, a.retracted_at AS rat, \
+                   (e.valid_to IS NULL OR e.valid_to > $as_of) AS live ORDER BY d, e",
+        params!("ds" => strings(decisions.to_vec()), "sc" => strings(scopes.to_vec()), "as_of" => s(as_of)))? {
+        let e = r["e"].as_str().unwrap().to_string();
+        let slot = if r["retracted"] == true { "retracted" } else if r["bound"] != true { "unbound" } else if r["live"] != true { "expired" }
+            else if r["rel"] == "SUPPORTS" { "active_supporting" } else { "active_contradicting" };
+        let detail = if slot == "retracted" { json!({"evidence": e, "reason": r["why"], "retracted_at": r["rat"]}) } else { json!(e) };
+        out.entry(r["d"].as_str().unwrap().into()).or_default().push((e, r["rel"].as_str().unwrap_or("").into(), slot.into(), detail));
+    }
+    Ok(out)
 }
 
 fn records(st: &mut Store, vkeys: &[String]) -> Result<BTreeMap<String, Row>> {
@@ -286,14 +362,22 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
     // 1. Required records (exact key or key@revision) and explicit source selectors.
     for r in &req.required {
         let (key, rev) = parse_ref(r)?;
-        let rows = st.q("MATCH (n {key:$k}) WHERE n.lifecycle = 'current' OR $rev IS NOT NULL RETURN n.vkey AS vkey, n.rev AS rev, n.project AS project, n.lifecycle AS lc ORDER BY rev DESC",
-            params!("k" => s(key.clone()), "rev" => rev.map(Value::Int).unwrap_or(Value::Null)))?;
+        let rows = st.q(
+            &format!("MATCH (n {{key:$k}}) RETURN n.vkey AS vkey, n.rev AS rev, n.project AS project, {} AS live, n.recorded_at <= $as_of AS recorded ORDER BY rev DESC", live("n")),
+            params!("k" => s(key.clone()), "as_of" => s(as_of.clone())),
+        )?;
         let row = rows
             .into_iter()
-            .find(|x| rev.is_none_or(|v| x["rev"].as_i64() == Some(v)) && visible(x))
+            .find(|x| {
+                visible(x)
+                    && match rev {
+                        Some(v) => x["rev"].as_i64() == Some(v) && x["recorded"] == true,
+                        None => x["live"] == true,
+                    }
+            })
             .ok_or_else(|| {
                 anyhow!(
-                    "required record {r} is not available to project {}",
+                    "required record {r} is not available to project {} as of {as_of}",
                     req.project
                 )
             })?;
@@ -305,10 +389,12 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
         b.order[i].required = true;
     }
     if let Some(src) = &req.requirements.source {
-        let rows = st.q("MATCH (g:Guidance) WHERE g.source_uri = $u AND g.source_revision = $r AND g.project IN $sc AND g.lifecycle = 'current' RETURN g.vkey AS vkey",
-            params!("u" => s(src.uri.clone()), "r" => s(src.revision.clone()), "sc" => strings(scope_list.clone())))?;
+        let rows = st.q(
+            &format!("MATCH (g:Guidance) WHERE g.source_uri = $u AND g.source_revision = $r AND g.project IN $sc AND {} RETURN g.vkey AS vkey", live("g")),
+            params!("u" => s(src.uri.clone()), "r" => s(src.revision.clone()), "sc" => strings(scope_list.clone()), "as_of" => s(as_of.clone())),
+        )?;
         if rows.is_empty() {
-            assessment = json!({"status": "insufficient", "reason": "requested source revision is not in this project's permitted records"});
+            assessment = json!({"status": "insufficient", "reason": "requested source revision is not in this project's permitted records as of the request time"});
         } else {
             for r in &rows {
                 let i = b.add(
@@ -329,25 +415,28 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
         assessment = json!({"status": "insufficient", "reason": "owner-confirmed evidence was requested; no record is owner-confirmed (imports and captures cannot award it)"});
     }
 
-    // 2. Current decisions linked to the requested artifact.
+    // 2. Decisions linked to the requested artifact, judged at the request time.
     if let Some(path) = &req.path {
-        let rows = st.q("MATCH (d:Decision)-[:AFFECTS]->(a:Artifact {path:$path}) WHERE d.project = $p AND d.recorded_at <= $as_of \
-                         RETURN d.vkey AS vkey, d.lifecycle AS lc, (d.valid_to IS NULL OR d.valid_to > $as_of) AS live ORDER BY vkey",
-            params!("path" => s(path.clone()), "p" => s(req.project.clone()), "as_of" => s(as_of.clone())))?;
+        let rows = st.q(
+            &format!("MATCH (d:Decision)-[:AFFECTS]->(a:Artifact {{path:$path}}) WHERE d.project = $p AND d.recorded_at <= $as_of \
+                      RETURN d.vkey AS vkey, {} AS live, d.superseded_at AS sup, d.valid_to AS vt ORDER BY vkey", live("d")),
+            params!("path" => s(path.clone()), "p" => s(req.project.clone()), "as_of" => s(as_of.clone())),
+        )?;
         for r in rows {
             let vk = r["vkey"].as_str().unwrap();
-            if r["lc"] == "current" && r["live"] == true {
+            if r["live"] == true {
                 b.add(
                     vk,
                     "artifact",
-                    format!("current decision affecting requested artifact {path}"),
+                    format!("decision in effect at {as_of} affecting requested artifact {path}"),
                 );
             } else {
-                history.push(json!({"vkey": vk, "lifecycle": if r["live"] == true { r["lc"].clone() } else { json!("expired") }, "why": format!("historical decision that affected {path}; not current guidance")}));
-                // Its current successor is what governs the artifact now.
-                for n in st.q("MATCH (n:Decision)-[:SUPERSEDES*1..4]->(o:Decision {vkey:$v}) WHERE n.lifecycle = 'current' AND n.project = $p \
-                               AND n.recorded_at <= $as_of AND (n.valid_to IS NULL OR n.valid_to > $as_of) RETURN n.vkey AS vkey ORDER BY vkey",
-                    params!("v" => s(vk), "p" => s(req.project.clone()), "as_of" => s(as_of.clone())))? {
+                let lc = lifecycle_at(r["sup"].as_str(), r["vt"].as_str(), &as_of);
+                history.push(json!({"vkey": vk, "lifecycle": lc, "why": format!("historical decision that affected {path}; not in effect at {as_of}")}));
+                for n in st.q(
+                    &format!("MATCH (n:Decision)-[:SUPERSEDES*1..4]->(o:Decision {{vkey:$v}}) WHERE n.project = $p AND {} RETURN n.vkey AS vkey ORDER BY vkey", live("n")),
+                    params!("v" => s(vk), "p" => s(req.project.clone()), "as_of" => s(as_of.clone())),
+                )? {
                     b.add(n["vkey"].as_str().unwrap(), "artifact", format!("current successor of {vk}, which affected requested artifact {path}"));
                 }
             }
@@ -392,48 +481,95 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
         .collect();
     let mut support: BTreeMap<String, Json> = BTreeMap::new();
     let mut artifacts: BTreeMap<String, Vec<String>> = BTreeMap::new();
-    let mut conflicts: BTreeMap<String, Vec<String>> = BTreeMap::new();
+    let mut component: BTreeMap<String, String> = BTreeMap::new();
+    let mut bundle_meta: Vec<Json> = vec![];
     let mut evidence_rel: BTreeMap<String, Json> = BTreeMap::new();
     let mut guidance_binding: BTreeMap<String, Json> = BTreeMap::new();
     if !decisions.is_empty() {
         let dp = || params!("ds" => strings(decisions.clone()), "sc" => strings(scope_list.clone()), "as_of" => s(as_of.clone()));
-        for r in st.q("MATCH (d:Decision)-[r:GOVERNED_BY]->(g:Guidance) WHERE d.vkey IN $ds AND g.project IN $sc \
-                       RETURN d.vkey AS d, g.vkey AS g, r.guidance_rev = g.rev AND r.guidance_digest = g.content_digest AS exact, g.lifecycle AS lc ORDER BY d, g", dp())? {
+        for r in st.q(&format!("MATCH (d:Decision)-[r:GOVERNED_BY]->(g:Guidance) WHERE d.vkey IN $ds AND g.project IN $sc AND g.recorded_at <= $as_of \
+                       RETURN d.vkey AS d, g.vkey AS g, r.guidance_rev = g.rev AND r.guidance_digest = g.content_digest AS exact, {} AS live ORDER BY d, g", live("g")), dp())? {
             let (d, g) = (r["d"].as_str().unwrap(), r["g"].as_str().unwrap());
-            let exact = r["exact"] == true && r["lc"] == "current";
+            let exact = r["exact"] == true && r["live"] == true;
             b.add(g, if focus.contains(d) { "focus-enrichment" } else { "enrichment" }, format!("governs decision {d} ({})", if exact { "exact revision/digest binding" } else { "binding is stale" }));
             guidance_binding.insert(g.to_string(), json!(if exact { "exact" } else { "stale" }));
         }
-        for r in st.q("MATCH (e:Evidence)-[a]->(d:Decision) WHERE d.vkey IN $ds AND type(a) IN ['SUPPORTS', 'CONTRADICTS'] AND e.project IN $sc \
-                       RETURN d.vkey AS d, e.vkey AS e, type(a) AS rel, a.state AS state, a.decision_rev = d.rev AND a.decision_digest = d.content_digest AS bound, \
-                       a.retraction_reason AS why, a.retracted_at AS rat, (e.valid_to IS NULL OR e.valid_to > $as_of) AS live ORDER BY d, e", dp())? {
-            let (d, e) = (r["d"].as_str().unwrap().to_string(), r["e"].as_str().unwrap().to_string());
-            let entry = support.entry(d.clone()).or_insert_with(|| json!({"active_supporting": [], "active_contradicting": [], "retracted": [], "expired": [], "unbound": []}));
-            let slot = match (r["state"].as_str(), r["bound"] == true, r["live"] == true) {
-                (Some("retracted"), _, _) => "retracted",
-                (_, false, _) => "unbound",
-                (_, _, false) => "expired",
-                _ if r["rel"] == "SUPPORTS" => "active_supporting",
-                _ => "active_contradicting",
-            };
-            let detail = if slot == "retracted" { json!({"evidence": e, "reason": r["why"], "retracted_at": r["rat"]}) } else { json!(e) };
-            entry[slot].as_array_mut().unwrap().push(detail);
-            if slot.starts_with("active") {
-                b.add(&e, if focus.contains(&d) { "focus-enrichment" } else { "enrichment" }, format!("{} decision {d} (active association bound to its current revision)", r["rel"].as_str().unwrap()));
-                evidence_rel.insert(e, json!({"relation": r["rel"], "decision": d, "state": "active"}));
+        for (d, rows) in evidence_summary(st, &decisions, &scope_list, &as_of)? {
+            for (e, rel, slot, _) in rows {
+                if slot.starts_with("active") {
+                    b.add(&e, if focus.contains(&d) { "focus-enrichment" } else { "enrichment" }, format!("{rel} decision {d} (association active at {as_of}, bound to that revision)"));
+                    evidence_rel.insert(
+                        e,
+                        json!({"relation": rel, "decision": d, "state": "active"}),
+                    );
+                }
             }
         }
-        for r in st.q("MATCH (d:Decision)-[:AFFECTS]->(a:Artifact) WHERE d.vkey IN $ds RETURN d.vkey AS d, a.path AS path ORDER BY d, path", dp())? {
-            artifacts.entry(r["d"].as_str().unwrap().into()).or_default().push(r["path"].as_str().unwrap().into());
+        // Conflict components: bounded, time-filtered, every hop visible and in effect.
+        let reach = st.q(&format!("MATCH p = (d:Decision)-[:CONFLICTS_WITH*1..{MAX_CONFLICT_HOPS}]-(o:Decision) WHERE d.vkey IN $ds AND o.vkey <> d.vkey \
+                     AND all(x IN nodes(p) WHERE x.project IN $sc AND {}) AND all(c IN relationships(p) WHERE c.at <= $as_of) \
+                     RETURN DISTINCT d.vkey AS d, o.vkey AS o ORDER BY d, o", live("x")), dp())?;
+        let beyond = st.q(&format!("MATCH p = (d:Decision)-[:CONFLICTS_WITH*{h}..{h}]-(o:Decision) WHERE d.vkey IN $ds AND o.vkey <> d.vkey \
+                     AND all(x IN nodes(p) WHERE x.project IN $sc AND {}) AND all(c IN relationships(p) WHERE c.at <= $as_of) \
+                     RETURN DISTINCT d.vkey AS d, o.vkey AS o", live("x"), h = MAX_CONFLICT_HOPS + 1), dp())?;
+        let mut members: BTreeMap<String, BTreeSet<String>> = BTreeMap::new();
+        for r in &reach {
+            members
+                .entry(r["d"].as_str().unwrap().into())
+                .or_insert_with(|| BTreeSet::from([r["d"].as_str().unwrap().to_string()]))
+                .insert(r["o"].as_str().unwrap().into());
         }
-        for r in st.q("MATCH (d:Decision)-[c:CONFLICTS_WITH]-(o:Decision) WHERE d.vkey IN $ds AND o.project IN $sc AND o.lifecycle = 'current' \
-                       RETURN d.vkey AS d, o.vkey AS o, c.reason AS reason ORDER BY d, o", dp())? {
-            let (d, o) = (r["d"].as_str().unwrap(), r["o"].as_str().unwrap());
-            b.add(o, "enrichment", format!("conflicts with {d}: {}; delivered together", r["reason"].as_str().unwrap_or("")));
-            conflicts.entry(d.into()).or_default().push(o.into());
-            conflicts.entry(o.into()).or_default().push(d.into());
+        let mut seen = BTreeSet::new();
+        for (seed, set) in &members {
+            let id = set.iter().next().unwrap().clone();
+            if !seen.insert(id.clone()) {
+                continue;
+            }
+            let overflow = beyond.iter().any(|r| {
+                set.contains(r["d"].as_str().unwrap()) && !set.contains(r["o"].as_str().unwrap())
+            });
+            let complete = !overflow && set.len() <= MAX_CONFLICT_MEMBERS;
+            let edges = st.q("MATCH (a:Decision)-[c:CONFLICTS_WITH]->(b:Decision) WHERE a.vkey IN $m AND b.vkey IN $m AND c.at <= $as_of RETURN a.vkey AS a, b.vkey AS b, c.reason AS reason ORDER BY a, b",
+                params!("m" => strings(set.iter().cloned().collect::<Vec<_>>()), "as_of" => s(as_of.clone())))?;
+            for v in set.iter().take(MAX_CONFLICT_MEMBERS) {
+                let why = edges
+                    .iter()
+                    .filter(|e| e["a"] == v.as_str() || e["b"] == v.as_str())
+                    .map(|e| {
+                        format!(
+                            "conflicts with {}: {}",
+                            if e["a"] == v.as_str() {
+                                e["b"].as_str().unwrap()
+                            } else {
+                                e["a"].as_str().unwrap()
+                            },
+                            e["reason"].as_str().unwrap_or("")
+                        )
+                    })
+                    .collect::<Vec<_>>()
+                    .join("; ");
+                if v != seed || !b.index.contains_key(v) {
+                    b.add(
+                        v,
+                        "enrichment",
+                        format!("member of recorded conflict component of {seed}: {why}"),
+                    );
+                }
+                component.insert(v.clone(), id.clone());
+            }
+            bundle_meta.push(json!({"id": id, "members": set.iter().take(MAX_CONFLICT_MEMBERS).cloned().collect::<Vec<_>>(), "complete": complete,
+                "reason": if complete { Json::Null } else { json!(format!("component exceeds the traversal cap ({MAX_CONFLICT_HOPS} hops / {MAX_CONFLICT_MEMBERS} members); further recorded conflicts may exist")) },
+                "note": "members are connected by recorded pairwise CONFLICTS_WITH links; this does not assert that every pair contradicts"}));
         }
-        for r in st.q("MATCH (d:Decision)-[s:SUPERSEDES*1..2]->(o:Decision) WHERE d.vkey IN $ds RETURN d.vkey AS d, o.vkey AS o, s[0].reason AS reason ORDER BY d, o", dp())? {
+        for r in st.q(&format!("MATCH (d:Decision)-[c:CONFLICTS_WITH]-(o:Decision) WHERE d.vkey IN $ds AND o.project IN $sc AND c.at <= $as_of AND o.recorded_at <= $as_of AND NOT {} \
+                       RETURN d.vkey AS d, o.vkey AS o, o.superseded_at AS sup, o.valid_to AS vt ORDER BY d, o", live("o")), dp())? {
+            let o = r["o"].as_str().unwrap();
+            if !history.iter().any(|h| h["vkey"] == o) {
+                history.push(json!({"vkey": o, "lifecycle": lifecycle_at(r["sup"].as_str(), r["vt"].as_str(), &as_of), "valid_to": r["vt"],
+                    "why": format!("recorded conflict partner of {} that is not in effect at {as_of}; not delivered as current", r["d"].as_str().unwrap())}));
+            }
+        }
+        for r in st.q("MATCH (d:Decision)-[s:SUPERSEDES*1..2]->(o:Decision) WHERE d.vkey IN $ds AND o.superseded_at <= $as_of RETURN d.vkey AS d, o.vkey AS o, s[0].reason AS reason ORDER BY d, o", dp())? {
             let o = r["o"].as_str().unwrap();
             if req.requirements.include_history {
                 b.add(o, "history", format!("superseded by {} ({}); historical, not current guidance", r["d"].as_str().unwrap(), r["reason"].as_str().unwrap_or("")));
@@ -443,43 +579,45 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
         }
     }
     if !guidance.is_empty() {
-        for r in st.q("MATCH (d:Decision)-[r:GOVERNED_BY]->(g:Guidance) WHERE g.vkey IN $gs AND d.project = $p AND d.lifecycle = 'current' \
-                       AND d.recorded_at <= $as_of AND (d.valid_to IS NULL OR d.valid_to > $as_of) \
-                       RETURN g.vkey AS g, d.vkey AS d, r.guidance_rev = g.rev AND r.guidance_digest = g.content_digest AS exact ORDER BY g, d",
+        for r in st.q(&format!("MATCH (d:Decision)-[r:GOVERNED_BY]->(g:Guidance) WHERE g.vkey IN $gs AND d.project = $p AND {} \
+                       RETURN g.vkey AS g, d.vkey AS d, r.guidance_rev = g.rev AND r.guidance_digest = g.content_digest AS exact ORDER BY g, d", live("d")),
             params!("gs" => strings(guidance.clone()), "p" => s(req.project.clone()), "as_of" => s(as_of.clone())))? {
             if r["exact"] == true {
-                b.add(r["d"].as_str().unwrap(), "enrichment", format!("current decision governed by matched guidance {}", r["g"].as_str().unwrap()));
+                b.add(r["d"].as_str().unwrap(), "enrichment", format!("decision in effect governed by matched guidance {}", r["g"].as_str().unwrap()));
             }
         }
     }
-    // Evidence summaries (no extra items) for historical decisions, so retracted and
-    // revision-bound associations stay visible next to the history they belong to.
-    let hist_decisions: Vec<String> = history
+    // Evidence summaries for every delivered or historical decision (no extra items).
+    let all_decisions: Vec<String> = b
+        .order
         .iter()
-        .filter_map(|h| h["vkey"].as_str().map(String::from))
+        .map(|i| i.vkey.clone())
         .chain(
-            b.order
+            history
                 .iter()
-                .filter(|i| i.channel == "history")
-                .map(|i| i.vkey.clone()),
+                .filter_map(|h| h["vkey"].as_str().map(String::from)),
         )
-        .filter(|v| v.contains("|Decision|") && !support.contains_key(v))
+        .filter(|v| v.contains("|Decision|"))
+        .collect::<BTreeSet<_>>()
+        .into_iter()
         .collect();
-    if !hist_decisions.is_empty() {
-        for r in st.q("MATCH (e:Evidence)-[a]->(d:Decision) WHERE d.vkey IN $ds AND type(a) IN ['SUPPORTS', 'CONTRADICTS'] AND e.project IN $sc \
-                       RETURN d.vkey AS d, e.vkey AS e, type(a) AS rel, a.state AS state, a.retraction_reason AS why, a.retracted_at AS rat ORDER BY d, e",
-            params!("ds" => strings(hist_decisions.clone()), "sc" => strings(scope_list.clone())))? {
-            let entry = support.entry(r["d"].as_str().unwrap().to_string()).or_insert_with(|| json!({"active_supporting": [], "active_contradicting": [], "retracted": [], "expired": [], "unbound": []}));
-            let (slot, detail) = if r["state"] == "retracted" {
-                ("retracted", json!({"evidence": r["e"], "reason": r["why"], "retracted_at": r["rat"]}))
-            } else if r["rel"] == "SUPPORTS" { ("active_supporting", r["e"].clone()) } else { ("active_contradicting", r["e"].clone()) };
-            entry[slot].as_array_mut().unwrap().push(detail);
+    for (d, rows) in evidence_summary(st, &all_decisions, &scope_list, &as_of)? {
+        let entry = support.entry(d).or_insert_with(empty_support);
+        for (_e, _rel, slot, detail) in rows {
+            entry[slot.as_str()].as_array_mut().unwrap().push(detail);
         }
-        for h in history.iter_mut() {
-            if let Some(sp) = h["vkey"].as_str().and_then(|v| support.get(v)) {
-                h["evidence"] = sp.clone();
-            }
+    }
+    for d in &all_decisions {
+        support.entry(d.clone()).or_insert_with(empty_support);
+    }
+    for h in history.iter_mut() {
+        if let Some(sp) = h["vkey"].as_str().and_then(|v| support.get(v)) {
+            h["evidence"] = sp.clone();
         }
+    }
+    for r in st.q("MATCH (d:Decision)-[:AFFECTS]->(a:Artifact) WHERE d.vkey IN $ds RETURN d.vkey AS d, a.path AS path ORDER BY d, path",
+        params!("ds" => strings(all_decisions.clone())))? {
+        artifacts.entry(r["d"].as_str().unwrap().into()).or_default().push(r["path"].as_str().unwrap().into());
     }
     let enrich_ms = t2.elapsed().as_secs_f64() * 1e3;
 
@@ -494,6 +632,15 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
         if !visible(r) {
             bail!("visibility violation for {}", it.vkey);
         }
+        if it.channel != "history"
+            && lifecycle_at(r["superseded_at"].as_str(), r["valid_to"].as_str(), &as_of)
+                != "current"
+        {
+            bail!(
+                "internal: {} is not in effect at {as_of} but was selected as current",
+                it.vkey
+            );
+        }
         let text = r["text"].as_str().unwrap_or("");
         let digest = text_digest(text);
         if r["content_digest"].as_str() != Some(digest.as_str()) {
@@ -503,7 +650,8 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
             );
         }
         let mut o = json!({"vkey": it.vkey, "key": r["key"], "label": r["label"], "revision": r["revision"], "project": r["project"], "channel": it.channel,
-            "why": it.why, "lifecycle": r["lifecycle"], "title": r["title"], "text": text, "content_digest": r["content_digest"], "rendered_text_digest": digest,
+            "why": it.why, "lifecycle": lifecycle_at(r["superseded_at"].as_str(), r["valid_to"].as_str(), &as_of), "stored_lifecycle": r["lifecycle"],
+            "valid_to": r["valid_to"], "superseded_at": r["superseded_at"], "title": r["title"], "text": text, "content_digest": r["content_digest"], "rendered_text_digest": digest,
             "source": source_json(r), "recorded_at": r["recorded_at"], "verification": r["verification"], "approval": r["approval"], "outcome": r["outcome"]});
         if let Some(rank) = it.rank {
             o["rank"] = json!(rank);
@@ -517,7 +665,7 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
                 r["rationale"].clone()
             };
             o["affects"] = json!(artifacts.get(&it.vkey).cloned().unwrap_or_default());
-            let sp = support.get(&it.vkey).cloned().unwrap_or_else(|| json!({"active_supporting": [], "active_contradicting": [], "retracted": [], "expired": [], "unbound": []}));
+            let sp = support.get(&it.vkey).cloned().unwrap_or_else(empty_support);
             o["evidence"] = sp;
             o["confidence"] = json!("not established: no owner-confirmed observations (captures and imports never award verification)");
         }
@@ -549,11 +697,21 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
         }
         let mut bundle = vec![i];
         taken.insert(i);
-        for partner in conflicts.get(&b.order[i].vkey).cloned().unwrap_or_default() {
-            if let Some(&j) = b.index.get(&partner) {
-                if taken.insert(j) {
-                    bundle.push(j);
+        if let Some(cid) = component.get(&b.order[i].vkey) {
+            for (v, c) in &component {
+                if c == cid {
+                    if let Some(&j) = b.index.get(v) {
+                        if taken.insert(j) {
+                            bundle.push(j);
+                        }
+                    }
                 }
+            }
+            let complete = bundle_meta
+                .iter()
+                .any(|m| m["id"] == cid.as_str() && m["complete"] == true);
+            if !complete && bundle.iter().any(|&j| b.order[j].required) {
+                bail!("required conflict bundle {cid} cannot be established completely within the traversal cap; refusing to present it as complete");
             }
         }
         bundles.push(bundle);
@@ -573,7 +731,9 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
             "evidence_assessment": assessment,
             "abstained": items.is_empty(),
             "items": items, "history": history, "omissions": omissions, "omitted_records_total": omitted_total,
-            "budget": {"max_bytes": req.max_bytes, "max_chars": req.max_chars, "bytes": bytes, "chars": chars, "policy": "entire canonical JSON payload; complete records; indivisible conflict bundles"}
+            "conflict_bundles": bundle_meta,
+            "budget": {"max_bytes": req.max_bytes, "max_chars": req.max_chars, "bytes": bytes, "chars": chars, "policy": "entire canonical JSON payload; complete records; indivisible conflict bundles"},
+            "time_semantics": "valid-time view at as_of: records recorded after as_of, superseded or expired by as_of, associations created later, and retractions after as_of are applied as of that instant"
         })
     };
     let fits = |v: &Json| {

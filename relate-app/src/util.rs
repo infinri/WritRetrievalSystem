@@ -84,7 +84,15 @@ pub fn check_utc(s: &str) -> Result<()> {
     }
     let n = |a: usize, l: usize| s[a..a + l].parse::<u32>().unwrap();
     let (mo, d, h, mi, se) = (n(5, 2), n(8, 2), n(11, 2), n(14, 2), n(17, 2));
-    if !(1..=12).contains(&mo) || !(1..=31).contains(&d) || h > 23 || mi > 59 || se > 59 {
+    let year = n(0, 4);
+    let leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+    let days = match mo {
+        2 if leap => 29,
+        2 => 28,
+        4 | 6 | 9 | 11 => 30,
+        _ => 31,
+    };
+    if !(1..=12).contains(&mo) || d < 1 || d > days || h > 23 || mi > 59 || se > 59 {
         bail!("impossible UTC time: {s}");
     }
     Ok(())
@@ -137,6 +145,12 @@ mod tests {
         assert_eq!(format_utc(0), "1970-01-01T00:00:00Z");
         assert_eq!(format_utc(1_700_000_000), "2023-11-14T22:13:20Z");
         check_utc("2026-11-14T12:00:00Z").unwrap();
+        check_utc("2028-02-29T00:00:00Z").unwrap();
+        assert!(check_utc("2026-02-29T00:00:00Z").is_err());
+        assert!(check_utc("2026-02-31T12:00:00Z").is_err());
+        assert!(check_utc("2026-04-31T12:00:00Z").is_err());
+        assert!(check_utc("1900-02-29T00:00:00Z").is_err());
+        check_utc("2000-02-29T00:00:00Z").unwrap();
         assert!(check_utc("2026-11-14T12:00:00+00:00").is_err());
         assert!(check_utc("2026-13-14T12:00:00Z").is_err());
     }
