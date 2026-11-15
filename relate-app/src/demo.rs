@@ -267,6 +267,33 @@ pub fn run(
                     .unwrap_or(false),
         ),
         (
+            "old artifact now surfaces the current successor, explained as such",
+            find(&c3, &d2)
+                .map(|i| {
+                    i["channel"] == "artifact"
+                        && i["why"][0]
+                            .as_str()
+                            .unwrap_or("")
+                            .starts_with("current successor of")
+                })
+                .unwrap_or(false),
+        ),
+        (
+            "history keeps the retracted association and its reason",
+            c3["history"]
+                .as_array()
+                .map(|h| {
+                    h.iter().any(|x| {
+                        x["vkey"] == d1.as_str()
+                            && x["evidence"]["retracted"]
+                                .as_array()
+                                .map(|r| r.len() == 1)
+                                .unwrap_or(false)
+                    })
+                })
+                .unwrap_or(false),
+        ),
+        (
             "after restart: the superseding decision is delivered for the new artifact",
             find(&c4, &d2)
                 .map(|i| i["lifecycle"] == "current")

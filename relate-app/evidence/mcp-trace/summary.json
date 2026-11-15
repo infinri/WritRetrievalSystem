@@ -1,0 +1,39 @@
+[
+ {
+  "tools": [
+   "mcp__writ__writ_context",
+   "mcp__writ__writ_inspect"
+  ],
+  "mcp_servers": [
+   {
+    "name": "writ",
+    "status": "connected",
+    "source": "dynamic"
+   }
+  ],
+  "claude_code_version": "2.1.325",
+  "model": "claude-sonnet-5-5"
+ },
+ {
+  "tool_use": "mcp__writ__writ_context",
+  "input": {
+   "query": "which retrieval implementation ships for hackathon; grounded_cli entry point; corrections or superseded",
+   "project": "writ-retrieval-system",
+   "path": "src/writ_retrieval/reliable/grounded_cli.py",
+   "include_history": true
+  }
+ },
+ {
+  "answer": "**Don't make `grounded_cli.py` the shipping entry point. The project's current decision says the Python grounded profiles are not the shipping runtime.**\n\n**Current decision:** `writ-retrieval-system|Decision|local-workflow-backend@2` says the hackathon ships the Rust `writ-relate` CLI and a read-only MCP server over an embedded Relate store. The Python grounded profiles are \"historical reference material, not the shipping runtime.\" The record is unverified, and its approval and outcome are unknown. Its rationale calls it an owner product requirement, not a measured performance or accuracy win.\n\n**Supporting evidence:** `writ-retrieval-system|Evidence|owner-direction-rust-relate@1` is an unverified owner report dated 2026-11-14. It says the shipping app must be Python-free and centered on Relate.\n\n**Superseded:** `local-workflow-backend@1` is superseded by @2. It was the older decision that affected `grounded_cli.py`. Its text was omitted for budget, so I haven't seen what it said. I can inspect it if you want.\n\n**Retracted evidence:** `writ-retrieval-system|Evidence|original-review-unsupported-claims@1` was retracted. The grader saw stripped context, which biased the unsupported-claim counts against the grounded conditions. The corrected review shows 0. The retraction cites Amendment 2 in `experiments/laptop_decision/PROTOCOL.md`, L214-L222 at 0bdf503.\n\n**Evidence tied to @1:** `laptop-cold-cli-latency@1` and `laptop-native-flat-identical-delivery@1` are still active and supportive. They're attached to the superseded @1, not to @2.\n\n**Before editing:** The owner can change direction, but nothing I found does that. Confirm with them first."
+ },
+ {
+  "turns": 2,
+  "reported_list_cost_usd": 0.0308415,
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "is_error": false,
+  "duration_ms": 6783,
+  "claude_code": null
+ }
+]

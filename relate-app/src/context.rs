@@ -344,6 +344,12 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
                 );
             } else {
                 history.push(json!({"vkey": vk, "lifecycle": if r["live"] == true { r["lc"].clone() } else { json!("expired") }, "why": format!("historical decision that affected {path}; not current guidance")}));
+                // Its current successor is what governs the artifact now.
+                for n in st.q("MATCH (n:Decision)-[:SUPERSEDES*1..4]->(o:Decision {vkey:$v}) WHERE n.lifecycle = 'current' AND n.project = $p \
+                               AND n.recorded_at <= $as_of AND (n.valid_to IS NULL OR n.valid_to > $as_of) RETURN n.vkey AS vkey ORDER BY vkey",
+                    params!("v" => s(vk), "p" => s(req.project.clone()), "as_of" => s(as_of.clone())))? {
+                    b.add(n["vkey"].as_str().unwrap(), "artifact", format!("current successor of {vk}, which affected requested artifact {path}"));
+                }
             }
         }
     }
@@ -443,6 +449,35 @@ pub fn context(st: &mut Store, enc: &Encoder, req: &Request) -> Result<(Json, Ti
             params!("gs" => strings(guidance.clone()), "p" => s(req.project.clone()), "as_of" => s(as_of.clone())))? {
             if r["exact"] == true {
                 b.add(r["d"].as_str().unwrap(), "enrichment", format!("current decision governed by matched guidance {}", r["g"].as_str().unwrap()));
+            }
+        }
+    }
+    // Evidence summaries (no extra items) for historical decisions, so retracted and
+    // revision-bound associations stay visible next to the history they belong to.
+    let hist_decisions: Vec<String> = history
+        .iter()
+        .filter_map(|h| h["vkey"].as_str().map(String::from))
+        .chain(
+            b.order
+                .iter()
+                .filter(|i| i.channel == "history")
+                .map(|i| i.vkey.clone()),
+        )
+        .filter(|v| v.contains("|Decision|") && !support.contains_key(v))
+        .collect();
+    if !hist_decisions.is_empty() {
+        for r in st.q("MATCH (e:Evidence)-[a]->(d:Decision) WHERE d.vkey IN $ds AND type(a) IN ['SUPPORTS', 'CONTRADICTS'] AND e.project IN $sc \
+                       RETURN d.vkey AS d, e.vkey AS e, type(a) AS rel, a.state AS state, a.retraction_reason AS why, a.retracted_at AS rat ORDER BY d, e",
+            params!("ds" => strings(hist_decisions.clone()), "sc" => strings(scope_list.clone())))? {
+            let entry = support.entry(r["d"].as_str().unwrap().to_string()).or_insert_with(|| json!({"active_supporting": [], "active_contradicting": [], "retracted": [], "expired": [], "unbound": []}));
+            let (slot, detail) = if r["state"] == "retracted" {
+                ("retracted", json!({"evidence": r["e"], "reason": r["why"], "retracted_at": r["rat"]}))
+            } else if r["rel"] == "SUPPORTS" { ("active_supporting", r["e"].clone()) } else { ("active_contradicting", r["e"].clone()) };
+            entry[slot].as_array_mut().unwrap().push(detail);
+        }
+        for h in history.iter_mut() {
+            if let Some(sp) = h["vkey"].as_str().and_then(|v| support.get(v)) {
+                h["evidence"] = sp.clone();
             }
         }
     }

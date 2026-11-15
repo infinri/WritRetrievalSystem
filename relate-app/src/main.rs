@@ -20,7 +20,7 @@ USAGE (all output is JSON on stdout; errors are JSON on stderr, exit code 2)
   writ-relate capture  --store DIR --input FILE          (owner write: decision/evidence/supersede/conflict)
   writ-relate retract  --store DIR --input FILE          (owner write: retract an evidence association)
   writ-relate context  --store DIR --project NAME [--path ARTIFACT] [--require KEY[@REV]]...
-                       [--request FILE] [--include-history] [--max-bytes N] [--max-chars N]
+                       [--request FILE] [--include-history] [--max-bytes N (16000)] [--max-chars N (12000)]
                        [--as-of UTC] [--fusion cypher|app] [--timings] QUERY
   writ-relate inspect  --store DIR KEY[@REV]
   writ-relate verify   --store DIR
@@ -145,6 +145,9 @@ fn run() -> Result<Json> {
                 bail!("context needs a QUERY");
             }
             let mut req = Request::new(&query, a.need("project")?);
+            // Interactive default budget; the regression evaluation keeps 8000/6000.
+            req.max_bytes = 16000;
+            req.max_chars = 12000;
             req.path = a.get("path").map(String::from);
             req.required = a.all("require");
             req.requirements = match a.get("request") {
