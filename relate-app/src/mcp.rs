@@ -46,18 +46,26 @@ pub fn serve(store: PathBuf, model_dir: PathBuf) -> Result<()> {
         let msg: Json = match serde_json::from_str(&line) {
             Ok(m) => m,
             Err(e) => {
-                writeln!(out, "{}", json!({"jsonrpc": "2.0", "id": null, "error": {"code": -32700, "message": e.to_string()}}))?;
+                writeln!(
+                    out,
+                    "{}",
+                    json!({"jsonrpc": "2.0", "id": null, "error": {"code": -32700, "message": e.to_string()}})
+                )?;
                 out.flush()?;
                 continue;
             }
         };
-        let Some(id) = msg.get("id").cloned() else { continue }; // notifications need no reply
+        let Some(id) = msg.get("id").cloned() else {
+            continue;
+        }; // notifications need no reply
         let method = msg["method"].as_str().unwrap_or("");
         let reply = match method {
-            "initialize" => json!({"protocolVersion": msg["params"]["protocolVersion"].as_str().unwrap_or("2025-06-18"),
+            "initialize" => {
+                json!({"protocolVersion": msg["params"]["protocolVersion"].as_str().unwrap_or("2025-06-18"),
                 "capabilities": {"tools": {"listChanged": false}},
                 "serverInfo": {"name": "writ-relate", "version": env!("CARGO_PKG_VERSION")},
-                "instructions": "Read-only connected project memory backed by embedded Relate. Use writ_context first; use writ_inspect for exact versions. Nothing here grants permission or approval."}),
+                "instructions": "Read-only connected project memory backed by embedded Relate. Use writ_context first; use writ_inspect for exact versions. Nothing here grants permission or approval."})
+            }
             "ping" => json!({}),
             "tools/list" => json!({"tools": tools()}),
             "tools/call" => {
@@ -66,13 +74,23 @@ pub fn serve(store: PathBuf, model_dir: PathBuf) -> Result<()> {
                     let mut st = Store::open(store.to_str().unwrap(), true)?;
                     match msg["params"]["name"].as_str().unwrap_or("") {
                         "writ_context" => {
-                            let mut req = Request::new(args["query"].as_str().unwrap_or(""), args["project"].as_str().unwrap_or(""));
+                            let mut req = Request::new(
+                                args["query"].as_str().unwrap_or(""),
+                                args["project"].as_str().unwrap_or(""),
+                            );
                             req.max_bytes = 16000;
                             req.max_chars = 12000;
                             req.path = args["path"].as_str().map(String::from);
-                            req.requirements = Requirements { include_history: args["include_history"].as_bool().unwrap_or(false), ..Default::default() };
-                            if let Some(b) = args["max_bytes"].as_u64() { req.max_bytes = b.clamp(1000, 16000) as usize; }
-                            if let Some(c) = args["max_chars"].as_u64() { req.max_chars = c.clamp(1000, 12000) as usize; }
+                            req.requirements = Requirements {
+                                include_history: args["include_history"].as_bool().unwrap_or(false),
+                                ..Default::default()
+                            };
+                            if let Some(b) = args["max_bytes"].as_u64() {
+                                req.max_bytes = b.clamp(1000, 16000) as usize;
+                            }
+                            if let Some(c) = args["max_chars"].as_u64() {
+                                req.max_chars = c.clamp(1000, 12000) as usize;
+                            }
                             Ok(context(&mut st, &enc, &req)?.0)
                         }
                         "writ_inspect" => inspect(&mut st, args["ref"].as_str().unwrap_or("")),
@@ -80,17 +98,29 @@ pub fn serve(store: PathBuf, model_dir: PathBuf) -> Result<()> {
                     }
                 })();
                 match result {
-                    Ok(v) => json!({"content": [{"type": "text", "text": canonical(&v)}], "isError": false}),
-                    Err(e) => json!({"content": [{"type": "text", "text": format!("error: {e}")}], "isError": true}),
+                    Ok(v) => {
+                        json!({"content": [{"type": "text", "text": canonical(&v)}], "isError": false})
+                    }
+                    Err(e) => {
+                        json!({"content": [{"type": "text", "text": format!("error: {e}")}], "isError": true})
+                    }
                 }
             }
             _ => {
-                writeln!(out, "{}", json!({"jsonrpc": "2.0", "id": id, "error": {"code": -32601, "message": format!("method not found: {method}")}}))?;
+                writeln!(
+                    out,
+                    "{}",
+                    json!({"jsonrpc": "2.0", "id": id, "error": {"code": -32601, "message": format!("method not found: {method}")}})
+                )?;
                 out.flush()?;
                 continue;
             }
         };
-        writeln!(out, "{}", json!({"jsonrpc": "2.0", "id": id, "result": reply}))?;
+        writeln!(
+            out,
+            "{}",
+            json!({"jsonrpc": "2.0", "id": id, "result": reply})
+        )?;
         out.flush()?;
     }
     Ok(())

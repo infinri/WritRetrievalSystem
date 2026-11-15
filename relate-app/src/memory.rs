@@ -18,7 +18,10 @@ use serde_json::{json, Value as Json};
 use crate::db::{floats, s, strings, Row, Store};
 use crate::embed::{prepare, Encoder, DIMS};
 use crate::params;
-use crate::util::{canonical, check_id, check_project, check_utc, json_digest, now_utc, scope_tag, sha256_hex, text_digest};
+use crate::util::{
+    canonical, check_id, check_project, check_utc, json_digest, now_utc, scope_tag, sha256_hex,
+    text_digest,
+};
 
 pub const SHARED: &str = "_shared";
 pub const STORE_CONTRACT: &str = "writ-relate-store/1";
@@ -59,7 +62,10 @@ pub fn record_key(project: &str, label: &str, id: &str) -> String {
 
 pub fn parse_ref(r: &str) -> Result<(String, Option<i64>)> {
     match r.rsplit_once('@') {
-        Some((k, v)) => Ok((k.to_string(), Some(v.parse().map_err(|_| anyhow!("bad revision in {r}"))?))),
+        Some((k, v)) => Ok((
+            k.to_string(),
+            Some(v.parse().map_err(|_| anyhow!("bad revision in {r}"))?),
+        )),
         None => Ok((r.to_string(), None)),
     }
 }
@@ -69,7 +75,10 @@ pub fn parse_ref(r: &str) -> Result<(String, Option<i64>)> {
 // ---------------------------------------------------------------------------------------
 
 pub fn init(st: &mut Store, encoder_identity: &str) -> Result<Json> {
-    if !st.q0("MATCH (m:StoreMeta) RETURN m.contract AS c")?.is_empty() {
+    if !st
+        .q0("MATCH (m:StoreMeta) RETURN m.contract AS c")?
+        .is_empty()
+    {
         bail!("store already initialized");
     }
     st.q0(&format!("CREATE VECTOR INDEX {VECTOR_INDEX} FOR (n:Searchable) ON n.embedding WITH [n.search_scope]"))?;
@@ -89,15 +98,23 @@ pub fn meta(st: &mut Store) -> Result<Row> {
 }
 
 fn bump_generation(st: &mut Store) -> Result<i64> {
-    let r = st.q0("MATCH (m:StoreMeta) SET m.generation = m.generation + 1 RETURN m.generation AS g")?;
-    r.first().and_then(|r| r["g"].as_i64()).ok_or_else(|| anyhow!("store meta missing"))
+    let r =
+        st.q0("MATCH (m:StoreMeta) SET m.generation = m.generation + 1 RETURN m.generation AS g")?;
+    r.first()
+        .and_then(|r| r["g"].as_i64())
+        .ok_or_else(|| anyhow!("store meta missing"))
 }
 
 pub fn scopes(st: &mut Store) -> Result<Vec<(String, String)>> {
     Ok(st
         .q0("MATCH (s:Scope) RETURN s.project AS p, s.tag AS t ORDER BY p")?
         .into_iter()
-        .map(|r| (r["p"].as_str().unwrap().to_string(), r["t"].as_str().unwrap().to_string()))
+        .map(|r| {
+            (
+                r["p"].as_str().unwrap().to_string(),
+                r["t"].as_str().unwrap().to_string(),
+            )
+        })
         .collect())
 }
 
@@ -106,15 +123,28 @@ pub fn scopes(st: &mut Store) -> Result<Vec<(String, String)>> {
 /// the native way to filter before limits and to keep hidden documents out of IDF.
 pub fn ensure_scope(st: &mut Store, project: &str) -> Result<String> {
     let tag = scope_tag(project);
-    if project == SHARED || st.q("MATCH (s:Scope {project:$p}) RETURN s.tag AS t", params!("p" => s(project)))?.len() == 1 {
+    if project == SHARED
+        || st
+            .q(
+                "MATCH (s:Scope {project:$p}) RETURN s.tag AS t",
+                params!("p" => s(project)),
+            )?
+            .len()
+            == 1
+    {
         return Ok(tag);
     }
-    st.q("CREATE (:Scope {project:$p, tag:$t})", params!("p" => s(project), "t" => s(tag.clone())))?;
+    st.q(
+        "CREATE (:Scope {project:$p, tag:$t})",
+        params!("p" => s(project), "t" => s(tag.clone())),
+    )?;
     st.q(
         &format!("MATCH (n:Searchable) WHERE n.search_scope IN [$p, $sh] SET n:FT_{tag}"),
         params!("p" => s(project), "sh" => s(SHARED)),
     )?;
-    st.q0(&format!("CREATE FULLTEXT INDEX ft_{tag} FOR (n:FT_{tag}) ON EACH [n.search_text]"))?;
+    st.q0(&format!(
+        "CREATE FULLTEXT INDEX ft_{tag} FOR (n:FT_{tag}) ON EACH [n.search_text]"
+    ))?;
     Ok(tag)
 }
 
@@ -128,9 +158,29 @@ fn set_searchable(st: &mut Store, vk: &str, project: &str, active: bool) -> Resu
     };
     let labels: String = tags.iter().map(|t| format!(":FT_{t}")).collect();
     if active {
-        st.q(&format!("MATCH (n:Searchable {{vkey:$k}}) SET n.search_scope = n.project{}", if labels.is_empty() { String::new() } else { format!(", n{labels}") }), params!("k" => s(vk)))?;
+        st.q(
+            &format!(
+                "MATCH (n:Searchable {{vkey:$k}}) SET n.search_scope = n.project{}",
+                if labels.is_empty() {
+                    String::new()
+                } else {
+                    format!(", n{labels}")
+                }
+            ),
+            params!("k" => s(vk)),
+        )?;
     } else {
-        st.q(&format!("MATCH (n:Searchable {{vkey:$k}}) SET n.search_scope = 'inactive:' + n.project{}", if labels.is_empty() { String::new() } else { format!(" REMOVE n{labels}") }), params!("k" => s(vk)))?;
+        st.q(
+            &format!(
+                "MATCH (n:Searchable {{vkey:$k}}) SET n.search_scope = 'inactive:' + n.project{}",
+                if labels.is_empty() {
+                    String::new()
+                } else {
+                    format!(" REMOVE n{labels}")
+                }
+            ),
+            params!("k" => s(vk)),
+        )?;
     }
     Ok(())
 }
@@ -146,12 +196,23 @@ fn receipt(st: &mut Store, request_id: &str, digest: &str) -> Result<Option<Json
     let r = st.q("MATCH (r:Receipt {request_id:$id}) RETURN r.digest AS d, r.op AS op, r.at AS at, r.generation AS g", params!("id" => s(request_id)))?;
     match r.first() {
         None => Ok(None),
-        Some(r) if r["d"] == digest => Ok(Some(json!({"replayed": true, "request_id": request_id, "op": r["op"], "applied_at": r["at"], "generation": r["g"]}))),
-        Some(_) => bail!("request_id {request_id} was already used for different content; replay refused"),
+        Some(r) if r["d"] == digest => Ok(Some(
+            json!({"replayed": true, "request_id": request_id, "op": r["op"], "applied_at": r["at"], "generation": r["g"]}),
+        )),
+        Some(_) => {
+            bail!("request_id {request_id} was already used for different content; replay refused")
+        }
     }
 }
 
-fn write_receipt(st: &mut Store, request_id: &str, op: &str, digest: &str, at: &str, generation: i64) -> Result<()> {
+fn write_receipt(
+    st: &mut Store,
+    request_id: &str,
+    op: &str,
+    digest: &str,
+    at: &str,
+    generation: i64,
+) -> Result<()> {
     st.q(
         "CREATE (:Receipt {request_id:$id, op:$op, digest:$d, at:$at, generation:$g})",
         params!("id" => s(request_id), "op" => s(op), "d" => s(digest), "at" => s(at), "g" => Value::Int(generation)),
@@ -197,7 +258,9 @@ pub struct Passage {
 }
 
 fn is_hex(s: &str, n: usize) -> bool {
-    s.len() == n && s.bytes().all(|b| b.is_ascii_hexdigit() && !b.is_ascii_uppercase())
+    s.len() == n
+        && s.bytes()
+            .all(|b| b.is_ascii_hexdigit() && !b.is_ascii_uppercase())
 }
 
 pub fn check_passages(fx: &PassageFixture) -> Result<()> {
@@ -215,12 +278,19 @@ pub fn check_passages(fx: &PassageFixture) -> Result<()> {
             && d.end - d.start == d.text.chars().count() as i64
             && d.start_line >= 1
             && d.end_line - d.start_line == d.text.matches('\n').count() as i64
-            && d.uri == format!("{}/blob/{}/{}#L{}", fx.repository, fx.revision, d.path, d.start_line)
+            && d.uri
+                == format!(
+                    "{}/blob/{}/{}#L{}",
+                    fx.repository, fx.revision, d.path, d.start_line
+                )
             && d.path.ends_with(".md")
             && !d.path.starts_with('/')
             && !d.path.split('/').any(|p| p == ".." || p.is_empty());
         if !ok {
-            bail!("passage {} fails identity/digest/source-binding checks", d.id);
+            bail!(
+                "passage {} fails identity/digest/source-binding checks",
+                d.id
+            );
         }
     }
     Ok(())
@@ -235,7 +305,9 @@ pub fn verify_git(repo: &Path, fx: &PassageFixture) -> Result<usize> {
             Some(t) => t.clone(),
             None => {
                 let out = std::process::Command::new("git")
-                    .arg("-C").arg(repo).args(["-c", "core.hooksPath=/dev/null", "cat-file", "-p"])
+                    .arg("-C")
+                    .arg(repo)
+                    .args(["-c", "core.hooksPath=/dev/null", "cat-file", "-p"])
                     .arg(format!("{}:{}", fx.revision, d.path))
                     .env("GIT_NO_LAZY_FETCH", "1")
                     .output()
@@ -248,15 +320,29 @@ pub fn verify_git(repo: &Path, fx: &PassageFixture) -> Result<usize> {
                 t
             }
         };
-        let slice: String = text.chars().skip(d.start as usize).take((d.end - d.start) as usize).collect();
+        let slice: String = text
+            .chars()
+            .skip(d.start as usize)
+            .take((d.end - d.start) as usize)
+            .collect();
         if sha256_hex(text.as_bytes()) != d.source_digest || slice != d.text {
-            bail!("passage {} differs from git object {}:{}", d.id, fx.revision, d.path);
+            bail!(
+                "passage {} differs from git object {}:{}",
+                d.id,
+                fx.revision,
+                d.path
+            );
         }
     }
     Ok(files.len())
 }
 
-pub fn import_passages(st: &mut Store, enc: &Encoder, fx: &PassageFixture, project: &str) -> Result<Json> {
+pub fn import_passages(
+    st: &mut Store,
+    enc: &Encoder,
+    fx: &PassageFixture,
+    project: &str,
+) -> Result<Json> {
     check_project(project)?;
     check_passages(fx)?;
     let request = json!({"op": "import", "project": project, "fixture_revision": fx.revision,
@@ -267,7 +353,11 @@ pub fn import_passages(st: &mut Store, enc: &Encoder, fx: &PassageFixture, proje
         return Ok(r);
     }
     // Embedding inference happens before the transaction; the write is all-or-nothing.
-    let vectors: Vec<Vec<f32>> = fx.documents.iter().map(|d| enc.embed(&prepare(&d.heading, &d.text))).collect::<Result<_>>()?;
+    let vectors: Vec<Vec<f32>> = fx
+        .documents
+        .iter()
+        .map(|d| enc.embed(&prepare(&d.heading, &d.text)))
+        .collect::<Result<_>>()?;
     let at = now_utc();
     let (mut created, mut unchanged) = (0, 0);
     st.tx(|t| {
@@ -302,7 +392,9 @@ pub fn import_passages(st: &mut Store, enc: &Encoder, fx: &PassageFixture, proje
         Ok(())
     })?;
     st.checkpoint()?;
-    Ok(json!({"imported": created, "unchanged": unchanged, "project": project, "revision": fx.revision, "request_id": request_id}))
+    Ok(
+        json!({"imported": created, "unchanged": unchanged, "project": project, "revision": fx.revision, "request_id": request_id}),
+    )
 }
 
 // ---------------------------------------------------------------------------------------
@@ -387,7 +479,10 @@ fn current_version(st: &mut Store, b: &Binding, label: &str) -> Result<Row> {
         &format!("MATCH (n:{label} {{vkey:$vk}}) RETURN n.vkey AS vkey, n.project AS project, n.rev AS rev, n.content_digest AS digest, n.lifecycle AS lifecycle, n.key AS key"),
         params!("vk" => s(vkey(&b.key, b.revision))),
     )?;
-    let r = rows.into_iter().next().ok_or_else(|| anyhow!("{label} {}@{} not found", b.key, b.revision))?;
+    let r = rows
+        .into_iter()
+        .next()
+        .ok_or_else(|| anyhow!("{label} {}@{} not found", b.key, b.revision))?;
     if r["digest"] != b.content_digest.as_str() {
         bail!("binding digest mismatch for {}@{}", b.key, b.revision);
     }
@@ -400,20 +495,49 @@ fn visible(project: &str, owner: &str) -> bool {
 
 fn source_params(src: &Option<SourceRef>) -> Result<Vec<(&'static str, Value)>> {
     Ok(match src {
-        None => vec![("source_uri", Value::Null), ("source_revision", Value::Null), ("source_path", Value::Null), ("start_line", Value::Null), ("end_line", Value::Null)],
+        None => vec![
+            ("source_uri", Value::Null),
+            ("source_revision", Value::Null),
+            ("source_path", Value::Null),
+            ("start_line", Value::Null),
+            ("end_line", Value::Null),
+        ],
         Some(r) => {
-            if !(is_hex(&r.revision, 40) && r.start_line >= 1 && r.end_line >= r.start_line && r.uri.starts_with("https://")) {
-                bail!("source must be an https URI with an exact 40-hex revision and a line interval");
+            if !(is_hex(&r.revision, 40)
+                && r.start_line >= 1
+                && r.end_line >= r.start_line
+                && r.uri.starts_with("https://"))
+            {
+                bail!(
+                    "source must be an https URI with an exact 40-hex revision and a line interval"
+                );
             }
-            vec![("source_uri", s(r.uri.clone())), ("source_revision", s(r.revision.clone())), ("source_path", s(r.path.clone())),
-                 ("start_line", Value::Int(r.start_line)), ("end_line", Value::Int(r.end_line))]
+            vec![
+                ("source_uri", s(r.uri.clone())),
+                ("source_revision", s(r.revision.clone())),
+                ("source_path", s(r.path.clone())),
+                ("start_line", Value::Int(r.start_line)),
+                ("end_line", Value::Int(r.end_line)),
+            ]
         }
     })
 }
 
 #[allow(clippy::too_many_arguments)]
-fn create_decision(t: &mut Store, enc_vec: &[f32], project: &str, id: &str, rev: i64, title: &str, text: &str, rationale: &Option<String>,
-                   source: &Option<SourceRef>, valid_to: &Option<String>, recorded_at: &str, request_id: &str) -> Result<String> {
+fn create_decision(
+    t: &mut Store,
+    enc_vec: &[f32],
+    project: &str,
+    id: &str,
+    rev: i64,
+    title: &str,
+    text: &str,
+    rationale: &Option<String>,
+    source: &Option<SourceRef>,
+    valid_to: &Option<String>,
+    recorded_at: &str,
+    request_id: &str,
+) -> Result<String> {
     let key = record_key(project, "Decision", id);
     let vk = vkey(&key, rev);
     let mut p = params!("key" => s(key.clone()), "vk" => s(vk.clone()), "p" => s(project), "id" => s(id), "rev" => Value::Int(rev),
@@ -434,7 +558,13 @@ fn create_decision(t: &mut Store, enc_vec: &[f32], project: &str, id: &str, rev:
     Ok(vk)
 }
 
-fn link_decision(t: &mut Store, project: &str, vk: &str, governed_by: &[Binding], affects: &[String]) -> Result<()> {
+fn link_decision(
+    t: &mut Store,
+    project: &str,
+    vk: &str,
+    governed_by: &[Binding],
+    affects: &[String],
+) -> Result<()> {
     for g in governed_by {
         let r = current_version(t, g, "Guidance")?;
         if !visible(project, r["project"].as_str().unwrap()) {
@@ -454,7 +584,10 @@ fn link_decision(t: &mut Store, project: &str, vk: &str, governed_by: &[Binding]
         }
         let akey = record_key(project, "Artifact", path);
         t.q("MERGE (a:Artifact {key:$k}) ON CREATE SET a.project = $p, a.path = $path, a.label = 'Artifact'", params!("k" => s(akey.clone()), "p" => s(project), "path" => s(path.clone())))?;
-        t.q("MATCH (d:Decision {vkey:$d}), (a:Artifact {key:$k}) CREATE (d)-[:AFFECTS]->(a)", params!("d" => s(vk), "k" => s(akey)))?;
+        t.q(
+            "MATCH (d:Decision {vkey:$d}), (a:Artifact {key:$k}) CREATE (d)-[:AFFECTS]->(a)",
+            params!("d" => s(vk), "k" => s(akey)),
+        )?;
     }
     Ok(())
 }
@@ -479,7 +612,9 @@ pub fn capture(st: &mut Store, enc: &Encoder, c: &Capture) -> Result<Json> {
     let mut vectors = Vec::new();
     for op in &c.operations {
         match op {
-            Op::Decision { title, text, .. } | Op::Supersede { title, text, .. } => vectors.push(enc.embed(&prepare(title, text))?),
+            Op::Decision { title, text, .. } | Op::Supersede { title, text, .. } => {
+                vectors.push(enc.embed(&prepare(title, text))?)
+            }
             _ => vectors.push(Vec::new()),
         }
     }
@@ -590,7 +725,9 @@ pub fn retract(st: &mut Store, r: &Retraction) -> Result<Json> {
         bail!("unsupported retraction contract");
     }
     check_utc(&r.recorded_at)?;
-    let digest = json_digest(&json!({"evidence": r.evidence, "decision": r.decision.to_json(), "reason": r.reason}));
+    let digest = json_digest(
+        &json!({"evidence": r.evidence, "decision": r.decision.to_json(), "reason": r.reason}),
+    );
     if let Some(x) = receipt(st, &r.request_id, &digest)? {
         return Ok(x);
     }
@@ -614,7 +751,9 @@ pub fn retract(st: &mut Store, r: &Retraction) -> Result<Json> {
         write_receipt(t, &r.request_id, "retract", &digest, &r.recorded_at, g)
     })?;
     st.checkpoint()?;
-    Ok(json!({"retracted": true, "evidence": r.evidence, "decision": r.decision.to_json(), "request_id": r.request_id}))
+    Ok(
+        json!({"retracted": true, "evidence": r.evidence, "decision": r.decision.to_json(), "request_id": r.request_id}),
+    )
 }
 
 // ---------------------------------------------------------------------------------------
@@ -633,15 +772,24 @@ pub fn record_fields() -> &'static str {
 
 pub fn inspect(st: &mut Store, reference: &str) -> Result<Json> {
     let (key, rev) = parse_ref(reference)?;
-    let versions = st.q(&format!("MATCH (n {{key:$k}}) RETURN {RECORD_FIELDS} ORDER BY revision"), params!("k" => s(key.clone())))?;
+    let versions = st.q(
+        &format!("MATCH (n {{key:$k}}) RETURN {RECORD_FIELDS} ORDER BY revision"),
+        params!("k" => s(key.clone())),
+    )?;
     if versions.is_empty() {
         bail!("no record {key}");
     }
-    let chosen: Vec<&Row> = versions.iter().filter(|v| rev.is_none_or(|r| v["revision"].as_i64() == Some(r))).collect();
+    let chosen: Vec<&Row> = versions
+        .iter()
+        .filter(|v| rev.is_none_or(|r| v["revision"].as_i64() == Some(r)))
+        .collect();
     if chosen.is_empty() {
         bail!("no revision {reference}");
     }
-    let target = chosen.last().unwrap()["vkey"].as_str().unwrap_or("").to_string();
+    let target = chosen.last().unwrap()["vkey"]
+        .as_str()
+        .unwrap_or("")
+        .to_string();
     let out = st.q(
         "MATCH (n {vkey:$v})-[r]->(m) RETURN type(r) AS rel, m.vkey AS target, m.key AS key, properties(r) AS props ORDER BY rel, target",
         params!("v" => s(target.clone())),
@@ -656,10 +804,12 @@ pub fn inspect(st: &mut Store, reference: &str) -> Result<Json> {
         let text = v["text"].as_str().unwrap_or("");
         json!({"vkey": v["vkey"], "text_digest_matches": text_digest(text) == v["content_digest"].as_str().unwrap_or("")})
     }).collect();
-    Ok(json!({"contract_version": "writ-relate-inspect/1", "key": key, "requested": reference, "record": chosen.last(),
+    Ok(
+        json!({"contract_version": "writ-relate-inspect/1", "key": key, "requested": reference, "record": chosen.last(),
         "versions": versions.iter().map(|v| json!({"vkey": v["vkey"], "revision": v["revision"], "lifecycle": v["lifecycle"], "content_digest": v["content_digest"], "recorded_at": v["recorded_at"], "superseded_at": v["superseded_at"]})).collect::<Vec<_>>(),
         "outgoing": out, "incoming": inc, "receipts": receipts, "integrity": integrity,
-        "note": "Exact stored version. Verification and approval are never set by import or capture; approval is not an agent operation."}))
+        "note": "Exact stored version. Verification and approval are never set by import or capture; approval is not an agent operation."}),
+    )
 }
 
 pub fn verify(st: &mut Store) -> Result<Json> {
@@ -673,30 +823,47 @@ pub fn verify(st: &mut Store) -> Result<Json> {
         if text_digest(r["text"].as_str().unwrap_or("")) != r["cd"].as_str().unwrap_or("") {
             problems.push(format!("{vk}: stored text does not match content_digest"));
         }
-        let labels: Vec<&str> = r["labels"].as_array().map(|a| a.iter().filter_map(|x| x.as_str()).collect()).unwrap_or_default();
+        let labels: Vec<&str> = r["labels"]
+            .as_array()
+            .map(|a| a.iter().filter_map(|x| x.as_str()).collect())
+            .unwrap_or_default();
         if labels.contains(&"Searchable") {
             if r["dims"].as_i64() != Some(DIMS as i64) {
                 problems.push(format!("{vk}: embedding dimension mismatch"));
             }
             let active = r["lc"] == "current";
             let project = r["project"].as_str().unwrap_or("");
-            let expect_scope = if active { project.to_string() } else { format!("inactive:{project}") };
+            let expect_scope = if active {
+                project.to_string()
+            } else {
+                format!("inactive:{project}")
+            };
             if r["scope"].as_str() != Some(&expect_scope) {
-                problems.push(format!("{vk}: vector scope {} disagrees with lifecycle", r["scope"]));
+                problems.push(format!(
+                    "{vk}: vector scope {} disagrees with lifecycle",
+                    r["scope"]
+                ));
             }
             for t in &tags {
                 let want = active && (project == SHARED || scope_tag(project) == *t);
                 if labels.contains(&format!("FT_{t}").as_str()) != want {
-                    problems.push(format!("{vk}: full-text membership FT_{t} disagrees with lifecycle/scope"));
+                    problems.push(format!(
+                        "{vk}: full-text membership FT_{t} disagrees with lifecycle/scope"
+                    ));
                 }
             }
         }
     }
     let dangling = st.q0("MATCH (e:Evidence)-[a]->(d:Decision) WHERE a.decision_digest <> d.content_digest OR a.decision_rev <> d.rev RETURN e.key AS e, d.vkey AS d")?;
     for d in dangling {
-        problems.push(format!("association {} -> {} binds a different version", d["e"], d["d"]));
+        problems.push(format!(
+            "association {} -> {} binds a different version",
+            d["e"], d["d"]
+        ));
     }
-    Ok(json!({"contract_version": "writ-relate-verify/1", "generation": m["generation"], "records": rows.len(), "problems": problems, "ok": problems.is_empty()}))
+    Ok(
+        json!({"contract_version": "writ-relate-verify/1", "generation": m["generation"], "records": rows.len(), "problems": problems, "ok": problems.is_empty()}),
+    )
 }
 
 pub fn canonical_request_digest(v: &Json) -> String {

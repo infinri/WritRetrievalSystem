@@ -3,9 +3,10 @@
 pub mod context;
 pub mod db;
 pub mod demo;
-pub mod mcp;
 pub mod embed;
 pub mod eval;
+pub mod extract;
+pub mod mcp;
 pub mod memory;
 pub mod offline;
 pub mod util;

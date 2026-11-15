@@ -15,7 +15,8 @@ pub const MAX_TOKENS: usize = 128;
 pub const DIMS: usize = 384;
 pub const TEXT_HEAD_CHARS: usize = 1600;
 pub const MODEL_SHA256: &str = "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452";
-pub const TOKENIZER_SHA256: &str = "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037";
+pub const TOKENIZER_SHA256: &str =
+    "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037";
 
 type Plan = SimplePlan<TypedFact, Box<dyn TypedOp>, Graph<TypedFact, Box<dyn TypedOp>>>;
 
@@ -27,7 +28,9 @@ pub struct Encoder {
 }
 
 fn sha256_file(p: &Path) -> Result<String> {
-    Ok(hex::encode(Sha256::digest(std::fs::read(p).with_context(|| format!("read {}", p.display()))?)))
+    Ok(hex::encode(Sha256::digest(
+        std::fs::read(p).with_context(|| format!("read {}", p.display()))?,
+    )))
 }
 
 impl Encoder {
@@ -39,21 +42,44 @@ impl Encoder {
         }
         let mut tokenizer = Tokenizer::from_file(&tok).map_err(|e| anyhow!("tokenizer: {e}"))?;
         tokenizer
-            .with_truncation(Some(TruncationParams { max_length: MAX_TOKENS, ..Default::default() }))
+            .with_truncation(Some(TruncationParams {
+                max_length: MAX_TOKENS,
+                ..Default::default()
+            }))
             .map_err(|e| anyhow!("truncation: {e}"))?;
-        tokenizer.with_padding(Some(PaddingParams { strategy: PaddingStrategy::Fixed(MAX_TOKENS), ..Default::default() }));
+        tokenizer.with_padding(Some(PaddingParams {
+            strategy: PaddingStrategy::Fixed(MAX_TOKENS),
+            ..Default::default()
+        }));
         let mut graph = tract_onnx::onnx().model_for_path(&model)?;
-        let input_order: Vec<String> = graph.input_outlets()?.iter().map(|o| graph.node(o.node).name.clone()).collect();
+        let input_order: Vec<String> = graph
+            .input_outlets()?
+            .iter()
+            .map(|o| graph.node(o.node).name.clone())
+            .collect();
         for i in 0..input_order.len() {
             graph.set_input_fact(i, i64::fact([1, MAX_TOKENS]).into())?;
         }
         let plan = graph.into_optimized()?.into_runnable()?;
-        let identity = format!("sha256:{}", hex::encode(Sha256::digest(format!("minilm-l6-v2|{m}|{t}|{MAX_TOKENS}|mean|l2|tract").as_bytes())));
-        Ok(Self { tokenizer, plan, input_order, identity })
+        let identity = format!(
+            "sha256:{}",
+            hex::encode(Sha256::digest(
+                format!("minilm-l6-v2|{m}|{t}|{MAX_TOKENS}|mean|l2|tract").as_bytes()
+            ))
+        );
+        Ok(Self {
+            tokenizer,
+            plan,
+            input_order,
+            identity,
+        })
     }
 
     pub fn embed(&self, text: &str) -> Result<Vec<f32>> {
-        let enc = self.tokenizer.encode(text, true).map_err(|e| anyhow!("tokenize: {e}"))?;
+        let enc = self
+            .tokenizer
+            .encode(text, true)
+            .map_err(|e| anyhow!("tokenize: {e}"))?;
         let mask: Vec<i64> = enc.get_attention_mask().iter().map(|&x| x as i64).collect();
         let pick = |name: &str| -> Vec<i64> {
             match name {
@@ -65,7 +91,13 @@ impl Encoder {
         let inputs: TVec<TValue> = self
             .input_order
             .iter()
-            .map(|n| Ok(tract_ndarray::Array2::from_shape_vec((1, MAX_TOKENS), pick(n))?.into_tensor().into()))
+            .map(|n| {
+                Ok(
+                    tract_ndarray::Array2::from_shape_vec((1, MAX_TOKENS), pick(n))?
+                        .into_tensor()
+                        .into(),
+                )
+            })
             .collect::<Result<_>>()?;
         let out = self.plan.run(inputs)?;
         let hidden = out[0].to_array_view::<f32>()?; // [1, tokens, 384]
@@ -87,7 +119,11 @@ impl Encoder {
 
 /// Text preparation shared by import and query: record title and body, first 1,600 chars.
 pub fn prepare(title: &str, body: &str) -> String {
-    let joined = if title.is_empty() { body.to_string() } else { format!("{title}\n{body}") };
+    let joined = if title.is_empty() {
+        body.to_string()
+    } else {
+        format!("{title}\n{body}")
+    };
     joined.chars().take(TEXT_HEAD_CHARS).collect()
 }
 

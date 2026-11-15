@@ -19,7 +19,11 @@ pub fn canonical(v: &Json) -> String {
             Json::Object(m) => {
                 let mut keys: Vec<_> = m.keys().cloned().collect();
                 keys.sort();
-                Json::Object(keys.into_iter().map(|k| (k.clone(), sort(&m[&k]))).collect())
+                Json::Object(
+                    keys.into_iter()
+                        .map(|k| (k.clone(), sort(&m[&k])))
+                        .collect(),
+                )
             }
             Json::Array(a) => Json::Array(a.iter().map(sort).collect()),
             other => other.clone(),
@@ -34,7 +38,10 @@ pub fn json_digest(v: &Json) -> String {
 
 /// Current UTC time as YYYY-MM-DDTHH:MM:SSZ (whole seconds).
 pub fn now_utc() -> String {
-    let secs = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0);
+    let secs = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|d| d.as_secs())
+        .unwrap_or(0);
     format_utc(secs as i64)
 }
 
@@ -52,7 +59,12 @@ pub fn format_utc(secs: i64) -> String {
     let d = doy - (153 * mp + 2) / 5 + 1;
     let m = if mp < 10 { mp + 3 } else { mp - 9 };
     let y = if m <= 2 { y + 1 } else { y };
-    format!("{y:04}-{m:02}-{d:02}T{:02}:{:02}:{:02}Z", rem / 3600, rem % 3600 / 60, rem % 60)
+    format!(
+        "{y:04}-{m:02}-{d:02}T{:02}:{:02}:{:02}Z",
+        rem / 3600,
+        rem % 3600 / 60,
+        rem % 60
+    )
 }
 
 /// Strict UTC timestamp check; lexical order equals time order for this format.
@@ -61,7 +73,12 @@ pub fn check_utc(s: &str) -> Result<()> {
     let digits = [0, 1, 2, 3, 5, 6, 8, 9, 11, 12, 14, 15, 17, 18];
     let ok = b.len() == 20
         && digits.iter().all(|&i| b[i].is_ascii_digit())
-        && b[4] == b'-' && b[7] == b'-' && b[10] == b'T' && b[13] == b':' && b[16] == b':' && b[19] == b'Z';
+        && b[4] == b'-'
+        && b[7] == b'-'
+        && b[10] == b'T'
+        && b[13] == b':'
+        && b[16] == b':'
+        && b[19] == b'Z';
     if !ok {
         bail!("time must be UTC YYYY-MM-DDTHH:MM:SSZ: {s}");
     }
@@ -77,7 +94,10 @@ pub fn check_utc(s: &str) -> Result<()> {
 /// runs of the first 2,000 characters, joined by spaces.
 pub fn keywords(text: &str) -> String {
     let head: String = text.chars().take(2000).collect::<String>().to_lowercase();
-    head.split(|c: char| !c.is_alphanumeric()).filter(|w| !w.is_empty()).collect::<Vec<_>>().join(" ")
+    head.split(|c: char| !c.is_alphanumeric())
+        .filter(|w| !w.is_empty())
+        .collect::<Vec<_>>()
+        .join(" ")
 }
 
 /// Engine identifiers (labels/index names) derived from a project name; never raw user text.
@@ -86,14 +106,24 @@ pub fn scope_tag(project: &str) -> String {
 }
 
 pub fn check_project(p: &str) -> Result<()> {
-    if p.is_empty() || p.len() > 64 || !p.chars().all(|c| c.is_ascii_alphanumeric() || "-_.".contains(c)) {
+    if p.is_empty()
+        || p.len() > 64
+        || !p
+            .chars()
+            .all(|c| c.is_ascii_alphanumeric() || "-_.".contains(c))
+    {
         bail!("project must be 1-64 ASCII letters, digits, '-', '_' or '.': {p}");
     }
     Ok(())
 }
 
 pub fn check_id(id: &str) -> Result<()> {
-    if id.is_empty() || id.len() > 128 || id.contains('|') || id.contains('@') || id.chars().any(char::is_control) {
+    if id.is_empty()
+        || id.len() > 128
+        || id.contains('|')
+        || id.contains('@')
+        || id.chars().any(char::is_control)
+    {
         bail!("invalid record id: {id:?}");
     }
     Ok(())
@@ -112,6 +142,9 @@ mod tests {
     }
     #[test]
     fn keyword_prep() {
-        assert_eq!(keywords("What is X_y? Façade, 2-hop!"), "what is x y façade 2 hop");
+        assert_eq!(
+            keywords("What is X_y? Façade, 2-hop!"),
+            "what is x y façade 2 hop"
+        );
     }
 }

@@ -15,6 +15,7 @@ const USAGE: &str = "writ-relate: connected decision/evidence context in embedde
 
 USAGE (all output is JSON on stdout; errors are JSON on stderr, exit code 2)
   writ-relate init     --store DIR [--model-dir DIR]
+  writ-relate extract  --repo GIT_DIR --revision SHA40 --path DOC.md [--path ...] [--repository-url URL] [--out FILE]
   writ-relate import   --store DIR --fixture FILE --project NAME [--verify-git REPO]
   writ-relate capture  --store DIR --input FILE          (owner write: decision/evidence/supersede/conflict)
   writ-relate retract  --store DIR --input FILE          (owner write: retract an evidence association)
@@ -41,25 +42,43 @@ struct Args {
 impl Args {
     fn parse() -> Result<Self> {
         let mut it = std::env::args().skip(1);
-        let cmd = it.next().ok_or_else(|| anyhow!("missing command\n\n{USAGE}"))?;
+        let cmd = it
+            .next()
+            .ok_or_else(|| anyhow!("missing command\n\n{USAGE}"))?;
         let (mut flags, mut switches, mut positional) = (vec![], vec![], vec![]);
         let boolean = ["--include-history", "--timings", "--help"];
         while let Some(a) = it.next() {
             if boolean.contains(&a.as_str()) {
                 switches.push(a);
             } else if let Some(name) = a.strip_prefix("--") {
-                flags.push((name.to_string(), it.next().ok_or_else(|| anyhow!("--{name} needs a value"))?));
+                flags.push((
+                    name.to_string(),
+                    it.next().ok_or_else(|| anyhow!("--{name} needs a value"))?,
+                ));
             } else {
                 positional.push(a);
             }
         }
-        Ok(Self { cmd, flags, switches, positional })
+        Ok(Self {
+            cmd,
+            flags,
+            switches,
+            positional,
+        })
     }
     fn get(&self, k: &str) -> Option<&str> {
-        self.flags.iter().rev().find(|(n, _)| n == k).map(|(_, v)| v.as_str())
+        self.flags
+            .iter()
+            .rev()
+            .find(|(n, _)| n == k)
+            .map(|(_, v)| v.as_str())
     }
     fn all(&self, k: &str) -> Vec<String> {
-        self.flags.iter().filter(|(n, _)| n == k).map(|(_, v)| v.clone()).collect()
+        self.flags
+            .iter()
+            .filter(|(n, _)| n == k)
+            .map(|(_, v)| v.clone())
+            .collect()
     }
     fn need(&self, k: &str) -> Result<&str> {
         self.get(k).ok_or_else(|| anyhow!("--{k} is required"))
@@ -153,14 +172,22 @@ fn run() -> Result<Json> {
             let startup_ms = load.elapsed().as_secs_f64() * 1e3;
             let (payload, t) = context(&mut st, &enc, &req)?;
             if a.has("--timings") {
-                eprintln!("{}", json!({"startup_ms": startup_ms, "embed_ms": t.embed_ms, "search_ms": t.search_ms, "enrich_ms": t.enrich_ms,
-                    "render_ms": t.render_ms, "total_ms": started.elapsed().as_secs_f64() * 1e3}));
+                eprintln!(
+                    "{}",
+                    json!({"startup_ms": startup_ms, "embed_ms": t.embed_ms, "search_ms": t.search_ms, "enrich_ms": t.enrich_ms,
+                    "render_ms": t.render_ms, "total_ms": started.elapsed().as_secs_f64() * 1e3})
+                );
             }
             Ok(payload)
         }
         "inspect" => {
             let mut st = Store::open(a.need("store")?, true)?;
-            memory::inspect(&mut st, a.positional.first().ok_or_else(|| anyhow!("inspect needs KEY[@REV]"))?)
+            memory::inspect(
+                &mut st,
+                a.positional
+                    .first()
+                    .ok_or_else(|| anyhow!("inspect needs KEY[@REV]"))?,
+            )
         }
         "verify" => {
             let mut st = Store::open(a.need("store")?, true)?;
@@ -182,6 +209,24 @@ fn run() -> Result<Json> {
             a.get("seed").map(PathBuf::from),
             a.model_dir(),
         ),
+        "extract" => {
+            let paths = a.all("path");
+            let v = writ_relate::extract::extract(
+                std::path::Path::new(a.need("repo")?),
+                a.need("revision")?,
+                &paths,
+                a.get("repository-url")
+                    .unwrap_or("https://github.com/infinri/Writ"),
+                a.get("license-marker").unwrap_or("MIT License"),
+            )?;
+            if let Some(out) = a.get("out") {
+                std::fs::write(out, serde_json::to_string_pretty(&v)? + "\n")?;
+                return Ok(
+                    json!({"written": out, "passages": v["documents"].as_array().map(|d| d.len())}),
+                );
+            }
+            Ok(v)
+        }
         "eval" => writ_relate::eval::eval(&writ_relate::eval::EvalArgs {
             tasks: a.need("tasks")?.into(),
             fixtures: a.need("fixtures")?.into(),
@@ -191,14 +236,22 @@ fn run() -> Result<Json> {
             repetitions: a.get("repetitions").unwrap_or("3").parse()?,
             model_dir: a.model_dir(),
         }),
-        "bench-cold" => writ_relate::eval::bench_cold(std::path::Path::new(a.need("spec")?), std::path::Path::new(a.need("out")?)),
+        "bench-cold" => writ_relate::eval::bench_cold(
+            std::path::Path::new(a.need("spec")?),
+            std::path::Path::new(a.need("out")?),
+        ),
         "selftest-offline" => {
             // Hidden diagnostic used by the test suite: proves the deny is active in this process.
             let installed = offline::deny_network()?;
-            let tcp = std::net::TcpStream::connect_timeout(&"127.0.0.1:9".parse()?, std::time::Duration::from_millis(200));
+            let tcp = std::net::TcpStream::connect_timeout(
+                &"127.0.0.1:9".parse()?,
+                std::time::Duration::from_millis(200),
+            );
             let udp = std::net::UdpSocket::bind("127.0.0.1:0");
             let unix = std::os::unix::net::UnixDatagram::unbound();
-            Ok(json!({"installed": installed, "tcp_error": tcp.err().map(|e| e.to_string()), "udp_error": udp.err().map(|e| e.to_string()), "unix_socket_ok": unix.is_ok()}))
+            Ok(
+                json!({"installed": installed, "tcp_error": tcp.err().map(|e| e.to_string()), "udp_error": udp.err().map(|e| e.to_string()), "unix_socket_ok": unix.is_ok()}),
+            )
         }
         other => bail!("unknown command {other}\n\n{USAGE}"),
     }

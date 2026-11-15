@@ -28,19 +28,30 @@ impl Store {
         }
         .map_err(|e| anyhow!("open relate store {path}: {e}"))?;
         let conn = db.connect().map_err(|e| anyhow!("connect: {e}"))?;
-        Ok(Self { db, conn, read_only })
+        Ok(Self {
+            db,
+            conn,
+            read_only,
+        })
     }
 
     pub fn q(&mut self, cypher: &str, params: Params) -> Result<Vec<Row>> {
-        let result = self
-            .conn
-            .query_with_params(cypher, params)
-            .map_err(|e| anyhow!("{e} [query: {}]", cypher.split_whitespace().collect::<Vec<_>>().join(" ")))?;
+        let result = self.conn.query_with_params(cypher, params).map_err(|e| {
+            anyhow!(
+                "{e} [query: {}]",
+                cypher.split_whitespace().collect::<Vec<_>>().join(" ")
+            )
+        })?;
         let cols = result.header.columns.clone();
         Ok(result
             .rows
             .into_iter()
-            .map(|row| cols.iter().cloned().zip(row.into_iter().map(to_json)).collect())
+            .map(|row| {
+                cols.iter()
+                    .cloned()
+                    .zip(row.into_iter().map(to_json))
+                    .collect()
+            })
             .collect())
     }
 
@@ -76,7 +87,9 @@ impl Store {
     }
 
     pub fn checkpoint(&self) -> Result<()> {
-        self.db.checkpoint_if_writable().map_err(|e| anyhow!("checkpoint: {e}"))
+        self.db
+            .checkpoint_if_writable()
+            .map_err(|e| anyhow!("checkpoint: {e}"))
     }
 }
 
@@ -85,11 +98,17 @@ pub fn to_json(v: Value) -> Json {
         Value::Null => Json::Null,
         Value::Bool(b) => Json::Bool(b),
         Value::Int(i) => Json::from(i),
-        Value::Float(f) => serde_json::Number::from_f64(f).map(Json::Number).unwrap_or(Json::Null),
+        Value::Float(f) => serde_json::Number::from_f64(f)
+            .map(Json::Number)
+            .unwrap_or(Json::Null),
         Value::String(s) => Json::String(s.to_string()),
         Value::List(l) => Json::Array(l.iter().cloned().map(to_json).collect()),
         Value::Vector { values, .. } => Json::Array(values.iter().cloned().map(to_json).collect()),
-        Value::Map(m) => Json::Object(m.iter().map(|(k, v)| (k.clone(), to_json(v.clone()))).collect()),
+        Value::Map(m) => Json::Object(
+            m.iter()
+                .map(|(k, v)| (k.clone(), to_json(v.clone())))
+                .collect(),
+        ),
         other => Json::String(format!("{other:?}")),
     }
 }
@@ -98,10 +117,15 @@ pub fn from_json(v: &Json) -> Value {
     match v {
         Json::Null => Value::Null,
         Json::Bool(b) => Value::Bool(*b),
-        Json::Number(n) => n.as_i64().map(Value::Int).unwrap_or_else(|| Value::Float(n.as_f64().unwrap_or(0.0))),
+        Json::Number(n) => n
+            .as_i64()
+            .map(Value::Int)
+            .unwrap_or_else(|| Value::Float(n.as_f64().unwrap_or(0.0))),
         Json::String(s) => Value::String(s.as_str().into()),
         Json::Array(a) => Value::List(Arc::new(a.iter().map(from_json).collect())),
-        Json::Object(o) => Value::Map(Arc::new(o.iter().map(|(k, v)| (k.clone(), from_json(v))).collect())),
+        Json::Object(o) => Value::Map(Arc::new(
+            o.iter().map(|(k, v)| (k.clone(), from_json(v))).collect(),
+        )),
     }
 }
 
@@ -110,11 +134,17 @@ pub fn s(v: impl Into<String>) -> Value {
 }
 
 pub fn floats(v: &[f32]) -> Value {
-    Value::List(Arc::new(v.iter().map(|x| Value::Float(*x as f64)).collect()))
+    Value::List(Arc::new(
+        v.iter().map(|x| Value::Float(*x as f64)).collect(),
+    ))
 }
 
 pub fn strings<I: IntoIterator<Item = String>>(v: I) -> Value {
-    Value::List(Arc::new(v.into_iter().map(|x| Value::String(x.as_str().into())).collect()))
+    Value::List(Arc::new(
+        v.into_iter()
+            .map(|x| Value::String(x.as_str().into()))
+            .collect(),
+    ))
 }
 
 #[macro_export]
